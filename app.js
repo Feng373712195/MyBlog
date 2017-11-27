@@ -9,6 +9,9 @@ const router = require('./router/main');
 
 let app = new koa();
 
+//开发环境
+ console.log(process.env.NODE_ENV)
+
 app.use( sever(path.resolve(__dirname,'src')) )
 app.use( view(path.resolve(__dirname,'src/html'),{extensions:'html'}) )
 
