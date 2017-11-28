@@ -1,7 +1,7 @@
 import  React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-class Main extends Component{
+class LeftNav extends Component{
 	
 	render(){
 		const msg = 'Im left Nav'
@@ -11,4 +11,4 @@ class Main extends Component{
 	}
 }
 
-export default Main;
+export default LeftNav;
