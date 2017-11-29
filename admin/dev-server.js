@@ -39,5 +39,6 @@ app.use(devMiddleware(compiler,
 app.use(hotMiddleware(compiler,{}))
 
 app.listen(port,function(){
+    console.log(`${process.env.NODE_ENV}`)
     console.log(`open ${port}`);
 })

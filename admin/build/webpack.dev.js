@@ -21,6 +21,11 @@ module.exports = merge(webpackBaseConfig,{
         publicPath: '/dist/js/',
         filename: '[name].js',    
     },
+    module:{
+        rules:[
+            
+        ]
+    },
     devServer:{
 		contentBase:`http://127.0.0.1:${config.dev.port}/dist/`,
 		hot:true

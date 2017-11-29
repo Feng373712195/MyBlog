@@ -1,8 +1,11 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import LeftNav from '../components/LeftNav.js'
+import '../scss/home.scss'
+import '../css/normalize.min.css'
 
-ReactDom.render(<LeftNav />,document.querySelector('.leftnav'))
+import LeftMenu from '../components/LeftMenu'
+
+ReactDom.render(<LeftMenu />,document.querySelector('.LeftMenu'))
 
 if (module) {
     module['hot'].accept()  

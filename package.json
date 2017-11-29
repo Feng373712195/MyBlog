@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pro": "node ./admin/dev-server.js",
-    "dev": "node ./admin/dev-server.js"
+    "pro": "cross-env NODE_ENV=pro node ./admin/pro-server.js",
+    "dev": "cross-env NODE_ENV=dev node ./admin/dev-server.js"
   },
   "author": "",
   "license": "ISC",
@@ -30,7 +30,12 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "cross-env": "^5.1.1",
+    "css-loader": "^0.28.7",
     "eventsource-polyfill": "^0.9.6",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
     "webpack-merge": "^4.1.1"
   }
 }
