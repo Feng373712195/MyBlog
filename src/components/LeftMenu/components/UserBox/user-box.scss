@@ -1,0 +1,18 @@
+.userbox{
+    padding: 20px 0;
+    background-color: #fff;
+    text-align: center;
+    .user-photo{
+        display:inline-block;
+        width: 100px;
+        height: 100px;
+        background:#000;
+        margin-top: 20px;
+        border-radius:50%;  
+    }
+    div{
+        font: 14px;
+        margin: 10px 0px; 
+        color: gainsboro;
+    }
+}

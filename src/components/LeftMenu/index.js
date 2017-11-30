@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+import UserBox from'./components/UserBox' 
+import MenuList from'./components/MenuList' 
+
 import './left-menu.scss'
 
 class LeftMenu extends Component{
 	
 	render(){
-		const msg = 'Im leftMenu';
 		return (
-			<div className="menu-warp" >{msg}</div>
+			<div className="menu-warp" >
+				<UserBox />
+				<MenuList />
+			</div>
 		)	
 	}
 }

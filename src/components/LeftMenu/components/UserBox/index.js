@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-class LeftMenu extends Component{
+import './user-box.scss'
+ 
+class UserBOX extends Component{
 	
 	render(){
-		const msg = 'Im leftMenu';
 		return (
-			<div className="menu-warp" >{msg}</div>
+			<div className="userbox">
+				<div className="user-photo"></div>
+                <div className="user-name">吴泽锋</div>
+                <div className="user-mail">373712195@qq.com</div>
+			</div>
 		)	
 	}
 }
 
-export default LeftMenu;
+export default UserBOX;

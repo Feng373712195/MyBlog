@@ -1,0 +1,13 @@
+.menu-list{
+    padding: 20px 0;
+    background-color: #fff;
+    margin-top: 5px;
+    .menu-item{
+        cursor: pointer;
+        display: block;
+        height: 40px;
+        color: gainsboro;
+        line-height: 40px;
+        text-align: center;
+    }
+}

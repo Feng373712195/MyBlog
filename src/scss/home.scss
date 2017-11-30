@@ -1,6 +1,30 @@
 body{
+    background: #ebebeb;
     width: 100%;
     height: 100%;
 }
+
+.app{
+    background:#ebebeb;
+    width: 70%;
+    height: 100vh;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+main{
+    margin-left: 210px;
+    width: 100%;
+    height:100%;
+    background-color: red;  
+    
+    div{
+        margin: 0 auto;
+        widows: 100%;
+        height: 70px;
+        background: yellow;
+    }
+}
+
 
 

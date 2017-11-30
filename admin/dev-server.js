@@ -36,7 +36,9 @@ app.use(devMiddleware(compiler,
     }
 ))
 
-app.use(hotMiddleware(compiler,{}))
+app.use(hotMiddleware(compiler,{
+    reload:true 
+}))
 
 app.listen(port,function(){
     console.log(`${process.env.NODE_ENV}`)
