@@ -12,18 +12,11 @@ body{
     overflow: hidden;
 }
 
-main{
+.content{
     margin-left: 210px;
-    width: 100%;
     height:100%;
-    background-color: red;  
+    background-color:#fff;  
     
-    div{
-        margin: 0 auto;
-        widows: 100%;
-        height: 70px;
-        background: yellow;
-    }
 }
 
 

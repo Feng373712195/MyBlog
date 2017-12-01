@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+import { Link } from 'react-router-dom'
+
 import './menu-list.scss'
 
 class MenuList extends Component{
@@ -9,25 +11,29 @@ class MenuList extends Component{
 		const menulists = [
 			{
 				name:'首页',
-				link:''
+				link:'/index',
+				key:'index'
 			},
 			{
 				name:'文章',
-				link:''
+				link:'/article',
+				key:'article'
 			},
 			{
 				name:'标签',
-				link:''
+				link:'/label',
+				key:'label'
 			},
 			{
 				name:'关于',
-				link:''
+				link:'/about',
+				key:'about'
 			}
 		]
 
 		return (
 			<div className="menu-list" >
-				{menulists.map((list)=> <a className="menu-item" link="#" >{list.name}</a> ) }
+				{menulists.map((list)=> <Link key={list.key} className="menu-item" to={list.link} >{list.name}</Link> ) }
 			</div>
 		)		
 	}
