@@ -8,10 +8,22 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const sourcePath = path.join(config.rootDirPath, 'src/js');
 const outputPath = path.join(config.rootDirPath, 'dist/js');
 
+const ReactHotConfig = {
+    "plugins": ["react-hot-loader/babel"],
+    "env": {
+        "production":{
+          "preset":["react-optimize"]
+        }
+      }
+};
+
+
+
 module.exports = merge(webpackBaseConfig,{
     entry:{
         home:[
             'eventsource-polyfill',
+            'react-hot-loader/patch',
             `webpack-hot-middleware/client?http://localhost:${config.dev.port}/`,
             path.resolve(config.rootDirPath,'./src/js/home.js')
         ]

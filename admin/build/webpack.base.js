@@ -15,9 +15,15 @@ module.exports = {
                 use: [
                     {
                       loader: 'babel-loader',
-                      query: {
-                        presets: ['es2015', 'react']
-                        // cacheDirectory: true
+                      query:{
+                        "presets": ["es2015","react"],
+                        //等转移到webapck-dev.js
+                        "plugins": ["react-hot-loader/babel"],
+                        "env": {
+                            "production":{
+                              "preset":["react-optimize"]
+                            }
+                          }
                       }
                     }
                   ]       
@@ -37,6 +43,17 @@ module.exports = {
                     use: ['css-loader', 'sass-loader']
                 })
           
+            },
+            {
+                // 图片加载器，雷同file-loader，更适合图片，可以将较小的图片转成base64，减少http请求
+                // 如下配置，将小于8192byte的图片转成base64码
+                test: /\.(jpe?g|png|gif)$/i,
+                loaders:'url-loader?limit=10000&name=../../dist/img/[hash].[ext]'
+            },
+            {
+                 // 专供iconfont方案使用的，后面会带一串时间戳，需要特别匹配到
+                test: /\.(woff|woff2|svg|eot|ttf)\??.*$/i,
+                loader: 'url-loader?limit=10000&name=../../src/font/[hash].[ext]'
             }
         ]
     },
