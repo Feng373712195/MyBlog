@@ -1,7 +1,9 @@
 .userbox{
+    position: relative;
     padding: 20px 0;
     background-color: #fff;
     text-align: center;
+    min-height:205px;
     .user-photo{
         display:inline-block;
         width: 100px;
@@ -17,8 +19,55 @@
     .user-mail{
         font-size: 16px;
     }
+    .login-tipe{
+        position: absolute;
+        font-size: 16px;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: -40px;
+        bottom: 0;
+        height: 22px;
+        .button{
+            margin-top: 10px;
+        }
+    }
+    
     div{
         margin: 10px 0px; 
         color: #666;
     }
+}
+
+.ui.modal.login-modal{
+    .content{
+        margin:0px auto;
+        width: 100%;
+
+        .button{
+            // padding-right: 0px !important;
+            padding-left: 2% !important;
+            transition: .5s;
+
+            &.login-github:hover{
+                color: #0E6EB8;
+            }
+
+            &.login-qq:hover{
+                color: #B03060;
+            }
+
+            &.login-admin:hover{
+                color: #B413EC;
+            }
+
+            .iconfont{
+                margin-right: 10px;
+                font-size: 22px;
+            }
+            
+        }
+    }
+
+    
 }

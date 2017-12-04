@@ -1,17 +1,24 @@
 import React,{ Component } from 'react'
 import ReactDom from 'react-dom'
-// import {Router,Route,browserHistory,hashHistory} from 'react-router'
-import { BrowserRouter as Router, Route , Link } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import { AppContainer } from 'react-hot-loader'
 
 import '../scss/home.scss'
-import '../css/normalize.min.css'
+// import '../css/normalize.min.css'
 
 import LeftMenu from '../components/LeftMenu'
 import Content from '../containers/Content'
 
+//icon-font
+import '../css/iconfont.css'
+import './iconfont.js'
 
+
+import $ from 'jquery/dist/jquery.min.js'
+
+import '../../semantic/dist/semantic.css'
+import '../../semantic/dist/semantic.js'
 
 ReactDom.render((
     <AppContainer >    
@@ -23,7 +30,7 @@ ReactDom.render((
         </Router>
     </AppContainer>
 
-),document.querySelector('.app'))
+),$('.app')[0])
 
 
 

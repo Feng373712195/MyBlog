@@ -4,8 +4,6 @@ import ReactDOM from 'react-dom';
 import { NavLink } from 'react-router-dom'
 
 import './menu-list.scss'
-import '../../../../../src/css/iconfont.css'
-import '../../../../../src/js/iconfont.js'
 
 class MenuList extends Component{
 	

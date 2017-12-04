@@ -9,10 +9,21 @@ home.get('/',async(ctx)=>{
      await ctx.render('home');
 })
 
-home.redirect('/index','/')
-home.redirect('/artice','/')
-home.redirect('/writeArticle','/')
-home.redirect('/label','/')
-home.redirect('/about','/')
+home.get('/index',async(ctx)=>{
+    await ctx.render('home');
+})
+home.get('/artice',async(ctx)=>{
+    await ctx.render('home');
+})
+home.get('/writeArticle',async(ctx)=>{
+    await ctx.render('home');
+})
+home.get('/label',async(ctx)=>{
+    await ctx.render('home');
+})
+home.get('/about',async(ctx)=>{
+    await ctx.render('home');
+}) 
+
 
 module.exports = home;
