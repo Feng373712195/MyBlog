@@ -40,6 +40,16 @@
 }
 
 .ui.modal.login-modal{
+    .header{
+        div{
+            display: inline-block;
+            .iconfont{
+                font-size: 22px;
+                margin-right: 15px;
+            }
+        }
+    }
+
     .content{
         margin:0px auto;
         width: 100%;
