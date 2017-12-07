@@ -14,10 +14,8 @@ const ReactHotConfig = {
         "production":{
           "preset":["react-optimize"]
         }
-      }
+    }
 };
-
-
 
 module.exports = merge(webpackBaseConfig,{
     entry:{
@@ -26,6 +24,12 @@ module.exports = merge(webpackBaseConfig,{
             'react-hot-loader/patch',
             `webpack-hot-middleware/client?http://localhost:${config.dev.port}/`,
             path.resolve(config.rootDirPath,'./src/js/home.js')
+        ],
+        manage:[
+            'eventsource-polyfill',
+            'react-hot-loader/patch',
+            `webpack-hot-middleware/client?http://localhost:${config.dev.port}/`,
+            path.resolve(config.rootDirPath,'./src/js/manage.js')
         ]
     },
     output:{
@@ -52,6 +56,5 @@ module.exports = merge(webpackBaseConfig,{
                 dry:      false        　　　　　　　　　　//启用删除文件
             }
         )
-
     ]
 })

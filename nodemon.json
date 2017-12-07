@@ -8,6 +8,7 @@
 	"verbose": true,
   "watch": [
     "admin",
-    "src/html/home.html"
+    "src/html/home.html",
+    "src/html/manage.html"
   ]
 }

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import fetch from 'node-fetch'
 import { createStore } from 'redux'
  
 import './user-box.scss'
+import { setTimeout } from 'timers';
 
 function reducer(state = {}, action) {
 	switch (action.type) {
@@ -22,7 +24,11 @@ class LoginModal extends Component{
 
 	constructor() {
 		super()
-		this.state = { showAdminLoginBox: false }	
+		this.state = { 
+			showAdminLoginBox: false,
+			loginLoading:false,
+			loginFlash:''
+		}	
 	}
 	
 	componentDidMount(){
@@ -44,13 +50,12 @@ class LoginModal extends Component{
 			if( !$('.modals').hasClass('active') ){
 				that.setState({
 					showAdminLoginBox:false
-				 })
+				})
 			}
 		})
 	}
-	
 
-	AdminLogin(){
+	showAdminBox(){
 
 		store.dispatch({
 			type: 'showALB',
@@ -59,7 +64,7 @@ class LoginModal extends Component{
 
 		let state = store.getState();
 		this.setState({
-	       showAdminLoginBox:state
+			showAdminLoginBox:state
 		})
 	}
 
@@ -72,13 +77,48 @@ class LoginModal extends Component{
 
 		let state = store.getState();
 		this.setState({
-	       showAdminLoginBox:state
-	    })
+			showAdminLoginBox:state
+		})
+	}
+
+	adminLogin(){
+		var that = this;
+
+		fetch('http://localhost:8080/admin/login',{ method: 'POST' })
+		.then(function(res) {
+			return res.json();
+		})
+		.then(function(body) {
+			// if(body.code === 0){
+			// 	window.location = '/'
+			// }
+			that.setState({
+				loginLoading:true
+			})
+			setTimeout(()=>{
+				
+				that.setState({
+					loginLoading:false,
+					loginFlash:'登陆成功'
+				})
+
+				setTimeout(() =>
+					$('.ui.modal')
+					.modal('hide',function(){
+						that.setState({
+							showAdminLoginBox:false,
+							loginFlash:''
+						})
+					})
+				,500)
+
+			},1000);
+		});
 	}
 
 	render(){
 		return (
-
+			
 			<div className="ui modal login-modal">
 				<div className="header">
 					{this.state.showAdminLoginBox?
@@ -92,7 +132,7 @@ class LoginModal extends Component{
 				</div>
 				<div className="content" >
 					{this.state.showAdminLoginBox?
-						<div className="login-Admin-box ui form">
+						<div className="login-admin-box ui form">
 						 	<div className="field">
 							    <div className="two fields">
 							      <div className="field">
@@ -105,7 +145,8 @@ class LoginModal extends Component{
 							      </div>
 							    </div>
 						 	</div>
-						 	<div className="ui button" tabindex="0">Submit</div>
+						 	<div className={"ui button " + (this.state.loginLoading?"loading":"") } onClick={this.adminLogin.bind(this)} tabindex="0">Submit</div>
+							<span className="login-flash">{this.state.loginFlash}</span>
 						</div>
 						:
 						<div className="login-btns">
@@ -117,7 +158,7 @@ class LoginModal extends Component{
 								<i className="iconfont icon-QQ"></i>
 								 QQ
 							 </button>
-							<button onClick={this.AdminLogin.bind(this)} className="ui labeled icon button large login-admin" data-tooltip="Admin Login" >
+							<button onClick={this.showAdminBox.bind(this)} className="ui labeled icon button large login-admin" data-tooltip="Admin Login" >
 								<i className="iconfont icon-guanwangicon31334"></i>
 								 ADMIN
 							</button>
@@ -130,8 +171,12 @@ class LoginModal extends Component{
 	}
 }
 
-class LoginTipe extends Component{
+class UserTipe extends Component{
 	
+	openMange(){
+		window.location = '/admin/manage'
+	}
+
 	showModal(){
 		$('.ui.modal')
 		.modal('show')
@@ -140,10 +185,18 @@ class LoginTipe extends Component{
 	render(){
 
 		return (
-			<div className="login-tipe">
-				<div>亲 你还没有登录哦~</div>
-				<button onClick={this.showModal.bind(this)}  className="ui basic button"><i className="iconfont icon-guanwangicon31334"></i> Login </button>
+			<div className="userInfo">
+				<div className="user-photo"></div>
+				<div className="user-name">吴泽锋</div>
+				<div className="user-mail">373712195@qq.com</div>
+				<button onClick={this.openMange.bind(this)} className="ui basic button">进入管理页面</button>
+				<button className="ui primary button">注销</button>
 			</div>
+
+			// <div className="login-tipe">
+			// 	<div>亲 你还没有登录哦~</div>
+			// 	<button onClick={this.showModal.bind(this)}  className="ui basic button"><i className="iconfont icon-guanwangicon31334"></i> Login </button>
+			// </div>
 		)
 
 	}
@@ -165,7 +218,7 @@ class UserBOX extends Component{
 			<div className="userbox">
 
 				<LoginModal />
-				<LoginTipe  />
+				<UserTipe  />
 
 			</div>
 		)	

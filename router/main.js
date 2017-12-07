@@ -2,7 +2,8 @@ const koa = require('koa');
 const router = require('koa-router');
 
 let routers = [
-    require('./home')
+    require('./home'),
+    require('./admin')
 ]
 
 let main = new router();

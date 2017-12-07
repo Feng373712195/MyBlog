@@ -1,0 +1,18 @@
+
+.ui.form{
+    height: 100%;
+
+    .field{
+
+        label{
+            display: inline-block;
+            font-size: 15px !important;
+            margin-bottom:10px !important; 
+        }
+    }   
+
+    .btns{
+        float: right;
+        margin-top: 100px;
+    }
+}

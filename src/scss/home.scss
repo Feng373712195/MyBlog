@@ -13,9 +13,19 @@ body{
 }
 
 .content{
+    overflow: hidden;
     margin-left: 290px;
     height:100%;
-    background-color:#fff; 
+    background: #ebebeb !important;
+}
+
+.content .container{
+    overflow: hidden;
+    margin-top: 10px;
+    background-color: #fff !important;
+    border-radius:5px; 
+    box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+    padding: 20px;
 }
 
 

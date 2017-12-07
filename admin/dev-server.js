@@ -2,6 +2,7 @@ const koa = require('koa')
 const sever = require('koa-static')
 const view = require('koa-view')
 const error = require('koa-onerror')
+const bodyParser = require('koa-bodyparser');
 const { devMiddleware, hotMiddleware } =  require('koa-webpack-middleware')
 const path = require('path')
 
@@ -23,6 +24,7 @@ const router = require('../router/main');
 app.use( sever(path.resolve(config.rootDirPath,'src')) )
 app.use( view(path.resolve(config.rootDirPath,'src/html'),{extensions:'html'}) )
 app.use(router.routes(),router.allowedMethods());
+app.use(bodyParser())
 
 app.use(devMiddleware(compiler,
     {
@@ -39,6 +41,24 @@ app.use(devMiddleware(compiler,
 app.use(hotMiddleware(compiler,{
     reload:true 
 }))
+
+/* 处理 404 */
+const handler = async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    ctx.response.status = err.statusCode || err.status || 500;
+    ctx.response.body = {
+      message: err.message
+    };
+  }
+};
+
+app.use(handler);
+
+app.use( async (ctx,next)=>{
+    ctx.throw(404);
+})
 
 app.listen(port,function(){
     console.log(`${process.env.NODE_ENV}`)

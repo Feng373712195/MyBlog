@@ -26,14 +26,6 @@ class MenuList extends Component{
 				key:'article'
 			},
 			{
-				name:'发布文章',
-				disable:true, 
-				// icon:'icon-xiewenzhang',
-				iconSize:"25px",
-				link:'/writeArticle',
-				key:'writeArticle'
-			},
-			{
 				name:'标签',
 				disable:false, 
 				iconSize:"22px",
