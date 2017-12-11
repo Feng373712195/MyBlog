@@ -29,12 +29,27 @@ class PublishArticles extends Component{
 	}
 
 	addLable(){
+		if($('.label-text').val() === ''){
+			alert('请输入标签');
+			return;
+		}
+		
 		let labels = this.state.labels;
-		labels.push($('.lable-text').val());
+		labels.push($('.label-text').val());
+		this.setState({
+			labels:labels
+		},()=>{
+			$('.label-text').val('')
+		})
+	}
+
+	removeLabel(index){
+		let labels = this.state.labels;
+		labels.splice(index,1);
 		this.setState({
 			labels:labels
 		})
-	}
+	}	
 
 	markItHandle(type,item){
 
@@ -80,13 +95,13 @@ class PublishArticles extends Component{
 				this.editArticle();
 				break;
 			case 'video':
-				articlesbox.value += `<br/> !![](http://)`
+				articlesbox.value += `!![](http://)`
 				this.editArticle();
 				break;
 			case 'clean':
 				this.setState({
 					articleContent:''
-				},function(){
+				},()=>{
 					articlesbox.value = ''
 				})
 				break;
@@ -214,15 +229,13 @@ class PublishArticles extends Component{
 						</div>
 					</div>
 
-
-					<div className="lablebox-warp">
-						<div className="lablebox">
-							{this.state.labels.map(lable=>{
-								console.log(lable);
-
-								return	<div className="ui label">
-											<span>{lable}</span>
-											<i className="deleteIcon">X</i>
+					
+					<div className="labelbox-warp">
+						<div className="labelbox">
+							{this.state.labels.map( (label,index)=>{
+								return	<div className="ui label large">
+											<span>{label}</span>
+											<i onClick={this.removeLabel.bind(this,index)} className="deleteIcon">X</i>
 										</div>
 							}) }
 						</div>
@@ -234,6 +247,18 @@ class PublishArticles extends Component{
 								添加标签
 							</a>
 						</div>
+
+					</div>
+					
+					<div className="file-box">
+						<div className="files">
+							{/* <div className="file ui label large">
+								<span className="file-name">波多野结衣.avi</span>
+								<span className="file-size">2.6GB</span>
+								<span className="file-del">X</span>
+							</div> */}
+						</div>	
+						<button className="ui basic button">上传附件</button>
 					</div>
 
 					<div className="btns" >

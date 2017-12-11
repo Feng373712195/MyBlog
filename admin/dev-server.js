@@ -1,3 +1,4 @@
+const db = require('./db')
 const koa = require('koa')
 const sever = require('koa-static')
 const view = require('koa-view')
@@ -60,7 +61,10 @@ app.use( async (ctx,next)=>{
     ctx.throw(404);
 })
 
-app.listen(port,function(){
+app.listen(port,() => {
     console.log(`${process.env.NODE_ENV}`)
     console.log(`open ${port}`);
 })
+
+db.on('error',(err)=> console.error(`链接错误:${err}`) )
+db.once('open',console.log.bind(console,'链接成功！') )
