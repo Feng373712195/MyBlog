@@ -1,3 +1,4 @@
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
+let db = mongoose.createConnection('localhost','blog')
 
-module.exports = mongoose.createConnection('localhost','blog');
+module.exports =  db;

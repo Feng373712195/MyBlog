@@ -10,7 +10,7 @@ const path = require('path')
 const webpack = require('webpack');
 const config = require('./config');
 let webpackConfig = require(`./build/webpack.dev.js`);
-let compiler = webpack(webpackConfig);
+let compiler = webpack(webpackConfig); 
 
 // default port 
 let port = process.env.PORT || config.dev.port
@@ -22,10 +22,10 @@ error(app)
 //总路由
 const router = require('../router/main');
 
+app.use(bodyParser())
 app.use( sever(path.resolve(config.rootDirPath,'src')) )
 app.use( view(path.resolve(config.rootDirPath,'src/html'),{extensions:'html'}) )
 app.use(router.routes(),router.allowedMethods());
-app.use(bodyParser())
 
 app.use(devMiddleware(compiler,
     {

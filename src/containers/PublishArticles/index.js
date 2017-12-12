@@ -116,6 +116,18 @@ class PublishArticles extends Component{
 				break;
 		}
 	} 
+
+	publishArticle(){
+		fetch('http://localhost:8080/admin/publish/articles/save',{ method: 'POST' })
+		.then(res => res.json() )
+		.then(body => console.log(body) )
+	}
+
+	getAllArticle(){
+		fetch('http://localhost:8080/admin/publish/articles/remove',{ method: 'POST' })
+		.then(res => res.json() )
+		.then(body => console.log(body) )
+	}
 	
 	render(){
 		
@@ -262,8 +274,8 @@ class PublishArticles extends Component{
 					</div>
 
 					<div className="btns" >
-						<button className="ui green button">发布</button>
-						<button className="ui red button">保存</button>
+						<button type="button" onClick={this.publishArticle.bind(this)} className="ui green button">发布</button>
+						<button type="button" onClick={this.getAllArticle.bind(this)} className="ui red button">保存</button>
 					</div>
 
 				</form>
