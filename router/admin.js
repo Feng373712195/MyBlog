@@ -3,9 +3,17 @@ const router = require('koa-router');
 
 const articles = require('../models/manage/articles')
 
+
 const Articles = new articles();
 
 const admin = new router();
+
+function resultsHandle(p){
+     new Promise((res,rej)=>{
+          p.then( data => res(data) )
+          .catch(error => rej(error) )
+    })
+}
 
 admin.post('/admin/login',(ctx)=>{
     const adminName = '';
@@ -26,45 +34,27 @@ admin.get('/admin/manage/publish/edit',async(ctx)=>{
 
 admin.post('/admin/publish/articles/save',async(ctx)=>{
 
+    console.log(ctx.request.body)
+
     let articleData = {
         title:'测试文章',
         content:'测试内容123',
         lables:[],
         flise:[]
-    }
+    } 
 
-    let results;
-    
-    await Articles.save(articleData,(p) =>{
-                p.then((data) => { results = {code:0 , data:data } })
-                .catch((err) =>  { results = {code:-1 , error:err } })
-           });
+    // ctx.body = await Articles.save(articleData)
 
-    ctx.body = results
 })
 
 admin.post('/admin/publish/articles/find',async(ctx)=>{
-   
-    let results;
 
-   await  Articles.find((p) =>{
-             p.then((data) => { results = {code:0 , data:data } })
-             .catch((err) => {  results = {code:-1 , error:err } })
-          });
-    
-    ctx.body = results;
+    ctx.body = await  Articles.find()
 })
 
 admin.post('/admin/publish/articles/remove',async(ctx)=>{
 
-    let results;
-
-    await  Articles.remove((p) =>{
-              p.then((data) => { results = {code:0 , data:data } })
-              .catch((err) =>  { results = {code:-1 , error:err } })
-           });
-
-    ctx.body = results;
+    ctx.body = await  Articles.remove()
 
 })
 

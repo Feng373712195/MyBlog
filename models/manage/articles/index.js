@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { getNowFormatDate } = require('../../../src/js/uilt')
 const db = require('../../../admin/db')
 
 mongoose.Promise = global.Promise;
@@ -31,26 +32,29 @@ class Articles{
         this.articlesData = {} 
     }
     
-    save({title,author = "WUZEFENG",content,lables,flise,createtime = Date.now(),lasttime = Date.now() },cb){
-
-        this.articlesData = {title,author,content,lables,flise,createtime,lasttime}
+    save({title,author = "WUZEFENG",content,lables,flise,createtime = getNowFormatDate(),lasttime = getNowFormatDate() }){
         
-        articlesModel.create(this.articlesData,(err,data)=>{
-             var p =  new Promise((res,rej)=>{
-                        if(err) rej(err)
-                          res(data)
-                      })
-             cb(p)
-        });
+        this.articlesData = {title,author,content,lables,flise,createtime,lasttime}     
+        
+        return   new Promise((res,rej)=>{
+                    articlesModel.create(this.articlesData,(err,data)=>{  
+                        if(err) return rej({code:-1,error:err})
+                        return res({code:0,data:data})
+                     });    
+                 })  
     }
 
-    find(cb){
-       cb( articlesModel.find({}).exec() )
+    find(){
+        return articlesModel.find({}).exec()
+               .then(  data => { return {code:0,data:data} } )
+               .catch( err => { return {code:-1,eroor:err} } )
     }
 
-    remove(cb){
+    remove(){
         
-       cb( articlesModel.remove({}).exec() )
+       return  articlesModel.remove({}).exec()
+               .then(  data => { return {code:0,data:data} } )
+               .catch( err => { return {code:-1,eroor:err} } ) 
     }
 
 }

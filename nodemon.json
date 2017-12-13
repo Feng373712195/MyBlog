@@ -8,6 +8,8 @@
 	"verbose": true,
   "watch": [
     "admin",
+    "router",
+    "modules",
     "src/html/home.html",
     "src/html/manage.html"
   ]

@@ -118,21 +118,37 @@ class PublishArticles extends Component{
 	} 
 
 	publishArticle(){
-		fetch('http://localhost:8080/admin/publish/articles/save',{ method: 'POST' })
-		.then(res => res.json() )
-		.then(body => console.log(body) )
+
+		fetch('http://localhost:8080/admin/publish/articles/save',
+		{ method: 'POST' ,
+		  headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, 
+		  title:$('#articleTitle').val(),
+		  content:$('#articleContent').val(),
+		  labels:this.state.labels,
+		  flise:[]
+		})
+		.then(res => {return res.json()})
+		.then(body => {
+			if(body.code === 0){
+				alert('保存成功')
+			}
+		})		
 	}
 
 	getAllArticle(){
 		fetch('http://localhost:8080/admin/publish/articles/remove',{ method: 'POST' })
 		.then(res => res.json() )
-		.then(body => console.log(body) )
+		.then(body => {
+			if(body.code === 0){
+				alert('删除成功')
+			}
+		})		
 	}
 	
 	render(){
 		
 		const markIt = {
-			font:{
+			font:{ 
 				bold:{
 					icon:'iconfont icon-bold',
 					tooltip:"粗体",
@@ -223,7 +239,7 @@ class PublishArticles extends Component{
 
 					<div className="field">
 						<label>文章标题</label>
-						<input name="first-name" type="text" placeholder="文章标题..." />
+						<input id="articleTitle"  type="text" placeholder="文章标题..." />
 					</div>
 
 					<div className="field">
@@ -233,7 +249,7 @@ class PublishArticles extends Component{
 							{markItList.map(item => item)}
 						</ul>
 
-						<textarea onInput={this.editArticle.bind(this)}  className="articlesbox"></textarea>
+						<textarea id="articleContent" onInput={this.editArticle.bind(this)}  className="articlesbox"></textarea>
 
 						<div className={`preview-box ${this.state.showPreview?'':'hidden'}`}>
 							<div className="preview-head">预览模式</div>

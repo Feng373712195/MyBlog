@@ -17,8 +17,8 @@ import './iconfont.js'
 
 import $ from 'jquery/dist/jquery.min.js'
 
-import '../../semantic/dist/semantic.css'
-import '../../semantic/dist/semantic.js'
+// import '../../semantic/dist/semantic.css'
+// import '../../semantic/dist/semantic.js'
 
 ReactDom.render((
     <AppContainer >    

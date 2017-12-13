@@ -89,6 +89,8 @@ class LoginModal extends Component{
 			return res.json();
 		})
 		.then(function(body) {
+			console.log(body)
+
 			// if(body.code === 0){
 			// 	window.location = '/'
 			// }

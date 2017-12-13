@@ -21,11 +21,11 @@ error(app)
 
 //总路由
 const router = require('../router/main');
-
-app.use(bodyParser())
+  
 app.use( sever(path.resolve(config.rootDirPath,'src')) )
 app.use( view(path.resolve(config.rootDirPath,'src/html'),{extensions:'html'}) )
 app.use(router.routes(),router.allowedMethods());
+app.use(bodyParser());
 
 app.use(devMiddleware(compiler,
     {
@@ -60,6 +60,8 @@ app.use(handler);
 app.use( async (ctx,next)=>{
     ctx.throw(404);
 })
+
+
 
 app.listen(port,() => {
     console.log(`${process.env.NODE_ENV}`)
