@@ -119,20 +119,41 @@ class PublishArticles extends Component{
 
 	publishArticle(){
 
-		fetch('http://localhost:8080/admin/publish/articles/save',
-		{ method: 'POST' ,
-		  headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, 
-		  title:$('#articleTitle').val(),
-		  content:$('#articleContent').val(),
-		  labels:this.state.labels,
-		  flise:[]
-		})
-		.then(res => {return res.json()})
-		.then(body => {
-			if(body.code === 0){
-				alert('保存成功')
-			}
-		})		
+		// fetch('http://localhost:8080/admin/publish/articles/save',
+		// { method: 'POST' ,
+		//   headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, 
+		//   title:$('#articleTitle').val(),
+		//   content:$('#articleContent').val(),
+		//   labels:this.state.labels,
+		//   flise:[]
+		// })
+		// .then(res => {return res.json()})
+		// .then(body => {
+		// 	if(body.code === 0){
+		// 		alert('保存成功')
+		// 	}
+		// })		
+
+		fetch('http://localhost:8080/admin/publish/articles/save', {
+			method: 'POST',
+			headers: {
+			  'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				title:$('#articleTitle').val(),
+				content:$('#articleContent').val(),
+				labels:this.state.labels,
+				flise:[]
+			})
+		  })
+		  .then(res => {return res.json()})
+		  .then(body => {
+			console.log(body)
+
+		  	if(body.code === 0){
+		  		alert('保存成功')
+		  	}
+		  })	
 	}
 
 	getAllArticle(){

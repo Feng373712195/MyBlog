@@ -1,0 +1,15 @@
+#About{
+    text-align: center;
+    overflow: hidden;
+    .me-pic{
+        display: block;
+        margin:20px auto 20px auto;
+        width: 40%;
+        overflow: hidden;
+    }
+    .about-content{
+        display: inline-block;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+}

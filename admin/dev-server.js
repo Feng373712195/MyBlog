@@ -20,12 +20,11 @@ let app = new koa();
 error(app)
 
 //总路由
+app.use(bodyParser());
 const router = require('../router/main');
-  
 app.use( sever(path.resolve(config.rootDirPath,'src')) )
 app.use( view(path.resolve(config.rootDirPath,'src/html'),{extensions:'html'}) )
 app.use(router.routes(),router.allowedMethods());
-app.use(bodyParser());
 
 app.use(devMiddleware(compiler,
     {

@@ -5,7 +5,7 @@ class Label extends Component{
 	
 	render(){
 		return (
-			<div id="Label">
+			<div id="Label" className="container">
 				IM label
 			</div>
 		)	

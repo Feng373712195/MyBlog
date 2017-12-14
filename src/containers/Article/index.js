@@ -5,7 +5,7 @@ class Artice extends Component{
 	
 	render(){
 		return (
-			<div id="Artice">
+			<div id="Artice" className="container">
 				IM artice
 			</div>
 		)	

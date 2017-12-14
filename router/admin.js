@@ -8,6 +8,8 @@ const Articles = new articles();
 
 const admin = new router();
 
+
+
 function resultsHandle(p){
      new Promise((res,rej)=>{
           p.then( data => res(data) )
@@ -34,16 +36,9 @@ admin.get('/admin/manage/publish/edit',async(ctx)=>{
 
 admin.post('/admin/publish/articles/save',async(ctx)=>{
 
-    console.log(ctx.request.body)
+    let { title,content,lables,flies } = ctx.request.body; 
 
-    let articleData = {
-        title:'测试文章',
-        content:'测试内容123',
-        lables:[],
-        flise:[]
-    } 
-
-    // ctx.body = await Articles.save(articleData)
+    ctx.body = await Articles.save({ title,content,lables,flies });
 
 })
 

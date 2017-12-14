@@ -1,4 +1,6 @@
 
+"use strict";
+
 function getNowFormatDate() {
     
     const date = new Date()
