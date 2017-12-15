@@ -1,6 +1,16 @@
-#About{
-    .me-pic{
-        width: 200px;
-        height: 200px;
+.article-box{
+    border-bottom:1px solid #ddd; 
+
+    .artice-footer{
+        font-size: 13px;
+        color: #666;
+        overflow: hidden;
+        .l{
+            float: left;
+        }
+        .r{
+            float: right
+        }
     }
+
 }

@@ -14,6 +14,24 @@ class MenuList extends Component{
 				disable:false,
 				link:'/admin/manage/publish/edit',
 				key:'publish-edit'
+			},
+			{
+				name:'文章草稿',
+				disable:false,
+				link:'/admin/manage/publish/draft',
+				key:'publish-draft'
+			},
+			{
+				name:'文章管理',
+				disable:false,
+				link:'/admin/manage/publish/manage',
+				key:'article-mange'
+			},
+			{
+				name:'标签管理',
+				disable:false,
+				link:'/admin/manage/label/manage',
+				key:'label-mange'
 			}
 		]
 

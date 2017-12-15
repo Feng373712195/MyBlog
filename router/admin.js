@@ -44,7 +44,9 @@ admin.post('/admin/publish/articles/save',async(ctx)=>{
 
 admin.post('/admin/publish/articles/find',async(ctx)=>{
 
-    ctx.body = await  Articles.find()
+    let { query } = ctx.request.body; 
+
+    ctx.body = await  Articles.find(query)
 })
 
 admin.post('/admin/publish/articles/remove',async(ctx)=>{

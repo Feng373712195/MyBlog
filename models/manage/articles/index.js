@@ -44,8 +44,8 @@ class Articles{
                  })  
     }
 
-    find(){
-        return articlesModel.find({}).exec()
+    find(query){
+        return articlesModel.find(query).exec()
                .then(  data => { return {code:0,data:data} } )
                .catch( err => { return {code:-1,eroor:err} } )
     }

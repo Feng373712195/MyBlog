@@ -23,11 +23,14 @@ function getNowFormatDate() {
             let min = date.getMinutes()
             return (min.toString().length === 1?`0${min}`:min)
         },
-        seconds:date.getSeconds()
+        seconds:()=>{
+            let sec =  date.getSeconds()
+            return (sec.toString().length === 1?`0${sec}`:sec)
+        }
     } 
 
     var {  year,month,strDate,week,hours,minutes,seconds } = fromDate;
-    return `${year}-${month()}-${strDate()} ${week()} (${hours}:${minutes()}:${seconds})`;
+    return `${year}-${month()}-${strDate()} ${week()} ${hours}:${minutes()}:${seconds()}`;
 };
 
 module.exports = { getNowFormatDate }
