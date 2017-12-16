@@ -10,7 +10,7 @@ class Content extends Component{
 
     render(){
 		return (
-            <div className="content">
+            <div className="m-content">
                 <Route path="/about" component={ About } />
                 <Route path="/article" component={ Artice } />
                 <Route path="/label" component={ Label } /> 

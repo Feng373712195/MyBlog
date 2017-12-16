@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import './pulish-articles.scss'
 
 import { funGetSelected,funTextAsTopic }  from '../../js/rang.js'
+import { getAtricle,saveAtricle } from '../../js/fetch-atricle'
 import { markdown } from 'markdown';
 
 class PublishArticles extends Component{
@@ -117,53 +118,26 @@ class PublishArticles extends Component{
 		}
 	} 
 
-	publishArticle(){
+	publishArticle(){		
+		
+		let query = {
+			title:$('#articleTitle').val(),
+			content:$('#articleContent').val(),
+			labels:this.state.labels,
+			flise:[]
+		}
 
-		// fetch('http://localhost:8080/admin/publish/articles/save',
-		// { method: 'POST' ,
-		//   headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, 
-		//   title:$('#articleTitle').val(),
-		//   content:$('#articleContent').val(),
-		//   labels:this.state.labels,
-		//   flise:[]
-		// })
-		// .then(res => {return res.json()})
-		// .then(body => {
-		// 	if(body.code === 0){
-		// 		alert('保存成功')
-		// 	}
-		// })		
-
-		fetch('http://localhost:8080/admin/publish/articles/save', {
-			method: 'POST',
-			headers: {
-			  'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				title:$('#articleTitle').val(),
-				content:$('#articleContent').val(),
-				labels:this.state.labels,
-				flise:[]
-			})
-		  })
-		  .then(res => {return res.json()})
-		  .then(body => {
-			console.log(body)
-
-		  	if(body.code === 0){
-		  		alert('保存成功')
-		  	}
-		  })	
+		saveAtricle(query)
+		.then( data =>{ alert('保存成功') } )
+		.catch( e => { alert('保存失败，请稍后再试') } )
+	
 	}
 
 	getAllArticle(){
-		fetch('http://localhost:8080/admin/publish/articles/remove',{ method: 'POST' })
-		.then(res => res.json() )
-		.then(body => {
-			if(body.code === 0){
-				alert('删除成功')
-			}
-		})		
+
+		getAtricle({})
+		.then( data =>{ console.log(data) } )
+		.catch( e => { console.log(e) } )
 	}
 	
 	render(){

@@ -50,9 +50,9 @@ class Articles{
                .catch( err => { return {code:-1,eroor:err} } )
     }
 
-    remove(){
+    remove(query){
         
-       return  articlesModel.remove({}).exec()
+       return  articlesModel.remove(query).exec()
                .then(  data => { return {code:0,data:data} } )
                .catch( err => { return {code:-1,eroor:err} } ) 
     }

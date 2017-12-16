@@ -51,7 +51,9 @@ admin.post('/admin/publish/articles/find',async(ctx)=>{
 
 admin.post('/admin/publish/articles/remove',async(ctx)=>{
 
-    ctx.body = await  Articles.remove()
+    let { query } = ctx.request.body;
+    
+    ctx.body = await  Articles.remove(query)
 
 })
 

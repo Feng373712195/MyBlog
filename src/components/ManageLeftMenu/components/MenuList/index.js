@@ -18,7 +18,7 @@ class MenuList extends Component{
 			{
 				name:'文章草稿',
 				disable:false,
-				link:'/admin/manage/publish/draft',
+				link:'/admin/manage/draft/manage',
 				key:'publish-draft'
 			},
 			{
