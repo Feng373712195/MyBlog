@@ -15,7 +15,7 @@ function getNowFormatDate() {
             return (s>= 0 && s<= 9)?(s = `0${s}`):s
         },
         week:()=>{
-            let weeks = {1:"星期一",2:"星期二",3:"星期三",4:"星期四",5:"星期五",6:"星期六",7:"星期天"}
+            let weeks = {0:"星期天",1:"星期一",2:"星期二",3:"星期三",4:"星期四",5:"星期五",6:"星期六"}
             return weeks[date.getDay()]
         },
         hours:date.getHours(),

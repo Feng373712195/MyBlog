@@ -1,0 +1,138 @@
+.r{
+    float: right;
+}
+.l{
+    float: left;
+}
+.disable{
+    display:none !important;
+}
+
+.ui.form{
+    height: 100%;
+
+    .field{
+
+        label{
+            display: inline-block;
+            font-size: 15px !important;
+            margin-bottom:10px !important; 
+        }
+        .articlesbox{
+            min-height: 200px;
+        }
+    }   
+
+    .btns-warp{
+        width:100%;
+        overflow: hidden;
+        .btns{
+            margin-top: 100px;
+        }
+    }
+}
+
+.markIt-warp{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 40px !important;
+    li{
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+        float: left;
+        & span.iconfont{
+            &:hover{
+                opacity:.8;
+            }
+            &.active{
+                color:#0E6EB8;
+            }
+            display: inline-block !important;
+            vertical-align: middle !important;
+        }
+        
+        &.cut{
+            width: 1px;
+            height: 20px;
+            border-right:1px solid #ddd;
+            &:first-child{
+                border: none;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.preview-box{
+    &.hidden{
+        display: none;
+    }
+    .preview-head{
+        border-bottom:  1px solid #ccc;
+        padding-bottom:10px; 
+    }
+    .preview-content{
+        margin-top: 10px;
+    }
+    margin-top: 10px;
+    padding:0.78571429em 1em;
+    border: 1px solid #ccc;
+    border-radius: 0.28571429rem;
+    min-height: 200px;
+    background-color:none repeat scroll 0 0 #FAFAFA;
+}
+
+.labelbox-warp{
+    .labelbox{
+        margin-bottom: 10px;
+        .label{
+            margin: 5px 10px;
+            .deleteIcon{ 
+                cursor: pointer;
+                margin-right: 0em;
+                margin-left: 0.5em;
+                font-size: 0.92857143em;
+                opacity: 0.5;
+                -webkit-transition: background 0.1s ease;
+                transition: background 0.1s ease;
+            }
+        }
+    }
+}
+
+.file-box{
+    margin-top: 15px;
+    overflow: hidden;
+    .button{
+        margin-top: 10px !important;
+    }
+    width: 70%;
+    overflow: hidden;
+    float: left;
+    .files{
+        overflow: hidden;
+        .file{
+            span{
+                display: inline-block
+            }
+            .file-name{
+                font-weight:bold;
+                 margin-right: 10px;
+            }
+            .file-size{
+                font-size: 12px;
+            }
+            .file-del{
+                cursor: pointer;
+                margin-right: 0em;
+                margin-left: 0.5em;
+                font-size: 0.92857143em;
+                opacity: 0.5;
+                -webkit-transition: background 0.1s ease;
+                transition: background 0.1s ease;
+            }
+        }
+    }
+}
