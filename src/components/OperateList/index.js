@@ -41,12 +41,12 @@ class OperateList extends Component{
 		}
 
 		getAtricle({})
-		.then( data => { this.setState({ articles:data }) } )
+		.then( data => { console.log(data); this.setState({ articles:data }) } )
 		.catch( e => { alert('获取文章失败,请稍后再试！') } )
     }
     
     
-	removeBtn(title){
+	removeBtn(title,_id){
     
         this.setState({
 
@@ -61,7 +61,7 @@ class OperateList extends Component{
                     {
                         text:"确定",
                         class:"ui positive right button",
-                        handle:removeAtricleHandle.bind(this,{title})
+                        handle:removeAtricleHandle.bind(this,{_id})
                     }
                 ]	
             }

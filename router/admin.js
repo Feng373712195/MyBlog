@@ -1,8 +1,11 @@
 const koa = require('koa');
+const path = require('path')
 const router = require('koa-router');
+const busboy = require('busboy')
 
 const articles = require('../models/manage/articles')
-
+const config = require('../admin/config')
+const { uploadFile } = require('../src/js/upload')
 
 const Articles = new articles();
 
@@ -55,6 +58,21 @@ admin.post('/admin/publish/articles/remove',async(ctx)=>{
     
     ctx.body = await  Articles.remove(query)
 
+})
+
+admin.post('/admin/publish/articles/upload',async(ctx)=>{
+    
+    let result = { success: false }
+    let serverFilePath = path.join(config.rootDirPath , 'upload-files' )
+
+    // 上传文件事件
+    result = await uploadFile( ctx, {
+      fileType: 'album', // common or album
+      path: serverFilePath
+    })
+
+    ctx.body = result
+    
 })
 
 

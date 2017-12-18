@@ -65,4 +65,25 @@ const removeAtricle = (query = {})=>{
                 })
 }
 
-module.exports = { getAtricle,saveAtricle,removeAtricle }
+const  uploadFile = (src,files)=>{
+
+    console.log(files)
+
+    let formData = new FormData()
+    formData.append('files',files[0])
+    
+    fetch(src, {
+        method: "POST",
+        headers: {
+            "Content-Type":"multipart/form-data;boundary=---------7893413"
+        },
+        body:formData
+    })
+    .then(res => {return res.json()})
+    .then(body => { 
+        console.log(body)
+    })
+    
+}
+
+module.exports = { getAtricle,saveAtricle,removeAtricle,uploadFile }

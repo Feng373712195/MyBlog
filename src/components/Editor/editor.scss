@@ -4,9 +4,10 @@
 .l{
     float: left;
 }
-.disable{
+.hidden,.disable{
     display:none !important;
 }
+
 
 .ui.form{
     height: 100%;
@@ -114,6 +115,7 @@
     .files{
         overflow: hidden;
         .file{
+            margin-bottom: 15px;
             span{
                 display: inline-block
             }

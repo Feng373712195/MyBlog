@@ -14,7 +14,7 @@ import ReactDOM from 'react-dom';
 import './editor.scss'
 
 import { funGetSelected,funTextAsTopic }  from './rang.js'
-import { getAtricle,saveAtricle } from '../../js/fetch-atricle'
+import { getAtricle,saveAtricle,uploadFile } from '../../js/fetch-atricle'
 import { markdown } from 'markdown';
 
 class Editor extends Component{
@@ -72,6 +72,14 @@ class Editor extends Component{
 			articleLabels:articleLabels
 		})
 	}	
+
+	removeFile(index){
+		let articleFiles = this.state.articleFiles;
+		articleFiles.splice(index,1);
+		this.setState({
+			articleFiles:articleFiles
+		})
+	}
 
 	markItHandle(type,item){
 
@@ -139,7 +147,7 @@ class Editor extends Component{
 		}
 	} 
 
-	publishArticle(){		
+	async publishArticle(){		
 		
 		let query = {
 			title:$('#articleTitle').val(),
@@ -147,11 +155,13 @@ class Editor extends Component{
 			articleLabels:this.state.articleLabels,
 			flise:[]
 		}
+		
 
-		saveAtricle(query)
-		.then( data =>{ alert('保存成功') } )
-		.catch( e => { alert('保存失败，请稍后再试') } )
-	
+		await saveAtricle(query)
+			  .then( data =>{ alert('保存成功') } )
+			  .catch( e => { alert('保存失败，请稍后再试') } )
+		
+		await uploadFile('http://localhost:8080/admin/publish/articles/upload', $('.attachment')[0].files)
 	}
 
 	getAllArticle(){
@@ -161,6 +171,15 @@ class Editor extends Component{
 		.catch( e => { console.log(e) } )
 	}
 	
+	selectFilesBtn(){
+		$('.attachment').click();
+	}
+
+	selectFiles(){
+		let [...files] = $('.attachment')[0].files
+		this.setState({articleFiles:files})
+	}
+
 	render(){
 
 		const markIt = {
@@ -292,13 +311,18 @@ class Editor extends Component{
 					
 					<div className="file-box">
 						<div className="files">
-							{/* <div className="file ui label large">
-								<span className="file-name">波多野结衣.avi</span>
-								<span className="file-size">2.6GB</span>
-								<span className="file-del">X</span>
-							</div> */}
+							{
+								this.state.articleFiles.map((file,index) =>{
+									return <div className="file ui label large">
+												<span className="file-name">{file.name}</span>
+												<span className="file-size">{`${(parseInt(file.size/1024)).toLocaleString('en-US')}KB`}</span>
+												{/* <span onClick={this.removeFile.bind(this,index)} className="file-del">X</span> */}
+											</div>
+								})
+							}
 						</div>	
-						<button className="ui basic button">上传附件</button>
+						<button type="button" onClick={this.selectFilesBtn.bind(this)} className="ui basic button">上传附件</button>
+						<input  type='file' onChange={this.selectFiles.bind(this)} multiple="true" className="attachment hidden" />
 					</div>
 					
 					<div className="btns-warp">
