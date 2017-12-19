@@ -21,16 +21,6 @@ function mkdirsSync( dirname ) {
 }
 
 /**
- * 获取上传文件的后缀名
- * @param  {string} fileName 获取上传文件的后缀名
- * @return {string}          文件后缀名
- */
-function getSuffixName( fileName ) {
-  let nameList = fileName.split('.')
-  return nameList[nameList.length - 1]
-}
-
-/**
  * 上传文件
  * @param  {object} ctx     koa上下文
  * @param  {object} options 文件上传参数 fileType文件类型， path文件存放路径
@@ -43,7 +33,9 @@ function uploadFile( ctx, options) {
 
   // 获取类型
   let fileType = options.fileType || 'common'
-  let filePath = path.join( options.path,  fileType)
+  let _id = options._id;
+  let fileIndex = 0;
+  let filePath = path.join( options.path, _id )
   let mkdirResult = mkdirsSync( filePath )
   
   return new Promise((resolve, reject) => {
@@ -55,13 +47,10 @@ function uploadFile( ctx, options) {
 
     // 解析请求文件事件
     busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-
-      console.log({fieldname, file, filename, encoding, mimetype})
-
-      let fileName = Math.random().toString(16).substr(2) + '.' + getSuffixName(filename)
+      
       let _uploadFilePath = path.join( filePath, fileName )
       let saveTo = path.join(_uploadFilePath)
-
+      
       // 文件保存到制定路径
       file.pipe(fs.createWriteStream(saveTo))
 
@@ -84,6 +73,7 @@ function uploadFile( ctx, options) {
     // 解析结束事件
     busboy.on('finish', function( ) {
       console.log('文件上结束')
+      result.filePath = filePath;
       resolve(result)
     })
 

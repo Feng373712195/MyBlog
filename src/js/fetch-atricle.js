@@ -65,24 +65,25 @@ const removeAtricle = (query = {})=>{
                 })
 }
 
-const  uploadFile = (src,files)=>{
 
-    console.log(files)
-
-    let formData = new FormData()
-    formData.append('files',files[0])
+const  uploadFile = (src,_id,files)=>{
     
-    fetch(src, {
-        method: "POST",
-        headers: {
-            "Content-Type":"multipart/form-data;boundary=---------7893413"
-        },
-        body:formData
-    })
-    .then(res => {return res.json()})
-    .then(body => { 
-        console.log(body)
-    })
+    let formData = new FormData()
+    
+    for(let x in [...files]){
+        console.log(files[x].name)
+
+        formData.append(`file${x}`,files[x])
+    }
+
+    // fetch(`${src}/${_id}`, {
+    //     method: "POST",
+    //     body:formData
+    // })
+    // .then(res => {return res.json()})
+    // .then(body => { 
+    //     console.log(body)
+    // })
     
 }
 

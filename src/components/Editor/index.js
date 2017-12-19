@@ -148,7 +148,7 @@ class Editor extends Component{
 	} 
 
 	async publishArticle(){		
-		
+
 		let query = {
 			title:$('#articleTitle').val(),
 			content:$('#articleContent').val(),
@@ -156,12 +156,16 @@ class Editor extends Component{
 			flise:[]
 		}
 		
+		let atricleid 
 
-		await saveAtricle(query)
-			  .then( data =>{ alert('保存成功') } )
-			  .catch( e => { alert('保存失败，请稍后再试') } )
+		// await saveAtricle(query)
+		// 	  .then( data =>{
+		// 		  	atricleid = data._id
+		// 			alert('保存成功') 
+		// 	   })
+		// 	  .catch( e => { alert('保存失败，请稍后再试') } )
 		
-		await uploadFile('http://localhost:8080/admin/publish/articles/upload', $('.attachment')[0].files)
+		await uploadFile('http://localhost:8080/admin/publish/articles/upload',atricleid, $('.attachment')[0].files)
 	}
 
 	getAllArticle(){
@@ -176,6 +180,17 @@ class Editor extends Component{
 	}
 
 	selectFiles(){
+		
+		// for(let file of files){
+			
+		// 	let fileNmae = file.name;
+		// 	let nameList = fileName.split('.');
+		// 	let SuffixName = `${Math.random().toString(16).substr(2)}.${nameList[nameList.length - 1]}`
+			
+		// 	file.name = SuffixName;
+		// 	file.fileName = fileNmae;
+		// }
+
 		let [...files] = $('.attachment')[0].files
 		this.setState({articleFiles:files})
 	}
@@ -314,7 +329,7 @@ class Editor extends Component{
 							{
 								this.state.articleFiles.map((file,index) =>{
 									return <div className="file ui label large">
-												<span className="file-name">{file.name}</span>
+												<span className="file-name">{file.fileName}</span>
 												<span className="file-size">{`${(parseInt(file.size/1024)).toLocaleString('en-US')}KB`}</span>
 												{/* <span onClick={this.removeFile.bind(this,index)} className="file-del">X</span> */}
 											</div>

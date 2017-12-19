@@ -16,6 +16,7 @@ import './iconfont.js'
 
 
 import $ from 'jquery/dist/jquery.min.js'
+import 'whatwg-fetch'
 
 import '../../semantic/dist/semantic.css'
 import '../../semantic/dist/semantic.js'

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import fetch from 'node-fetch'
 import { createStore } from 'redux'
  
 import './user-box.scss'

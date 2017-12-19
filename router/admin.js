@@ -60,13 +60,14 @@ admin.post('/admin/publish/articles/remove',async(ctx)=>{
 
 })
 
-admin.post('/admin/publish/articles/upload',async(ctx)=>{
+admin.post('/admin/publish/articles/upload/:id',async(ctx)=>{
     
     let result = { success: false }
     let serverFilePath = path.join(config.rootDirPath , 'upload-files' )
 
     // 上传文件事件
     result = await uploadFile( ctx, {
+      _id:ctx.params.id,
       fileType: 'album', // common or album
       path: serverFilePath
     })
