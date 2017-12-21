@@ -164,7 +164,7 @@ class Editor extends Component{
 					alert('保存成功') 
 			   })
 			  .catch( e => { alert('保存失败，请稍后再试') } )
-		
+
 		await uploadFile('http://localhost:8080/admin/publish/articles/upload',atricleid, $('.attachment')[0].files)
 	}
 

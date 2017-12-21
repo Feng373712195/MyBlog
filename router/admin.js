@@ -4,10 +4,13 @@ const router = require('koa-router');
 const busboy = require('busboy')
 
 const articles = require('../models/manage/articles')
+const lables = require('../modles/manage/labels')
+
 const config = require('../admin/config')
 const { uploadFile } = require('../src/js/upload')
 
 const Articles = new articles();
+const Lables = new lables();
 
 const admin = new router();
 
@@ -59,6 +62,14 @@ admin.post('/admin/publish/articles/remove',async(ctx)=>{
     ctx.body = await  Articles.remove(query)
 
 })
+
+admin.post('/admin/publish/articles/update',async(ctx)=>{
+    
+        let { query,update } = ctx.request.body;
+         
+        ctx.body = await  Articles.update(query,update)
+    
+    })
 
 admin.post('/admin/publish/articles/upload/:id',async(ctx)=>{
     

@@ -16,6 +16,8 @@ var articlesSchema = new mongoose.Schema(
         lables:[String],
         //附件
         flise:[String],
+        //点击量
+        clicks:Number,
         //创建时间
         createtime:String,
         //最后修改时间
@@ -32,11 +34,11 @@ class Articles{
         this.articlesData = {} 
     }
     
-    save({title,author = "WUZEFENG",content,lables,flise,createtime = getNowFormatDate(),lasttime = getNowFormatDate() }){
+    save({title,author = "WUZEFENG",content,lables,flise,clicks = 0,createtime = getNowFormatDate(),lasttime = getNowFormatDate() }){
         
         this.articlesData = {title,author,content,lables,flise,createtime,lasttime}     
         
-        return   new Promise((res,rej)=>{
+        return  new Promise((res,rej)=>{
                     articlesModel.create(this.articlesData,(err,data)=>{  
                         if(err) return rej({code:-1,error:err})
                         return res({code:0,data:data})
@@ -51,10 +53,17 @@ class Articles{
     }
 
     remove(query){
-        
+       
        return  articlesModel.remove(query).exec()
                .then(  data => { return {code:0,data:data} } )
                .catch( err => { return {code:-1,eroor:err} } ) 
+    }
+
+    upadte(query,updatedata){
+
+        return  articlesModel.update(query,update,{ multi: false }).exec()
+                .then(  data => { return {code:0,data:data} } )
+                .catch( err => { return {code:-1,eroor:err} } ) 
     }
 
 }
