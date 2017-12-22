@@ -29,3 +29,5 @@ var lableSchema = new mongoose.Schema(
         lablesGroup:[String]
     }
 );
+
+console.log(lableSchema);
