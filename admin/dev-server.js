@@ -1,4 +1,4 @@
-const db = require('./db')
+const { dbClient,redisClient } = require('./db')
 const koa = require('koa')
 const sever = require('koa-static')
 const view = require('koa-view')
@@ -16,7 +16,6 @@ let compiler = webpack(webpackConfig);
 let port = process.env.PORT || config.dev.port
 
 let app = new koa();
-
 
 error(app)
 
@@ -68,5 +67,8 @@ app.listen(port,() => {
     console.log(`open ${port}`);
 })
 
-db.on('error',(err)=> console.error(`链接错误:${err}`) )
-db.once('open',console.log.bind(console,'链接成功！') )
+dbClient.on('error',(err)=> console.error(`MongoDB 链接错误:${err}`) )
+dbClient.once('open',console.log.bind(console,'MongoDB 链接成功！') )
+
+redisClient.on('error',(err)=> console.error(`Redis 链接错误:${err}`) )
+redisClient.on('ready',console.log.bind(console,`Redis 链接成功 `) )

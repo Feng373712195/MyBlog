@@ -1,6 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
+const redis = require('redis')
+
 const { getNowFormatDate } = require('../../../src/js/uilt')
-const db = require('../../../admin/db')
+const { dbClient,redisClient } = require('../../../admin/db')
 
 mongoose.Promise = global.Promise;
 
@@ -25,7 +27,7 @@ var articlesSchema = new mongoose.Schema(
     }
 );
 
-let articlesModel = db.model('articles',articlesSchema);
+let articlesModel = dbClient.model('articles',articlesSchema);
 
 
 class Articles{
@@ -34,16 +36,30 @@ class Articles{
         this.articlesData = {} 
     }
     
-    save({title,author = "WUZEFENG",content,lables,flise,clicks = 0,createtime = getNowFormatDate(),lasttime = getNowFormatDate() }){
-        
+    save({title,author = "WUZEFENG",content,lables = [],flise = [],clicks = 0,createtime = getNowFormatDate(),lasttime = getNowFormatDate() }){
+
+        let that = this;
         this.articlesData = {title,author,content,lables,flise,createtime,lasttime}     
         
         return  new Promise((res,rej)=>{
                     articlesModel.create(this.articlesData,(err,data)=>{  
                         if(err) return rej({code:-1,error:err})
-                        return res({code:0,data:data})
+                        else{
+
+                            let _id = data._id.toString();
+
+                            lables.forEach(value=>{
+                                redisClient.sadd(value,_id)
+                            })
+
+                            redisClient.sadd('lables',lables,function(err,lableDATA){
+                                if(err) rej({code:-1,error:err})
+                                return res({code:0,data:data})
+                            })
+                        }
                      });    
-                 })  
+                 })
+        
     }
 
     find(query){

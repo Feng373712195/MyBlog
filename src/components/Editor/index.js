@@ -152,7 +152,7 @@ class Editor extends Component{
 		let query = {
 			title:$('#articleTitle').val(),
 			content:$('#articleContent').val(),
-			articleLabels:this.state.articleLabels,
+			lables:this.state.articleLabels,
 			flise:[]
 		}
 		

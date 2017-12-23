@@ -1,4 +1,8 @@
 let mongoose = require('mongoose');
-let db = mongoose.createConnection('localhost','blog')
+var redisStore = require('koa-redis');
+let redis = require('redis');
 
-module.exports =  db;
+let dbClient = mongoose.createConnection('localhost','blog')
+let redisClient = redis.createClient('6379','localhost')
+
+module.exports =  { dbClient,redisClient };

@@ -4,16 +4,13 @@ const router = require('koa-router');
 const busboy = require('busboy')
 
 const articles = require('../models/manage/articles')
-const lables = require('../modles/manage/labels')
 
 const config = require('../admin/config')
 const { uploadFile } = require('../src/js/upload')
 
 const Articles = new articles();
-const Lables = new lables();
 
 const admin = new router();
-
 
 
 function resultsHandle(p){
