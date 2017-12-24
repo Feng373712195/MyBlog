@@ -1,0 +1,14 @@
+.label{
+    color:#fff !important;
+    cursor: pointer;
+
+    .deleteIcon{ 
+        cursor: pointer;
+        margin-right: 0em;
+        margin-left: 0.5em;
+        font-size: 0.92857143em;
+        opacity: 0.5;
+        -webkit-transition: background 0.1s ease;
+        transition: background 0.1s ease;
+    }
+}

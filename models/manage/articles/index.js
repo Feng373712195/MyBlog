@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const redis = require('redis')
 
 const { getNowFormatDate } = require('../../../src/js/uilt')
 const { dbClient,redisClient } = require('../../../admin/db')

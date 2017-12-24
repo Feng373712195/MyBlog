@@ -175,7 +175,7 @@ class LoginModal extends Component{
 class UserTipe extends Component{
 	
 	openMange(){
-		window.location = '/admin/manage'
+		window.location = '/admin/manage/publish/edit'
 	}
 
 	showModal(){

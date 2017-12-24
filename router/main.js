@@ -3,6 +3,7 @@ const router = require('koa-router');
 
 let routers = [
     require('./home'),
+    require('./lable'),
     require('./admin')
 ]
 
