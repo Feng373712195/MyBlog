@@ -8,10 +8,6 @@ class LabelOne extends Component{
 	constructor(){
         super()
     }
-
-    removeLable(){
-        
-    }
         
 	render(){
         

@@ -3,6 +3,10 @@ const path = require('path')
 const router = require('koa-router');
 const { redisClient } = require('../admin/db')
 
+const articles = require('../models/manage/articles')
+
+const Articles = new articles();
+
 
 const lable = new router();
 
@@ -16,18 +20,20 @@ lable.post('/lable/getAllLable',async(ctx)=>{
                      })
 })
 
-lable.post('/lable/getRelevant/:lable',async(ctx)=>{
-
-    let lable = ctx.params.lable;
+lable.post('/lable/removeLable',async(ctx)=>{
+    
+    let { lable } = ctx.request.body;
 
     console.log(lable)
     
-    ctx.body = await new Promise((reslove,reject)=>{
-                        redisClient.smembers(lable,(err,data)=>{
-                            if(err) return reject({code:1,error:err})
-                            return reslove({code:0,articleIDs:data})
-                        })
+    await Articles.update({lable:lable.lable},{"$pull":{lables:lable.lable}},true)
+
+    ctx.body =  await new Promise((reslove,reject)=>{
+                    redisClient.sadd('lables',lable.lable,(err,data)=>{
+                        if(err) return reject({code:1,error:err})
+                        return reslove({code:0,data:data})
                     })
+                })
 })
 
 module.exports = lable;

@@ -4,6 +4,25 @@ import ReactDOM from 'react-dom';
 import Lables from '../../components/Lables'
 import Modal from '../../components/Moadl'
 
+function removeAtricleHandle(lable){
+
+	//  // > db.articles.update({lables:"11"},{"$pull":{lables:"11"}},{multi:true})
+
+	fetch('http://localhost:8080/lable/removeLable', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body:JSON.stringify({lable})
+	})
+	.then(res => {return res.json()})
+	.then(body => {
+		if(body.code === 0) 
+			console.log(body)
+	})
+}
+
+
 class Label extends Component{
 
 	constructor(){
@@ -31,8 +50,8 @@ class Label extends Component{
 					},
 					{
 						text:"确定",
-						class:"ui positive right button"
-						// handle:removeAtricleHandle.bind(this,{_id})
+						class:"ui positive right button",
+						handle:removeAtricleHandle.bind(this,{lable})
 					}
 				]	
 			}
