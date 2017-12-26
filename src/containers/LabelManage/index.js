@@ -6,8 +6,6 @@ import Modal from '../../components/Moadl'
 
 function removeAtricleHandle(lable){
 
-	//  // > db.articles.update({lables:"11"},{"$pull":{lables:"11"}},{multi:true})
-
 	fetch('http://localhost:8080/lable/removeLable', {
 		method: 'POST',
 		headers: {
@@ -18,7 +16,7 @@ function removeAtricleHandle(lable){
 	.then(res => {return res.json()})
 	.then(body => {
 		if(body.code === 0) 
-			console.log(body)
+			this.refs.lables.loadLables();
 	})
 }
 
@@ -66,7 +64,7 @@ class Label extends Component{
 		return (
 			<div id="LabelManage" className="container">
 				<Modal modalData={ this.state.modalData } ></Modal>
-				<Lables manage="true" removeLable={this.removeBtn.bind(this)} ></Lables>
+				<Lables ref="lables" manage="true" removeLable={this.removeBtn.bind(this)} ></Lables>
 			</div>
 		)	
 	}

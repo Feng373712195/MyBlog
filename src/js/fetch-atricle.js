@@ -44,6 +44,26 @@ const saveAtricle = (query)=>{
 
 }
 
+const updateAtricle = (query,update,multi)=>{
+
+    return  fetch('http://localhost:8080/admin/publish/articles/update', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({query:query,update:update,muilt:multi})
+            })
+            .then(res => {return res.json()})
+            .then(body => { 
+                    return new Promise( (resolve,reject)=>{
+                            if(body.code === 0)
+                            resolve(body.data)
+                            else
+                            reject(body.error)
+                        }) 
+            })
+}
+
 const removeAtricle = (query = {})=>{
     
     return fetch('http://localhost:8080/admin/publish/articles/remove', {
@@ -87,4 +107,4 @@ const  uploadFile = (src,_id,files)=>{
     
 }
 
-module.exports = { getAtricle,saveAtricle,removeAtricle,uploadFile }
+module.exports = { getAtricle,saveAtricle,updateAtricle,removeAtricle,uploadFile }

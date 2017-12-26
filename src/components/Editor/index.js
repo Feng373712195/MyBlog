@@ -14,7 +14,7 @@ import ReactDOM from 'react-dom';
 import './editor.scss'
 
 import { funGetSelected,funTextAsTopic }  from './rang.js'
-import { getAtricle,saveAtricle,uploadFile } from '../../js/fetch-atricle'
+import { getAtricle,saveAtricle,updateAtricle,uploadFile } from '../../js/fetch-atricle'
 import { markdown } from 'markdown';
 
 class Editor extends Component{
@@ -22,7 +22,8 @@ class Editor extends Component{
 	constructor(){
         super()
 		this.state = { 
-            showPreview:false,
+			showPreview:false,
+			articleId:'',
             articleTitle:'',
 			articleContent:'',
             articleLabels:[],
@@ -32,10 +33,10 @@ class Editor extends Component{
 
     componentWillMount(){
         this.setState({
+			articleId:this.props.articleId?this.props.articleId:'',
             articleTitle:this.props.articleTitle?this.props.articleTitle:'',
             articleContent:this.props.articleContent?this.props.articleContent:'',
             articleLabels:this.props.articleLabels?this.props.articleLabels:[],
-            
         })
     }
 
@@ -168,6 +169,26 @@ class Editor extends Component{
 		await uploadFile('http://localhost:8080/admin/publish/articles/upload',atricleid, $('.attachment')[0].files)
 	}
 
+	async updateArticle(){	
+		
+			let update = {
+				title:$('#articleTitle').val(),
+				content:$('#articleContent').val(),
+				lables:this.state.articleLabels,
+				flise:[]
+			}
+	
+			await updateAtricle({_id:this.state.articleId},update,false)
+					.then( data =>{
+						console.log(data)
+						alert('修改成功') 
+						this.props.refresh();
+					})
+					.catch( e => { alert('修改失败，请稍后再试') } )
+	
+			// await uploadFile('http://localhost:8080/admin/publish/articles/upload',atricleid, $('.attachment')[0].files)
+		}
+
 	getAllArticle(){
 
 		getAtricle({})
@@ -273,10 +294,10 @@ class Editor extends Component{
 		const markItList = [];
 
 		for(let mod in markIt){
-		    markItList.push(<li className="cut"></li>)
+		    markItList.push(<li key={mod} className="cut"></li>)
 			for(let item in markIt[mod]){
 				let { icon:icon,tooltip:tooltip,type:type } = markIt[mod][item];
-				markItList.push(<li onClick={this.markItHandle.bind(this,type,markIt[mod][item])}  data-tooltip={tooltip} ><span className={icon} ></span></li>)
+				markItList.push(<li onClick={this.markItHandle.bind(this,type,markIt[mod][item])} key={item} data-tooltip={tooltip} ><span className={icon} ></span></li>)
 			}
 		}
 
@@ -317,7 +338,7 @@ class Editor extends Component{
 						<div className="ui right labeled left icon input">
 							<i class="tags icon"></i>
 							<input className="label-text" type="text" placeholder="输入标签" />
-							<a onClick={this.addLable.bind(this)} class="ui tag label">
+							<a onClick={this.addLable.bind(this)} className="ui tag label">
 								添加标签
 							</a>
 						</div>
@@ -348,7 +369,7 @@ class Editor extends Component{
 							}
 						</div>
 						<div className="btns r" >
-							<button type="button" onClick={this.publishArticle.bind(this)} className="ui green button">发布</button>
+							<button type="button" onClick={this.props.manage? this.updateArticle.bind(this) : this.publishArticle.bind(this)} className="ui green button">{this.props.manage?'修改':'发布'}</button>
 							<button type="button" onClick={this.getAllArticle.bind(this)} className="ui red button">保存</button>
 						</div>
 					</div>

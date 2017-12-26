@@ -1,6 +1,6 @@
 .article-box{
     border-bottom:1px solid #ddd; 
-
+    margin-bottom:10px;
     .artice-footer{
         font-size: 13px;
         color: #666;
@@ -12,5 +12,7 @@
             float: right
         }
     }
-
+    &:last-child{
+        margin-bottom:0px;
+    }
 }

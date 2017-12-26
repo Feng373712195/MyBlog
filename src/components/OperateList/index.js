@@ -40,9 +40,13 @@ class OperateList extends Component{
 			}
 		}
 
-		getAtricle({})
-		.then( data => { console.log(data); this.setState({ articles:data }) } )
-		.catch( e => { alert('获取文章失败,请稍后再试！') } )
+		this.loadAtricles = ()=>{
+			getAtricle({})
+			.then( data => { console.log(data); this.setState({ articles:data }) } )
+			.catch( e => { alert('获取文章失败,请稍后再试！') } )
+		}
+
+		this.loadAtricles()
     }
     
     
@@ -92,7 +96,7 @@ class OperateList extends Component{
 		return (
 			<div>
 				{this.state.isEdit?
-					<Editor backhandle={this.editBack.bind(this)} articleTitle={this.state.articleData.title} articleContent={this.state.articleData.content} articleLabels={this.state.articleData.labels} articleFiles={this.state.articleData.files}></Editor>
+					<Editor backhandle={this.editBack.bind(this)} manage="true" refresh={this.loadAtricles.bind(this)}  articleId={this.state.articleData._id} articleTitle={this.state.articleData.title} articleContent={this.state.articleData.content} articleLabels={this.state.articleData.lables} articleFiles={this.state.articleData.files}></Editor>
 					:
 					<div>
 						<Modal modalData={ this.state.modalData } ></Modal>

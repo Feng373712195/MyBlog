@@ -14,20 +14,23 @@ class Labels extends Component{
             lables:[]
 		}
 		
+		this.loadLables = ()=>{
+			fetch('http://localhost:8080/lable/getAllLable', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+					}
+			})
+			.then(res => {return res.json()})
+			.then(body => {
+				if(body.code === 0) 
+				 this.setState({
+				   lables:body.lables
+				 })
+			})
+		}
 
-		fetch('http://localhost:8080/lable/getAllLable', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-            	}
-		})
-		.then(res => {return res.json()})
-		.then(body => {
-			if(body.code === 0) 
-			 this.setState({
-			   lables:body.lables
-			 })
-		})
+		this.loadLables();
     }
     
     LableHandle(lable){

@@ -75,7 +75,7 @@ class Articles{
     }
 
     update(query,updatedata,multi){
-
+        
         return  articlesModel.update(query,updatedata,{ multi:multi }).exec()
                 .then(  data => { return {code:0,data:data} } )
                 .catch( err => { return {code:-1,eroor:err} } ) 
