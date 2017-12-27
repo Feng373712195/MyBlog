@@ -1,9 +1,25 @@
 .article-box{
+    font-family:"PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
     border-bottom:1px solid #ddd; 
     margin-bottom:10px;
+    .article-title{
+        color: #105cb6;
+        cursor: pointer;
+        text-decoration:underline;
+        &:active,&:hover{
+            color: red; 
+        }
+    }
+    .article-content{
+        color: #333;
+        font-size:16px;
+        font-weight:200 !important;
+        margin:10px;
+    }
     .artice-footer{
         font-size: 13px;
-        color: #666;
+        color: #333;
+        padding-bottom:5px;
         overflow: hidden;
         .l{
             float: left;

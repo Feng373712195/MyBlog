@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import ArticleItem from './components/ArticleItem'
+import ArticleContent from '../ArticleContent'
 
 class articleList extends Component{
 
@@ -9,13 +10,20 @@ class articleList extends Component{
         super()
 
         this.state = {
-            articles:[]
+            article:{},
+            articles:[],
+            showArticle:false
+        }
+
+        this.showArticle =(isShow,article)=>{
+            this.setState({
+                article:article,
+                showArticle:isShow
+            })
         }
     }
 
     componentWillMount(){
-        console.log(this.props.articles)
-
         if(this.props.articles){
 
             this.setState({
@@ -52,13 +60,20 @@ class articleList extends Component{
 
         let Back = this.props.back && <div onClick={this.props.back.bind(this)} class="back">返回</div>
         let ArticleList  = this.state.articles.map( article =>
-                                <ArticleItem article={article} ></ArticleItem>
+                                <ArticleItem article={article} showArticle={this.showArticle.bind(this)} ></ArticleItem>
                            )
 
         return(
             <div>
-                {Back}
-                {ArticleList}
+                {   
+                    this.state.showArticle?
+                    <ArticleContent article={this.state.article} ></ArticleContent>
+                    :
+                    <div>
+                        {Back}
+                        {ArticleList}
+                    </div>
+                }
             </div>
         )
     }
