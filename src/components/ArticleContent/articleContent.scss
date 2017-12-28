@@ -1,0 +1,27 @@
+.article-warp{
+    background:#fff;
+    .article-box{
+        padding:2.5%;
+        p{
+            display: inline-block;
+            width: 100%;
+        }
+        .article-title{
+            display: inline-block;
+            font-size:30px;
+            font-weight:bold;
+            line-height:50px;
+        }
+        .article-lable{
+            font-size:18px;
+            font-weight:bold;
+            margin-top:20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dotted #E2E2E2;
+        }
+        .article-body{
+            margin-top:15px;
+            font-size:18px;
+        }
+    }
+}

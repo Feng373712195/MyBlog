@@ -44,17 +44,14 @@ class Articles{
                     articlesModel.create(this.articlesData,(err,data)=>{  
                         if(err) return rej({code:-1,error:err})
                         else{
-
-                            let _id = data._id.toString();
-
-                            lables.forEach(value=>{
-                                redisClient.sadd(value,_id)
-                            })
-
-                            redisClient.sadd('lables',lables,function(err,lableDATA){
-                                if(err) rej({code:-1,error:err})
+                            if(lables.length > 0){
+                                redisClient.sadd('lables',lables,function(err,lableDATA){
+                                    if(err) rej({code:-1,error:err})
+                                    return res({code:0,data:data})
+                                })
+                            }else{
                                 return res({code:0,data:data})
-                            })
+                            }
                         }
                      });    
                  })

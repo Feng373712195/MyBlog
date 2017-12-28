@@ -1,7 +1,9 @@
-.article-box{
+.article-list{
+    background:#fff;
     font-family:"PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
-    border-bottom:1px solid #ddd; 
+    border-radius:5px; 
     margin-bottom:10px;
+    padding:20px 20px 0 20px;
     .article-title{
         color: #105cb6;
         cursor: pointer;
@@ -15,20 +17,30 @@
         font-size:16px;
         font-weight:200 !important;
         margin:10px;
-    }
-    .artice-footer{
-        font-size: 13px;
-        color: #333;
-        padding-bottom:5px;
+
         overflow: hidden;
-        .l{
-            float: left;
-        }
-        .r{
-            float: right
-        }
+        text-overflow:ellipsis;
+        display:-webkit-box;
+        -webkit-box-orient:vertical;
+        -webkit-line-clamp:2;
     }
-    &:last-child{
-        margin-bottom:0px;
+    .artice-footer-warp{
+        padding-bottom:20px;
+        .artice-footer{
+            font-size: 13px;
+            border-bottom:1px solid #ddd; 
+            color: #333;
+            padding-bottom:5px;
+            overflow: hidden;
+            .l{
+                float: left;
+            }
+            .r{
+                float: right
+            }
+        }
+        &:last-child{
+            margin-bottom:0px;
+        }
     }
 }
