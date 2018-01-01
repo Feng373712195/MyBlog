@@ -1,9 +1,13 @@
+import { request } from 'http';
+
 const koa = require('koa');
 const router = require('koa-router');
 
 let routers = [
     require('./home'),
     require('./lable'),
+    require('./articles'),
+    require('./drafts'),
     require('./admin')
 ]
 

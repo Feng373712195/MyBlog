@@ -15,7 +15,10 @@ import './editor.scss'
 
 import { funGetSelected,funTextAsTopic }  from './rang.js'
 import { getAtricle,saveAtricle,updateAtricle,uploadFile } from '../../js/fetch-atricle'
+import { geteDraft,saveeDraft,updateDraft,uploadDraftFile } from '../../js/fetch-draft'
+
 import { markdown } from 'markdown';
+import { getNowFormatDate } from '../../js/uilt'
 
 class Editor extends Component{
 
@@ -32,12 +35,13 @@ class Editor extends Component{
     }
 
     componentWillMount(){
+
         this.setState({
 			articleId:this.props.articleId?this.props.articleId:'',
             articleTitle:this.props.articleTitle?this.props.articleTitle:'',
             articleContent:this.props.articleContent?this.props.articleContent:'',
 			articleLabels:this.props.articleLabels?this.props.articleLabels:[],
-			articleLabels:this.props.articleFiles?this.props.articleFiles:[]
+			articleFiles:this.props.articleFiles?this.props.articleFiles:[]
         })
     }
 
@@ -53,12 +57,31 @@ class Editor extends Component{
 	}
 
 	addLable(){
-		if($('.label-text').val() === ''){
+
+		let lable = $('.label-text').val();
+		let articleLabels = this.state.articleLabels;
+
+
+		if( articleLabels.length === 5 ){
+			alert('一篇文章的标签不能超过五个');
+			return;
+		}
+
+		if( lable === ''){
 			alert('请输入标签');
 			return;
 		}
 		
-		let articleLabels = this.state.articleLabels;
+		if( lable.length > 10 ){
+			alert('标签字数不宜超过10个字');
+			return;
+		}
+
+		if( articleLabels.indexOf(lable)!= -1 ){
+			alert(`已经添加标签${lable}，不能重复添加`);
+			return;
+		}
+		
 		articleLabels.push($('.label-text').val());
 		this.setState({
 			articleLabels:articleLabels
@@ -149,26 +172,52 @@ class Editor extends Component{
 		}
 	} 
 
-	async publishArticle(){		
+	async publishArticle(type){		
 
 		let query = {
 			title:$('#articleTitle').val(),
 			content:$('#articleContent').val(),
 			lables:this.state.articleLabels,
-			flise:this.state.articleFiles
+			files:this.state.articleFiles
 		}
 		
-		let atricleid 
+		let atricleid
+		let files = $('.attachment')[0].files
 
-		await saveAtricle(query)
-			  .then( data =>{
-				  	atricleid = data._id
-					alert('保存成功') 
-			   })
-			  .catch( e => { alert('保存失败，请稍后再试') } )
+		//发布
+		if(type === 'articles'){
 
-		await uploadFile('http://localhost:8080/admin/publish/articles/upload',atricleid, $('.attachment')[0].files)
+			if( files.length > 0 ){
+				await uploadFile('http://localhost:8080/articles/upload',atricleid, $('.attachment')[0].files)
+					.catch( e => e => { alert('上传附件失败，无法保存') }  )
+			}
+			
+			await saveAtricle(query)
+				.then( data =>{
+						atricleid = data._id
+						alert('保存成功') 
+				})
+				.catch( e => { alert('保存失败，请稍后再试') } )
+
+		}
+
+		//存入草稿箱
+		if(type === 'drafts'){
+
+			if( files.length > 0 ){
+				await uploadDraftFile('http://localhost:8080/drafts/upload',atricleid, $('.attachment')[0].files)
+					.catch( e => e => { alert('上传附件失败，无法保存') }  )
+			}
+			
+			await saveDraft(query)
+				.then( data =>{
+						atricleid = data._id
+						alert('保存成功') 
+				})
+				.catch( e => { alert('保存失败，请稍后再试') } )
+		}
 	}
+	
 
 	async updateArticle(){	
 		
@@ -176,7 +225,8 @@ class Editor extends Component{
 				title:$('#articleTitle').val(),
 				content:$('#articleContent').val(),
 				lables:this.state.articleLabels,
-				flise:this.state.articleFiles
+				files:this.state.articleFiles,
+				lasttime:getNowFormatDate()
 			}
 	
 			await updateAtricle({_id:this.state.articleId},update,false)
@@ -187,8 +237,8 @@ class Editor extends Component{
 					})
 					.catch( e => { alert('修改失败，请稍后再试') } )
 	
-			await uploadFile('http://localhost:8080/admin/publish/articles/upload',atricleid, $('.attachment')[0].files)
-		}
+			await uploadFile('http://localhost:8080/articles/upload',atricleid, $('.attachment')[0].files)
+	}
 
 	getAllArticle(){
 
@@ -291,6 +341,21 @@ class Editor extends Component{
 			}
 		}
 
+		let Lables = this.state.articleLabels.map( (label,index)=>{
+						return	<div className="ui label large">
+									<span>{label}</span>
+									<i onClick={this.removeLabel.bind(this,index)} className="deleteIcon">X</i>
+								</div>
+					})
+
+		let Files = this.state.articleFiles.map((file,index) =>{
+						return <div className="file ui label large">
+									<span className="file-name">{file.name}</span>
+									<span className="file-size">{`${(parseInt(file.size/1024)).toLocaleString('en-US')}KB`}</span>
+									{/* <span onClick={this.removeFile.bind(this,index)} className="file-del">X</span> */}
+								</div>
+					})
+
 		return (
 				<form className="ui form">
 
@@ -317,12 +382,7 @@ class Editor extends Component{
 					
 					<div className="labelbox-warp">
 						<div className="labelbox">
-							{this.state.articleLabels.map( (label,index)=>{
-								return	<div className="ui label large">
-											<span>{label}</span>
-											<i onClick={this.removeLabel.bind(this,index)} className="deleteIcon">X</i>
-										</div>
-							}) }
+							{Lables}
 						</div>
 
 						<div className="ui right labeled left icon input">
@@ -337,15 +397,7 @@ class Editor extends Component{
 					
 					<div className="file-box">
 						<div className="files">
-							{
-								this.state.articleFiles.map((file,index) =>{
-									return <div className="file ui label large">
-												<span className="file-name">{file.name}</span>
-												<span className="file-size">{`${(parseInt(file.size/1024)).toLocaleString('en-US')}KB`}</span>
-												{/* <span onClick={this.removeFile.bind(this,index)} className="file-del">X</span> */}
-											</div>
-								})
-							}
+							{Files}
 						</div>	
 						<button type="button" onClick={this.selectFilesBtn.bind(this)} className="ui basic button">上传附件</button>
 						<input  type='file' onChange={this.selectFiles.bind(this)} multiple="true" className="attachment hidden" />
@@ -359,8 +411,8 @@ class Editor extends Component{
 							}
 						</div>
 						<div className="btns r" >
-							<button type="button" onClick={this.props.manage? this.updateArticle.bind(this) : this.publishArticle.bind(this)} className="ui green button">{this.props.manage?'修改':'发布'}</button>
-							<button type="button" onClick={this.getAllArticle.bind(this)} className="ui red button">保存</button>
+							<button type="button" onClick={this.props.manage? this.updateArticle.bind(this) : this.publishArticle.bind(this,'articles')} className="ui green button">{this.props.manage?'修改':'发布'}</button>
+							<button type="button" onClick={this.publishArticle.bind(this,'drafts')} className="ui red button">保存</button>
 						</div>
 					</div>
 

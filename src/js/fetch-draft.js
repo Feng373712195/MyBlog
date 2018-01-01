@@ -1,9 +1,9 @@
 
 //依赖于fetch 
 
-const getAtricle = (query = {}) =>{
+const getDraft = (query = {}) =>{
 
-    return  fetch('/articles/find', {
+    return  fetch('/drafts/find', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
@@ -21,11 +21,11 @@ const getAtricle = (query = {}) =>{
             })
 }
 
-const saveAtricle = (query)=>{
+const saveDraft = (query)=>{
 
     console.log(query);
 
-    return  fetch('http://localhost:8080/articles/save', {
+    return  fetch('http://localhost:8080/drafts/save', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
@@ -44,9 +44,9 @@ const saveAtricle = (query)=>{
 
 }
 
-const updateAtricle = (query,update,multi)=>{
+const updateDraft = (query,update,multi)=>{
 
-    return  fetch('http://localhost:8080/articles/update', {
+    return  fetch('http://localhost:8080/drafts/update', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
@@ -64,25 +64,9 @@ const updateAtricle = (query,update,multi)=>{
             })
 }
 
-
-const readAtricle = ()=>{
-    return  fetch('http://localhost:8080/articles/read',{
-                method: 'POST'
-            })
-            .then(res => {return res.json()})
-            .then(body => { 
-                    return new Promise( (resolve,reject)=>{
-                            if(body.code === 0)
-                            resolve(body.data)
-                            else
-                            reject(body.error)
-                        }) 
-            })
-}
-
-const removeAtricle = (query = {})=>{
+const removeDraft = (query = {})=>{
     
-    return fetch('http://localhost:8080/articles/remove', {
+    return fetch('http://localhost:8080/drafts/remove', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -102,7 +86,7 @@ const removeAtricle = (query = {})=>{
 }
 
 
-const  uploadFile = (src,_id,files)=>{
+const  uploadDraftFile = (src,_id,files)=>{
     
     let formData = new FormData()
     
@@ -121,4 +105,4 @@ const  uploadFile = (src,_id,files)=>{
     
 }
 
-module.exports = { getAtricle,saveAtricle,updateAtricle,readAtricle,removeAtricle,uploadFile }
+module.exports = { getDraft,saveDraft,updateDraft,readDraft,removeDraft,uploadDraftFile }

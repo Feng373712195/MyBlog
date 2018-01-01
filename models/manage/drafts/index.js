@@ -26,13 +26,13 @@ var articlesSchema = new mongoose.Schema(
     }
 );
 
-let articlesModel = dbClient.model('articles',articlesSchema);
+let draftsModel = dbClient.model('drafts',articlesSchema);
 
 
-class Articles{
+class Drafts{
     
     constructor(){
-        this.articlesData = {} 
+        this.draftsModel = {} 
     }
     
     save({title,author = "WUZEFENG",content,lables = [],files = [],clicks = 0,createtime = getNowFormatDate(),lasttime = getNowFormatDate() }){
@@ -64,28 +64,28 @@ class Articles{
     }
 
     find(query){
-        return articlesModel.find(query).exec()
+        return draftsModel.find(query).exec()
                .then(  data => { return {code:0,data:data} } )
                .catch( err => { return {code:-1,eroor:err} } )
     }
 
     remove(query){
        
-       return  articlesModel.remove(query).exec()
+       return  draftsModel.remove(query).exec()
                .then(  data => { return {code:0,data:data} } )
                .catch( err => { return {code:-1,eroor:err} } ) 
     }
 
     update(query,updatedata,multi){
         
-        return  articlesModel.update(query,updatedata,{ multi:multi }).exec()
+        return  draftsModel.update(query,updatedata,{ multi:multi }).exec()
                 .then(  data => { return {code:0,data:data} } )
                 .catch( err => { return {code:-1,eroor:err} } ) 
     }
 
 }
 
-module.exports = Articles;
+module.exports = Drafts;
 
 
 

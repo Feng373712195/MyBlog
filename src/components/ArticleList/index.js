@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import ArticleItem from './components/ArticleItem'
 import ArticleContent from '../ArticleContent'
 
+import { readAtricle } from '../../js/fetch-atricle'
+
 class articleList extends Component{
 
     constructor(){
@@ -19,6 +21,8 @@ class articleList extends Component{
             this.setState({
                 article:article,
                 showArticle:isShow
+            },()=>{
+                readAtricle()
             })
         }
     }

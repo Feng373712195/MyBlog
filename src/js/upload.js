@@ -48,7 +48,9 @@ function uploadFile( ctx, options) {
     // 解析请求文件事件
     busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
       
-      let _uploadFilePath = path.join( filePath, fileName )
+      console.log(filePath)
+``
+      // let _uploadFilePath = path.join( filePath, fileName )
       let saveTo = path.join(_uploadFilePath)
       
       // 文件保存到制定路径
