@@ -46,7 +46,7 @@ class Drafts{
 
 
         return  new Promise((res,rej)=>{
-                    articlesModel.create(this.articlesData,(err,data)=>{  
+                 draftsModel.create(this.articlesData,(err,data)=>{  
                         if(err) return rej({code:-1,error:err})
                         else{
                             if(lables.length > 0){

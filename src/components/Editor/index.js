@@ -15,7 +15,7 @@ import './editor.scss'
 
 import { funGetSelected,funTextAsTopic }  from './rang.js'
 import { getAtricle,saveAtricle,updateAtricle,uploadFile } from '../../js/fetch-atricle'
-import { geteDraft,saveeDraft,updateDraft,uploadDraftFile } from '../../js/fetch-draft'
+import { getDraft,saveDraft,updateDraft,uploadDraftFile } from '../../js/fetch-draft'
 
 import { markdown } from 'markdown';
 import { getNowFormatDate } from '../../js/uilt'
@@ -184,38 +184,30 @@ class Editor extends Component{
 		let atricleid
 		let files = $('.attachment')[0].files
 
+		let saveHandle,uploadFileHandle;
+
+		if(type === 'article'){
+			saveHandle = saveAtricle
+			uploadFileHandle = uploadFile
+		}else{
+			saveHandle = saveDraft
+			uploadFileHandle = uploadDraftFile
+		}
+
 		//发布
-		if(type === 'articles'){
-
-			if( files.length > 0 ){
-				await uploadFile('http://localhost:8080/articles/upload',atricleid, $('.attachment')[0].files)
-					.catch( e => e => { alert('上传附件失败，无法保存') }  )
-			}
-			
-			await saveAtricle(query)
-				.then( data =>{
-						atricleid = data._id
-						alert('保存成功') 
-				})
-				.catch( e => { alert('保存失败，请稍后再试') } )
-
+		if( files.length > 0 ){
+			await uploadFileHandle('http://localhost:8080/articles/upload',atricleid, $('.attachment')[0].files)
+				.catch( e => e => { alert('上传附件失败，无法保存') }  )
 		}
+		
+		await saveHandle(query)
+			.then( data =>{
+					atricleid = data._id
+					alert('保存成功') 
+			})
+			.catch( e => { alert('保存失败，请稍后再试') } )
 
-		//存入草稿箱
-		if(type === 'drafts'){
 
-			if( files.length > 0 ){
-				await uploadDraftFile('http://localhost:8080/drafts/upload',atricleid, $('.attachment')[0].files)
-					.catch( e => e => { alert('上传附件失败，无法保存') }  )
-			}
-			
-			await saveDraft(query)
-				.then( data =>{
-						atricleid = data._id
-						alert('保存成功') 
-				})
-				.catch( e => { alert('保存失败，请稍后再试') } )
-		}
 	}
 	
 
@@ -228,8 +220,18 @@ class Editor extends Component{
 				files:this.state.articleFiles,
 				lasttime:getNowFormatDate()
 			}
+
+			let updateHandle,uploadFileHandle;
+
+			if(this.props.type === 'atricle'){
+				updateHandle = updateAtricle
+				uploadFileHandle = uploadFile
+			}else{
+				updateHandle = updateDraft
+				uploadFileHandle = uploadDraftFile
+			}
 	
-			await updateAtricle({_id:this.state.articleId},update,false)
+			await updateHandle({_id:this.state.articleId},update,false)
 					.then( data =>{
 						console.log(data)
 						alert('修改成功') 
@@ -237,7 +239,7 @@ class Editor extends Component{
 					})
 					.catch( e => { alert('修改失败，请稍后再试') } )
 	
-			await uploadFile('http://localhost:8080/articles/upload',atricleid, $('.attachment')[0].files)
+			await uploadFileHandle('http://localhost:8080/articles/upload',atricleid, $('.attachment')[0].files)
 	}
 
 	getAllArticle(){
@@ -411,8 +413,10 @@ class Editor extends Component{
 							}
 						</div>
 						<div className="btns r" >
-							<button type="button" onClick={this.props.manage? this.updateArticle.bind(this) : this.publishArticle.bind(this,'articles')} className="ui green button">{this.props.manage?'修改':'发布'}</button>
-							<button type="button" onClick={this.publishArticle.bind(this,'drafts')} className="ui red button">保存</button>
+							{ this.props.manage  && <button type="button" onClick={this.updateArticle.bind(this)} className="ui green button">修改</button> }
+							{ !this.props.manage && <button type="button" onClick={this.publishArticle.bind(this,'article')} className="ui green button">发布</button> }
+							{ (this.props.manage && this.props.type === 'draft') && <button type="button" onClick={this.publishArticle.bind(this,'article')} className="ui green button">发布</button> }
+							{ !(this.props.type === 'draft') &&  <button type="button" onClick={this.publishArticle.bind(this,'draft')} className="ui red button">保存</button> }
 						</div>
 					</div>
 

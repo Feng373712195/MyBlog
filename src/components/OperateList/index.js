@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { getAtricle,removeAtricle } from '../../js/fetch-atricle'
+import { getDraft,removeDraft } from '../../js/fetch-draft'
 
 import Modal  from '../Moadl'
 import OperateItem from './OperateItem'
 import Editor from '../Editor'
 
 function removeAtricleHandle(query){
-	removeAtricle(query)
+
+	let removeHandle;
+	let getHandle;
+
+	if(this.props.type === 'atricle' ){
+		removeHandle = removeAtricle
+		getHandle = getAtricle
+	}else{
+		removeHandle = removeDraft
+		getHandle = getDraft
+	}
+	
+
+	removeHandle(query)
 	.then(() =>{
 		console.log('删除成功');
-		return getAtricle() 
+		return getHandle() 
 	})
 	.catch( e => { 
 		console.error(e);
@@ -40,14 +54,26 @@ class OperateList extends Component{
 			}
 		}
 
-		this.loadAtricles = ()=>{
-			getAtricle({})
+		this.loadAtricles = (type)=>{
+			
+			let getHandle;
+
+			 if(type === 'atricle' ){
+				 getHandle = getAtricle
+			 }else{
+				 getHandle = getDraft
+			}
+			
+			getHandle({})
 			.then( data => { console.log(data); this.setState({ articles:data }) } )
 			.catch( e => { alert('获取文章失败,请稍后再试！') } )
 		}
 
-		this.loadAtricles()
-    }
+	}
+
+	componentWillMount(){
+		this.loadAtricles(this.props.type)
+	}
     
     
 	removeBtn(title,_id){
@@ -75,14 +101,15 @@ class OperateList extends Component{
             .modal('show');
         })
 	}
-	
+
+	//打开文章编辑器
 	editBtn(articleData){
 		this.setState({
 			isEdit:true,
 			articleData
 		})
 	}
-
+	//返回文章列表
 	editBack(){
 		this.setState({
 			isEdit:false,
@@ -96,7 +123,7 @@ class OperateList extends Component{
 		return (
 			<div>
 				{this.state.isEdit?
-					<Editor backhandle={this.editBack.bind(this)} manage="true" refresh={this.loadAtricles.bind(this)}  articleId={this.state.articleData._id} articleTitle={this.state.articleData.title} articleContent={this.state.articleData.content} articleLabels={this.state.articleData.lables} articleFiles={this.state.articleData.files}></Editor>
+					<Editor backhandle={this.editBack.bind(this)} manage="true" type={this.props.type} refresh={this.loadAtricles.bind(this,this.props.type)}  articleId={this.state.articleData._id} articleTitle={this.state.articleData.title} articleContent={this.state.articleData.content} articleLabels={this.state.articleData.lables} articleFiles={this.state.articleData.files}></Editor>
 					:
 					<div>
 						<Modal modalData={ this.state.modalData } ></Modal>

@@ -17,7 +17,7 @@ draftsRouter.post('/drafts/save',async(ctx)=>{
 
     let { title,content,lables,files } = ctx.request.body; 
 
-    ctx.body = await Articles.save({ title,content,lables,files });
+    ctx.body = await Drafts.save({ title,content,lables,files });
 
 })
 
@@ -25,14 +25,14 @@ draftsRouter.post('/drafts/find',async(ctx)=>{
 
     let { query } = ctx.request.body; 
 
-    ctx.body = await  Articles.find(query)
+    ctx.body = await Drafts.find(query)
 })
 
 draftsRouter.post('/drafts/remove',async(ctx)=>{
 
     let { query } = ctx.request.body;
     
-    ctx.body = await  Articles.remove(query)
+    ctx.body = await Drafts.remove(query)
 
 })
 
@@ -40,7 +40,7 @@ draftsRouter.post('/drafts/update',async(ctx)=>{
     
     let { query,update,muilt } = ctx.request.body;
 
-    ctx.body = await  Articles.update(query,update,muilt)
+    ctx.body = await Drafts.update(query,update,muilt)
 
 })
 
@@ -61,4 +61,4 @@ draftsRouter.post('/drafts/upload/:id',async(ctx)=>{
 })
 
 
-module.exports = Drafts;
+module.exports = draftsRouter;

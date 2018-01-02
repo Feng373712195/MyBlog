@@ -11,7 +11,7 @@ class PublishManage extends Component{
 	render(){
 		return (
 			<div id="PublishManage" className="container">
-				<OperateList></OperateList>
+				<OperateList type="atricle"></OperateList>
 			</div>
 		)
 	}

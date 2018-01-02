@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+					
+import OperateList from '../../components/OperateList'
 
-class Label extends Component{
-	
+
+class DraftManage extends Component{
+
 	render(){
 		return (
-			<div id="DraftManage" className="container">
-				IM DraftManage
+			<div id="PublishManage" className="container">
+				<OperateList type="draft"></OperateList>
 			</div>
-		)	
+		)
 	}
 }
 
-export default Label;
+export default DraftManage;

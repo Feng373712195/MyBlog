@@ -35,7 +35,8 @@ class articleList extends Component{
             })
 
         }else{
-            fetch('/admin/publish/articles/find', {
+            
+            fetch('/articles/find', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'

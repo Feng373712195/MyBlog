@@ -35,7 +35,7 @@ class Labels extends Component{
     
     LableHandle(lable){
 
-		fetch(`http://localhost:8080/admin/publish/articles/find`, {
+		fetch(`http://localhost:8080/articles/find`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

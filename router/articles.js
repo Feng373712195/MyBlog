@@ -5,17 +5,13 @@ const busboy = require('busboy')
 
 const articles = require('../models/manage/articles')
 
-const config = require('../articlesRouter/config')
+const config = require('../admin/config')
 const { uploadFile } = require('../src/js/upload')
 
 const Articles = new articles();
 
 const articlesRouter = new router();
 
-
-articlesRouter.get('/articles/edit',async(ctx)=>{
-    await ctx.render('manage');
-})
 
 articlesRouter.post('/articles/save',async(ctx)=>{
 

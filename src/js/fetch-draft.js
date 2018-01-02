@@ -105,4 +105,4 @@ const  uploadDraftFile = (src,_id,files)=>{
     
 }
 
-module.exports = { getDraft,saveDraft,updateDraft,readDraft,removeDraft,uploadDraftFile }
+module.exports = { getDraft,saveDraft,updateDraft,removeDraft,uploadDraftFile }

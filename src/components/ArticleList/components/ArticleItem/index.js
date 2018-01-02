@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { markdown } from 'markdown'
 
 import './articleItem.scss' 
+
 
 class articleItem extends Component{
 
     render(){
+        let getArticleContent = ()=>{
+            let div = document.createElement('div');
+            div.innerHTML =  markdown.toHTML(this.props.article.content);
+            return div.innerText
+        }
+
         return(
             <article className="article-list">
                 <h2 onClick={this.props.showArticle.bind(this,true,this.props.article)} className="article-title">{this.props.article.title}</h2>
-                <div className="article-content">{this.props.article.content}</div>
+                <div className="article-content">{ getArticleContent() }</div>
                 <div className="artice-footer-warp">
                     <p className="artice-footer">
                         <span className="artice-author l">作者：{this.props.article.author}</span>

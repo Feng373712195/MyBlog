@@ -15,5 +15,10 @@ admin.post('/admin/login',(ctx)=>{
     console.log('admin/login')
 })
 
+admin.get('/admin/manage/publish/edit',async(ctx)=>{
+    await ctx.render('manage');
+})
+
+
 
 module.exports = admin;
