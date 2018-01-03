@@ -94,14 +94,20 @@ const  uploadDraftFile = (src,_id,files)=>{
         formData.append(`file${x}`,files[x])
     }
 
-    fetch(`${src}/${_id}`, {
-        method: "POST",
-        body:formData
-    })
-    .then(res => {return res.json()})
-    .then(body => { 
-        console.log(body)
-    })
+    return  fetch(`${src}/${_id}`, {
+                method: "POST",
+                body:formData
+            })
+            .then(res => {return res.json()})
+            .then(body => { 
+                return new Promise( (resolve,reject)=>{
+                    if(body.success){
+                    resolve(body.data)
+                    }
+                    else
+                    reject(body.message)
+                }) 
+            })
     
 }
 

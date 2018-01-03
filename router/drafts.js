@@ -6,7 +6,7 @@ const busboy = require('busboy')
 const drafts = require('../models/manage/drafts')
 
 const config = require('../admin/config')
-const { uploadFile } = require('../src/js/upload')
+const { uploadFile,removeUploadFile } = require('../src/js/upload')
 
 const Drafts = new drafts();
 
@@ -40,14 +40,18 @@ draftsRouter.post('/drafts/update',async(ctx)=>{
     
     let { query,update,muilt } = ctx.request.body;
 
+    await removeUploadFile(path.join(config.rootDirPath , 'uploadfiles' ),query._id)
+          .catch( e => console.log(e) )
+
     ctx.body = await Drafts.update(query,update,muilt)
+    
 
 })
 
-draftsRouter.post('/drafts/upload/:id',async(ctx)=>{
+draftsRouter.post('/drafts/updateUpload/:id',async(ctx)=>{
     
     let result = { success: false }
-    let serverFilePath = path.join(config.rootDirPath , 'upload-files' )
+    let serverFilePath = path.join(config.rootDirPath , 'uploadfiles' )
 
     // 上传文件事件
     result = await uploadFile( ctx, {

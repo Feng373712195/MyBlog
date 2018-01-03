@@ -21,7 +21,33 @@
         }
         .article-body{
             margin-top:15px;
+            padding-bottom: 15px;
             font-size:18px;
+            border-bottom: 1px dotted #E2E2E2;
+        }
+        .article-flies{
+            margin-top:15px;
+            .header{
+                // font:20px !important;
+            }
+            .file{
+                cursor: pointer;
+                margin-bottom: 15px;
+                &:hover{
+                    color:red;
+                    font-weight:bold;
+                }
+                span{
+                    display: inline-block
+                }
+                .file-name{
+                    font-weight:bold;
+                     margin-right: 10px;
+                }
+                .file-size{
+                    font-size: 12px;
+                }
+            }
         }
     }
 }

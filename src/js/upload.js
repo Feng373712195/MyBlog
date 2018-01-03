@@ -47,10 +47,8 @@ function uploadFile( ctx, options) {
 
     // 解析请求文件事件
     busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-      
-      console.log(filePath)
-``
-      // let _uploadFilePath = path.join( filePath, fileName )
+
+      let _uploadFilePath = path.join( filePath, filename )
       let saveTo = path.join(_uploadFilePath)
       
       // 文件保存到制定路径
@@ -90,7 +88,28 @@ function uploadFile( ctx, options) {
     
 } 
 
+function removeUploadFile(filePath,_id){
+
+  let dirPath = path.join( filePath, _id );
+
+  return new Promise((resolve,reject)=>{
+      try{
+        if( fs.existsSync(dirPath) ){
+            var files = fs.readdirSync(dirPath);
+            files.forEach(function(file){
+                fs.unlinkSync(dirPath+'/'+file);
+            });
+            fs.rmdirSync(dirPath)
+         }
+        resolve()
+      }catch(e){
+        reject(e)
+      }
+  })
+}
+
 
 module.exports =  {
-  uploadFile
+  uploadFile,
+  removeUploadFile
 }

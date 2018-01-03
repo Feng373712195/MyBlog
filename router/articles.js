@@ -1,12 +1,13 @@
 const koa = require('koa');
 const path = require('path')
 const router = require('koa-router');
+const send = require('koa-send')
 const busboy = require('busboy')
 
 const articles = require('../models/manage/articles')
 
 const config = require('../admin/config')
-const { uploadFile } = require('../src/js/upload')
+const { uploadFile,removeUploadFile } = require('../src/js/upload')
 
 const Articles = new articles();
 
@@ -32,6 +33,9 @@ articlesRouter.post('/articles/remove',async(ctx)=>{
 
     let { query } = ctx.request.body;
     
+    await removeUploadFile(path.join(config.rootDirPath , 'uploadfiles' ),query._id)
+          .catch( e => console.log(e) )
+    
     ctx.body = await  Articles.remove(query)
 
 })
@@ -52,11 +56,14 @@ articlesRouter.post('/articles/read',async(ctx)=>{
 
 })
 
-articlesRouter.post('/articles/upload/:id',async(ctx)=>{
+articlesRouter.post('/articles/updateUpload/:id',async(ctx)=>{
     
     let result = { success: false }
-    let serverFilePath = path.join(config.rootDirPath , 'upload-files' )
+    let serverFilePath = path.join(config.rootDirPath , 'uploadfiles' )
 
+    await removeUploadFile(path.join(config.rootDirPath , 'uploadfiles' ),ctx.params.id)
+          .catch( e => console.log(e) )
+    
     // 上传文件事件
     result = await uploadFile( ctx, {
       _id:ctx.params.id,
@@ -67,6 +74,36 @@ articlesRouter.post('/articles/upload/:id',async(ctx)=>{
     ctx.body = result
     
 })
+
+articlesRouter.post('/articles/upload/:id',async(ctx)=>{
+    
+    let result = { success: false }
+    let serverFilePath = path.join(config.rootDirPath , 'uploadfiles' )
+    
+    // 上传文件事件
+    result = await uploadFile( ctx, {
+      _id:ctx.params.id,
+      fileType: 'album', // common or album
+      path: serverFilePath
+    })
+
+    ctx.body = result
+    
+})
+
+articlesRouter.post('/articles/down',async(ctx)=>{
+    
+    console.log(ctx.request.body.id)
+    console.log(ctx.request.body.fileName)
+
+    let id = ctx.request.body.id
+    let fileName = ctx.request.body.fileName
+
+    ctx.attachment(fileName);
+    await send(ctx, fileName, { root: path.join(config.rootDirPath , `uploadfiles/${id}` ) });
+    
+})
+
 
 
 module.exports = articlesRouter;

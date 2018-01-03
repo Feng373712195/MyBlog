@@ -184,7 +184,7 @@ class Editor extends Component{
 		let atricleid
 		let files = $('.attachment')[0].files
 
-		let saveHandle,uploadFileHandle;
+		let saveHandle,uploadFileHandle
 
 		if(type === 'article'){
 			saveHandle = saveAtricle
@@ -193,12 +193,6 @@ class Editor extends Component{
 			saveHandle = saveDraft
 			uploadFileHandle = uploadDraftFile
 		}
-
-		//发布
-		if( files.length > 0 ){
-			await uploadFileHandle('http://localhost:8080/articles/upload',atricleid, $('.attachment')[0].files)
-				.catch( e => e => { alert('上传附件失败，无法保存') }  )
-		}
 		
 		await saveHandle(query)
 			.then( data =>{
@@ -206,7 +200,12 @@ class Editor extends Component{
 					alert('保存成功') 
 			})
 			.catch( e => { alert('保存失败，请稍后再试') } )
-
+		
+		//发布
+		if( files.length > 0 ){
+			await uploadFileHandle('http://localhost:8080/articles/upload',atricleid, $('.attachment')[0].files)
+				  .catch( e => { alert('上传附件失败，请重新上传') }  )
+		}
 
 	}
 	
@@ -230,7 +229,9 @@ class Editor extends Component{
 				updateHandle = updateDraft
 				uploadFileHandle = uploadDraftFile
 			}
-	
+			
+
+
 			await updateHandle({_id:this.state.articleId},update,false)
 					.then( data =>{
 						console.log(data)
@@ -238,8 +239,13 @@ class Editor extends Component{
 						this.props.refresh();
 					})
 					.catch( e => { alert('修改失败，请稍后再试') } )
-	
-			await uploadFileHandle('http://localhost:8080/articles/upload',atricleid, $('.attachment')[0].files)
+			
+			let oldUploadFile = await getAtricle({_id:this.state.articleId}).then( data => { return data[0].files } )
+
+			if( JSON.stringify( oldUploadFile ) != JSON.stringify( this.state.articleFiles) ){
+				await uploadFileHandle('http://localhost:8080/articles/updateUpload',this.state.articleId, $('.attachment')[0].files)
+			}
+
 	}
 
 	getAllArticle(){
