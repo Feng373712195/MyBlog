@@ -45,7 +45,6 @@ draftsRouter.post('/drafts/update',async(ctx)=>{
 
     ctx.body = await Drafts.update(query,update,muilt)
     
-
 })
 
 draftsRouter.post('/drafts/updateUpload/:id',async(ctx)=>{

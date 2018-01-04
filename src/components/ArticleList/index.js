@@ -72,7 +72,7 @@ class articleList extends Component{
             <div>
                 {   
                     this.state.showArticle?
-                    <ArticleContent article={this.state.article} ></ArticleContent>
+                    <ArticleContent article={this.state.article}  showArticle={this.showArticle.bind(this)} ></ArticleContent>
                     :
                     <div>
                         {Back}

@@ -11,7 +11,7 @@ class MenuList extends Component{
 		const menulists = [
 			{
 				name:'首页',
-				disable:false, 
+				disable:true, 
 				icon:'icon-zhuye',
 				iconSize:"25px",
 				link:'/index',

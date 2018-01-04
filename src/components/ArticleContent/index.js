@@ -22,24 +22,7 @@ class articleContent extends Component{
     }
 
     downFile(id,fileName){
-
-        fetch('http://localhost:8080/articles/down', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({id:id,fileName:fileName})
-            })
-            .then(res => {return res.json()})
-            .then(body => {
-                return new Promise( (resolve,reject)=>{
-                    if(body.code === 0){
-                      resolve(body.data)
-                    }
-                    else
-                      reject(body.error)
-                }) 
-            })
+        
     }
 
     render(){
@@ -51,20 +34,21 @@ class articleContent extends Component{
                      }) 
         
         let Files = this.state.article.files.map((file,index) =>{
-                        return <div onClick={this.downFile.bind(this,this.state.article._id,file.name)} className="file ui label large">
-                                <span className="file-name">{file.name}</span>
-                                <span className="file-size">{`${(parseInt(file.size/1024)).toLocaleString('en-US')}KB`}</span>
-                            </div>
+                        return <a href={`http://localhost:8080/articles/down/${this.state.article._id}/${file.name}`} className="file ui label large">
+                                    <span className="file-name">{file.name}</span>
+                                    <span className="file-size">{`${(parseInt(file.size/1024)).toLocaleString('en-US')}KB`}</span>
+                               </a>
                     })
 
         return(
            <article className="article-warp">
+                <div className="article-back" onClick={this.props.showArticle.bind(this,false,{})} > &lt;&lt;文章列表</div>
                 <div className="article-box">
                     <div className="article-title">{this.state.article.title}</div>
                     <div className="article-lable">{Lables}</div>
                     <div className="article-body" dangerouslySetInnerHTML={{__html:markdown.toHTML(this.state.article.content) }} ></div>
                     <div className="article-flies">
-                        <h1 class="ui header">附件</h1>
+                        { this.state.article.files.length != 0 && <h1 class="ui header">附件</h1> }
                         {Files}
                     </div>
                 </div>

@@ -91,13 +91,13 @@ articlesRouter.post('/articles/upload/:id',async(ctx)=>{
     
 })
 
-articlesRouter.post('/articles/down',async(ctx)=>{
+articlesRouter.get('/articles/down/:id/:fileName',async(ctx)=>{
     
-    console.log(ctx.request.body.id)
-    console.log(ctx.request.body.fileName)
+    console.log(ctx.params.id)
+    console.log(ctx.params.fileName)
 
-    let id = ctx.request.body.id
-    let fileName = ctx.request.body.fileName
+    let id = ctx.params.id
+    let fileName = ctx.params.fileName
 
     ctx.attachment(fileName);
     await send(ctx, fileName, { root: path.join(config.rootDirPath , `uploadfiles/${id}` ) });
