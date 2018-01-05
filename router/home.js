@@ -6,16 +6,14 @@ let home = new router();
 
 
 home.get('/',async(ctx)=>{
-     await ctx.render('home');
+    // await ctx.render('home');
+    ctx.redirect('/article')
 })
 
 home.get('/index',async(ctx)=>{
     await ctx.render('home');
 })
-home.get('/artice',async(ctx)=>{
-    await ctx.render('home');
-})
-home.get('/writeArticle',async(ctx)=>{
+home.get('/article',async(ctx)=>{
     await ctx.render('home');
 })
 home.get('/label',async(ctx)=>{
