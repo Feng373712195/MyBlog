@@ -22,7 +22,7 @@ class articleContent extends Component{
     }
 
     downFile(id,fileName){
-        console.log('down')
+        console.log('down2')
     }
 
     render(){
