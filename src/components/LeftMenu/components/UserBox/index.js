@@ -46,7 +46,7 @@ class LoginModal extends Component{
 			})
 		})
 		.then(function(){
-			if( !$('.modals').hasClass('active') ){
+			if( !$('.modals').hasClass('active') ){				
 				that.setState({
 					showAdminLoginBox:false
 				})
@@ -80,41 +80,81 @@ class LoginModal extends Component{
 		})
 	}
 
-	adminLogin(){
+	async adminLogin(){
 		var that = this;
 
-		fetch('http://localhost:8080/admin/login',{ method: 'POST' })
-		.then(function(res) {
-			return res.json();
-		})
-		.then(function(body) {
-			console.log(body)
+		// fetch('http://localhost:8080/admin/login',{ method: 'POST' })
+		// .then(function(res) {
+		// 	return res.json();
+		// })
+		// .then(function(body) {
+		// 	console.log(body)
 
-			// if(body.code === 0){
-			// 	window.location = '/'
-			// }
-			that.setState({
-				loginLoading:true
-			})
-			setTimeout(()=>{
+		// 	// if(body.code === 0){
+		// 	// 	window.location = '/'
+		// 	// }
+			
+		// 	that.setState({
+		// 		loginLoading:true
+		// 	})
+		// 	setTimeout(()=>{
 				
-				that.setState({
+		// 		that.setState({
+		// 			loginLoading:false,
+		// 			loginFlash:'登陆成功'
+		// 		})
+
+		// 		setTimeout(() =>
+		// 			$('.ui.modal')
+		// 			.modal('hide',function(){
+		// 				that.setState({
+		// 					showAdminLoginBox:false,
+		// 					loginFlash:''
+		// 				})
+		// 				that.props.getUsrData();
+		// 			})
+		// 		,500)
+
+		// 	},1000);
+		// });
+
+		that.setState({
+			loginLoading:true
+		})
+
+		let loginRes = await fetch('http://localhost:8080/admin/login',{ method: 'POST' })
+					   .then(function(res) {
+						  return res.json();
+					   })
+
+		if(loginRes.code === 0){
+
+			await new Promise((res,rej)=>{
+				setTimeout(()=>{
+				  that.setState({
 					loginLoading:false,
 					loginFlash:'登陆成功'
-				})
+				  },function(){
+					 res();	
+				  })
+				},1000)
+			})
 
+			await new Promise((res,rej)=>{
 				setTimeout(() =>
 					$('.ui.modal')
 					.modal('hide',function(){
 						that.setState({
 							showAdminLoginBox:false,
 							loginFlash:''
-						})
+						})	
+						that.props.getUsrData({name:'吴泽锋',email:'373712195@qq.com',head:'',isAdmin:true});
+						res();
 					})
 				,500)
+			})
+		}
 
-			},1000);
-		});
 	}
 
 	render(){
@@ -185,19 +225,28 @@ class UserTipe extends Component{
 
 	render(){
 
-		return (
-			<div className="userInfo">
-				<div className="user-photo"></div>
-				<div className="user-name">吴泽锋</div>
-				<div className="user-mail">373712195@qq.com</div>
-				<button onClick={this.openMange.bind(this)} className="ui basic button">进入管理页面</button>
-				<button className="ui primary button">注销</button>
-			</div>
+		let AdminControl =  this.props.userData.isAdmin && 
+							<div>
+								<button onClick={this.openMange.bind(this)} className="ui basic button">进入管理页面</button>
+								<button className="ui primary button">注销</button>
+							</div>
+		
+		let UserBox = 	<div className="userInfo">
+							<div className="user-photo"></div>
+							<div className="user-name">吴泽锋</div>
+							<div className="user-mail">373712195@qq.com</div>
+							{AdminControl}
+						</div>
+		
+		let LoginBox =  <div className="login-tipe">
+							<div>亲 你还没有登录哦~</div>
+							<button onClick={this.showModal.bind(this)}  className="ui basic button"><i className="iconfont icon-guanwangicon31334"></i> Login </button>
+						</div>
 
-			// <div className="login-tipe">
-			// 	<div>亲 你还没有登录哦~</div>
-			// 	<button onClick={this.showModal.bind(this)}  className="ui basic button"><i className="iconfont icon-guanwangicon31334"></i> Login </button>
-			// </div>
+		return (
+			<div>
+				{LoginBox}
+			</div>
 		)
 
 	}
@@ -207,10 +256,26 @@ class UserBOX extends Component{
 	
 	constructor() {
 		super()
+		this.state = {
+			userData:{
+				haad:'',
+				name:'',
+				email:'',
+				isAdmin:false
+			}
+		}
 	}
 
-	
-
+	getUsrData(userObj){
+		this.setState({
+			userData:{
+				haad:userObj.head,
+				name:userObj.name,
+				email:userObj.email,
+				isAdmin:userObj.isAdmin
+			}
+		})
+	}
 
 	render(){
 
@@ -218,8 +283,8 @@ class UserBOX extends Component{
 			
 			<div className="userbox">
 
-				<LoginModal />
-				<UserTipe  />
+				<LoginModal getUsrData = {this.getUsrData} />
+				<UserTipe userData = {this.state.userData} />
 
 			</div>
 		)	
