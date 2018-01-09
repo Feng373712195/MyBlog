@@ -4,6 +4,7 @@ import { createStore } from 'redux'
  
 import './user-box.scss'
 import { setTimeout } from 'timers';
+import  Moadl from '../../../Moadl'
 
 function reducer(state = {}, action) {
 	switch (action.type) {
@@ -82,41 +83,6 @@ class LoginModal extends Component{
 
 	async adminLogin(){
 		var that = this;
-
-		// fetch('http://localhost:8080/admin/login',{ method: 'POST' })
-		// .then(function(res) {
-		// 	return res.json();
-		// })
-		// .then(function(body) {
-		// 	console.log(body)
-
-		// 	// if(body.code === 0){
-		// 	// 	window.location = '/'
-		// 	// }
-			
-		// 	that.setState({
-		// 		loginLoading:true
-		// 	})
-		// 	setTimeout(()=>{
-				
-		// 		that.setState({
-		// 			loginLoading:false,
-		// 			loginFlash:'登陆成功'
-		// 		})
-
-		// 		setTimeout(() =>
-		// 			$('.ui.modal')
-		// 			.modal('hide',function(){
-		// 				that.setState({
-		// 					showAdminLoginBox:false,
-		// 					loginFlash:''
-		// 				})
-		// 				that.props.getUsrData();
-		// 			})
-		// 		,500)
-
-		// 	},1000);
-		// });
 
 		that.setState({
 			loginLoading:true
@@ -214,27 +180,35 @@ class LoginModal extends Component{
 
 class UserTipe extends Component{
 	
+	componentWillReceiveProps(nextProps, nextState){
+		console.log(nextProps)
+	}
+
 	openMange(){
 		window.location = '/admin/manage/publish/edit'
 	}
 
 	showModal(){
-		$('.ui.modal')
+		$('.login-modal')
 		.modal('show')
 	}
 
 	render(){
 
-		let AdminControl =  this.props.userData.isAdmin && 
+		
+		let usrData = this.props.userData;
+
+		let AdminControl =  (this.props.userData && this.props.userData.isAdmin) &&
 							<div>
 								<button onClick={this.openMange.bind(this)} className="ui basic button">进入管理页面</button>
-								<button className="ui primary button">注销</button>
+								<button onClick={this.props.logout.bind(this,usrData.name)} className="ui primary button">注销</button>
 							</div>
 		
-		let UserBox = 	<div className="userInfo">
+		let UserBox = 	(this.props.userData) &&
+						<div className="userInfo">
 							<div className="user-photo"></div>
-							<div className="user-name">吴泽锋</div>
-							<div className="user-mail">373712195@qq.com</div>
+							<div className="user-name">{usrData.name}</div>
+							<div className="user-mail">{usrData.email}</div>
 							{AdminControl}
 						</div>
 		
@@ -245,7 +219,9 @@ class UserTipe extends Component{
 
 		return (
 			<div>
-				{LoginBox}
+				{
+					(usrData)? UserBox : LoginBox
+				}
 			</div>
 		)
 
@@ -257,24 +233,49 @@ class UserBOX extends Component{
 	constructor() {
 		super()
 		this.state = {
-			userData:{
-				haad:'',
-				name:'',
-				email:'',
-				isAdmin:false
+			userData:null,
+			modalData:{
+				modalHead:'',
+				modalContent:'',
+				modalBtns:[]
 			}
 		}
 	}
 
 	getUsrData(userObj){
 		this.setState({
-			userData:{
-				haad:userObj.head,
-				name:userObj.name,
-				email:userObj.email,
-				isAdmin:userObj.isAdmin
-			}
+			userData:userObj
 		})
+	}
+
+	cleanUsrData(){
+		this.setState({
+			userData:null
+		})
+	}
+
+	logout(username){
+
+		this.setState({
+			modalData:{
+                modalHead:'注销提示?',	
+                modalContent:`是否注销用户<${username}>`,
+                modalBtns:[
+                    {
+                        text:"取消",
+                        class:"ui black deny button"
+                    },
+                    {
+                        text:"确定",
+                        class:"ui positive right button",
+                        handle:this.cleanUsrData.bind(this)
+                    }
+                ]	
+            }
+		},()=>{
+            $('.m-modal')
+            .modal('show');
+        })
 	}
 
 	render(){
@@ -282,9 +283,9 @@ class UserBOX extends Component{
 		return (
 			
 			<div className="userbox">
-
-				<LoginModal getUsrData = {this.getUsrData} />
-				<UserTipe userData = {this.state.userData} />
+				<Moadl modalData={ this.state.modalData } ></Moadl>
+				<LoginModal getUsrData = {this.getUsrData.bind(this)} />
+				<UserTipe userData = {this.state.userData} logout={this.logout.bind(this)} />
 
 			</div>
 		)	

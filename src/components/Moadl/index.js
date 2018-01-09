@@ -16,7 +16,7 @@ class Modal extends Component{
     
     render(){
         return (
-            <div class="ui modal">
+            <div class="ui modal m-modal">
                 <div class="header">
                    { this.props.modalData.modalHead }
                 </div>
