@@ -7,13 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "pro": "cross-env NODE_ENV=pro node ./admin/pro-server.js",
     "dev": "cross-env NODE_ENV=dev node ./admin/dev-server.js",
-    "start-dev": "better-npm-run nodemon-dev"
+    "start-dev": "better-npm-run nodemon-dev",
+    "start-pro": "better-npm-run nodemon-dev"
   },
   "betterScripts": {
     "nodemon-dev": {
-      "command": "nodemon ./admin/dev-server.js",
+      "command": "nodemon ./admin/pro-server.js",
       "env": {
-        "NODE_ENV": "dev"
+        "NODE_ENV": "pro"
       }
     }
   },
@@ -45,6 +46,7 @@
     "eventsource-polyfill": "^0.9.6",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
+    "gulp-webpack": "^1.5.0",
     "image-loader": "^0.0.1",
     "jQuery": "^1.7.4",
     "jquery": "^3.2.1",
@@ -64,6 +66,7 @@
     "semantic-ui": "^2.2.13",
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
+    "vinyl-named": "^1.1.0",
     "webpack-merge": "^4.1.1",
     "whatwg-fetch": "^2.0.3"
   }

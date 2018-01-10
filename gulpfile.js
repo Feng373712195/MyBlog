@@ -1,0 +1,15 @@
+var gulp = require('gulp')
+var path = require('path')
+var config = require('./admin/config')
+var webpack = require('gulp-webpack')
+var named = require('vinyl-named');
+
+const webpackConfig = path.join(config.rootDirPath,'admin/build/webpack.pro.js')
+const distPath = path.join(config.rootDirPath,'dist')
+
+gulp.task('webpack', function() {
+    return gulp.src([path.resolve(config.rootDirPath,'./src/js/home.js'),path.resolve(config.rootDirPath,'./src/js/manage.js')])
+           .pipe(named())
+           .pipe(webpack(webpackConfig))
+           .pipe(gulp.dest(distPath))
+})
