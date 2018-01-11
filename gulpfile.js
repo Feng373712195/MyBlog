@@ -10,6 +10,6 @@ const distPath = path.join(config.rootDirPath,'dist')
 gulp.task('webpack', function() {
     return gulp.src([path.resolve(config.rootDirPath,'./src/js/home.js'),path.resolve(config.rootDirPath,'./src/js/manage.js')])
            .pipe(named())
-           .pipe(webpack(webpackConfig))
+           .pipe(webpack( require('./admin/build/webpack.pro.js') ))
            .pipe(gulp.dest(distPath))
 })
