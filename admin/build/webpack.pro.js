@@ -10,12 +10,8 @@ const outputPath = path.join(config.rootDirPath, 'dist/js');
 
 module.exports = merge(webpackBaseConfig,{
     entry:{
-        home:[
-            path.resolve(config.rootDirPath,'./src/js/home.js')
-        ],
-        manage:[
-            path.resolve(config.rootDirPath,'./src/js/manage.js')
-        ]
+        home:path.join(config.rootDirPath,'./src/js/home.js'),
+        manage:path.join(config.rootDirPath,'./src/js/manage.js')
     },
     output:{
         path: outputPath,

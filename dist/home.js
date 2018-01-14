@@ -44,7 +44,7 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	(function webpackMissingModule() { throw new Error("Cannot find module \"C:\\Users\\feng\\Desktop\\Apptest\\bolg\\src\\js\\home.js\""); }());
+	(function webpackMissingModule() { throw new Error("Cannot find module \"C:\\Users\\feng\\Desktop\\Apptest\\bolg\\src\\js\\home.jsxxx\""); }());
 
 
 /***/ })
