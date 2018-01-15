@@ -6,10 +6,6 @@ const error = require('koa-onerror')
 const bodyParser = require('koa-bodyparser');
 const path = require('path')
 
-// const webpack = require('webpack');
-// let webpackConfig = require(`./build/webpack.pro.js`);
-// let compiler = webpack(webpackConfig); 
-
 const config = require('./config');
 
 // default port 
@@ -22,7 +18,7 @@ error(app)
 //总路由
 app.use(bodyParser());
 const router = require('../router/main');
-app.use( sever(path.resolve(config.rootDirPath,'src')) )
+app.use( sever(path.resolve(config.rootDirPath,'dist')) )
 app.use( view(path.resolve(config.rootDirPath,'src/html'),{extensions:'html'}) )
 app.use(router.routes(),router.allowedMethods());
 

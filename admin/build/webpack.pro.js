@@ -24,13 +24,13 @@ module.exports = merge(webpackBaseConfig,{
         ]
     },
     plugins:[
-        // new CleanWebpackPlugin(
-        //     ['dist/js/*.js'],　 //匹配删除的文件
-        //     {
-        //         root:config.rootDirPath,       　　　　　　//根目录
-        //         verbose:  true,        　　　　　　　　　　//开启在控制台输出信息
-        //         dry:      false        　　　　　　　　　　//启用删除文件
-        //     }
-        // )
+        new CleanWebpackPlugin(
+            ['dist'],　 //匹配删除的文件
+            {
+                root:config.rootDirPath,       　　　　　　//根目录
+                verbose:  true,        　　　　　　　　　　//开启在控制台输出信息
+                dry:      false        　　　　　　　　　　//启用删除文件
+            }
+        )
     ]
 })
