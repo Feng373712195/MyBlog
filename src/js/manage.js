@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { AppContainer } from 'react-hot-loader'
 
 import '../scss/home.scss'
+import '../../semantic/dist/semantic.css'
 
 import LeftMenu from '../components/ManageLeftMenu'
 import Content from  '../containers/ManageContent'
@@ -14,12 +15,8 @@ import Content from  '../containers/ManageContent'
 import '../css/iconfont.css'
 import './iconfont.js'
 
-
-import $ from 'jquery/dist/jquery.min.js'
 import 'whatwg-fetch'
 
-import '../../semantic/dist/semantic.css'
-import '../../semantic/dist/semantic.js'
 
 ReactDom.render((
     <AppContainer >    

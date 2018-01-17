@@ -65,9 +65,6 @@ module.exports = {
           'node_modules'
         ]
     },
-    externals:{
-        
-    },
     plugins: [
         new ExtractTextPlugin({
             filename:'./../css/[name].css',

@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-        <link rel="stylesheet" href="css/<%= chunk %>.css" />
+        <% if ( ['vendor','semantic','jquery'].indexOf(chunk) === -1 ){ %>
+            <link rel="stylesheet" href="http://localhost:8080/css/<%= chunk %>.css" />
+        <% } %>
     <% } %>
     <title></title>
 </head>
 <body>
     <div class="app"></div>
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-        <script type="text/javascript" src="js/<%= chunk %>.js" ></script>
+        <script type="text/javascript" src="http://localhost:8080/js/<%= chunk %>.min.js" ></script>
     <% } %>
 </body>
 </html>
