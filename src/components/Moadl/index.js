@@ -11,7 +11,7 @@ class Modal extends Component{
     }
 
     componentWillReceiveProps(nextProp){
-        console.log(nextProp)
+        
     }
     
     render(){
