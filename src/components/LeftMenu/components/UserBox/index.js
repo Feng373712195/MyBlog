@@ -32,7 +32,7 @@ class LoginModal extends Component{
 	}
 	
 	componentDidMount(){
-		console.log('componentDidMount')
+		console.log('componentDidMount ...')
 	};
 
 	componentDidUpdate() {
