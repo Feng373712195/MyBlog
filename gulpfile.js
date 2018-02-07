@@ -11,6 +11,6 @@ console.log()
 gulp.task('webpack', function() {
     return gulp.src('src/js/*.js')
            .pipe(named())
-           .pipe(gulpWebpack(require('./webpack.pro.js')))
+           .pipe()
            .pipe(gulp.dest('dist/'))
 })

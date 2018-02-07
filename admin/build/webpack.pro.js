@@ -13,7 +13,6 @@ module.exports = merge(webpackBaseConfig,{
     entry:{
         home:path.join(config.rootDirPath,'./src/js/home.js'),
         manage:path.join(config.rootDirPath,'./src/js/manage.js'),
-        semantic:path.join(config.rootDirPath,'./semantic/dist/semantic.min.js'),
         jquery:'jquery/dist/jquery.min.js',
         vendor:['react','react-dom','react-router-dom','whatwg-fetch']
     },
@@ -35,18 +34,20 @@ module.exports = merge(webpackBaseConfig,{
             }
         }),
         new HtmlWebpackPlugin({
+            title:'WUZEFENG 博客',
             filename:path.join(config.rootDirPath,'src/html/home.html'),
             template:path.join(config.rootDirPath,'src/html/template.html'),
             //让style和JavaScript注入 交给模板
             inject:false,
-            chunks:['home','jquery','semantic','vendor']
+            chunks:['pro','home','jquery','vendor']
         }),
         new HtmlWebpackPlugin({
+            title:'管理页面',
             filename:path.join(config.rootDirPath,'src/html/manage.html'),
             template:path.join(config.rootDirPath,'src/html/template.html'),
             //让style和JavaScript注入 交给模板
             inject:false,
-            chunks:['manage','jquery','semantic','vendor']
+            chunks:['pro','manage','jquery','vendor']
         }),
         new CleanWebpackPlugin(
             ['dist'],　 //匹配删除的文件

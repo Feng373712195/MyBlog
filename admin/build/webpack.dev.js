@@ -4,6 +4,7 @@ const merge = require('webpack-merge')
 const config = require('../config')
 const webpackBaseConfig = require('./webpack.base.js');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const sourcePath = path.join(config.rootDirPath, 'src/js');
 const outputPath = path.join(config.rootDirPath, 'dist/js');
@@ -30,6 +31,12 @@ module.exports = merge(webpackBaseConfig,{
             'react-hot-loader/patch',
             `webpack-hot-middleware/client?http://localhost:${config.dev.port}/`,
             path.resolve(config.rootDirPath,'./src/js/manage.js')
+        ],
+        jquery:[
+            'eventsource-polyfill',
+            'react-hot-loader/patch',
+            `webpack-hot-middleware/client?http://localhost:${config.dev.port}/`,
+            'jquery/dist/jquery.min.js'
         ]
     },
     output:{
