@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{%= o.htmlWebpackPlugin.options.title %}</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
 
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
         <% if ( ['vendor','semantic','jquery'].indexOf(chunk) === -1 ){ %>
             <% if( htmlWebpackPlugin.options.title.match('dev') ){ %>
-                 <link rel="stylesheet" href="dist/css/<%= chunk %>.css" />
+                 <link rel="stylesheet" href="http://localhost:8080/dist/css/<%= chunk %>.css" />
             <% } else{ %>
                 <link rel="stylesheet" href="http://localhost:8080/css/<%= chunk %>.css" />
             <% } %>   
@@ -20,9 +20,9 @@
     <div class="app"></div>
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
         <% if( htmlWebpackPlugin.options.title.match('dev') ){ %>
-                <link rel="stylesheet" href="dist/css/<%= chunk %>.js" />
+            <script type="application/javascript" href="http://localhost:8080/dist/js/<%= chunk %>.js"></script>
         <% } else{ %>
-            <link rel="stylesheet" href="http://localhost:8080/css/<%= chunk %>.js" />
+            <script type="application/javascript" href="http://localhost:8080/js/<%= chunk %>.js" ></script>
         <% } %>  
     <% } %>
 </body>

@@ -39,7 +39,7 @@ module.exports = merge(webpackBaseConfig,{
             template:path.join(config.rootDirPath,'src/html/template.html'),
             //让style和JavaScript注入 交给模板
             inject:false,
-            chunks:['pro','home','jquery','vendor']
+            chunks:['home','jquery','vendor']
         }),
         new HtmlWebpackPlugin({
             title:'管理页面',
@@ -47,7 +47,7 @@ module.exports = merge(webpackBaseConfig,{
             template:path.join(config.rootDirPath,'src/html/template.html'),
             //让style和JavaScript注入 交给模板
             inject:false,
-            chunks:['pro','manage','jquery','vendor']
+            chunks:['manage','jquery','vendor']
         }),
         new CleanWebpackPlugin(
             ['dist'],　 //匹配删除的文件

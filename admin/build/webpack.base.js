@@ -53,7 +53,7 @@ module.exports = {
             {
                  // 专供iconfont方案使用的，后面会带一串时间戳，需要特别匹配到
                 test: /\.(woff|woff2|svg|eot|ttf)\??.*$/i,
-                loader: 'url-loader?limit=10000&name=../../src/font/[hash].[ext]'
+                loader: 'url-loader?limit=10000&name=../../dist/font/[hash].[ext]'
             }
         ]
     },
