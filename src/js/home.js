@@ -33,6 +33,5 @@ ReactDom.render((
 
 
 if (module) {
-    console.log('Hello')
     module['hot'].accept()  
 }
