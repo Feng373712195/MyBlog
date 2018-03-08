@@ -15,7 +15,7 @@ class Labels extends Component{
 		}
 		
 		this.loadLables = ()=>{
-			fetch('http://localhost:8080/lable/getAllLable', {
+			fetch('/lable/getAllLable', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ class Labels extends Component{
     
     LableHandle(lable){
 
-		fetch(`http://localhost:8080/articles/find`, {
+		fetch(`/articles/find`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { markdown } from 'markdown';
+import config from '../../../admin/config'
 
 import './articleContent.scss'
-
 
 class articleContent extends Component{
 
@@ -34,7 +34,7 @@ class articleContent extends Component{
                      }) 
         
         let Files = this.state.article.files.map((file,index) =>{
-                        return <a href={`http://localhost:8080/articles/down/${this.state.article._id}/${file.name}`} className="file ui label large">
+                        return <a href={`/articles/down/${this.state.article._id}/${file.name}`} className="file ui label large">
                                     <span className="file-name">{file.name}</span>
                                     <span className="file-size">{`${(parseInt(file.size/1024)).toLocaleString('en-US')}KB`}</span>
                                </a>

@@ -9,7 +9,9 @@
     "dev": "cross-env NODE_ENV=dev node ./admin/dev-server.js",
     "start-dev": "better-npm-run nodemon-dev",
     "start-pro": "better-npm-run nodemon-pro",
-    "build": "cross-env NODE_ENV=pro webpack --config ./admin/build/webpack.pro.js "
+    "build": "cross-env NODE_ENV=pro webpack --config ./admin/build/webpack.pro.js ",
+    "forever-start":"better-npm-run forever-start",
+    "forever-stop":"better-npm-run forever-stop"
   },
   "betterScripts": {
     "nodemon-dev": {
@@ -20,6 +22,18 @@
     },
     "nodemon-pro": {
       "command": "nodemon ./admin/pro-server.js",
+      "env": {
+        "NODE_ENV": "pro"
+      }
+    },
+    "forever-start":{
+      "command": "forever start ./admin/pro-server.js",
+      "env": {
+        "NODE_ENV": "pro"
+      }
+    },
+    "forever-stop":{
+      "command": "forever stop ./admin/pro-server.js",
       "env": {
         "NODE_ENV": "pro"
       }

@@ -25,7 +25,7 @@ const saveDraft = (query)=>{
 
     console.log(query);
 
-    return  fetch('http://localhost:8080/drafts/save', {
+    return  fetch('/drafts/save', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
@@ -46,7 +46,7 @@ const saveDraft = (query)=>{
 
 const updateDraft = (query,update,multi)=>{
 
-    return  fetch('http://localhost:8080/drafts/update', {
+    return  fetch('/drafts/update', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ const updateDraft = (query,update,multi)=>{
 
 const removeDraft = (query = {})=>{
     
-    return fetch('http://localhost:8080/drafts/remove', {
+    return fetch('/drafts/remove', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

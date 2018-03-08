@@ -53,6 +53,7 @@ module.exports = merge(webpackBaseConfig,{
 		contentBase:`http://127.0.0.1:${config.dev.port}/dist/`,
 		hot:true
     },
+    devtool:'inline-source-map',
     plugins:[
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(

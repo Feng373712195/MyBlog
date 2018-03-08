@@ -11,9 +11,9 @@ const outputPath = path.join(config.rootDirPath, 'dist/js');
 
 module.exports = merge(webpackBaseConfig,{
     entry:{
+        jquery:'jquery/dist/jquery.min.js',
         home:path.join(config.rootDirPath,'./src/js/home.js'),
         manage:path.join(config.rootDirPath,'./src/js/manage.js'),
-        jquery:'jquery/dist/jquery.min.js',
         vendor:['react','react-dom','react-router-dom','whatwg-fetch']
     },
     output:{
@@ -26,6 +26,7 @@ module.exports = merge(webpackBaseConfig,{
             
         ]
     },
+    devtool: 'false',
     plugins:[
         new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.min.js' }),
         new webpack.optimize.UglifyJsPlugin({

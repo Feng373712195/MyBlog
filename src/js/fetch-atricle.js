@@ -25,7 +25,7 @@ const saveAtricle = (query)=>{
 
     console.log(query);
 
-    return  fetch('http://localhost:8080/articles/save', {
+    return  fetch('/articles/save', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
@@ -46,7 +46,7 @@ const saveAtricle = (query)=>{
 
 const updateAtricle = (query,update,multi)=>{
 
-    return  fetch('http://localhost:8080/articles/update', {
+    return  fetch('/articles/update', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ const updateAtricle = (query,update,multi)=>{
 
 
 const readAtricle = ()=>{
-    return  fetch('http://localhost:8080/articles/read',{
+    return  fetch('/articles/read',{
                 method: 'POST'
             })
             .then(res => {return res.json()})
@@ -82,7 +82,7 @@ const readAtricle = ()=>{
 
 const removeAtricle = (query = {})=>{
     
-    return fetch('http://localhost:8080/articles/remove', {
+    return fetch('/articles/remove', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

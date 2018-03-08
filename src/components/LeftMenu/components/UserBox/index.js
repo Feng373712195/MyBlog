@@ -88,7 +88,7 @@ class LoginModal extends Component{
 			loginLoading:true
 		})
 
-		let loginRes = await fetch('http://localhost:8080/admin/login',{ method: 'POST' })
+		let loginRes = await fetch('/admin/login',{ method: 'POST' })
 					   .then(function(res) {
 						  return res.json();
 					   })

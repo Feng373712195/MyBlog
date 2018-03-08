@@ -203,7 +203,7 @@ class Editor extends Component{
 		
 		//发布
 		if( files.length > 0 ){
-			await uploadFileHandle('http://localhost:8080/articles/upload',atricleid, $('.attachment')[0].files)
+			await uploadFileHandle('/articles/upload',atricleid, $('.attachment')[0].files)
 				  .catch( e => { alert('上传附件失败，请重新上传') }  )
 		}
 
@@ -243,7 +243,7 @@ class Editor extends Component{
 			let oldUploadFile = await getAtricle({_id:this.state.articleId}).then( data => { return data[0].files } )
 
 			if( JSON.stringify( oldUploadFile ) != JSON.stringify( this.state.articleFiles) ){
-				await uploadFileHandle('http://localhost:8080/articles/updateUpload',this.state.articleId, $('.attachment')[0].files)
+				await uploadFileHandle('/articles/updateUpload',this.state.articleId, $('.attachment')[0].files)
 			}
 
 	}
