@@ -7,7 +7,7 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
 
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-        <% if ( ['vendor','semantic','jquery'].indexOf(chunk) === -1 ){ %>
+        <% if ( ['semantic','jquery'].indexOf(chunk) === -1 ){ %>
             <% if( htmlWebpackPlugin.options.title.match('dev') ){ %>
                  <link rel="stylesheet" href="http://localhost:8080/dist/css/<%= chunk %>.css" />
             <% } else{ %>
@@ -22,7 +22,11 @@
         <% if( htmlWebpackPlugin.options.title.match('dev') ){ %>
             <script type="text/javascript" src="http://localhost:8080/dist/js/<%= chunk %>.js"></script>
         <% } else{ %>
-            <script type="text/javascript" src="/js/<%= chunk %>.min.js" ></script>
+            <% if( chunk === 'vendor' ){ %>
+                <script type="text/javascript" src="/js/<%= chunk %>.min.js" ></script>
+            <% } else{ %>
+                <script type="text/javascript" src="/js/<%= chunk %>_<%= htmlWebpackPlugin.files.chunks[chunk].hash.substr(0,8) %>.min.js" ></script>
+            <% } %>  
         <% } %>  
     <% } %>
 </body>

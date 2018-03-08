@@ -6,7 +6,8 @@ import { AppContainer } from 'react-hot-loader'
 
 import '../scss/home.scss'
 import '../../semantic/dist/semantic.min.css'
-import '../../semantic/dist/semantic.min.js'
+// import '../../semantic/dist/semantic.min.js'
+
 
 import LeftMenu from '../components/LeftMenu'
 import Content from '../containers/Content'

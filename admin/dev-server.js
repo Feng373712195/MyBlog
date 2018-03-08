@@ -65,7 +65,7 @@ app.use( async (ctx,next)=>{
 app.listen(port,() => {
     console.log(`${process.env.NODE_ENV}`)
     console.log(`open ${port}`);
-},'127.0.0.1')
+})
 
 dbClient.on('error',(err)=> console.error(`MongoDB 链接错误:${err}`) )
 dbClient.once('open',console.log.bind(console,'MongoDB 链接成功！') )

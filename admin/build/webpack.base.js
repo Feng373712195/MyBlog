@@ -73,7 +73,7 @@ module.exports = {
             //  $函数会自动添加到当前模块的上下文，无需显示声明
             $: "jquery",
             jQuery: "jquery"
-          }),
+          })
     ]
     
 }

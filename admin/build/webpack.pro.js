@@ -8,18 +8,28 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const sourcePath = path.join(config.rootDirPath, 'src/js');
 const outputPath = path.join(config.rootDirPath, 'dist/js');
+//按需引入semantic Commpont 
+const semanticComponts = [
+    path.join(config.rootDirPath, '/semantic/dist/components/visibility.min.js'),
+    path.join(config.rootDirPath, '/semantic/dist/components/state.min.js'),
+    path.join(config.rootDirPath, '/semantic/dist/components/transition.min.js'),
+    path.join(config.rootDirPath, '/semantic/dist/components/api.min.js'),
+    path.join(config.rootDirPath, '/semantic/dist/components/dimmer.min.js'),
+    path.join(config.rootDirPath, '/semantic/dist/components/form.min.js'),
+    path.join(config.rootDirPath, '/semantic/dist/components/modal.min.js')
+]
 
 module.exports = merge(webpackBaseConfig,{
     entry:{
-        jquery:'jquery/dist/jquery.min.js',
         home:path.join(config.rootDirPath,'./src/js/home.js'),
         manage:path.join(config.rootDirPath,'./src/js/manage.js'),
-        vendor:['react','react-dom','react-router-dom','whatwg-fetch']
+        vendor:semanticComponts.concat(['react','react-dom','react-router-dom','whatwg-fetch','jquery/dist/jquery.min.js'])
     },
     output:{
         path: outputPath,
         publicPath: '/dist/js/',
-        filename: '[name].min.js',    
+        //业务逻辑代码经常变动 文件名加上hash 防止webpack 缓存
+        filename: '[name]_[chunkhash:8].min.js',    
     },
     module:{
         rules:[
@@ -28,7 +38,12 @@ module.exports = merge(webpackBaseConfig,{
     },
     devtool: 'false',
     plugins:[
-        new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.min.js' }),
+        new webpack.optimize.CommonsChunkPlugin(
+            {
+                name: 'vendor', 
+                filename: 'vendor.min.js'
+            }
+        ),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
               warnings: false
@@ -40,6 +55,7 @@ module.exports = merge(webpackBaseConfig,{
             template:path.join(config.rootDirPath,'src/html/template.html'),
             //让style和JavaScript注入 交给模板
             inject:false,
+            hash:true,
             chunks:['home','jquery','vendor']
         }),
         new HtmlWebpackPlugin({
@@ -48,6 +64,7 @@ module.exports = merge(webpackBaseConfig,{
             template:path.join(config.rootDirPath,'src/html/template.html'),
             //让style和JavaScript注入 交给模板
             inject:false,
+            hash:true,
             chunks:['manage','jquery','vendor']
         }),
         new CleanWebpackPlugin(

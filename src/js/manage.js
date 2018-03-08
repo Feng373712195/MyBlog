@@ -6,8 +6,10 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { AppContainer } from 'react-hot-loader'
 
 import '../scss/home.scss'
-import '../../semantic/dist/semantic.css'
-import '../../semantic/dist/semantic.min.js'
+import '../../semantic/dist/semantic.min.css'
+// import '../../semantic/dist/semantic.min.js'
+
+
 
 import LeftMenu from '../components/ManageLeftMenu'
 import Content from  '../containers/ManageContent'
