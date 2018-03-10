@@ -16,17 +16,17 @@ class Modal extends Component{
     
     render(){
         return (
-            <div class="ui modal m-modal">
-                <div class="header">
+            <div className="ui modal m-modal">
+                <div className="header">
                    { this.props.modalData.modalHead }
                 </div>
                 <div className="content">
                     {this.props.modalData.modalContent}
                 </div>
-                <div class="actions">
+                <div className="actions">
                     {
                         this.props.modalData.modalBtns.map((btn)=>{
-                            return <div onClick={btn.handle} className={btn.class}>{btn.text}</div>
+                            return <div key={btn.text} onClick={btn.handle} className={btn.class}>{btn.text}</div>
                         })
                     }
                 </div>

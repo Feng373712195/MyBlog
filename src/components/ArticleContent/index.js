@@ -10,15 +10,39 @@ class articleContent extends Component{
     constructor(){
         super()
         this.state = {
-            article:{}
+            article:{},
+            titleNav:[]
         }
     }
 
-    componentWillMount(){
-
+    componentWillMount(){ 
         this.setState({
             article:this.props.article
+            
         })
+    }
+
+    componentDidMount(){
+        this.setState({
+            titleNav:this.getNavObj($('.article-body'))
+        })
+    }
+
+    getNavObj(dom){
+
+        let titleNav = []; 
+
+        $('h2,h3',dom).map((idx,ele)=>{
+            // console.log(ele.innerText);
+            //避免标题相同，用idx作为key
+            titleNav.push({
+                name:ele.innerText,
+                scrollTop:ele.getBoundingClientRect().top,
+                tag:ele.tagName
+            })
+        })
+
+        return titleNav;
     }
 
     downFile(id,fileName){
@@ -34,7 +58,7 @@ class articleContent extends Component{
                      }) 
         
         let Files = this.state.article.files.map((file,index) =>{
-                        return <a href={`/articles/down/${this.state.article._id}/${file.name}`} className="file ui label large">
+                        return <a key={file.name} href={`/articles/down/${this.state.article._id}/${file.name}`} className="file ui label large">
                                     <span className="file-name">{file.name}</span>
                                     <span className="file-size">{`${(parseInt(file.size/1024)).toLocaleString('en-US')}KB`}</span>
                                </a>

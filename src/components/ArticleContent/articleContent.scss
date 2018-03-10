@@ -9,6 +9,13 @@
         cursor: pointer;
     }
     .article-box{
+        pre code{
+            display:block;
+            width: 100%;
+            overflow-x:scroll;
+            border:1px solid #ddd;
+            padding:10px;
+        }
         padding:2.5%;
         p{
             display: inline-block;

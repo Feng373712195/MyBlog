@@ -127,7 +127,7 @@ class OperateList extends Component{
 					:
 					<div>
 						<Modal modalData={ this.state.modalData } ></Modal>
-						{this.state.articles.map( article => <OperateItem articleData={article} removeHandle={this.removeBtn.bind(this)} editHandle={this.editBtn.bind(this)} ></OperateItem> )}
+						{this.state.articles.map( article => <OperateItem key={article._id} articleData={article} removeHandle={this.removeBtn.bind(this)} editHandle={this.editBtn.bind(this)} ></OperateItem> )}
 					</div>
 				}
 			</div>

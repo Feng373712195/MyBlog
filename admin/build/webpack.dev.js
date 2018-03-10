@@ -37,7 +37,13 @@ module.exports = merge(webpackBaseConfig,{
             'react-hot-loader/patch',
             `webpack-hot-middleware/client?http://localhost:${config.dev.port}/`,
             'jquery/dist/jquery.min.js'
-        ]
+        ],
+        semantic:[
+            'eventsource-polyfill',
+            'react-hot-loader/patch',
+            `webpack-hot-middleware/client?http://localhost:${config.dev.port}/`,
+            path.resolve(config.rootDirPath,'semantic/dist/semantic.min.js')
+        ] 
     },
     output:{
         path: outputPath,
@@ -46,7 +52,25 @@ module.exports = merge(webpackBaseConfig,{
     },
     module:{
         rules:[
-            
+            {
+                test:/\.(js|jsx)/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                      loader: 'babel-loader',
+                      query:{
+                        "presets": ["es2015","react"],
+                        //等转移到webapck-dev.js
+                        "plugins": ["react-hot-loader/babel"],
+                        "env": {
+                            "production":{
+                              "preset":["react-optimize"]
+                            }
+                          }
+                      }
+                    }
+                  ]       
+            }
         ]
     },
     devServer:{

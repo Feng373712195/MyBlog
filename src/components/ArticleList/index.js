@@ -63,9 +63,9 @@ class articleList extends Component{
 
     render(){
 
-        let Back = this.props.back && <div onClick={this.props.back.bind(this)} class="back">返回</div>
+        let Back = this.props.back && <div onClick={this.props.back.bind(this)} className="back">返回</div>
         let ArticleList  = this.state.articles.map( article =>
-                                <ArticleItem article={article} showArticle={this.showArticle.bind(this)} ></ArticleItem>
+                                <ArticleItem key={article._id} article={article} showArticle={this.showArticle.bind(this)} ></ArticleItem>
                            )
 
         return(

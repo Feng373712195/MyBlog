@@ -53,7 +53,7 @@ class MenuList extends Component{
 		return (
 			<div className="ui vertical menu menu-list">
 				{menulists.map((list)=>
-					<NavLink  onClick={list.key === 'back'?this.backHome.bind(this):()=>{}} key={list.key} className={"item "+ (list.disable?"disable":"") } to={list.link} activeClassName={list.active} >
+					<NavLink key={list.key} onClick={list.key === 'back'?this.backHome.bind(this):()=>{}} key={list.key} className={"item "+ (list.disable?"disable":"") } to={list.link} activeClassName={list.active} >
 						<span>{list.name}</span>
 					</NavLink>
 				)}

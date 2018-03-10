@@ -4,23 +4,6 @@ import ReactDOM from 'react-dom';
 import Lables from '../../components/Lables'
 import Modal from '../../components/Moadl'
 
-function removeAtricleHandle(lable){
-
-	fetch('http://localhost:8080/lable/removeLable', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body:JSON.stringify({lable})
-	})
-	.then(res => {return res.json()})
-	.then(body => {
-		if(body.code === 0) 
-			this.refs.lables.loadLables();
-	})
-}
-
-
 class Label extends Component{
 
 	constructor(){
@@ -34,9 +17,27 @@ class Label extends Component{
 		}
 	}
 
+	removeAtricleHandle(lable){
+
+		fetch('/lable/removeLable', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body:JSON.stringify({lable})
+		})
+		.then(res => {return res.json()})
+		.then(body => {
+			if(body.code === 0) 
+				this.refs.lables.loadLables();
+		})
+	}
+
 	removeBtn(lable){
 		
-		this.setState({
+		const that = this;
+
+		that.setState({
 
 			modalData:{
 				modalHead:'删除提示?',	
@@ -49,7 +50,7 @@ class Label extends Component{
 					{
 						text:"确定",
 						class:"ui positive right button",
-						handle:removeAtricleHandle.bind(this,{lable})
+						handle:that.removeAtricleHandle.bind(that,{lable})
 					}
 				]	
 			}

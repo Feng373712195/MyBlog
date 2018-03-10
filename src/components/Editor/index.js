@@ -209,7 +209,6 @@ class Editor extends Component{
 
 	}
 	
-
 	async updateArticle(){	
 		
 			let update = {
@@ -350,14 +349,14 @@ class Editor extends Component{
 		}
 
 		let Lables = this.state.articleLabels.map( (label,index)=>{
-						return	<div className="ui label large">
+						return	<div key={label} className="ui label large">
 									<span>{label}</span>
 									<i onClick={this.removeLabel.bind(this,index)} className="deleteIcon">X</i>
 								</div>
 					})
 
 		let Files = this.state.articleFiles.map((file,index) =>{
-						return <div className="file ui label large">
+						return <div key={file.name} className="file ui label large">
 									<span className="file-name">{file.name}</span>
 									<span className="file-size">{`${(parseInt(file.size/1024)).toLocaleString('en-US')}KB`}</span>
 									{/* <span onClick={this.removeFile.bind(this,index)} className="file-del">X</span> */}
@@ -394,7 +393,7 @@ class Editor extends Component{
 						</div>
 
 						<div className="ui right labeled left icon input">
-							<i class="tags icon"></i>
+							<i className="tags icon"></i>
 							<input className="label-text" type="text" placeholder="输入标签" />
 							<a onClick={this.addLable.bind(this)} className="ui tag label">
 								添加标签

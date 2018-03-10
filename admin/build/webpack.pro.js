@@ -23,7 +23,7 @@ module.exports = merge(webpackBaseConfig,{
     entry:{
         home:path.join(config.rootDirPath,'./src/js/home.js'),
         manage:path.join(config.rootDirPath,'./src/js/manage.js'),
-        vendor:semanticComponts.concat(['react','react-dom','react-router-dom','whatwg-fetch','jquery/dist/jquery.min.js'])
+        vendor:semanticComponts.concat(['react','react-dom','react-router-dom','jquery/dist/jquery.min.js']),
     },
     output:{
         path: outputPath,
@@ -33,20 +33,35 @@ module.exports = merge(webpackBaseConfig,{
     },
     module:{
         rules:[
-            
+            {
+                test:/\.(js|jsx)/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                      loader: 'babel-loader',
+                      options: {
+                        presets: ['env']
+                      }              
+                    }
+                  ]       
+            }
         ]
     },
     devtool: 'false',
     plugins:[
+        // new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.CommonsChunkPlugin(
             {
-                name: 'vendor', 
-                filename: 'vendor.min.js'
+                name: 'vendor',
+                filename: 'vendor.min.js',
             }
         ),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-              warnings: false
+              warnings: false,
+              /*remove console*/
+              drop_debugger: true,  
+              drop_console: true  
             }
         }),
         new HtmlWebpackPlugin({

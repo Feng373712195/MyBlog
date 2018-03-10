@@ -10,25 +10,6 @@ module.exports = {
     module:{
         rules:[
             {
-                test:/\.(js|jsx)/,
-                exclude: /node_modules/,
-                use: [
-                    {
-                      loader: 'babel-loader',
-                      query:{
-                        "presets": ["es2015","react"],
-                        //等转移到webapck-dev.js
-                        "plugins": ["react-hot-loader/babel"],
-                        "env": {
-                            "production":{
-                              "preset":["react-optimize"]
-                            }
-                          }
-                      }
-                    }
-                  ]       
-            },
-            {
                 test: /\.css$/,                
                 use:ExtractTextPlugin.extract({
                     fallback: "style-loader",
