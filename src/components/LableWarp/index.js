@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 
 import Lables from '../Lables'
 import ArticleList from '../ArticleList'
+import emitter from '../../../models/ev'
+
+import './lablewarp.scss'
 
 class LabelWarp extends Component{
 
@@ -16,21 +19,18 @@ class LabelWarp extends Component{
 	}
 
 	LableController(articles,isShow){
-		this.setState({
-			articles:articles,
-			showArticleList:isShow
-		})
+		emitter.emit("callArticlesList",{articles} )
     }
     
     render(){
         return(
             <div className='lable-warp'>
-                {
+                {/* {
 					this.state.showArticleList?
 					<ArticleList articles={this.state.articles} back={this.LableController.bind(this,[],false)} ></ArticleList>
-					:
+					: */}
 					<Lables LableController={this.LableController.bind(this)} ></Lables>
-				}
+				{/* } */}
             </div>
         )
     }

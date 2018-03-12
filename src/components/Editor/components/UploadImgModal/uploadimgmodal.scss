@@ -1,0 +1,29 @@
+.uploadImg-modal{
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    border:1px solid #ddd;
+    transform: translate(-50%,-50%);
+    padding:20px;
+    background:#fff;
+    overflow: hidden;
+    z-index: 99;
+    .active{
+        color:red;
+    }
+    .close{
+        cursor: pointer;
+    }
+    .tips{
+        margin-left:20px;
+        font-size:14px;
+        font-weight:bold;
+    }
+    .input-box{
+        margin-top:10px;
+    }
+    button{
+        margin:10px 0 0 0 !important;
+        width: 100%;
+    }
+}

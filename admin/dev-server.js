@@ -1,14 +1,18 @@
-const { dbClient,redisClient } = require('./db')
+
 const koa = require('koa')
+const convert = require('koa-convert')
 const sever = require('koa-static')
 const view = require('koa-view')
 const error = require('koa-onerror')
 const bodyParser = require('koa-bodyparser');
 const { devMiddleware, hotMiddleware } =  require('koa-webpack-middleware')
 const path = require('path')
-
 const webpack = require('webpack');
+
+const { dbClient,redisClient } = require('./db')
 const config = require('./config');
+const Store = require("./../models/store");
+
 let webpackConfig = require(`./build/webpack.dev.js`);
 let compiler = webpack(webpackConfig); 
 
@@ -38,6 +42,7 @@ app.use(devMiddleware(compiler,
     }
 ))
 
+
 app.use(hotMiddleware(compiler,{
     reload:true 
 }))
@@ -66,6 +71,8 @@ app.listen(port,() => {
     console.log(`${process.env.NODE_ENV}`)
     console.log(`open ${port}`);
 })
+
+
 
 dbClient.on('error',(err)=> console.error(`MongoDB 链接错误:${err}`) )
 dbClient.once('open',console.log.bind(console,'MongoDB 链接成功！') )

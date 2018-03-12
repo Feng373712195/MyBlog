@@ -1,4 +1,5 @@
 const { dbClient,redisClient } = require('./db')
+const config = require('./config');
 const koa = require('koa')
 const sever = require('koa-static')
 const view = require('koa-view')
@@ -6,14 +7,11 @@ const error = require('koa-onerror')
 const bodyParser = require('koa-bodyparser');
 const path = require('path')
 
-const config = require('./config');
-
 // default port 
-let port = process.env.PORT || config.dev.port
-
+let port = process.env.PORT || config.pro.port
 let app = new koa();
 
-error(app)
+error(app);
 
 //总路由
 app.use(bodyParser());
@@ -21,7 +19,6 @@ const router = require('../router/main');
 app.use( sever(path.resolve(config.rootDirPath,'dist')) )
 app.use( view(path.resolve(config.rootDirPath,'src/html'),{extensions:'html'}) )
 app.use(router.routes(),router.allowedMethods());
-
 /* 处理 404 */
 const handler = async (ctx, next) => {
   try {
@@ -33,9 +30,7 @@ const handler = async (ctx, next) => {
     };
   }
 };
-
 app.use(handler);
-
 app.use( async (ctx,next)=>{
     ctx.throw(404);
 })

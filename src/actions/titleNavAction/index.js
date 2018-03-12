@@ -2,17 +2,17 @@
 * action 类型
 */
 
-export const SHOW_TITLENAV = 'SHOW_TITLENAV';
-export const HIDE_TITLENAV = 'HIDE_TITLENAV';
+export const CHANGE_TITLENAV = 'CHANGE_TITLENAV';
+export const SET_TITLENAVACTIVE = 'SET_TITLENAVACTIVE';
 
 /*
 * action 创建函数
 */
 
-export function showNav(navObj){
-	return { type:SHOW_TODO , navObj }
+export function changeNavData(data){
+	return { type:CHANGE_TITLENAV , data }
 }
 
-export function hidnNav(navObj={}){
-	return { type:HIDE_TODO , navObj }
+export function setNavActive(oldindex,newindex){
+	return { type:SET_TITLENAVACTIVE ,oldindex,newindex }
 }

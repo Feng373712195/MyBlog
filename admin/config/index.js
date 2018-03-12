@@ -2,12 +2,19 @@ module.exports = {
     pro:{
         domain:'http://',
         path:'193.112.100.209:8080',
-        port:80
+        port:8080
     },
     dev:{
         domain:'http://',
         path:'localhost:8080',
         port:8080
+    },
+    mongodb:{
+        db:'blog',
+        prot:27017
+    },
+    redis:{
+        prot:6379
     },
     rootDirPath:process.cwd()
 }

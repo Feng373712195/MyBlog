@@ -6,7 +6,7 @@ const busboy = require('busboy')
 const drafts = require('../models/manage/drafts')
 
 const config = require('../admin/config')
-const { uploadFile,removeUploadFile } = require('../src/js/upload')
+const { uploadFile,removeUploadFile } = require('../models/upload')
 
 const Drafts = new drafts();
 

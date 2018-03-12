@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import ArticleItem from './components/ArticleItem'
 import ArticleContent from '../ArticleContent'
 
-import { readAtricle } from '../../js/fetch-atricle'
+import { readAtricle } from '../../js/mfetch'
 
 class articleList extends Component{
 
@@ -22,7 +22,7 @@ class articleList extends Component{
                 article:article,
                 showArticle:isShow
             },()=>{
-                readAtricle()
+                readAtricle(article._id)
             })
         }
     }
@@ -69,7 +69,7 @@ class articleList extends Component{
                            )
 
         return(
-            <div>
+            <div className="articleList-warp">
                 {   
                     this.state.showArticle?
                     <ArticleContent article={this.state.article}  showArticle={this.showArticle.bind(this)} ></ArticleContent>

@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { removeAtricle } from '../../../js/fetch-atricle'
+import { removeAtricle } from '../../../js/mfetch'
 
 import './operateItem.scss'
 

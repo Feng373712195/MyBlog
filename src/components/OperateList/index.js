@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { getAtricle,removeAtricle } from '../../js/fetch-atricle'
-import { getDraft,removeDraft } from '../../js/fetch-draft'
+import { getAtricle,removeAtricle } from '../../js/mfetch'
+import { getDraft,removeDraft } from '../../js/mfetch'
 
 import Modal  from '../Moadl'
 import OperateItem from './OperateItem'

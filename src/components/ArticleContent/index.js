@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { markdown } from 'markdown';
+
+import emitter from '../../../models/ev'
 import config from '../../../admin/config'
 
 import './articleContent.scss'
@@ -10,35 +12,37 @@ class articleContent extends Component{
     constructor(){
         super()
         this.state = {
-            article:{},
-            titleNav:[]
+            article:{}
         }
     }
 
     componentWillMount(){ 
         this.setState({
             article:this.props.article
-            
         })
     }
 
     componentDidMount(){
-        this.setState({
-            titleNav:this.getNavObj($('.article-body'))
-        })
+        emitter.emit("callNavData",this.getNavObj($('.article-body')))
+    }
+
+    componentWillUnmount(){
+        emitter.emit("callNavData",[])
     }
 
     getNavObj(dom){
 
         let titleNav = []; 
 
-        $('h2,h3',dom).map((idx,ele)=>{
+        $('h1,h2,h3',dom).map((idx,ele)=>{
             // console.log(ele.innerText);
             //避免标题相同，用idx作为key
             titleNav.push({
                 name:ele.innerText,
                 scrollTop:ele.getBoundingClientRect().top,
-                tag:ele.tagName
+                boxH:ele.clientHeight,
+                tag:ele.tagName,
+                active:false
             })
         })
 
@@ -64,13 +68,18 @@ class articleContent extends Component{
                                </a>
                     })
 
+        console.log(this.state.article.content) 
+        let regexp = new RegExp(`/articles/uploadImg/_id/(.*)`,'g')
+        let content = this.state.article.content.replace(regexp,`/articles/uploadImg/${this.state.article._id}/$1`)
+        
         return(
+
            <article className="article-warp">
                 <div className="article-back" onClick={this.props.showArticle.bind(this,false,{})} > &lt;&lt;文章列表</div>
                 <div className="article-box">
-                    <div className="article-title">{this.state.article.title}</div>
+                    <div className="article-title">{ this.state.article.title}</div>
                     <div className="article-lable">{Lables}</div>
-                    <div className="article-body" dangerouslySetInnerHTML={{__html:markdown.toHTML(this.state.article.content) }} ></div>
+                    <div className="article-body" dangerouslySetInnerHTML={ {__html:markdown.toHTML(content) }} ></div>
                     <div className="article-flies">
                         { this.state.article.files.length != 0 && <h1 class="ui header">附件</h1> }
                         {Files}

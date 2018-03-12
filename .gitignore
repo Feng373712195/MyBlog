@@ -1,5 +1,7 @@
 /node_modules
 /uploadfiles
+/uploadImg
+/cacheuploadImg
 /semantic
 /dist
 /src/img/ME.png

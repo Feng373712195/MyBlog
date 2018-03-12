@@ -1,12 +1,22 @@
 import { combineReducers } from 'redux'
-import { SHOW_TITLENAV,HIDE_TITLENAV } from '../actions/titleNavAction'
+import { CHANGE_TITLENAV,SET_TITLENAVACTIVE } from '../actions/titleNavAction'
 
-function visibilityNav(state = {},action){
+function changeTitleNav(state = [],action){
+
+	console.log(action.type)
+
 	switch(action.type){
-		case SHOW_TITLENAV:
-            return action.navobj
-        case HIDE_TITLENAV:
-            return state
+		case CHANGE_TITLENAV:
+			return action.data
+		case SET_TITLENAVACTIVE:
+			/** 第一次 */
+			if(action.oldindex === action.newindex){
+				state[action.newindex].active = true;
+				return state
+			}
+			state[action.oldindex].active = false;
+			state[action.newindex].active = true;
+			return state
 		default:
 			return state
 	}
@@ -20,7 +30,7 @@ function articles(state = [],action){
 }
 
 const todoApp = combineReducers({
-	visibilityNav,
+	changeTitleNav,
 	articles
 })
 

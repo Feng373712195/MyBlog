@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux'
  
 import './user-box.scss'
-import { setTimeout } from 'timers';
 import  Moadl from '../../../Moadl'
 
 function reducer(state = {}, action) {
@@ -19,7 +18,7 @@ function reducer(state = {}, action) {
 
 let store = createStore(reducer,{});
 
-
+/** 登陆弹出框组件 */
 class LoginModal extends Component{
 
 	constructor() {
@@ -27,7 +26,10 @@ class LoginModal extends Component{
 		this.state = { 
 			showAdminLoginBox: false,
 			loginLoading:false,
-			loginFlash:''
+			loginFlash:{
+				color:'',
+				text:''
+			}
 		}	
 	}
 	
@@ -49,7 +51,11 @@ class LoginModal extends Component{
 		.then(function(){
 			if( !$('.modals').hasClass('active') ){				
 				that.setState({
-					showAdminLoginBox:false
+					showAdminLoginBox:false,
+					loginFlash:{
+						color:'',
+						text:''
+					}
 				})
 			}
 		})
@@ -61,7 +67,7 @@ class LoginModal extends Component{
 			type: 'showALB',
 			s: true
 		})
-
+		
 		let state = store.getState();
 		this.setState({
 			showAdminLoginBox:state
@@ -83,6 +89,37 @@ class LoginModal extends Component{
 
 	async adminLogin(){
 		var that = this;
+		var username =  $("input[name='adminName']").val();
+		var password =   $("input[name='passWord']").val();
+
+		var xssExpReg = new RegExp(/^[^#%&*\/|:<>?\"]*$/,'g') 
+
+		if( username.length  === 0  ){
+			that.setState({
+				loginFlash:{color:'red',text:'请输入Name'}
+			})
+			return;
+		}
+		if( password.length  === 0 ){
+			that.setState({
+				loginFlash:{color:'red',text:'请输入PassWorld'}
+			})
+			return;
+		}
+
+		if( !xssExpReg.test(username) ){
+			that.setState({
+				loginFlash:{color:'red',text:' Name 不得含有 # % & * \ / | : < > ? \" '}
+			})
+			return;
+		}
+
+		// if( !xssExpReg.test(password) ){
+		// 	that.setState({
+		// 		loginFlash:{color:'red',text:' PassWorld 不得含有 # % & * \ / | : < > ? \" '}
+		// 	})
+		// 	return;
+		// }
 
 		that.setState({
 			loginLoading:true
@@ -99,7 +136,10 @@ class LoginModal extends Component{
 				setTimeout(()=>{
 				  that.setState({
 					loginLoading:false,
-					loginFlash:'登陆成功'
+					loginFlash:{
+						color:'green',
+						text:'登陆成功'
+					}
 				  },function(){
 					 res();	
 				  })
@@ -124,6 +164,7 @@ class LoginModal extends Component{
 	}
 
 	render(){
+
 		return (
 			
 			<div className="ui modal login-modal">
@@ -152,8 +193,8 @@ class LoginModal extends Component{
 							      </div>
 							    </div>
 						 	</div>
-						 	<div className={"ui button " + (this.state.loginLoading?"loading":"") } onClick={this.adminLogin.bind(this)} tabindex="0">Submit</div>
-							<span className="login-flash">{this.state.loginFlash}</span>
+						 	<div className={"ui button " + (this.state.loginLoading?"loading":"") } onClick={this.adminLogin.bind(this)}>Submit</div>
+							<span className="login-flash" style={{color:this.state.loginFlash.color}} >{this.state.loginFlash.text}</span>
 						</div>
 						:
 						<div className="login-btns">
@@ -178,6 +219,7 @@ class LoginModal extends Component{
 	}
 }
 
+/** 展示用户组件 */
 class UserTipe extends Component{
 	
 	componentWillReceiveProps(nextProps, nextState){
@@ -228,6 +270,7 @@ class UserTipe extends Component{
 	}
 }
 
+/** 用户模块容器组件 */
 class UserBOX extends Component{
 	
 	constructor() {

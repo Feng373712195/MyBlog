@@ -10,7 +10,8 @@ class articleItem extends Component{
     render(){
         let getArticleContent = ()=>{
             let div = document.createElement('div');
-            div.innerHTML =  markdown.toHTML(this.props.article.content);
+            /**列表时把 把图片src转成data-src  不加载图片*/
+            div.innerHTML =  markdown.toHTML(this.props.article.content).replace(/src\=/g,'data-src=');
             return div.innerText
         }
 

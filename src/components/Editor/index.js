@@ -10,21 +10,28 @@
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
-import './editor.scss'
-
-import { funGetSelected,funTextAsTopic }  from './rang.js'
-import { getAtricle,saveAtricle,updateAtricle,uploadFile } from '../../js/fetch-atricle'
-import { getDraft,saveDraft,updateDraft,uploadDraftFile } from '../../js/fetch-draft'
-
+/*引入防止xss模块 对输入内容转义*/
+import xss from 'xss'
 import { markdown } from 'markdown';
+
+import UploadImgModal from './components/UploadImgModal'
+import './editor.scss'
+import { funGetSelected,funTextAsTopic }  from './rang.js'
+import { getAtricle,saveAtricle,updateAtricle,uploadFile,uploadImg } from '../../js/mfetch'
+import { getDraft,saveDraft,updateDraft,uploadDraftFile } from '../../js/mfetch'
 import { getNowFormatDate } from '../../js/uilt'
 
 class Editor extends Component{
 
 	constructor(){
-        super()
-		this.state = { 
+		super()
+		
+		this.timeStamp = +new Date()
+
+		this.state = {
+			/* 生成一个时间戳*/ 
+			timeStamp:this.timeStamp,
+			showUploadImgModal:false,
 			showPreview:false,
 			articleId:'',
             articleTitle:'',
@@ -82,7 +89,7 @@ class Editor extends Component{
 			return;
 		}
 		
-		articleLabels.push($('.label-text').val());
+		articleLabels.push( xss($('.label-text').val()) );
 		this.setState({
 			articleLabels:articleLabels
 		},()=>{
@@ -146,8 +153,11 @@ class Editor extends Component{
 				this.editArticle();
 				break;
 			case 'picture':
-				articlesbox.value += `![](http://)`
-				this.editArticle();
+				// articlesbox.value += `![](http://)`
+				// this.editArticle();
+				this.setState({
+					showUploadImgModal:true
+				})
 				break;
 			case 'video':
 				articlesbox.value += `!![](http://)`
@@ -174,9 +184,14 @@ class Editor extends Component{
 
 	async publishArticle(type){		
 
+		let regexp = new RegExp(`/articles/cacheuploadImg/${this.state.timeStamp}/`,'g')
+
+		console.log( `/articles/cacheuploadImg/${this.state.timeStamp}/` )
+
+		
 		let query = {
-			title:$('#articleTitle').val(),
-			content:$('#articleContent').val(),
+			title:xss($('#articleTitle').val()),
+			content:xss($('#articleContent').val().replace(regexp,'/articles/uploadImg/_id/')),
 			lables:this.state.articleLabels,
 			files:this.state.articleFiles
 		}
@@ -201,6 +216,11 @@ class Editor extends Component{
 			})
 			.catch( e => { alert('保存失败，请稍后再试') } )
 		
+		//上传图片
+		await uploadImg(this.state.timeStamp,atricleid).
+			  then( data => console.log(data))
+			  .catch( err => console.log(err) )
+		
 		//发布
 		if( files.length > 0 ){
 			await uploadFileHandle('/articles/upload',atricleid, $('.attachment')[0].files)
@@ -212,8 +232,8 @@ class Editor extends Component{
 	async updateArticle(){	
 		
 			let update = {
-				title:$('#articleTitle').val(),
-				content:$('#articleContent').val(),
+				title:xss($('#articleTitle').val()),
+				content:xss($('#articleContent').val()), 
 				lables:this.state.articleLabels,
 				files:this.state.articleFiles,
 				lasttime:getNowFormatDate()
@@ -241,6 +261,7 @@ class Editor extends Component{
 			
 			let oldUploadFile = await getAtricle({_id:this.state.articleId}).then( data => { return data[0].files } )
 
+
 			if( JSON.stringify( oldUploadFile ) != JSON.stringify( this.state.articleFiles) ){
 				await uploadFileHandle('/articles/updateUpload',this.state.articleId, $('.attachment')[0].files)
 			}
@@ -261,6 +282,21 @@ class Editor extends Component{
 	selectFiles(){
 		let files = [...($('.attachment')[0].files)].map( file =>{ return {name:file.name,size:file.size} } )
 		this.setState({articleFiles:files})
+	}
+
+	/** 获取上传图片地址 */
+	getImgURL(url){
+		let articlesbox = $('.articlesbox')[0];
+
+		console.log(url)
+		funTextAsTopic(articlesbox,`![](${url})`)
+	}
+
+	/** 关闭上传图片弹出框 */
+	closeModal(){
+		this.setState({
+			showUploadImgModal:false
+		})
 	}
 
 	render(){
@@ -366,6 +402,8 @@ class Editor extends Component{
 		return (
 				<form className="ui form">
 
+					<UploadImgModal isshow={this.state.showUploadImgModal} timeStamp={this.state.timeStamp} closeModal={this.closeModal.bind(this)} setImgURL={this.getImgURL.bind(this)} />
+					
 					<div className="field">
 						<label>文章标题</label>
 						<input id="articleTitle"  type="text" placeholder="文章标题..." defaultValue={this.props.articleTitle} />

@@ -1,11 +1,12 @@
 import React,{ Component } from 'react'
 import ReactDom from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
-
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
-import App from '../containers/App'
+import config from '../../admin/config'
+
+import App from '../../src/containers/HomeApp'
+
 
 import '../scss/home.scss'
 import '../../semantic/dist/semantic.min.css'
@@ -25,11 +26,9 @@ console.log(store);
 
 ReactDom.render((
     <AppContainer >    
-        <Router>
             <Provider store={ store } >
                 <App></App>
             </Provider>
-        </Router>
     </AppContainer>
 ),$('.app')[0])
 
