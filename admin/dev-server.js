@@ -11,7 +11,6 @@ const webpack = require('webpack');
 
 const { dbClient,redisClient } = require('./db')
 const config = require('./config');
-const Store = require("./../models/store");
 
 let webpackConfig = require(`./build/webpack.dev.js`);
 let compiler = webpack(webpackConfig); 
@@ -47,6 +46,12 @@ app.use(hotMiddleware(compiler,{
     reload:true 
 }))
 
+
+app.use((ctx,next)=>{
+    console.log(ctx.req.url);
+    next();
+})
+
 /* 处理 404 */
 const handler = async (ctx, next) => {
   try {
@@ -60,7 +65,6 @@ const handler = async (ctx, next) => {
 };
 
 app.use(handler);
-
 app.use( async (ctx,next)=>{
     ctx.throw(404);
 })

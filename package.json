@@ -70,7 +70,6 @@
     "gulp-webpack": "^1.5.0",
     "html-webpack-plugin": "^2.30.1",
     "image-loader": "^0.0.1",
-    "ioredis": "^3.2.2",
     "jQuery": "^1.7.4",
     "jquery": "^3.2.1",
     "koa": "^2.4.1",
@@ -83,6 +82,7 @@
     "koa-static": "^4.0.2",
     "koa-view": "^2.1.1",
     "markdown": "^0.5.0",
+    "marked": "^0.3.17",
     "mongodb": "^2.2.33",
     "mongoose": "^4.13.6",
     "node-fetch": "^1.7.3",
@@ -104,6 +104,8 @@
     "webpack": "^3.8.1",
     "webpack-merge": "^4.1.1",
     "whatwg-fetch": "^2.0.3",
-    "xss": "^0.3.7"
+    "xss": "^0.3.7",
+    "highlight.js": "^9.12.0"
+  
   }
 }

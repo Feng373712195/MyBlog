@@ -1,5 +1,7 @@
 const koa = require('koa');
 const router = require('koa-router');
+const send = require('koa-send')
+const config = require('../admin/config')
 
 let routers = [
     require('./home'),

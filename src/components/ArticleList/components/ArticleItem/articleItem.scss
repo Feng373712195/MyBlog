@@ -22,9 +22,8 @@
         overflow: hidden;
         line-height: 20px; 
         max-height: 40px;
-        overflow: hidden;
     }
-    .article-content::after{
+    .ellipsis::after{
         content: "..."; 
         position: absolute;
         bottom: 0;

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { markdown } from 'markdown';
+
+/*引入markdown */
+import marked  from './../../../models/markdown'
+/*引入高亮风格样式*/
+import 'highlight.js/styles/xcode.css'
 
 import emitter from '../../../models/ev'
 import config from '../../../admin/config'
@@ -79,7 +83,7 @@ class articleContent extends Component{
                 <div className="article-box">
                     <div className="article-title">{ this.state.article.title}</div>
                     <div className="article-lable">{Lables}</div>
-                    <div className="article-body" dangerouslySetInnerHTML={ {__html:markdown.toHTML(content) }} ></div>
+                    <div className="article-body" dangerouslySetInnerHTML={ {__html:marked(content) }} ></div>
                     <div className="article-flies">
                         { this.state.article.files.length != 0 && <h1 class="ui header">附件</h1> }
                         {Files}

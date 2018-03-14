@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { markdown } from 'markdown'
+import  markdown from './../../../../../models/markdown'
 
 import './articleItem.scss' 
 
@@ -8,17 +8,29 @@ import './articleItem.scss'
 class articleItem extends Component{
 
     render(){
+
         let getArticleContent = ()=>{
             let div = document.createElement('div');
-            /**列表时把 把图片src转成data-src  不加载图片*/
-            div.innerHTML =  markdown.toHTML(this.props.article.content).replace(/src\=/g,'data-src=');
+
+            div.innerHTML =  markdown(this.props.article.content)
+                             /**列表时把 把图片src转成data-src  不加载图片*/ 
+                            .replace(/src\=/g,'data-src=')
+                            /**过滤换行符 回车符*/
+                            .replace(/\n\r/g,'')
+                            /**文章列表只显示400个字 */
+                            .substring(0,400);
             return div.innerText
         }
 
+        const articleContent = getArticleContent();
+        let isEllipsis = articleContent.length>=200?true:false; 
+
+        console.log(`length${articleContent.length} isEllipsis${isEllipsis}`)
+
         return(
-            <article className="article-list">
+            <article className="article-list" >
                 <h2 onClick={this.props.showArticle.bind(this,true,this.props.article)} className="article-title">{this.props.article.title}</h2>
-                <div className="article-content">{ getArticleContent() }</div>
+                <div className={`article-content ${isEllipsis?'ellipsis':''}`}>{ articleContent }</div>
                 <div className="artice-footer-warp">
                     <p className="artice-footer">
                         <span className="artice-author l">作者：{this.props.article.author}</span>

@@ -12,7 +12,12 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 /*引入防止xss模块 对输入内容转义*/
 import xss from 'xss'
-import { markdown } from 'markdown';
+// import { markdown } from 'markdown';
+
+/*引入markdown */
+import marked  from './../../../models/markdown'
+/*引入高亮风格样式*/
+import 'highlight.js/styles/xcode.css'
 
 import UploadImgModal from './components/UploadImgModal'
 import './editor.scss'
@@ -38,7 +43,8 @@ class Editor extends Component{
 			articleContent:'',
             articleLabels:[],
             articleFiles:[]
-        }
+		}
+		  
     }
 
     componentWillMount(){
@@ -221,7 +227,8 @@ class Editor extends Component{
 			  then( data => console.log(data))
 			  .catch( err => console.log(err) )
 		
-		//发布
+		
+		// 上传附件
 		if( files.length > 0 ){
 			await uploadFileHandle('/articles/upload',atricleid, $('.attachment')[0].files)
 				  .catch( e => { alert('上传附件失败，请重新上传') }  )
@@ -420,7 +427,7 @@ class Editor extends Component{
 
 						<div className={`preview-box ${this.state.showPreview?'':'hidden'}`}>
 							<div className="preview-head">预览模式</div>
-							<div className="preview-content" dangerouslySetInnerHTML={{__html:markdown.toHTML(this.state.articleContent) }} ></div>
+							<div className="preview-content" dangerouslySetInnerHTML={{__html:marked(this.state.articleContent) }} ></div>
 						</div>
 					</div>
 

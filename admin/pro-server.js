@@ -20,6 +20,7 @@ app.use( sever(path.resolve(config.rootDirPath,'dist')) )
 app.use( view(path.resolve(config.rootDirPath,'src/html'),{extensions:'html'}) )
 app.use(router.routes(),router.allowedMethods());
 /* 处理 404 */
+
 const handler = async (ctx, next) => {
   try {
     await next();

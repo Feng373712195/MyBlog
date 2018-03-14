@@ -101,7 +101,7 @@ export default class TitleNav extends Component{
         const { titleNav } = this.state;
          //使用visibilty隐藏 减少reflows
         const Navs =   titleNav.map((title,idx) =>{
-                            return <li className={title.taga} style={{color:title.active?'red':'#000'}} onClick={this.scrollPage.bind(this,title.scrollTop,idx)} key={idx}>
+                            return <li className={title.tag} style={{color:title.active?'red':'#000'}} onClick={this.scrollPage.bind(this,title.scrollTop,idx)} key={idx}>
                                         {title.name}
                                     </li>
                         })
