@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
 import './about.scss'
 
 class About extends Component{
-	
+
+	/**只渲染一次*/
+	shouldComponentUpdate(nextProp,nextState){
+		return false;
+	}
+
 	render(){
 
 		return (

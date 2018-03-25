@@ -74,7 +74,15 @@ class OperateList extends Component{
 	componentWillMount(){
 		this.loadAtricles(this.props.type)
 	}
-    
+	
+	shouldComponentUpdate(nextProp,nextState){
+		// console.log(`OperateList nextProp${JSON.stringify(nextProp)} prop${JSON.stringify(this.props)} nextState${JSON.stringify(nextState)}  state${JSON.stringify(this.state)} `)
+
+		if( !$.isEmptyObject(nextProp) || nextState){
+            return true;
+        }
+        return false;
+    }
     
 	removeBtn(title,_id){
     
@@ -119,6 +127,7 @@ class OperateList extends Component{
 
     render(){
 
+		console.log('我是 OperateList 我被Render')
 
 		return (
 			<div>

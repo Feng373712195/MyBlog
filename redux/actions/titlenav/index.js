@@ -8,11 +8,10 @@ export const SET_TITLENAVACTIVE = 'SET_TITLENAVACTIVE';
 /*
 * action 创建函数
 */
-
-export function changeNavData(data){
+export const changeNavData = (data) =>{
 	return { type:CHANGE_TITLENAV , data }
 }
 
-export function setNavActive(oldindex,newindex){
+export const setNavActive = (oldindex,newindex)=>{
 	return { type:SET_TITLENAVACTIVE ,oldindex,newindex }
 }

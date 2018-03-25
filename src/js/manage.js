@@ -3,11 +3,9 @@ import React,{ Component } from 'react'
 import ReactDom from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import { AppContainer } from 'react-hot-loader'
-
 import '../scss/home.scss'
 import '../../semantic/dist/semantic.min.css'
-import '../../semantic/dist/semantic.min.js'
+// import '../../semantic/dist/semantic.min.js'
 
 import LeftMenu from '../components/ManageLeftMenu'
 import Content from  '../containers/ManageContent'
@@ -19,18 +17,12 @@ import './iconfont.js'
 import 'whatwg-fetch'
 
 
-ReactDom.render((
-    <AppContainer >    
-        <Router>
-            <div>
-                <LeftMenu />
-                <Content />
-            </div>
-        </Router>
-    </AppContainer>
+ReactDom.render(( 
+    <Router>
+        <div>
+            <LeftMenu />
+            <Content />
+        </div>
+    </Router>
 
 ),$('.app')[0])
-
-if (module && module.hot) {
-    module['hot'].accept()  
-}

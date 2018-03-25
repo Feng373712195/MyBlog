@@ -63,8 +63,8 @@ class Articles{
         
     }
 
-    find(query){
-        return articlesModel.find(query).exec()
+    find(query,skip,limlt){
+        return articlesModel.find(query).skip(skip?skip:0).limit(limlt?limlt:10).sort({_id:1}).exec()
                .then(  data => { return {code:0,data:data} } )
                .catch( err => { return {code:-1,eroor:err} } )
     }

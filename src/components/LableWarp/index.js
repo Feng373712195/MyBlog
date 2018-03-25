@@ -1,40 +1,36 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
 import Lables from '../Lables'
-import ArticleList from '../ArticleList'
-import emitter from '../../../models/ev'
+import { connect } from 'react-redux'
+import { cleanLables } from '../../../redux/actions/lable'
 
 import './lablewarp.scss'
 
-class LabelWarp extends Component{
-
-    constructor(){
-		super()
-
-		this.state = {
-			articles:[],
-			showArticleList:false
-		}
-	}
-
-	LableController(articles,isShow){
-		emitter.emit("callArticlesList",{articles} )
+class LabelWarp extends Component{    
+    
+    componentWillUnmount(){
+        let { dispatch } = this.props;
+        dispatch( cleanLables() );
     }
     
     render(){
+        
+        let { selectlable } = this.props;
+
         return(
-            <div className='lable-warp'>
-                {/* {
-					this.state.showArticleList?
-					<ArticleList articles={this.state.articles} back={this.LableController.bind(this,[],false)} ></ArticleList>
-					: */}
-					<Lables LableController={this.LableController.bind(this)} ></Lables>
-				{/* } */}
+            <div className={`lable-warp ${selectlable?'hidden':''}`}>
+				<Lables></Lables>
             </div>
         )
     }
 
 }
 
-export default LabelWarp;
+function select(state) {
+    console.log(state)
+    return {
+	  selectlable:state.lables.selectlable
+    }
+}
+
+export default connect(select)(LabelWarp)

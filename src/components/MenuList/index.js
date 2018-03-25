@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
 import { NavLink } from 'react-router-dom'
 
 import './menu-list.scss'
 
 class MenuList extends Component{
+
+	shouldComponentUpdate(nextProp,nextState){
+		// console.log(`MenuList nextProp${JSON.stringify(nextProp)} prop${JSON.stringify(this.props)} nextState${JSON.stringify(nextState)}  state${JSON.stringify(this.state)} `)
+		if( !$.isEmptyObject(nextProp) || nextState){
+            return true;
+		}
+        return false;
+    }
 	
 	render(){
+
+		console.log('我是 MenuList 我被Render')
+
 		const menulists = [
 			{
 				name:'首页',

@@ -10,72 +10,51 @@ const config = require('../admin/config')
 const { uploadFile,removeUploadFile } = require('../models/upload')
 
 const Articles = new articles();
-
 const articlesRouter = new router();
 
 
 articlesRouter.post('/articles/save',async(ctx)=>{
-
     let { title,content,lables,files } = ctx.request.body; 
-
     ctx.body = await Articles.save({ title,content,lables,files });
-
 })
 
 articlesRouter.post('/articles/find',async(ctx)=>{
-
-    let { query } = ctx.request.body; 
-
-    ctx.body = await  Articles.find(query)
+    let { query,skip,limit } = ctx.request.body; 
+    ctx.body = await  Articles.find(query,skip,limit)
 })
 
 articlesRouter.post('/articles/remove',async(ctx)=>{
-
     let { query } = ctx.request.body;
-    
     await removeUploadFile(path.join(config.rootDirPath , 'uploadfiles' ),query._id)
           .catch( e => console.log(e) )
-    
     ctx.body = await  Articles.remove(query)
-
 })
 
 articlesRouter.post('/articles/update',async(ctx)=>{
-    
     let { query,update,muilt } = ctx.request.body;
-
     ctx.body = await  Articles.update(query,update,muilt)
-
 })
 
 articlesRouter.post('/articles/read',async(ctx)=>{
-    
     let { _id } = ctx.request.body;
     ctx.body = await  Articles.update({_id},{$inc:{clicks:1}},false)
-
 })
 
 articlesRouter.post('/articles/updateUpload/:id',async(ctx)=>{
-    
     let result = { success: false }
     let serverFilePath = path.join(config.rootDirPath , 'uploadfiles' )
-
     await removeUploadFile(path.join(config.rootDirPath , 'uploadfiles' ),ctx.params.id)
           .catch( e => console.log(e) )
-    
     // 上传文件事件
     result = await uploadFile( ctx, {
       _id:ctx.params.id,
       fileType: 'album', // common or album
       path: serverFilePath
     })
-
     ctx.body = result
-    
 })
 
 articlesRouter.post('/articles/upload/:id',async(ctx)=>{
-    
     let result = { success: false }
     let serverFilePath = path.join(config.rootDirPath , 'uploadfiles' )
     
@@ -104,7 +83,6 @@ articlesRouter.post('/articles/cacheuploadImg/:id',async(ctx)=>{
 
     ctx.body = result
 })
-
 
 articlesRouter.get('/articles/down/:id/:fileName',async(ctx)=>{
     

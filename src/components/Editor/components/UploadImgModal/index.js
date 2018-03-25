@@ -66,6 +66,9 @@ export default class UploadImgModal extends Component{
     }
 
     render(){
+
+        
+
         return(
             <div className="uploadImg-modal" style={{display:this.props.isshow?'block':'none'}} >
                 <i className='close' onClick={ ()=>{ this.initState() }} >X</i>

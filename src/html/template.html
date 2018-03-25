@@ -20,7 +20,7 @@
     <% } %>
 </head>
 <body>
-    <div class="app"></div>
+    <main class="app"></main>
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
         <% if( htmlWebpackPlugin.options.title.match('dev') ){ %>
             <script type="text/javascript" src="http://localhost:8080/dist/js/<%= chunk %>.js"></script>

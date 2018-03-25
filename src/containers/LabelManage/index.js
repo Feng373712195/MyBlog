@@ -17,6 +17,13 @@ class Label extends Component{
 		}
 	}
 
+	shouldComponentUpdate(nextProp,nextState){
+		if( !$.isEmptyObject(nextProp) || nextState){
+            return true;
+        }
+        return false;
+    }
+
 	removeAtricleHandle(lable){
 
 		fetch('/lable/removeLable', {

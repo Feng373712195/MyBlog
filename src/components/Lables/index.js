@@ -1,64 +1,39 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux'
 
 import './lables.scss'
-
+import { getLables,setSelectlable } from '../../../redux/actions/lable'
 import LableOne from './components/LableOne'
 
 class Labels extends Component{
 	
 	constructor(){
-		super()
+		super();
+		this.first = false;
+	}
 
-		this.state = {
-            lables:[]
-		}
-		
-		this.loadLables = ()=>{
-			fetch('/lable/getAllLable', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-					}
-			})
-			.then(res => {return res.json()})
-			.then(body => {
-				if(body.code === 0) 
-				 this.setState({
-				   lables:body.lables
-				 })
-			})
-		}
+	// shouldComponentUpdate(nextProp,nextState){
+	// 	// console.log(`LableOne nextProp${JSON.stringify(nextProp)} prop${JSON.stringify(this.props)} nextState${JSON.stringify(nextState)}  state${JSON.stringify(this.state)} `)
+	// 	if( nextProp.lables == this.props.lables ){
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
-		this.loadLables();
-    }
-    
-    LableHandle(lable){
-
-		fetch(`/articles/find`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-		},
-		body:JSON.stringify({query:{lables:lable}})
-		})
-		.then(res => {return res.json()})
-		.then(body => {
-			if(body.code === 0){
-				this.props.LableController(body.data,true);
-			}
-		})
-    }
-
+	componentWillMount(){
+		const { dispatch } = this.props;
+		dispatch(getLables());
+	}
 
 	render(){
 
-        let Lables =  this.state.lables.map(lable => {
-                         let one = this.props.manage?
-                            <LableOne key={lable} manage="true" removeLable={this.props.removeLable.bind(this)} content={lable}></LableOne>
-                            :
-                            <LableOne key={lable} LableHandle={this.LableHandle.bind(this)} content={lable}></LableOne>
-                         return one
+		console.log('我是 Labels 我被Render')
+
+		const { lables,dispatch } = this.props;
+		
+        let Lables =  lables.map(lable => {
+                         return <LableOne key={lable} content={lable} dispatch={ dispatch } ></LableOne>
                       })
 
 		return (
@@ -69,4 +44,13 @@ class Labels extends Component{
 	}
 }
 
-export default Labels;
+function select(state) {
+	console.log(state)
+    return {
+	  lables:state.lables.lablesReducer,
+	  selectlable:state.lables.selectlable,
+	  lableRelationArticles:state.lables.lableRelationArticles
+    }
+}
+
+export default connect(select)(Labels)
