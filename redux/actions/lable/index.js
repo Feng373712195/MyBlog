@@ -1,5 +1,5 @@
-import { loadLabel,getAtricle } from '../../../src/js/mfetch'
-import { LOADING,LOADEND,CHATH_ERROR,NO_ERROR } from '../global'
+import { loadLabel,getAtricle,removeLabelHandle } from '../../../src/js/mfetch'
+import { LOADING,LOADEND,CHATH_ERROR,NO_ERROR,HIDDEN_MODAL } from '../global'
 /*
 * action 类型
 */
@@ -15,6 +15,7 @@ export const  GET_LABLE_RELATION_ARTICLES = 'GET_LABLE_RELATION_ARTICLES';
 
 export const  CLEAN_LABLE_RELATION_ARTICLES = 'CLEAN_LABLE_RELATION_ARTICLES';
 
+export const REMOVE_LABLE = 'REMOVE_LABLE';
 
 /*
 * action 创建函数
@@ -70,4 +71,19 @@ export const  getLables = () => (dispatch) => {
 
 export const cleanLables = () => {
     return {type:CLEAN_LABEL}
+}
+
+export const removeLable = (lable) => (dispatch) => {
+    dispatch({type:LOADING})
+    removeLabelHandle(lable.lable)
+    .then(()=>{ 
+        dispatch({type:LOADEND})
+        dispatch({type:REMOVE_LABLE,lable})
+        dispatch({type:HIDDEN_MODAL})
+     })
+     .catch((error)=>{
+        dispatch({type:LOADEND})
+        dispatch({type:CHATH_ERROR,error})
+        dispatch({type:HIDDEN_MODAL})
+     })
 }

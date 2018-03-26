@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 import { 
 	GET_SUCCESS_LABEL,
 	CLEAN_LABEL,
+	REMOVE_LABLE,
 	SELECT_LABLE,
 	UNSELECT_LABLE,
 	GET_LABLE_RELATION_ARTICLES,
@@ -16,6 +17,11 @@ function lablesReducer(state = [] ,action){
 		case CLEAN_LABEL:
 			state = [];
 			return state
+		case REMOVE_LABLE:
+			return [ 
+					 ...state.slice(0,state.indexOf(action.lable.lable)),
+					 ...state.slice(state.indexOf(action.lable.lable)+1)
+				   ]
 		default:
 			return state
 	}

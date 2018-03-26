@@ -22,15 +22,15 @@ class articleContent extends Component{
     //     return false;
     // }
 
-    componentDidMount(){
+    componentDidUpdate(){
         const { dispatch } = this.props 
-        dispatch( changeNavData(this.getNavObj($('.article-body')[0])) )
+        dispatch( changeNavData(this.getNavObj($('.article-body'))) )
     }
 
     getNavObj(dom){
 
         let titleNav = []; 
-
+        console.log( $('h1,h2,h3',dom).length )
         $('h1,h2,h3',dom).map((idx,ele)=>{
             // console.log(ele.innerText);
             //避免标题相同，用idx作为key

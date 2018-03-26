@@ -290,6 +290,30 @@ const loadLabel = ()=>{
             })
 }
 
+const removeLabelHandle = (lable)=>{
+
+    console.log(lable)
+
+    return fetch('/lable/removeLable', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify({lable})
+            })
+            .then(res => {return res.json()})
+            .then(body => {
+                return new Promise( (resolve,reject)=>{
+                    if(body.code === 0){
+                      resolve(body.lables)
+                    }
+                    else
+                      reject(`删除标签失败 ${body}`)
+                })
+            })
+
+}
+
 
 /**管理员登陆 请求方法*/
 const adminlogin = ()=>{
@@ -323,5 +347,6 @@ module.exports = {
     removeDraft,
     uploadDraftFile,
     loadLabel,
+    removeLabelHandle,
     adminlogin
  }

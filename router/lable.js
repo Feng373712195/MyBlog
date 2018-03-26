@@ -26,9 +26,9 @@ lable.post('/lable/removeLable',async(ctx)=>{
 
     console.log(lable)
     
-    await Articles.update({lables:lable.lable},{"$pull":{lables:lable.lable}},true)
+    await Articles.update({lables:lable},{"$pull":{lables:lable}},true)
     ctx.body =  await new Promise((reslove,reject)=>{
-                    redisClient.srem('lables',lable.lable,(err,data)=>{
+                    redisClient.srem('lables',lable,(err,data)=>{
                         if(err) return reject({code:1,error:err})
                         return reslove({code:0,data:data})
                     })

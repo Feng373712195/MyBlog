@@ -60,6 +60,7 @@ function modalRedcer(state = {},action){
 			return state
 		case HIDDEN_MODAL:
 			state = {}
+			$('.m-modal').modal('hide');
 			return state
 		default:
 			return state

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
 
 import './lables.scss'
-import { getLables,setSelectlable } from '../../../redux/actions/lable'
+import { getLables,cleanLables,setSelectlable } from '../../../redux/actions/lable'
 import LableOne from './components/LableOne'
 
 class Labels extends Component{
@@ -25,6 +25,11 @@ class Labels extends Component{
 		const { dispatch } = this.props;
 		dispatch(getLables());
 	}
+
+	componentWillUnmount(){
+        let { dispatch } = this.props;
+        dispatch( cleanLables() );
+    }
 
 	render(){
 

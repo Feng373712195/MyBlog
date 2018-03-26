@@ -1,14 +1,15 @@
 
 import React,{ Component } from 'react'
 import ReactDom from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { createStore,applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import APP from '../containers/MangeApp'
 
 import '../scss/home.scss'
 import '../../semantic/dist/semantic.min.css'
 // import '../../semantic/dist/semantic.min.js'
-
-import LeftMenu from '../components/ManageLeftMenu'
-import Content from  '../containers/ManageContent'
+import todoApp from './../../redux/reducers/reducer'
 
 //icon-font
 import '../css/iconfont.css'
@@ -16,13 +17,13 @@ import './iconfont.js'
 
 import 'whatwg-fetch'
 
+const store = createStore(todoApp,applyMiddleware(thunk))
 
 ReactDom.render(( 
     <Router>
-        <div>
-            <LeftMenu />
-            <Content />
-        </div>
+        <Provider store={ store } >
+            <APP></APP>
+        </Provider> 
     </Router>
 
 ),$('.app')[0])
