@@ -9,7 +9,6 @@ import App from '../../src/containers/HomeApp'
 import '../scss/home.scss'
 import '../../semantic/dist/semantic.min.css'
 import 'babel-polyfill'
-// import '../../semantic/dist/semantic.min.js'
 import todoApp from './../../redux/reducers/reducer'
 
 //icon-font

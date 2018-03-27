@@ -31,6 +31,8 @@ class articleContent extends Component{
         dispatch( changeNavData(titlenavData) )
         /** 结束加载文章的加载器 */
         dispatch( loadendArticle() )
+        /** 为标题导航创建粘性布局 */
+        $('.titlenav').sticky({context:'.container'});
     }
 
 

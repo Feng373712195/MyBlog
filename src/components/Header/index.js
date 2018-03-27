@@ -19,7 +19,7 @@ class Header extends Component{
         return(
             <header className='main-header'>
                 <i className="menu icon iconfont icon-liebiao " onClick = { ()=> {   $('.menu-list').stop().slideToggle("slow"); } } ></i> 
-                <span id="backLable" className={`${selectlable?'':'hidden'}`} onClick={ ()=>{ dispatch(cleanSelectLable()) } } ></span>
+                <span id="backLable" className={`${selectlable?(!$.isEmptyObject(currentArticle)?'hidden':''):'hidden'}`} onClick={ ()=>{ dispatch(cleanSelectLable()) } } ></span>
                 <span id="backList"  className={`${!$.isEmptyObject(currentArticle)?'':'hidden'}`} onClick={ ()=>{ dispatch(hiddenArticle()) } } ></span>
                 <h2>WUZEFENG BLOG</h2>
             </header>

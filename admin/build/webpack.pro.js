@@ -16,7 +16,8 @@ const semanticComponts = [
     path.join(config.rootDirPath, '/semantic/dist/components/api.min.js'),
     path.join(config.rootDirPath, '/semantic/dist/components/dimmer.min.js'),
     path.join(config.rootDirPath, '/semantic/dist/components/form.min.js'),
-    path.join(config.rootDirPath, '/semantic/dist/components/modal.min.js')
+    path.join(config.rootDirPath, '/semantic/dist/components/modal.min.js'),
+    path.join(config.rootDirPath, '/semantic/dist/components/sticky.min.js' )
 ]
 
 module.exports = merge(webpackBaseConfig,{

@@ -88,7 +88,7 @@ class TitleNav extends Component{
                         })
         return(
             //使用visibilty隐藏 减少reflows
-            <nav className="titlenav ui sticky" style={{  top:'10px',visibility:titleNav.length > 0?'visible':'hidden' }} >
+            <nav className="titlenav ui sticky" style={{  top:'10px',minHeight:'250px',visibility:titleNav.length > 0?'visible':'hidden' }} >
                  {Navs}
             </nav>
         )
