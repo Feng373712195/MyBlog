@@ -1,8 +1,13 @@
+/** 用户信息管理 action */
+
 /*
 * action 类型
 */
+
+/** 获取用户信息 */
 export const GET_USERDATA = 'GET_USERDATA'
 
+/** 清除用户信息 */
 export const CLEAN_USERDATA = 'CLEAN_USERDATA'
 
 /*

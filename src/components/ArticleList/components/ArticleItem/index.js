@@ -34,13 +34,17 @@ class articleItem extends Component{
 
     render(){
 
-        let { dispatch } = this.props; 
+        let { dispatch } = this.props;
+        console.log( this.props ); 
         const articleContent = this.getArticleContent.bind(this)();
         let isEllipsis = articleContent.length>=200?true:false; 
 
         return(
             <article className="article-list" >
-                <h2 onClick={ ()=>{ dispatch(showArticle(this.props.article)) } } className="article-title">{this.props.article.title}</h2>
+                <h2 onClick={ ()=>{  dispatch(showArticle(this.props.article)) } } className="article-title">
+                    {this.props.article.title}
+                    <div className="ui disabled inline loader"></div>
+                </h2>
                 <div className={`article-content ${isEllipsis?'ellipsis':''}`}>{ articleContent }</div>
                 <div className="artice-footer-warp">
                     <p className="artice-footer">

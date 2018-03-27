@@ -26,6 +26,19 @@ class TitleNav extends Component{
     //     return false;
     // }
 
+    componentDidMount(){
+
+        try{
+            /** 因为titleNav会比container先加载 高度比container高 因此会弹出JQ错误 此错误不会影响sticky布局 */
+            $('.titlenav')
+            .sticky({
+                context:'.container'
+            });
+
+        }catch(e){
+
+        }
+    }
     
     setActive(index){
         /** 判断是否第一次设置active */
@@ -75,7 +88,7 @@ class TitleNav extends Component{
                         })
         return(
             //使用visibilty隐藏 减少reflows
-            <nav className="titlenav" style={{ visibility:titleNav.length === 0?'hidden':'visible' }} >
+            <nav className="titlenav ui sticky" style={{  top:'10px',visibility:titleNav.length > 0?'visible':'hidden' }} >
                  {Navs}
             </nav>
         )

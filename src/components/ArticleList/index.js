@@ -23,12 +23,13 @@ class articleList extends Component{
         const { dispatch } = this.props;
         dispatch( cleanArticle() );
     }
+    
 
     render(){
         let { articles,currentArticle,selectlable,lableRelationArticles,dispatch, } = this.props;
-        let Back = selectlable && <div onClick={ ()=>{  dispatch(cleanSelectLable()) } } className="back">返回</div>
+        // let Back = selectlable && <div onClick={ ()=>{  dispatch(cleanSelectLable()) } } className="back">返回</div>
         let ArticleList  = (selectlable?lableRelationArticles:articles)
-                           .map( article =><ArticleItem key={article._id} article={ article } dispatch={ dispatch } ></ArticleItem> )
+                           .map( (article,idx) =><ArticleItem key={article._id} article={ {...article,idx} } dispatch={ dispatch } ></ArticleItem> )
 
         // Lable页时 有选中标签再显示文字列表
         // Article页 则不用隐藏操作。
@@ -39,7 +40,6 @@ class articleList extends Component{
                 {/**这里不再用三元操作符判断渲染组件，这样会造成重复渲染。改使用隐藏显示组件 */}
                 <ArticleContent article={ currentArticle }></ArticleContent>
                 <div className={`${$.isEmptyObject(currentArticle)?'':'hidden'}`} >
-                    {Back}
                     {ArticleList}
                 </div>
             </div>

@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
 
 /*引入markdown */
-import { showArticle } from '../../../redux/actions/articles'
+import { hiddenArticle,loadendArticle } from '../../../redux/actions/articles'
 import { changeNavData } from '../../../redux/actions/titlenav'
+import TitleNav from '../../components/TitleNav' 
 import marked  from './../../../models/markdown'
 import config from '../../../admin/config'
 
@@ -24,8 +25,14 @@ class articleContent extends Component{
 
     componentDidUpdate(){
         const { dispatch } = this.props 
-        dispatch( changeNavData(this.getNavObj($('.article-body'))) )
+        /** 记录： 返回文章列表 文章state发生改变会再触发一次componentDidUpdate  changeNavData会传过去一个空数组 免去了清除标题导航状态的操作 */
+        /** 如果文章中有标签则 改变标签导航内容 */
+        const titlenavData = this.getNavObj($('.article-body'));
+        dispatch( changeNavData(titlenavData) )
+        /** 结束加载文章的加载器 */
+        dispatch( loadendArticle() )
     }
+
 
     getNavObj(dom){
 
@@ -69,7 +76,7 @@ class articleContent extends Component{
         return(
            // 如果有选中文章则显示
            <article className={`article-warp ${!$.isEmptyObject(currentArticle)?'':'hidden'}`}>
-                <div className="article-back" onClick={ ()=>{ dispatch(showArticle()) } } > &lt;&lt;文章列表</div>
+                {/* <div className="article-back" onClick={ ()=>{ dispatch(hiddenArticle()) } } > &lt;&lt;文章列表</div> */}
                 <div className="article-box">
                     <div className="article-title">{ currentArticle.title}</div>
                     <div className="article-lable">{Lables}</div>

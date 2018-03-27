@@ -132,7 +132,6 @@ class LoginModal extends Component{
 }
 
 function select(state){
-	console.log(state)
 	return {
 		adminlogin:state.global.adminloginRedcer,
 		modaldata:state.global.moadlRedcer,

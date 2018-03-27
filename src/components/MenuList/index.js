@@ -6,6 +6,20 @@ import './menu-list.scss'
 
 class MenuList extends Component{
 	
+	listenWidth(){
+		if( $(window).width() > 760 ){
+			$('.menu-list').css('display') === 'none' && $('.menu-list').css('display','block');
+		}
+	}
+
+	componentDidMount(){
+		$(window).resize(this.listenWidth)
+	}
+
+	componentWillUnmount(){
+		$(window).off('resize',this.listenWidth)
+	}
+
 	render(){
 
 		console.log('我是 MenuList 我被Render')

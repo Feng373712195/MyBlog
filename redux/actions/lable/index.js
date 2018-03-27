@@ -3,18 +3,28 @@ import { LOADING,LOADEND,CHATH_ERROR,NO_ERROR,HIDDEN_MODAL } from '../global'
 /*
 * action 类型
 */
+
+/** 管理标签 action */
+
+/** 成功获取标签信息  */
 export const GET_SUCCESS_LABEL = 'GET_SUCCESS_LABEL';
 
+/** 清除存储的标签 */
 export const CLEAN_LABEL = 'CLEAN_LABEL'
 
+/** 选中的标签 */
 export const SELECT_LABLE = 'SELECT_LABLE';
 
+/** 清除选中的标签 */
 export const UNSELECT_LABLE = 'UNSELECT_LABLE';
 
+/** 获取标签相关的文字 */
 export const  GET_LABLE_RELATION_ARTICLES = 'GET_LABLE_RELATION_ARTICLES';
 
+/** 清除标签相关的文字 */
 export const  CLEAN_LABLE_RELATION_ARTICLES = 'CLEAN_LABLE_RELATION_ARTICLES';
 
+/** 删除标签 */
 export const REMOVE_LABLE = 'REMOVE_LABLE';
 
 /*

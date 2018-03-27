@@ -4,6 +4,7 @@ import { BrowserRouter as Router} from 'react-router-dom'
 
 import LeftMenu from '../LeftMenu'
 import Content from '../Content'
+import Header from '../../../src/components/Header'
 import Loader from '../../components/Loader'
 
 class App extends Component{
@@ -11,7 +12,9 @@ class App extends Component{
     render(){
         return(
             <Router>
+                
                 <div>
+                    <Header />
                     {/**加载器 */}
                     <Loader />
                     {/**左导航栏 */}

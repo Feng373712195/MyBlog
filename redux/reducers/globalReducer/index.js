@@ -15,7 +15,7 @@ import { LOADING,
 		 HIDE_ADMIN_LOGIN
 		 } from '../../actions/global'
 
-function loadReducer(state = false,action){
+function loadReducer(state = true,action){
 	switch(action.type){
         case LOADING:
             state = true;
