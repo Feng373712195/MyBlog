@@ -23,11 +23,4 @@ home.get('/about',async(ctx)=>{
     await ctx.render('home');
 }) 
 
-/*favicon.ico */
-home.get('/favicon.ico',async(ctx)=>{
-    ctx.attachment('favicon.ico');
-    await send(ctx,'favicon.ico', config.rootDirPath );  
-})
-
-
 module.exports = home;

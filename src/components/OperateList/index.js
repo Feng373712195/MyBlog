@@ -64,7 +64,7 @@ class OperateList extends Component{
 				 getHandle = getDraft
 			}
 			
-			getHandle({})
+			getHandle({},0,10)
 			.then( data => { console.log(data); this.setState({ articles:data }) } )
 			.catch( e => { alert('获取文章失败,请稍后再试！') } )
 		}
@@ -74,32 +74,59 @@ class OperateList extends Component{
 	componentWillMount(){
 		this.loadAtricles(this.props.type)
 	}
-    
+	
+	shouldComponentUpdate(nextProp,nextState){
+		// console.log(`OperateList nextProp${JSON.stringify(nextProp)} prop${JSON.stringify(this.props)} nextState${JSON.stringify(nextState)}  state${JSON.stringify(this.state)} `)
+
+		if( !$.isEmptyObject(nextProp) || nextState){
+            return true;
+        }
+        return false;
+    }
     
 	removeBtn(title,_id){
     
-        this.setState({
+        // this.setState({
 
-            modalData:{
-                modalHead:'删除提示?',	
-                modalContent:`是否删除文章<${title}>`,
-                modalBtns:[
-                    {
-                        text:"取消",
-                        class:"ui black deny button"
-                    },
-                    {
-                        text:"确定",
-                        class:"ui positive right button",
-                        handle:removeAtricleHandle.bind(this,{_id})
-                    }
-                ]	
-            }
+        //     modalData:{
+        //         modalHead:'删除提示?',	
+        //         modalContent:`是否删除文章<${title}>`,
+        //         modalBtns:[
+        //             {
+        //                 text:"取消",
+        //                 class:"ui black deny button"
+        //             },
+        //             {
+        //                 text:"确定",
+        //                 class:"ui positive right button",
+        //                 handle:removeAtricleHandle.bind(this,{_id})
+        //             }
+        //         ]	
+        //     }
 
-        },()=>{
-            $('.ui.modal')
-            .modal('show');
-        })
+        // },()=>{
+        //     $('.ui.modal')
+        //     .modal('show');
+		// })
+		
+
+		const modalData = {
+			modalHead:'删除提示?',	
+			modalContent:`是否删除文章<${title}>`,
+			modalBtns:[
+				{
+					text:"取消",
+					class:"ui black deny button"
+				},
+				{
+					text:"确定",
+					class:"ui positive right button",
+					handle:removeAtricleHandle.bind(this,{_id})
+				}
+			]	
+		}
+
+		 
 	}
 
 	//打开文章编辑器
@@ -119,6 +146,7 @@ class OperateList extends Component{
 
     render(){
 
+		console.log('我是 OperateList 我被Render')
 
 		return (
 			<div>
@@ -126,7 +154,6 @@ class OperateList extends Component{
 					<Editor backhandle={this.editBack.bind(this)} manage="true" type={this.props.type} refresh={this.loadAtricles.bind(this,this.props.type)}  articleId={this.state.articleData._id} articleTitle={this.state.articleData.title} articleContent={this.state.articleData.content} articleLabels={this.state.articleData.lables} articleFiles={this.state.articleData.files}></Editor>
 					:
 					<div>
-						<Modal modalData={ this.state.modalData } ></Modal>
 						{this.state.articles.map( article => <OperateItem key={article._id} articleData={article} removeHandle={this.removeBtn.bind(this)} editHandle={this.editBtn.bind(this)} ></OperateItem> )}
 					</div>
 				}

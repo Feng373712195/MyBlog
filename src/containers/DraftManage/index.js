@@ -6,6 +6,13 @@ import OperateList from '../../components/OperateList'
 
 class DraftManage extends Component{
 
+	shouldComponentUpdate(nextProp,nextState){
+		if( !$.isEmptyObject(nextProp) || nextState){
+            return true;
+        }
+        return false;
+    }
+
 	render(){
 		return (
 			<div id="PublishManage" className="container">

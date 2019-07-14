@@ -4,12 +4,6 @@ import ReactDOM from 'react-dom';
 import ArticleList from '../../components/ArticleList'
 
 class Artice extends Component{
-	
-	constructor(){
-		super()
-	}
-
-
 
 	render(){
 		return (

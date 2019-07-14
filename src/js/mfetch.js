@@ -1,15 +1,14 @@
 
 /** 发布文章 请求方法 */
-//依赖于fetch 
+/** 依赖于fetch */
 
-const getAtricle = (query = {}) =>{
-
+const getAtricle = (query = {},skip = 0,limit = 1) =>{
     return  fetch('/articles/find', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({query:query})
+                body: JSON.stringify({query,skip,limit})
             })
             .then(res => res.json())
             .then(body => {
@@ -155,7 +154,7 @@ const  uploadImg = (timeStamp,_id)=>{
 
 
 /** 草稿箱 请求方法 */
-//依赖于fetch 
+/** 依赖于fetch */
 
 const getDraft = (query = {}) =>{
 
@@ -242,7 +241,7 @@ const removeDraft = (query = {})=>{
 }
 
 
-const  uploadDraftFile = (src,_id,files)=>{
+const uploadDraftFile = (src,_id,files)=>{
     
     let formData = new FormData()
     
@@ -258,14 +257,81 @@ const  uploadDraftFile = (src,_id,files)=>{
             .then(body => { 
                 return new Promise( (resolve,reject)=>{
                     if(body.success){
-                    resolve(body.data)
+                      resolve(body.data)
                     }
                     else
-                    reject(body.message)
+                      reject(body.message)
                 }) 
             })
     
 }
+
+
+/** 标签管理 请求方法 */
+/** 依赖于fetch */
+
+const loadLabel = ()=>{
+
+    return fetch('/lable/getAllLable', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                    }
+            })
+            .then(res => {return res.json()})
+            .then(body => {
+                return new Promise( (resolve,reject)=>{
+                    if(body.code === 0){
+                      resolve(body.lables)
+                    }
+                    else
+                      reject(`获取标签信息失败 ${body}`)
+                })
+            })
+}
+
+const removeLabelHandle = (lable)=>{
+
+    console.log(lable)
+
+    return fetch('/lable/removeLable', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify({lable})
+            })
+            .then(res => {return res.json()})
+            .then(body => {
+                return new Promise( (resolve,reject)=>{
+                    if(body.code === 0){
+                      resolve(body.lables)
+                    }
+                    else
+                      reject(`删除标签失败 ${body}`)
+                })
+            })
+
+}
+
+
+/**管理员登陆 请求方法*/
+const adminlogin = ()=>{
+    return fetch('/admin/login',{ method: 'POST' })
+           .then(function(res) {
+                return res.json();
+            })
+            .then(body => {
+                return new Promise( (resolve,reject)=>{
+                    if(body.code === 0){
+                    resolve()
+                    }
+                    else
+                    reject(`管理员登陆失败 ${body}`)
+                })
+            })
+}
+
 
 module.exports = { 
     getAtricle,
@@ -279,5 +345,8 @@ module.exports = {
     saveDraft,
     updateDraft,
     removeDraft,
-    uploadDraftFile
+    uploadDraftFile,
+    loadLabel,
+    removeLabelHandle,
+    adminlogin
  }

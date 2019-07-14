@@ -13,3 +13,19 @@
         overflow: hidden;
     }
 }
+
+@media only screen and (max-width: 768px) {
+    #About{
+       h1{
+           font-size: 1.5rem;
+       }
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    #About{
+        h1{
+            font-size: 1.2rem;
+        }
+    }
+}

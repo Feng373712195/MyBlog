@@ -12,6 +12,8 @@ class MenuList extends Component{
 	}
 
 	render(){
+		console.log('我是 MenuList 我被Render')
+
 		const menulists = [
 			{
 				name:'发布文章',

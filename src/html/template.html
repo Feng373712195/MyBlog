@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name ="keywords" content="http,css,javascript">
     <meta name="description" content="blog">
-    <meta name="author" content"wuzefng|373712195@qq.com">
+    <meta name="author" content"373712195@qq.com">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <link rel="shortcut icon" href="favicon.ico"></head>
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
@@ -20,7 +20,7 @@
     <% } %>
 </head>
 <body>
-    <div class="app"></div>
+    <main class="app"></main>
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
         <% if( htmlWebpackPlugin.options.title.match('dev') ){ %>
             <script type="text/javascript" src="http://localhost:8080/dist/js/<%= chunk %>.js"></script>

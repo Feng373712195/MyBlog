@@ -1,87 +1,60 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux'
 
 import ArticleItem from './components/ArticleItem'
 import ArticleContent from '../ArticleContent'
-
-import { readAtricle } from '../../js/mfetch'
+import { getArticles,showArticle,cleanArticle } from '../../../redux/actions/articles'
+import { cleanSelectLable } from '../../../redux/actions/lable'
 
 class articleList extends Component{
 
     constructor(){
-        super()
-
-        this.state = {
-            article:{},
-            articles:[],
-            showArticle:false
-        }
-
-        this.showArticle =(isShow,article)=>{
-            this.setState({
-                article:article,
-                showArticle:isShow
-            },()=>{
-                readAtricle(article._id)
-            })
-        }
+        super()        
     }
-
+     
     componentWillMount(){
-        if(this.props.articles){
-
-            this.setState({
-                articles:this.props.articles
-            })
-
-        }else{
-            
-            fetch('/articles/find', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  query:{}
-                })
-            })
-            .then(res => res.json())
-            .then(body => {
-                console.log(body)
-                if(body.code === 0){
-                    this.setState({
-                        articles:body.data
-                    },()=>{
-                        console.log(this.state.articles)
-                    })
-                }else{
-                    alert('获取文章失败，请稍后再试');
-                }  
-            })
-        }
+        const { selectlable,dispatch } = this.props;
+        /**没有选中标签 默认加载前10篇文章*/ 
+        if(!selectlable) dispatch( getArticles({},0,10) );
     }
+
+    componentWillUnmount(){
+        const { dispatch } = this.props;
+        dispatch( cleanArticle() );
+    }
+    
 
     render(){
+        let { articles,currentArticle,selectlable,lableRelationArticles,dispatch, } = this.props;
+        // let Back = selectlable && <div onClick={ ()=>{  dispatch(cleanSelectLable()) } } className="back">返回</div>
+        let ArticleList  = (selectlable?lableRelationArticles:articles)
+                           .map( (article,idx) =><ArticleItem key={article._id} article={ {...article,idx} } dispatch={ dispatch } ></ArticleItem> )
 
-        let Back = this.props.back && <div onClick={this.props.back.bind(this)} className="back">返回</div>
-        let ArticleList  = this.state.articles.map( article =>
-                                <ArticleItem key={article._id} article={article} showArticle={this.showArticle.bind(this)} ></ArticleItem>
-                           )
+        // Lable页时 有选中标签再显示文字列表
+        // Article页 则不用隐藏操作。
+        let visible =  window.location.pathname === '/label' ? (selectlable ? '':'hidden'):'';
 
         return(
-            <div className="articleList-warp">
-                {   
-                    this.state.showArticle?
-                    <ArticleContent article={this.state.article}  showArticle={this.showArticle.bind(this)} ></ArticleContent>
-                    :
-                    <div>
-                        {Back}
-                        {ArticleList}
-                    </div>
-                }
+            <div className={`articleList-warp ${visible}`}>
+                {/**这里不再用三元操作符判断渲染组件，这样会造成重复渲染。改使用隐藏显示组件 */}
+                <ArticleContent article={ currentArticle }></ArticleContent>
+                <div className={`${$.isEmptyObject(currentArticle)?'':'hidden'}`} >
+                    {ArticleList}
+                </div>
             </div>
         )
     }
 }
 
-module.exports = articleList
+function select(state) {
+    return {
+      articles:state.articles.articlesReducer,
+      currentArticle:state.articles.currentArticle,
+      selectlable:state.lables.selectlable,
+	  lableRelationArticles:state.lables.lableRelationArticles
+    }
+}
+
+export default connect(select)(articleList)
+

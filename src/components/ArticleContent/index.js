@@ -1,43 +1,45 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux'
 
 /*引入markdown */
+import { hiddenArticle,loadendArticle } from '../../../redux/actions/articles'
+import { changeNavData } from '../../../redux/actions/titlenav'
+import TitleNav from '../../components/TitleNav' 
 import marked  from './../../../models/markdown'
-/*引入高亮风格样式*/
-import 'highlight.js/styles/xcode.css'
-
-import emitter from '../../../models/ev'
 import config from '../../../admin/config'
 
+/*引入高亮风格样式*/
+import 'highlight.js/styles/xcode.css'
 import './articleContent.scss'
 
 class articleContent extends Component{
 
-    constructor(){
-        super()
-        this.state = {
-            article:{}
-        }
+    // shouldComponentUpdate(nextProp,nextState){
+    //     // console.log(`articleContent nextProp${JSON.stringify(nextProp)} prop${JSON.stringify(this.props)} nextState${JSON.stringify(nextState)}  state${JSON.stringify(this.state)} `)
+    //     if( !$.isEmptyObject(nextProp) || nextState){
+    //         return true;
+    //     }
+    //     return false;
+    // }
+
+    componentDidUpdate(){
+        const { dispatch } = this.props 
+        /** 记录： 返回文章列表 文章state发生改变会再触发一次componentDidUpdate  changeNavData会传过去一个空数组 免去了清除标题导航状态的操作 */
+        /** 如果文章中有标签则 改变标签导航内容 */
+        const titlenavData = this.getNavObj($('.article-body'));
+        dispatch( changeNavData(titlenavData) )
+        /** 结束加载文章的加载器 */
+        dispatch( loadendArticle() )
+        /** 为标题导航创建粘性布局 */
+        $('.titlenav').sticky({context:'.container'});
     }
 
-    componentWillMount(){ 
-        this.setState({
-            article:this.props.article
-        })
-    }
-
-    componentDidMount(){
-        emitter.emit("callNavData",this.getNavObj($('.article-body')))
-    }
-
-    componentWillUnmount(){
-        emitter.emit("callNavData",[])
-    }
 
     getNavObj(dom){
 
         let titleNav = []; 
-
+        console.log( $('h1,h2,h3',dom).length )
         $('h1,h2,h3',dom).map((idx,ele)=>{
             // console.log(ele.innerText);
             //避免标题相同，用idx作为key
@@ -53,39 +55,36 @@ class articleContent extends Component{
         return titleNav;
     }
 
-    downFile(id,fileName){
-        console.log('down2')
-    }
-
     render(){
 
-        let Lables = this.state.article.lables.map( (label,index)=>{
+        let { currentArticle,dispatch } = this.props;
+
+        let Lables = ($.isEmptyObject(currentArticle)?[]:currentArticle.lables).map( (label,index)=>{
                         return	<div key={label} className="ui blue label large">
                                     <span>{label}</span>
                                 </div>
-                     }) 
-        
-        let Files = this.state.article.files.map((file,index) =>{
-                        return <a key={file.name} href={`/articles/down/${this.state.article._id}/${file.name}`} className="file ui label large">
+                     })
+
+        let Files = ($.isEmptyObject(currentArticle)?[]:currentArticle.files).map((file,index) =>{
+                        return <a key={file.name} href={`/articles/down/${currentArticle._id}/${file.name}`} className="file ui label large">
                                     <span className="file-name">{file.name}</span>
                                     <span className="file-size">{`${(parseInt(file.size/1024)).toLocaleString('en-US')}KB`}</span>
                                </a>
                     })
 
-        console.log(this.state.article.content) 
         let regexp = new RegExp(`/articles/uploadImg/_id/(.*)`,'g')
-        let content = this.state.article.content.replace(regexp,`/articles/uploadImg/${this.state.article._id}/$1`)
+        let content = ($.isEmptyObject(currentArticle)?'':currentArticle.content).replace(regexp,`/articles/uploadImg/${currentArticle._id}/$1`)
         
         return(
-
-           <article className="article-warp">
-                <div className="article-back" onClick={this.props.showArticle.bind(this,false,{})} > &lt;&lt;文章列表</div>
+           // 如果有选中文章则显示
+           <article className={`article-warp ${!$.isEmptyObject(currentArticle)?'':'hidden'}`}>
+                {/* <div className="article-back" onClick={ ()=>{ dispatch(hiddenArticle()) } } > &lt;&lt;文章列表</div> */}
                 <div className="article-box">
-                    <div className="article-title">{ this.state.article.title}</div>
+                    <div className="article-title">{ currentArticle.title}</div>
                     <div className="article-lable">{Lables}</div>
                     <div className="article-body" dangerouslySetInnerHTML={ {__html:marked(content) }} ></div>
                     <div className="article-flies">
-                        { this.state.article.files.length != 0 && <h1 class="ui header">附件</h1> }
+                        { ($.isEmptyObject(currentArticle)?[]:currentArticle.files).length != 0 && <h1 class="ui header">附件</h1> }
                         {Files}
                     </div>
                 </div>
@@ -94,4 +93,10 @@ class articleContent extends Component{
     }
 }
 
-module.exports = articleContent;
+function select(state) {
+    return {
+        currentArticle:state.articles.currentArticle
+    }
+}
+
+export default connect(select)(articleContent)

@@ -1,29 +1,30 @@
 import React,{ Component } from 'react'
 import ReactDom from 'react-dom'
-import { connect } from 'react-redux'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router} from 'react-router-dom'
 
-import LeftMenu from '../../components/LeftMenu'
+import LeftMenu from '../LeftMenu'
 import Content from '../Content'
+import Header from '../../../src/components/Header'
+import Loader from '../../components/Loader'
 
 class App extends Component{
+
     render(){
         return(
             <Router>
+                
                 <div>
-                    <LeftMenu {...this.props} ></LeftMenu>
-                    <Content></Content>
+                    <Header />
+                    {/**加载器 */}
+                    <Loader />
+                    {/**左导航栏 */}
+                    <LeftMenu />
+                    {/**主体内容 */}
+                    <Content />
                 </div>
             </Router>
         )
     }
 }
 
-function select(state) {
-    return {
-      articles:state.articles,
-      titleNav:state.changeTitleNav
-    }
-  }
-
-export default connect(select)(App)
+export default App

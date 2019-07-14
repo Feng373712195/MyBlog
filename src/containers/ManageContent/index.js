@@ -7,7 +7,7 @@ import DraftManage     from '../DraftManage'
 import PublishManage   from '../PublishManage'
 import LabelManage     from '../LabelManage'
 
-class Content extends Component{
+class ManageContent extends Component{
 
     render(){
 		return (
@@ -21,4 +21,4 @@ class Content extends Component{
     }
 }
 
-export default Content;
+export default ManageContent;

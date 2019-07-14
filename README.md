@@ -2,9 +2,9 @@
 
 # 开发中！！！！
 
-`my-blog` 主要使用了 `react`、`koa2`、`mongose` 等
+`my-blog` 主要使用了 `react`、 `react-redux` 、`koa2`、`mongose` 
 
-正在渐渐用 react-redux 重构中...
+ 目前正在做响应式，与完善功能....
 
 ### npm command
 
@@ -21,8 +21,9 @@ npm run build
 # 部署,也是8080端口
 npm run start-pro
 
-# forever运行
+# forever 运行
 npm run forever-start
+# forever 停止运行
 npm run forever-stop
 
 ```
