@@ -12,7 +12,7 @@ class LeftMenu extends Component{
 			<section className="menu-warp" >
 				<UserBox  />
 				<MenuList />
-				<TitleNav />
+				<TitleNav /> 
 			</section>
 		)	
 	}

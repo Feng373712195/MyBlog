@@ -1,4 +1,4 @@
-import { loadLabel,getAtricle,removeLabelHandle } from '../../../src/js/mfetch'
+import { loadLabel,getAtricle,removeLabelHandle } from '../../../js/mfetch'
 import { LOADING,LOADEND,CHATH_ERROR,NO_ERROR,HIDDEN_MODAL } from '../global'
 /*
 * action 类型

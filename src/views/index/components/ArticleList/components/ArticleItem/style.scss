@@ -1,0 +1,65 @@
+.article-list{
+    background:#fff;
+    font-family:"PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+    border-radius:5px; 
+    margin-bottom:10px;
+    padding:20px 20px 0 20px;
+    .article-title{
+        position: relative;
+        color: #105cb6;
+        cursor: pointer;
+        text-decoration:underline;
+        &:active,&:hover{
+            color: red; 
+        }
+        .loader{
+            position: absolute !important;
+            left: 95% !important;
+        }
+    }
+    .article-content{
+        position: relative;
+        color: #333;
+        font-size:1.2rem;
+        font-weight:200 !important;
+
+        margin:10px;
+        overflow: hidden;
+        line-height: 20px; 
+        max-height: 40px;
+    }
+    .ellipsis::after{
+        content: "..."; 
+        position: absolute;
+        bottom: 0;
+        right: 0; 
+        padding-left: 40px;
+        background: -webkit-linear-gradient(left, transparent, #fff 55%);
+        background: -o-linear-gradient(right, transparent, #fff 55%);
+        background: -moz-linear-gradient(right, transparent, #fff 55%);
+        background: linear-gradient(to right, transparent, #fff 55%); 
+    }
+
+    .artice-footer-warp{
+        padding-bottom:20px;
+        .artice-footer{
+            font-size: 1.0rem;
+            border-bottom:1px solid #ddd; 
+            color: #333;
+            padding-bottom:5px;
+            overflow: hidden;
+            .artice-read{
+                margin-left:15px;
+            }
+            .l{
+                float: left;
+            }
+            .r{
+                float: right
+            }
+        }
+        &:last-child{
+            margin-bottom:0px;
+        }
+    }
+}

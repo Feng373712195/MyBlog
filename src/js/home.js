@@ -8,6 +8,7 @@ import App from '../../src/containers/HomeApp'
 
 import '../scss/home.scss'
 import '../../semantic/dist/semantic.min.css'
+import 'antd/dist/antd.css';
 import 'babel-polyfill'
 import todoApp from './../../redux/reducers/reducer'
 

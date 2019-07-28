@@ -1,0 +1,26 @@
+
+.header{
+    position: relative;
+    width: 100%;
+    height: 64px;
+    background: #fff;
+    box-shadow: 0 2px 8px #f0f1f2;
+    z-index: 10;
+}
+
+.header{
+    padding: 0 50px;
+    .blog-name{
+        display: inline-block;
+        height: 100%;
+        line-height: 64px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .blog-menu{
+        height: 100%;
+        float: right;
+        display: inline-block;
+        background: red;
+    }
+}

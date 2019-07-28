@@ -1,4 +1,4 @@
-import { readAtricle,getAtricle } from '../../../src/js/mfetch'
+import { readAtricle,getAtricle } from '../../../js/mfetch'
 import { LOADING,LOADEND,CHATH_ERROR,NO_ERROR } from '../global'
 
 /** 管理文章 action */
@@ -49,9 +49,11 @@ export const getArticles = (...param) => (dispatch) => {
 
 export const showArticle = (article) => (dispatch) => {
     dispatch( {type:OPEN_ARTICLES_LOADING,index:article.idx} )
-    setTimeout(()=>{
+    const timer = setTimeout(()=>{
         dispatch( {type:SHOW_ARTICLES,article:article} )
+        clearTimeout(timer);
     },0);
+
 }
 
 export const loadendArticle = () => {

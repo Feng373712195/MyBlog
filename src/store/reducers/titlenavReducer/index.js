@@ -1,4 +1,4 @@
-import { CHANGE_TITLENAV,SET_TITLENAVACTIVE } from './../../actions/titlenav'
+import { CHANGE_TITLENAV,SET_TITLENAVACTIVE } from '../../actions/titlenav'
 
 function titleNavReducer(state = [],action){
 	switch(action.type){
