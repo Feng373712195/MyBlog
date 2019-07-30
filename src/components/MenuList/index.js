@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { NavLink } from 'react-router-dom'
+import { NavLink, } from 'react-router-dom'
 
 import './menu-list.scss'
 
@@ -26,11 +26,11 @@ class MenuList extends Component{
 
 		const menulists = [
 			{
-				name:'首页',
+				name:'主页',
 				disable:true, 
 				icon:'icon-zhuye',
 				iconSize:"25px",
-				link:'/index',
+				link:'/',
 				key:'index'
 			},
 			{
@@ -61,9 +61,13 @@ class MenuList extends Component{
 
 		return (
 			<div className="menu-list" >
-				{menulists.map((list)=>
-					<NavLink key={list.key} className={"menu-item "+ (list.disable?"disable":"") } to={list.link} activeClassName="active" >
-						<i style={{fontSize:list.iconSize }} className={"iconfont " + list.icon} ></i> 
+				{menulists.map((list,index)=>
+					<NavLink key={list.key} 
+							 className={"menu-item "+ (list.disable?"disable":"") } 
+							 to={list.link} 
+							 activeClassName="active" >
+						<i 	style={{fontSize:list.iconSize }} 
+							className={"iconfont " + list.icon} ></i> 
 						<span>{list.name}</span>
 					</NavLink>
 				 ) }

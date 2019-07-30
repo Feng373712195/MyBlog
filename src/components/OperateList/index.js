@@ -85,29 +85,31 @@ class OperateList extends Component{
     }
     
 	removeBtn(title,_id){
-    
-        // this.setState({
+		
+		console.log('removeBtn')
 
-        //     modalData:{
-        //         modalHead:'删除提示?',	
-        //         modalContent:`是否删除文章<${title}>`,
-        //         modalBtns:[
-        //             {
-        //                 text:"取消",
-        //                 class:"ui black deny button"
-        //             },
-        //             {
-        //                 text:"确定",
-        //                 class:"ui positive right button",
-        //                 handle:removeAtricleHandle.bind(this,{_id})
-        //             }
-        //         ]	
-        //     }
+        this.setState({
 
-        // },()=>{
-        //     $('.ui.modal')
-        //     .modal('show');
-		// })
+            modalData:{
+                modalHead:'删除提示?',	
+                modalContent:`是否删除文章<${title}>`,
+                modalBtns:[
+                    {
+                        text:"取消",
+                        class:"ui black deny button"
+                    },
+                    {
+                        text:"确定",
+                        class:"ui positive right button",
+                        handle:removeAtricleHandle.bind(this,{_id})
+                    }
+                ]	
+            }
+
+        },()=>{
+            $('.ui.modal')
+            .modal('show');
+		})
 		
 
 		const modalData = {

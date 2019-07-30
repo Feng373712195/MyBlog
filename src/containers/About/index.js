@@ -13,7 +13,7 @@ class About extends Component{
 
 		return (
 			<div id="About" className="container" >
-				{/* <img className="me-pic" src="../../img/ME.png" /> */}
+				{/* <img className="me-pic" src="../../img/ME.png" /> */} 
 				{/* <div className="about-content-warp"> */}
 					<div className="about-content">
 						<h1 className="about-title">WUZEFENG ——— 此博客博主</h1>

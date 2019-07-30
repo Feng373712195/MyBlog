@@ -1,6 +1,7 @@
 import React,{ Component } from 'react'
 import ReactDom from 'react-dom'
-import { BrowserRouter as Router} from 'react-router-dom'
+import { HashRouter as Router} from 'react-router-dom'
+// import { BrowserRouter as Router} from 'react-router-dom'
 
 import LeftMenu from '../../components/ManageLeftMenu'
 import Content from  '../../containers/ManageContent'

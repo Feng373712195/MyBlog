@@ -12,7 +12,6 @@ const { uploadFile,removeUploadFile } = require('../models/upload')
 const Articles = new articles();
 const articlesRouter = new router();
 
-
 articlesRouter.post('/articles/save',async(ctx)=>{
     let { title,content,lables,files } = ctx.request.body; 
     ctx.body = await Articles.save({ title,content,lables,files });
@@ -24,10 +23,11 @@ articlesRouter.post('/articles/find',async(ctx)=>{
 })
 
 articlesRouter.post('/articles/remove',async(ctx)=>{
+    console.log('remove articeles')
     let { query } = ctx.request.body;
     await removeUploadFile(path.join(config.rootDirPath , 'uploadfiles' ),query._id)
           .catch( e => console.log(e) )
-    ctx.body = await  Articles.remove(query)
+    ctx.body = await Articles.remove(query)
 })
 
 articlesRouter.post('/articles/update',async(ctx)=>{
