@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+
 import ArticleList from '../../components/ArticleList'
 
-class Artice extends Component{
+import './style.scss';
 
+class Artice extends Component{
 	render(){
 		return (
-			<div id="Artice" className="container">
-				<ArticleList></ArticleList>
-			</div>
+			<section id="Artice" className="container">
+				<ArticleList ref={this.props.ref} ></ArticleList>
+			</section>
 		)	
 	}
 }

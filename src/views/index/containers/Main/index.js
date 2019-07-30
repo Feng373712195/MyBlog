@@ -1,4 +1,4 @@
-import React,{ Component } from 'react'
+import React,{ Component, Fragment } from 'react'
 import ReactDom from 'react-dom'
 
 import Header from '../Header'
@@ -7,7 +7,7 @@ import Content from '../Content'
 class App extends Component{
     render(){
         return(
-            <main>
+            <Fragment>
                 <Header />
                 {/**加载器 */}
                 {/* <Loader /> */}
@@ -15,7 +15,7 @@ class App extends Component{
                 {/* <LeftMenu /> */}
                 {/**主体内容 */}
                 <Content />
-            </main>
+            </Fragment>
         )
     }
 }

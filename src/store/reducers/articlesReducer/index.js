@@ -12,13 +12,14 @@ import {
 function articlesReducer(state = [] ,action){
 	switch(action.type){
 		case GET_SUCCESS_ARTICLES:
+			// console.log( new Array(10).fill(action.data[0],10),action.data[0],'action.data' )
 			return [
 				...state,
-				...action.data
+				...[action.data[0],action.data[0],action.data[0],action.data[0],action.data[0],action.data[0],action.data[0],action.data[0],action.data[0]]
+				// ...action.data
 			]
 		case CLEAN_ARTICLES:
-			state = []
-			return state
+			return []
 		default:
 			return state
 	}

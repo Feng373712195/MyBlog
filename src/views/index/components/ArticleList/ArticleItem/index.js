@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import markdown from '../../../../../../../models/markdown';
-import { showArticle } from '../../../../../../store/actions/articles';
+import markdown from 'models/markdown';
+import { showArticle } from 'store/actions/articles';
  
 import './style.scss' 
 
@@ -35,12 +35,11 @@ class articleItem extends Component{
     render(){
 
         let { dispatch } = this.props;
-        console.log( this.props ); 
         const articleContent = this.getArticleContent.bind(this)();
         let isEllipsis = articleContent.length>=200?true:false; 
 
         return(
-            <article className="article-list" >
+            <div className="article-list" >
                 <h2 onClick={ ()=>{  dispatch(showArticle(this.props.article)) } } className="article-title">
                     {this.props.article.title}
                     <div className="ui disabled inline loader"></div>
@@ -53,7 +52,7 @@ class articleItem extends Component{
                         <span className="artice-createtime r">发布于：{this.props.article.createtime}</span>
                     </p>
                 </div>
-            </article>
+            </div>
         )
     }
 }

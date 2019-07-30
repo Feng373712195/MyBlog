@@ -1,4 +1,4 @@
-import React,{ Component } from 'react'
+import React,{ Component, Fragment } from 'react'
 import ReactDom from 'react-dom'
 import { Route,Redirect,Switch } from 'react-router-dom'
 
@@ -10,7 +10,7 @@ class Content extends Component{
     render(){
         
         return (
-            <section >
+            <Fragment>
                 <Switch>
                     {/* <Route path="/article" component={ Artice } />
                     <Route path="/label" component={ Label } /> 
@@ -18,7 +18,7 @@ class Content extends Component{
                     <Route path="/article" component={ Artice } />
                     <Redirect path="/" to={{pathname: '/article'}} />
                 </Switch>
-            </section>
+            </Fragment>
          )
     }
 }

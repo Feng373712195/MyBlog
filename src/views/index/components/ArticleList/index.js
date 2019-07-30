@@ -1,21 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import ArticleItem from './components/ArticleItem'
+import ArticleItem from './ArticleItem'
 // import ArticleContent from '../ArticleContent'
 import { getArticles,showArticle,cleanArticle } from '../../../../store/actions/articles'
 // import { cleanSelectLable } from '../../../../store/redux/actions/lable'
+import InfiniteScroll from 'react-infinite-scroller';
+import { throttle } from 'lodash'
+
+import './style.scss';
 
 class articleList extends Component{
 
-    constructor(){
-        super()        
+    constructor(props){
+        super()
+
+        this.loadMoreHadnle = throttle(this.loadMoreHadnle,600)
+        this.state = {
+            hasMore:true
+        }
     }
-     
-    componentWillMount(){
+
+    loadMoreHadnle(){
         const { selectlable,dispatch } = this.props;
         /**没有选中标签 默认加载前10篇文章*/ 
         if(!selectlable) dispatch( getArticles({},0,10) );
+    }
+    
+    componentDidMount(){
+        this.loadMoreHadnle()
+    }
+
+    componentWillMount(){
     }
 
     componentWillUnmount(){
@@ -32,16 +48,17 @@ class articleList extends Component{
 
         // Lable页时 有选中标签再显示文字列表
         // Article页 则不用隐藏操作。
-        let visible =  window.location.pathname === '/label' ? (selectlable ? '':'hidden'):'';
+        // let visible =  window.location.pathname === '/label' ? (selectlable ? '':'hidden'):'';
 
         return(
-            <div className={`articleList-warp ${visible}`}>
-                {/**这里不再用三元操作符判断渲染组件，这样会造成重复渲染。改使用隐藏显示组件 */}
-                {/* <ArticleContent article={ currentArticle }></ArticleContent> */}
-                <div className={`${$.isEmptyObject(currentArticle)?'':'hidden'}`} >
+                <InfiniteScroll
+                    initialLoad={false}
+                    pageStart={0}
+                    loadMore={this.loadMoreHadnle.bind(this)}
+                    hasMore={true}
+                    useWindow={false}>
                     {ArticleList}
-                </div>
-            </div>
+                </InfiniteScroll>
         )
     }
 }
