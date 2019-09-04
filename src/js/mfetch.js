@@ -1,23 +1,39 @@
 
+import axios from 'axios';
+
+axios.defaults.baseURL = '//m.mock.com'
+
 /** 发布文章 请求方法 */
 /** 依赖于fetch */
-
 const getAtricle = (query = {},skip = 0,limit = 1) =>{
-    return  fetch('/articles/find', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({query,skip,limit})
+
+    // /articles/find
+    // return  fetch('/articles/find', {
+    //             method: 'POST',
+    //             headers: {
+    //             'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({
+    //                             query,
+    //                             skip,
+    //                             limit
+    //                         })
+    //         })
+
+    return  axios.get('/a', {
+                query,
+                skip,
+                limit
             })
-            .then(res => res.json())
-            .then(body => {
-                return new Promise( (resolve,reject)=>{
-                    if(body.code === 0)
-                      resolve(body.data)
-                    else
-                      reject(body.error)
-                })  
+            .then(res => {
+                console.log( res )
+                if(res.data.code === 0)
+                    return res.data.data
+                else
+                    return res.data.error
+            })
+            .catch(err=>{
+                console.log(err)
             })
 }
 
@@ -49,7 +65,7 @@ const updateAtricle = (query,update,multi)=>{
     return  fetch('/articles/update', {
                 method: 'POST',
                 headers: {
-                'Content-Type': 'application/json'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({query:query,update:update,muilt:multi})
             })
@@ -63,7 +79,6 @@ const updateAtricle = (query,update,multi)=>{
                         }) 
             })
 }
-
 
 const readAtricle = (_id)=>{
 

@@ -25,6 +25,15 @@ export const OPEN_ARTICLES_LOADING = 'OPEN_ARTICLES_LOADING';
 /** 没有打开的文章加载 */
 export const OPEN_ARTICLES_LOADEND = 'OPEN_ARTICLES_LOADEND';
 
+// 文章列表下一页
+export const  NEXT_ARTILES_LIST_PAGE = 'NEXT_ARTILES_LIST_PAGE';
+// 文章列表上一页
+export const PRE_ARTILES_LIST_PAGE = 'PRE_ARTILES_LIST_PAGE';
+// 文章列表第一页
+export const FIRST_ARTILES_LIST_PAGE = 'FIRST_ARTILES_LIST_PAGE';
+// 文章列表最后一页
+export const LAST_ARTILES_LIST_PAGE = 'LAST_ARTILES_LIST_PAGE';
+
 /*
 * action 创建函数
 */
@@ -37,6 +46,7 @@ export const getArticles = (...param) => (dispatch) => {
     dispatch( {type:LOADING} );
     getAtricle(query,skip,limit)
     .then(data => {
+         console.log(data,'data')
          dispatch( {type:LOADEND} );
          dispatch(getSuccessArticles(data))
          dispatch( {type:NO_ERROR} )

@@ -27,3 +27,6 @@ npm run forever-start
 npm run forever-stop
 
 ```
+# open mongodb
+
+/usr/local/mongodb/bin/mongod --config mongo.conf

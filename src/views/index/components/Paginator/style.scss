@@ -1,0 +1,47 @@
+$active-color:#1890ff;
+
+.rotate-90deg{
+    transform: rotate(-90deg);
+}
+.rotate90deg{
+    transform: rotate(-90deg);
+}
+
+.hide{
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.paginator-container{
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    // background: darkgrey;
+    width: 30px;
+    .nav{
+        color:$active-color;
+        cursor: pointer;
+    }
+    .pagenum-box{
+        height: 100px;
+        overflow: hidden;
+        .scroll-box{
+            transition: transform .25s ease-in;
+            .pagenum{
+                height: 30px;
+                padding: 10px 0;
+                box-sizing: border-box;
+                transition: color .25s ease-in;
+                cursor: pointer;
+                &.active{
+                    font-weight: bold;
+                    color: $active-color;
+                }
+            }
+        }   
+    }
+}
+
+

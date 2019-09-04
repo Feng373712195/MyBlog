@@ -5,6 +5,8 @@ import ArticleItem from './ArticleItem'
 // import ArticleContent from '../ArticleContent'
 import { getArticles,showArticle,cleanArticle } from '../../../../store/actions/articles'
 // import { cleanSelectLable } from '../../../../store/redux/actions/lable'
+
+import { Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 import { throttle } from 'lodash'
 
@@ -14,14 +16,10 @@ class articleList extends Component{
 
     constructor(props){
         super()
-
-        this.loadMoreHadnle = throttle(this.loadMoreHadnle,600)
-        this.state = {
-            hasMore:true
-        }
     }
 
     loadMoreHadnle(){
+        console.log(  '=== load More ===' )
         const { selectlable,dispatch } = this.props;
         /**没有选中标签 默认加载前10篇文章*/ 
         if(!selectlable) dispatch( getArticles({},0,10) );
@@ -44,7 +42,11 @@ class articleList extends Component{
         let { articles,currentArticle,selectlable,lableRelationArticles,dispatch, } = this.props;
         // let Back = selectlable && <div onClick={ ()=>{  dispatch(cleanSelectLable()) } } className="back">返回</div>
         let ArticleList  = (selectlable?lableRelationArticles:articles)
-                           .map( (article,idx) =><ArticleItem key={article._id} article={ {...article,idx} } dispatch={ dispatch } ></ArticleItem> )
+                           .map( (article,index) =><ArticleItem key={ article._id } 
+                                                              index={ index }
+                                                              articlesLen={ articles.length } 
+                                                              article={ {...article,index} } 
+                                                              dispatch={ dispatch } /> )
 
         // Lable页时 有选中标签再显示文字列表
         // Article页 则不用隐藏操作。
@@ -54,6 +56,7 @@ class articleList extends Component{
                 <InfiniteScroll
                     initialLoad={false}
                     pageStart={0}
+                    loader={<Skeleton/>}
                     loadMore={this.loadMoreHadnle.bind(this)}
                     hasMore={true}
                     useWindow={false}>

@@ -6,7 +6,11 @@ import {
 	HIDE_ARTICLES, 
 	CLEAN_ARTICLES,
 	OPEN_ARTICLES_LOADING,
-	OPEN_ARTICLES_LOADEND
+	OPEN_ARTICLES_LOADEND,
+	NEXT_ARTILES_LIST_PAGE,
+	PRE_ARTILES_LIST_PAGE,
+	FIRST_ARTILES_LIST_PAGE,
+	LAST_ARTILES_LIST_PAGE
 	 } from './../../actions/articles'
 
 function articlesReducer(state = [] ,action){
@@ -15,8 +19,7 @@ function articlesReducer(state = [] ,action){
 			// console.log( new Array(10).fill(action.data[0],10),action.data[0],'action.data' )
 			return [
 				...state,
-				...[action.data[0],action.data[0],action.data[0],action.data[0],action.data[0],action.data[0],action.data[0],action.data[0],action.data[0]]
-				// ...action.data
+				...action.data
 			]
 		case CLEAN_ARTICLES:
 			return []
@@ -25,6 +28,20 @@ function articlesReducer(state = [] ,action){
 	}
 }
 
+function changeArtilesListPage( state = 1, action ){
+	switch(action.type){
+		case NEXT_ARTILES_LIST_PAGE:
+			return ++state
+		case PRE_ARTILES_LIST_PAGE:
+			return --state
+		case FIRST_ARTILES_LIST_PAGE:
+			return 1
+		case LAST_ARTILES_LIST_PAGE:
+			return action.page
+		default:
+			return state
+	}
+}
 
 export const currentArticle = ( state= {} ,action ) =>{
 	switch(action.type){
