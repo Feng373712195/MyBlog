@@ -5,35 +5,11 @@ import thunk from 'redux-thunk'
 import App from './containers/Main'
 import { HashRouter as Router } from 'react-router-dom'
 // import { BrowserRouter as Router} from 'react-router-dom'
-import Mock,{ Random } from 'mockjs';
-
-import store from '../../store'
+import store from '@store'
 
 import './style.scss'
+import '@assets/styles/scss/mixin.scss'
 import 'babel-polyfill'
-
-console.log( Mock.mock,'mock' )
-                //m.mock.com/a
-
-const mockArtice = []
-for( let i = 0 ; i < 10; i++ ){
-    mockArtice.push({ 
-        author: `${Mock.mock('@first')} ${Mock.mock('@last')}`,
-        clicks: 0,
-        content: `**${Random.cparagraph()}**`,
-        createtime: `${Random.date()} 星期六 ${Random.time()}`,
-        files: [],
-        lables: [],
-        lasttime: `${Random.date()} 星期六 ${Random.time()}`,
-        title: Random.title(),
-        __v: 0,
-        _id: Random.id(),
-    })
-}
-Mock.mock('//m.mock.com/a',{
-    code:0,
-    data:mockArtice
-})
 
 // 热更新 高阶函数
 function AppWarp(props){

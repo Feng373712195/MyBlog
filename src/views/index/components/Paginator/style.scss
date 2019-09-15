@@ -28,6 +28,7 @@ $active-color:#1890ff;
         height: 100px;
         overflow: hidden;
         .scroll-box{
+            transform: translateY(-60px);
             transition: transform .25s ease-in;
             .pagenum{
                 height: 30px;

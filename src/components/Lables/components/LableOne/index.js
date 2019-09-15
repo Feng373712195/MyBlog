@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { setSelectlable,removeLable } from '../../../../../redux/actions/lable'
-import { modalState } from '../../../../../redux/actions/global' 
+import { setSelectlable,removeLable } from '@store/actions/lable'
+import { modalState } from '@store/actions/global' 
 
 import './lable.scss'
 
@@ -11,17 +11,7 @@ class LabelOne extends Component{
         super()
     }
 
-    // shouldComponentUpdate(nextProp,nextState){
-    //     // console.log(`LabelOne nextProp${JSON.stringify(nextProp)} prop${JSON.stringify(this.props)} nextState${JSON.stringify(nextState)}  state${JSON.stringify(this.state)} `)
-    //     if( !$.isEmptyObject(nextProp) || nextState){
-    //         return true;
-    //     }
-    //     return false;
-    // }
-    
     removeBtn(lable){
-        
-        console.log('remove')
 
 		const that = this;
 		let { dispatch } = this.props;
@@ -58,12 +48,16 @@ class LabelOne extends Component{
                 })('');    
         }
 
-        const isMange = window.location.pathname.match('/admin');
+        const isMange = window.location.hash.match('/admin');
 
-        let removeBtn = <i onClick={ ()=>{ this.removeBtn( this.props.content ) } } className={`deleteIcon ${isMange?'':'hidden'}`} >X</i> 
+        let removeBtn = <i onClick={ ()=>{ this.removeBtn( this.props.content ) } } 
+                           className={`deleteIcon ${isMange?'':'hidden'}`} >X</i> 
            
         return (
-            <div onClick={ isMange?()=>{}:()=>{ dispatch(setSelectlable(lableContent,0,10)) }} className="ui big label" style={{backgroundColor:getLableColor()}} key={lableContent} >
+            <div onClick={ isMange?()=>{}:()=>{ dispatch(setSelectlable(lableContent,1,10)) }} 
+                 className="ui big label"
+                 style={{backgroundColor:getLableColor()}} 
+                 key={lableContent} >
                 {lableContent}
                 {removeBtn}
             </div>

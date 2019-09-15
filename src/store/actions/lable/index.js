@@ -1,4 +1,4 @@
-import { loadLabel,getAtricle,removeLabelHandle } from '../../../js/mfetch'
+import { loadLabel,getAtricle,removeLabelHandle } from '@api'
 import { LOADING,LOADEND,CHATH_ERROR,NO_ERROR,HIDDEN_MODAL } from '../global'
 /*
 * action 类型
@@ -39,7 +39,7 @@ export const setSelectlable = (...param) => (dispatch)=>{
     getAtricle({lables:lable},skip,limit)
     .then(data =>{ 
         dispatch(getLableRelationArticles(data)) 
-        dispatch( {type:NO_ERROR} )
+        dispatch({type:NO_ERROR})
         dispatch({type:LOADEND})
     })
     .catch(e =>{ 

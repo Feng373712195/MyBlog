@@ -5,36 +5,36 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pro": "cross-env NODE_ENV=pro node ./admin/pro-server.js",
-    "dev": "cross-env NODE_ENV=dev node ./admin/dev-server.js",
-    "start-dev": "better-npm-run nodemon-dev",
-    "start-pro": "better-npm-run nodemon-pro",
+    "pro": "cross-env NODE_ENV=pro node ./admin/server/pro-server.js",
+    "dev": "cross-env NODE_ENV=dev node ./admin/server/dev-server.js",
+    "start:dev": "better-npm-run nodemon-dev",
+    "start:pro": "better-npm-run nodemon-pro",
     "build": "cross-env NODE_ENV=pro webpack --config ./admin/build/webpack.pro.js ",
     "build:dll": "webpack --config ./admin/build/webpack.dll.config.js",
-    "forever-start": "better-npm-run forever-start",
-    "forever-stop": "better-npm-run forever-stop"
+    "forever:start": "better-npm-run forever-start",
+    "forever:stop": "better-npm-run forever-stop"
   },
   "betterScripts": {
     "nodemon-dev": {
-      "command": "nodemon ./admin/dev-server.js",
+      "command": "nodemon ./admin/server/dev-server.js",
       "env": {
         "NODE_ENV": "dev"
       }
     },
     "nodemon-pro": {
-      "command": "nodemon ./admin/pro-server.js",
+      "command": "nodemon ./admin/server/pro-server.js",
       "env": {
         "NODE_ENV": "pro"
       }
     },
     "forever-start": {
-      "command": "forever start ./admin/pro-server.js",
+      "command": "forever start ./admin/server/pro-server.js",
       "env": {
         "NODE_ENV": "pro"
       }
     },
     "forever-stop": {
-      "command": "forever stop ./admin/pro-server.js",
+      "command": "forever stop ./admin/server/pro-server.js",
       "env": {
         "NODE_ENV": "pro"
       }
@@ -61,6 +61,7 @@
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.30.1",
     "image-loader": "^0.0.1",
+    "jquery-lazyload": "^1.9.7",
     "koa-webpack-middleware": "^1.0.7",
     "less-loader": "^5.0.0",
     "mockjs": "^1.0.1-beta3",
@@ -84,6 +85,7 @@
     "highlight.js": "^9.12.0",
     "history": "^4.9.0",
     "jquery": "^3.3.1",
+    "jquery.scrollto": "^2.1.2",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
     "koa-convert": "^1.2.0",
@@ -102,6 +104,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-infinite-scroller": "^1.2.4",
+    "react-lazyload": "^2.6.2",
     "react-redux": "^5.0.7",
     "react-router": "*",
     "react-router-dom": "^4.2.2",

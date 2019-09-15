@@ -1,0 +1,18 @@
+
+@mixin full-box{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+}
+
+.article-loading-mask{
+    padding-top:20px; 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include full-box();
+    background: rgba(255, 255, 255, .8);
+}

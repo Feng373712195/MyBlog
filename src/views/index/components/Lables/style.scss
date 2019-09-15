@@ -1,0 +1,23 @@
+.lables{
+    margin: 40px auto 0 auto;
+    width: 80%;
+    text-align: center;
+    .lable{
+        cursor: pointer;
+        font-size: 14px;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius:6px;
+        padding: 0 9px;
+        margin:0 7px; 
+        height: 25px;
+        line-height: 1.6;
+        border: 1px solid #1e99f0;
+        background: #108ee9;
+        color: #fff;
+        transition: opacity .5s;
+        &:hover{
+           opacity: .8;
+        }
+    }
+}

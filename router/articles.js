@@ -6,6 +6,7 @@ const send = require('koa-send')
 const busboy = require('busboy')
 
 const articles = require('../models/manage/articles')
+const Lables = require('../models/manage/lables')
 const config = require('../admin/config')
 const { uploadFile,removeUploadFile } = require('../models/upload')
 
@@ -22,17 +23,26 @@ articlesRouter.post('/articles/find',async(ctx)=>{
     ctx.body = await  Articles.find(query,skip,limit)
 })
 
+articlesRouter.post('/articles/lists',async(ctx)=>{
+    let { query,skip,limit } = ctx.request.body; 
+    ctx.body = await  Articles.find(query,skip,limit,{ title:true,author:true,clicks:true,createtime:true,lables:true })
+})
+
 articlesRouter.post('/articles/remove',async(ctx)=>{
-    console.log('remove articeles')
     let { query } = ctx.request.body;
+    // 删除文章相关附件
     await removeUploadFile(path.join(config.rootDirPath , 'uploadfiles' ),query._id)
           .catch( e => console.log(e) )
+    
+    const articles = await Articles.find(query);
+    const removeArticlesLables = articles.data.data[0].lables;
+    const updateLabelRes = await Lables.save(removeArticlesLables,-1);
     ctx.body = await Articles.remove(query)
 })
 
 articlesRouter.post('/articles/update',async(ctx)=>{
     let { query,update,muilt } = ctx.request.body;
-    ctx.body = await  Articles.update(query,update,muilt)
+    ctx.body = await Articles.update(query,update,muilt)
 })
 
 articlesRouter.post('/articles/read',async(ctx)=>{

@@ -55,9 +55,8 @@ function routerRedcer(state = '',action){
 function modalRedcer(state = {},action){
 	switch(action.type){
 		case SHOW_MODAL:
-			state = action.modal
 			$('.m-modal').modal('show');
-			return state
+			return Object.assign({},state,action.modal)
 		case HIDDEN_MODAL:
 			state = {}
 			$('.m-modal').modal('hide');

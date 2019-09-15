@@ -2,14 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const config = require('../config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const sourcePath = path.join(config.rootDirPath, 'src/js');
-
+const assetsPath = (src) => path.join(config.rootDirPath, 'src' , src );
 
 
 module.exports = {
-
     module:{
-
         rules:[
             {
                 test: /\.css$/,                
@@ -53,9 +50,19 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
         modules: [
-          sourcePath,
+          assetsPath('js'),
           'node_modules'
-        ]
+        ],
+        alias:{
+            '@uilts':path.join(config.rootDirPath,'uilts'),
+            '@semantic':path.join(config.rootDirPath,'semantic'),
+            '@views':assetsPath('views'),
+            '@components':assetsPath('components'),
+            '@containers':assetsPath('containers'),
+            '@assets':assetsPath('assets'),
+            '@api':assetsPath('api'),
+            '@store':assetsPath('store')
+        }
     },
     plugins: [
         new ExtractTextPlugin({ 
@@ -65,7 +72,8 @@ module.exports = {
         new webpack.ProvidePlugin({
             //  $函数会自动添加到当前模块的上下文，无需显示声明
             $: "jquery",
-            jQuery: "jquery"
+            jQuery: "jquery",
+            "window.jQuery":"jquery"
         })
     ]
 }

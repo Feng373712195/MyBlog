@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
 
 import './lables.scss'
-import { getLables,cleanLables,setSelectlable } from '../../../redux/actions/lable'
+import { getLables,cleanLables,setSelectlable } from '@store/actions/lable'
 import LableOne from './components/LableOne'
 
 class Labels extends Component{
@@ -32,9 +32,6 @@ class Labels extends Component{
     }
 
 	render(){
-
-		console.log('我是 Labels 我被Render')
-
 		const { lables,dispatch } = this.props;
 		
         let Lables =  lables.map(lable => {
@@ -50,7 +47,6 @@ class Labels extends Component{
 }
 
 function select(state) {
-	console.log(state)
     return {
 	  lables:state.lables.lablesReducer,
 	  selectlable:state.lables.selectlable,

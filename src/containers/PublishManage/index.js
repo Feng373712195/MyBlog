@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { getAtricle,removeAtricle } from '../../js/mfetch'
+import { getAtricle,removeAtricle } from '@api';
 
 import './publishmanage.scss'
 import OperateList from '../../components/OperateList'

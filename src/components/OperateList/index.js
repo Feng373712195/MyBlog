@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { getAtricle,removeAtricle } from '../../js/mfetch'
-import { getDraft,removeDraft } from '../../js/mfetch'
-
+import { connect } from 'react-redux';
+import { 
+	getAtricle,
+	getAtricleList,
+	removeAtricle,
+	getDraft,
+	getDraftList,
+	removeDraft } from '@api'
+import { modalState } from '@store/actions/global' 
+	
 import Modal  from '../Moadl'
 import OperateItem from './OperateItem'
 import Editor from '../Editor'
@@ -24,14 +30,14 @@ function removeAtricleHandle(query){
 	removeHandle(query)
 	.then(() =>{
 		console.log('删除成功');
-		return getHandle() 
+		return getHandle({},1,10) 
 	})
 	.catch( e => { 
 		console.error(e);
 		alert('删除失败，请稍后再试;')
 	})
 	.then( data => {
-		this.setState({ articles:data })
+		this.setState({ articles:data.data })
 	})
 	.catch( e => { 
 		console.error(e);
@@ -46,26 +52,21 @@ class OperateList extends Component{
 		this.state = {
 			articles:[],
 			articlesData:{},
-			isEdit:false,
-			modalData:{
-				modalHead:'',
-				modalContent:'',
-				modalBtns:[]
-			}
+			isEdit:false
 		}
 
 		this.loadAtricles = (type)=>{
 			
 			let getHandle;
 
-			 if(type === 'atricle' ){
-				 getHandle = getAtricle
-			 }else{
-				 getHandle = getDraft
+			if(type === 'atricle' ){
+				 getHandle = getAtricleList
+			}else{
+				getHandle = getDraftList
 			}
 			
-			getHandle({},0,10)
-			.then( data => { console.log(data); this.setState({ articles:data }) } )
+			getHandle({},1,10)
+			.then( data => { console.log(data); this.setState({ articles:data.data }) } )
 			.catch( e => { alert('获取文章失败,请稍后再试！') } )
 		}
 
@@ -76,8 +77,6 @@ class OperateList extends Component{
 	}
 	
 	shouldComponentUpdate(nextProp,nextState){
-		// console.log(`OperateList nextProp${JSON.stringify(nextProp)} prop${JSON.stringify(this.props)} nextState${JSON.stringify(nextState)}  state${JSON.stringify(this.state)} `)
-
 		if( !$.isEmptyObject(nextProp) || nextState){
             return true;
         }
@@ -85,32 +84,8 @@ class OperateList extends Component{
     }
     
 	removeBtn(title,_id){
-		
-		console.log('removeBtn')
 
-        this.setState({
-
-            modalData:{
-                modalHead:'删除提示?',	
-                modalContent:`是否删除文章<${title}>`,
-                modalBtns:[
-                    {
-                        text:"取消",
-                        class:"ui black deny button"
-                    },
-                    {
-                        text:"确定",
-                        class:"ui positive right button",
-                        handle:removeAtricleHandle.bind(this,{_id})
-                    }
-                ]	
-            }
-
-        },()=>{
-            $('.ui.modal')
-            .modal('show');
-		})
-		
+		const { dispatch } = this.props;
 
 		const modalData = {
 			modalHead:'删除提示?',	
@@ -127,7 +102,7 @@ class OperateList extends Component{
 				}
 			]	
 		}
-
+		dispatch( modalState(modalData) )
 		 
 	}
 
@@ -148,15 +123,23 @@ class OperateList extends Component{
 
     render(){
 
-		console.log('我是 OperateList 我被Render')
-
 		return (
 			<div>
 				{this.state.isEdit?
-					<Editor backhandle={this.editBack.bind(this)} manage="true" type={this.props.type} refresh={this.loadAtricles.bind(this,this.props.type)}  articleId={this.state.articleData._id} articleTitle={this.state.articleData.title} articleContent={this.state.articleData.content} articleLabels={this.state.articleData.lables} articleFiles={this.state.articleData.files}></Editor>
+					<Editor backhandle={this.editBack.bind(this)} 
+							manage="true" 
+							type={this.props.type} 
+							refresh={this.loadAtricles.bind(this,this.props.type)}  
+							articleId={this.state.articleData._id} >
+					</Editor>
 					:
 					<div>
-						{this.state.articles.map( article => <OperateItem key={article._id} articleData={article} removeHandle={this.removeBtn.bind(this)} editHandle={this.editBtn.bind(this)} ></OperateItem> )}
+						{this.state.articles.map( article => 
+							<OperateItem key={article._id} 
+										 articleData={article} 
+										 removeHandle={this.removeBtn.bind(this)} 
+										 editHandle={this.editBtn.bind(this)} >
+							</OperateItem> )}
 					</div>
 				}
 			</div>
@@ -164,4 +147,4 @@ class OperateList extends Component{
 	}
 }
 
-export default OperateList;
+export default connect(()=>({}))(OperateList);

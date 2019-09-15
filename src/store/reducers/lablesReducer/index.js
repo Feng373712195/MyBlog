@@ -10,12 +10,12 @@ import {
 	CLEAN_LABLE_RELATION_ARTICLES
  } from './../../actions/lable'
 
-function lablesReducer(state = [] ,action){
+function lablesReducer(state = null ,action){
 	switch(action.type){
 		case GET_SUCCESS_LABEL:
-			return [...state,...action.data]
+			return [...action.data]
 		case CLEAN_LABEL:
-			state = [];
+			state = null;
 			return state
 		case REMOVE_LABLE:
 			return [ 
@@ -43,7 +43,6 @@ function selectlable(state = '',action){
 function lableRelationArticles(state = [],action){
 	switch(action.type){
 		case GET_LABLE_RELATION_ARTICLES:
-			console.log(action)
 			return [
 				...state,
 				...action.articles

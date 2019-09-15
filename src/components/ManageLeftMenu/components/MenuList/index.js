@@ -8,7 +8,7 @@ import './menu-list.scss'
 class MenuList extends Component{
 	
 	backHome(){
-		this.props.history.goBack()
+		// this.props.history.goBack()
 	}
 
 	render(){
@@ -19,28 +19,28 @@ class MenuList extends Component{
 				name:'发布文章',
 				disable:false,
 				active:'active',
-				link:'/admin/manage/publish/edit',
+				link:'/edit',
 				key:'publish-edit'
 			},
 			{
 				name:'文章草稿',
 				disable:false,
 				active:'active',
-				link:'/admin/manage/draft/manage',
+				link:'/draft',
 				key:'publish-draft'
 			},
 			{
 				name:'文章管理',
 				disable:false,
 				active:'active',
-				link:'/admin/manage/publish/manage',
+				link:'/publish',
 				key:'article-mange'
 			},
 			{
 				name:'标签管理',
 				disable:false,
 				active:'active',
-				link:'/admin/manage/label/manage',
+				link:'/labels',
 				key:'label-mange'
 			},
 			{

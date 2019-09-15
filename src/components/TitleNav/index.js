@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
 
 import emitter from '../../../models/ev'
-import { throttle,debounce } from '../../js/uilt'
-import { setNavActive,changeNavData } from '../../../redux/actions/titlenav'
+import { setNavActive,changeNavData } from '@store/actions/titlenav'
 import './title-nav.scss'
 
 

@@ -1,0 +1,19 @@
+
+@mixin full-box{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+}
+
+.lables-warp{
+    padding-top:20px; 
+    width: 75%;
+    margin: 64px auto 0 auto;
+    overflow: scroll;
+    @include full-box();
+    @media screen and (max-width:500px) {
+        width: 85%;
+    }
+}

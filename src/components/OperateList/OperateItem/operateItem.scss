@@ -13,6 +13,9 @@
    overflow: hidden;
    h3{
      display:inline-block;
+     overflow: hidden;
+     white-space: nowrap;
+     text-overflow: ellipsis;
      width: 70%;
      margin: 0;
    }

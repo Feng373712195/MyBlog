@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import ArticleItem from './components/ArticleItem'
 import ArticleContent from '../ArticleContent'
-import { getArticles,showArticle,cleanArticle } from '../../../redux/actions/articles'
+import { getArticles,showArticle } from '../../../redux/actions/articles'
 import { cleanSelectLable } from '../../../redux/actions/lable'
 
 class articleList extends Component{
@@ -16,12 +16,11 @@ class articleList extends Component{
     componentWillMount(){
         const { selectlable,dispatch } = this.props;
         /**没有选中标签 默认加载前10篇文章*/ 
-        if(!selectlable) dispatch( getArticles({},0,10) );
+        if(!selectlable) dispatch( getArticles({},1,10) );
     }
 
     componentWillUnmount(){
-        const { dispatch } = this.props;
-        dispatch( cleanArticle() );
+        
     }
     
 

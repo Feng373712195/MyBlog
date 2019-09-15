@@ -1,13 +1,18 @@
-#Artice{
+
+@mixin full-box{
     position: absolute;
-    width: 75%;
-    margin: 64px auto 0 auto;
-    padding-top:20px; 
     top: 0px;
     left: 0;
     right: 0;
     bottom: 0px;
+}
+
+#Artice{
+    padding-top:20px; 
+    width: 75%;
+    margin: 64px auto 0 auto;
     overflow: scroll;
+    @include full-box();
     @media screen and (max-width:500px) {
         width: 85%;
     }

@@ -1,0 +1,43 @@
+@mixin full-box{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+}
+
+.aboutme-warp{
+    padding-top:20px; 
+    width: 75%;
+    margin: 64px auto 0 auto;
+    overflow: scroll;
+    text-align: center;
+    @include full-box();
+    @media screen and (max-width:500px) {
+        width: 85%;
+    }
+    .aboutme{
+        .photo{
+            overflow: hidden;
+            border-radius:50%; 
+            margin: 30px 0;
+        }
+        .introduce{
+            .name{
+                font-weight: bold;
+            }
+            .links a{
+                margin: 0px 10px;
+                border-bottom:1px solid #1890ff;
+                padding-bottom: 5px;
+                translate: opacity .5s;
+                &:hover{
+                    opacity: .8;
+                }
+            }
+        }
+        display: inline-block;
+        text-align: center;
+    }
+}
+

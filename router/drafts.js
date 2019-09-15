@@ -14,37 +14,30 @@ const draftsRouter = new router();
 
 
 draftsRouter.post('/drafts/save',async(ctx)=>{
-
     let { title,content,lables,files } = ctx.request.body; 
-
     ctx.body = await Drafts.save({ title,content,lables,files });
 
 })
 
 draftsRouter.post('/drafts/find',async(ctx)=>{
+    let { query,skip,limit } = ctx.request.body; 
+    ctx.body = await Drafts.find(query,skip,limit)
+})
 
-    let { query } = ctx.request.body; 
-
-    ctx.body = await Drafts.find(query)
+draftsRouter.post('/drafts/lists',async(ctx)=>{
+    let { query,skip,limit, } = ctx.request.body; 
+    ctx.body = await Drafts.find(query,skip,limit,{ title:true,author:true,clicks:true,createtime:true,lables:true })
 })
 
 draftsRouter.post('/drafts/remove',async(ctx)=>{
-
     let { query } = ctx.request.body;
-    
     ctx.body = await Drafts.remove(query)
 
 })
 
 draftsRouter.post('/drafts/update',async(ctx)=>{
-    
     let { query,update,muilt } = ctx.request.body;
-
-    await removeUploadFile(path.join(config.rootDirPath , 'uploadfiles' ),query._id)
-          .catch( e => console.log(e) )
-
     ctx.body = await Drafts.update(query,update,muilt)
-    
 })
 
 draftsRouter.post('/drafts/updateUpload/:id',async(ctx)=>{

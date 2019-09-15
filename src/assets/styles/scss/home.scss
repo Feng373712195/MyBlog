@@ -1,0 +1,62 @@
+body{
+    font-size: 100%;
+    background: #fff;
+    width: 100%;
+}
+
+.app{
+    background: #fff;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.m-content{
+    margin-top: 200px;
+    overflow: hidden;
+    margin-left: 290px;
+    height:100%;
+    background: #fff;
+}
+
+.m-content .container{
+    overflow: hidden; 
+    margin-top: 10px;
+    background-color: #fff !important;
+    border-radius:5px; 
+    box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+    padding: 20px;
+}
+
+.m-content #Artice.container{
+    background-color:#ebebeb !important;
+    padding:0px;
+}
+
+.hidden{
+    display: none !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .m-content{
+        margin-top:0px;
+        margin-left: 0px;
+    }
+}
+
+.testbox-1{
+    height: 200px;
+    width: 100%;
+}
+
+//new 
+.container{
+    padding-top: 20px;
+    width: 75%;
+    margin: 64px auto 0 auto;
+    overflow: scroll;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { createeObjectURL } from './../../../../js/uilt'
+import { createeObjectURL } from '@assets/js/uilt'
 
-import { uploadFile } from '../../../../js/mfetch'
+import { uploadFile } from '@api'
 import './uploadimgmodal.scss'
 import { setTimeout } from 'timers';
 
@@ -62,13 +62,9 @@ export default class UploadImgModal extends Component{
                   alert('上传附件失败，请重新上传')
                   that.isUploadSucess(false); 
                })
-
     }
 
     render(){
-
-        
-
         return(
             <div className="uploadImg-modal" style={{display:this.props.isshow?'block':'none'}} >
                 <i className='close' onClick={ ()=>{ this.initState() }} >X</i>

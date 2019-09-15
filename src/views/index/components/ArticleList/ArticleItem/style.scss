@@ -5,6 +5,7 @@
         color: #333;
         cursor: pointer;
         font-size: 16px;
+        margin-bottom: 20px;
         &:active,&:hover{
             color: red; 
         }
@@ -46,8 +47,16 @@
             color: #333;
             padding-bottom:15px;
             overflow: hidden;
-            .artice-read{
+            &>span{
+                display: inline-block;
+                height: 22px;
+                line-height: 22px;
+            }
+            .artice-lables{
                 margin-left:15px;
+                &>div{
+                    display: inline-block;
+                }
             }
             .l{
                 float: left;

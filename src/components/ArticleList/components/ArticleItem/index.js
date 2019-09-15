@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import markdown from './../../../../../models/markdown'
+import markdown from '@assets/js/markdown'
 import { showArticle } from '../../../../../redux/actions/articles'
  
 import './articleItem.scss' 

@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { removeAtricle } from '../../../js/mfetch'
+import { removeAtricle } from '@api'
 
 import './operateItem.scss'
 
@@ -17,8 +17,6 @@ class OperateItem extends Component{
     }
 
     render(){
-        console.log('我是 OperateItem 我被Render')
-
         let articleData = this.props.articleData
         let articleTitle = articleData.title
 

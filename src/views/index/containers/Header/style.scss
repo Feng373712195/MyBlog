@@ -16,6 +16,13 @@
         line-height: 64px;
         font-size: 18px;
         font-weight: bold;
+        div{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .ant-tag{
+            margin-left: 10px;
+        }
     }
     .blog-menu{
         height: 100%;

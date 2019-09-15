@@ -15,16 +15,24 @@ import xss from 'xss'
 // import { markdown } from 'markdown';
 
 /*引入markdown */
-import marked  from './../../../models/markdown'
+import marked  from '@assets/js/markdown'
 /*引入高亮风格样式*/
 import 'highlight.js/styles/xcode.css'
 
 import UploadImgModal from './components/UploadImgModal'
 import './editor.scss'
 import { funGetSelected,funTextAsTopic }  from './rang.js'
-import { getAtricle,saveAtricle,updateAtricle,uploadFile,uploadImg } from '../../js/mfetch'
-import { getDraft,saveDraft,updateDraft,uploadDraftFile } from '../../js/mfetch'
-import { getNowFormatDate } from '../../js/uilt'
+import { 
+	getAtricle,
+	saveAtricle,
+	updateAtricle,
+	uploadFile,
+	uploadImg,
+	getDraft,
+	saveDraft,
+	updateDraft,
+	uploadDraftFile } from '@api'
+import { getNowFormatDate } from '@uilts'
 
 class Editor extends Component{
 
@@ -32,7 +40,6 @@ class Editor extends Component{
 		super()
 		
 		this.timeStamp = +new Date()
-
 		this.state = {
 			/* 生成一个时间戳*/ 
 			timeStamp:this.timeStamp,
@@ -47,15 +54,20 @@ class Editor extends Component{
 		  
     }
 
-    componentWillMount(){
+    async componentWillMount(){
 
-        this.setState({
-			articleId:this.props.articleId?this.props.articleId:'',
-            articleTitle:this.props.articleTitle?this.props.articleTitle:'',
-            articleContent:this.props.articleContent?this.props.articleContent:'',
-			articleLabels:this.props.articleLabels?this.props.articleLabels:[],
-			articleFiles:this.props.articleFiles?this.props.articleFiles:[]
-        })
+		const { type,articleId } = this.props;
+		if( articleId ){
+			const article = type == 'atricle' ? await getAtricle({ _id:articleId }) : await getDraft({ _id:articleId })
+			this.setState({
+				articleId:article.data[0]._id,
+				articleTitle:article.data[0].title,
+				oldArticleContent:article.data[0].content,
+				articleContent:article.data[0].content,
+				articleLabels:article.data[0].lables,
+				articleFiles:article.data[0].files
+			})
+		}
     }
 
     componentWillReceiveProps(nextProp){
@@ -64,6 +76,7 @@ class Editor extends Component{
 
 
 	editArticle(content){
+		console.log( $('.articlesbox')[0].value,'change value' )
 		this.setState({
 			articleContent:$('.articlesbox')[0].value
 		})
@@ -192,9 +205,6 @@ class Editor extends Component{
 
 		let regexp = new RegExp(`/articles/cacheuploadImg/${this.state.timeStamp}/`,'g')
 
-		console.log( `/articles/cacheuploadImg/${this.state.timeStamp}/` )
-
-		
 		let query = {
 			title:xss($('#articleTitle').val()),
 			content:xss($('#articleContent').val().replace(regexp,'/articles/uploadImg/_id/')),
@@ -294,9 +304,8 @@ class Editor extends Component{
 	/** 获取上传图片地址 */
 	getImgURL(url){
 		let articlesbox = $('.articlesbox')[0];
-
-		console.log(url)
 		funTextAsTopic(articlesbox,`![](${url})`)
+		this.editArticle();
 	}
 
 	/** 关闭上传图片弹出框 */
@@ -402,7 +411,7 @@ class Editor extends Component{
 						return <div key={file.name} className="file ui label large">
 									<span className="file-name">{file.name}</span>
 									<span className="file-size">{`${(parseInt(file.size/1024)).toLocaleString('en-US')}KB`}</span>
-									{/* <span onClick={this.removeFile.bind(this,index)} className="file-del">X</span> */}
+									<span onClick={this.removeFile.bind(this,index)} className="file-del">X</span>
 								</div>
 					})
 
@@ -413,7 +422,7 @@ class Editor extends Component{
 					
 					<div className="field">
 						<label>文章标题</label>
-						<input id="articleTitle"  type="text" placeholder="文章标题..." defaultValue={this.props.articleTitle} />
+						<input id="articleTitle"  type="text" placeholder="文章标题..." defaultValue={this.state.articleTitle} />
 					</div>
 
 					<div className="field">
@@ -423,7 +432,12 @@ class Editor extends Component{
 							{markItList.map(item => item)}
 						</ul>
 
-						<textarea id="articleContent" onChange={this.editArticle.bind(this)} defaultValue={this.props.articleContent} className="articlesbox" ></textarea>
+						<textarea id="articleContent" 
+								  onChange={this.editArticle.bind(this)} 
+								  defaultValue={this.state.oldArticleContent} 
+								  value={this.state.articleContent}
+								  className="articlesbox" >
+						</textarea>
 
 						<div className={`preview-box ${this.state.showPreview?'':'hidden'}`}>
 							<div className="preview-head">预览模式</div>
@@ -452,7 +466,7 @@ class Editor extends Component{
 							{Files}
 						</div>	
 						<button type="button" onClick={this.selectFilesBtn.bind(this)} className="ui basic button">上传附件</button>
-						<input  type='file' onChange={this.selectFiles.bind(this)} multiple="true" className="attachment hidden" />
+						<input  type='file' onChange={this.selectFiles.bind(this)} multiple className="attachment hidden" />
 					</div>
 					
 					<div className="btns-warp">

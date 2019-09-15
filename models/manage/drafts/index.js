@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
-
-const { getNowFormatDate } = require('../../../src/js/uilt')
+const uilts = require('../../../uilts')
 const { dbClient,redisClient } = require('../../../admin/db')
+
+const Lables = require('../lables');
 
 mongoose.Promise = global.Promise;
 
@@ -35,37 +36,28 @@ class Drafts{
         this.draftsModel = {} 
     }
     
-    save({title,author = "WUZEFENG",content,lables = [],files = [],clicks = 0,createtime = getNowFormatDate(),lasttime = getNowFormatDate() }){
+    save({title,author = "WUZEFENG",content,lables = [],files = [],clicks = 0,createtime = uilts.getNowFormatDate(),lasttime = uilts.getNowFormatDate() }){
 
         let that = this;
         this.articlesData = {title,author,content,lables,files,clicks,createtime,lasttime}     
-        
-
-
-        console.log(this.articlesData)
-
 
         return  new Promise((res,rej)=>{
                  draftsModel.create(this.articlesData,(err,data)=>{  
                         if(err) return rej({code:-1,error:err})
                         else{
-                            if(lables.length > 0){
-                                redisClient.sadd('lables',lables,function(err,lableDATA){
-                                    if(err) rej({code:-1,error:err})
-                                    return res({code:0,data:data})
-                                })
-                            }else{
-                                return res({code:0,data:data})
-                            }
+                            // 草稿不用存储标签 等正式发布才把标签存储
+                            return res({code:0,data:data})
                         }
                      });    
                  })
-        
     }
 
     find(query){
         return draftsModel.find(query).exec()
-               .then(  data => { return {code:0,data:data} } )
+               .then(async data => { 
+                    const total = await draftsModel.find().count().exec()
+                    return { code:0,data:{data,total} }
+               })
                .catch( err => { return {code:-1,eroor:err} } )
     }
 

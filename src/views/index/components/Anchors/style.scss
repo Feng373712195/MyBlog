@@ -1,0 +1,14 @@
+.anchors-box{
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    z-index: 99;
+    .ant-anchor-wrapper{
+        background: transparent;
+        .ant-anchor-ink::before{
+            content: none;
+        }
+    }
+}

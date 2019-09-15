@@ -1,27 +1,36 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import markdown from 'models/markdown';
-import { showArticle } from 'store/actions/articles';
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
+import markdown from '@assets/js/markdown';
+import { hiddenArticle } from 'store/actions/articles';
+import { Tag } from 'antd';
+
  
 import './style.scss' 
+import { T } from 'antd/lib/upload/utils';
 
 
-const getObserervArtcleItem = function(onTop){
+const getObserervArtcleItem = function(onTop,fromPage){
     const that = this;
+    const { dispatch } = that.props;
     const options = {
         root: null,
         threshold:onTop ? [0,1] : [1,0]
     };
+    
     var intersection = new IntersectionObserver(function (entries) {
         if( entries[0].isIntersecting ){
+            console.log('observer')
             this.isVisable = true;
-            // console.log( onTop ? '上翻' : '下翻' , that.props.index )
         }
         if( this.isVisable && !entries[0].isIntersecting ){
+            dispatch({ type:'CUREENT_ARTILES_LIST_PAGE', page: onTop ? fromPage : fromPage + 1  })
             this.isVisable = false;
             const isOnTop = entries[0].boundingClientRect.top < 0 ? true : false
             intersection.unobserve(that.acticleItem);
-            getObserervArtcleItem.bind(that)( isOnTop );
+            getObserervArtcleItem.bind(that)( isOnTop,fromPage );
         }
     },options);
     
@@ -29,14 +38,6 @@ const getObserervArtcleItem = function(onTop){
 }
 
 class articleItem extends Component{
-
-    // shouldComponentUpdate(nextProp,nextState){
-    //     // console.log(`articleItem nextProp${JSON.stringify(nextProp)} prop${JSON.stringify(this.props)} nextState${JSON.stringify(nextState)}  state${JSON.stringify(this.state)} `)
-    //     if( !$.isEmptyObject(nextProp) || nextState){
-    //         return true;
-    //     }
-    //     return false;
-    // }
 
     constructor(){
         super();
@@ -46,67 +47,82 @@ class articleItem extends Component{
         this.intersection = null;
         // 是否已经露出过了
         this.isVisable = false; 
+        // 是否被监听的item 
         this.state = {
             isObserveitem:false
         }
     }
 
-    
-    getArticleContent(){
-        let div = document.createElement('div');
-
-        div.innerHTML =  markdown(this.props.article.content)
-                         /**列表时把 把图片src转成data-src  不加载图片*/ 
-                        .replace(/src\=/g,'data-src=')
-                        /**过滤换行符 回车符*/
-                        .replace(/\n\r/g,'')
-                        /**文章列表只显示400个字 */
-                        .substring(0,400);
-                        
-        return div.innerText
-    }
-
     componentDidMount(props){
-        const { index,articlesLen } = this.props;
+        const { isPageLastItem,fromPage } = this.props;
 
-        // 监听每页文章列表的最后一项
-        if( index !== articlesLen-1 ) return;
-
-        this.setState({
-            isObserveitem:true
-        })
-        getObserervArtcleItem.bind(this)(false)
+        // 监听每页文章列表的最后一项   
+        // if( !isPageLastItem ) return;
+        // this.setState({
+        //     isObserveitem:true
+        // })
+        // getObserervArtcleItem.bind(this)( false,fromPage )
     }
 
-    componentDidMount(){
+    componentWillUnmount(){
         // 取消监听
         this.intersection && this.intersection.unobserve(this.acticleItem)
     }
 
+    getItemId(){
+        const { fromPage, isPageLastItem,isPageFirstItem } = this.props;
+        let itemId = ''
+        if( isPageFirstItem ){
+            itemId = `${fromPage}-0`
+        }
+        if( isPageLastItem ){
+            itemId = `${fromPage}-1`
+        }
+        return itemId;
+    }
+
+    toArticle(id){
+        const { history,dispatch } = this.props;
+        dispatch( hiddenArticle() );
+        history.push(`/article/${id}`);
+    }
 
     render(){
 
         let { dispatch } = this.props;
-        const articleContent = this.getArticleContent.bind(this)();
-        let isEllipsis = articleContent.length>=200?true:false; 
 
         return(
-            <div style={{ background:this.state.isObserveitem ? 'red' : '' }} ref={ (item)=>{ this.acticleItem = item } }  id={ `acticleItem${this.props.index}` } className="article-list" >
-                <h2 onClick={ ()=>{  dispatch(showArticle(this.props.article)) } } className="article-title">
+            // style={{ background:this.state.isObserveitem ? 'red' : '' }} 
+            <nav onClick={ this.toArticle.bind(this,this.props.article._id) } style={{ background:this.state.isObserveitem ? 'red' : '' }} 
+                 ref={(item)=>{ this.acticleItem = item } } 
+                 id={ this.getItemId.bind(this)() } 
+                 className="article-list" >
+                <h2 className="article-title">
                     {this.props.article.title}
                     <div className="ui disabled inline loader"></div>
                 </h2>
-                <div className={`article-content ${isEllipsis?'ellipsis':''}`}>{ articleContent }</div>
+                {/* <div className={`article-content ${isEllipsis?'ellipsis':''}`}>{ articleContent }</div> */}
                 <div className="artice-footer-warp">
-                    <p className="artice-footer">
-                        <span className="artice-author l">作者：{this.props.article.author}</span>
-                        <span className="artice-read l">阅读量：{this.props.article.clicks}</span>
-                        <span className="artice-createtime r">发布于：{this.props.article.createtime}</span>
-                    </p>
+                    <div className="artice-footer">
+                        <div className="artice-author l">作者：{this.props.article.author}</div>
+                        <div className={ `artice-lables l ${ this.props.article.lables.length > 0 ? '' : 'hidden' }` } >
+                            <div>标签：</div>
+                            <div> 
+                                {this.props.article.lables.map(lable=> <Tag key={lable} color="#108ee9">{lable}</Tag> ) } 
+                            </div>
+                        </div>
+                        <div className="artice-createtime r">发布于：{this.props.article.createtime}</div>
+                    </div>
                 </div>
-            </div>
+            </nav>
         )
     }
 }
 
-module.exports = articleItem;
+function select(state){
+    return {
+        currentPage:state.articles.currentArticlePage
+    }
+}
+
+export default  connect(select)(withRouter(articleItem));

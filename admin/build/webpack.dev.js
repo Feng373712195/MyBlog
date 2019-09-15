@@ -9,8 +9,8 @@ const AddAssetHtmlPlugin = require( 'add-asset-html-webpack-plugin' );
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const sourcePath = path.join(config.rootDirPath, 'src/js');
-const outputPath = path.join(config.rootDirPath, 'dist/js');
+const sourcePath = path.join(config.rootDirPath, 'src');
+const outputPath = path.join(config.rootDirPath, 'dist');
 
 
 const reactHotLoaderConfig = {
@@ -32,17 +32,17 @@ module.exports = merge(webpackBaseConfig,{
             `webpack-hot-middleware/client?http://localhost:${config.dev.port}/`,
             path.resolve(config.rootDirPath,'./src/views/index/index.js')
         ],
-        // manage:[
-        //     'eventsource-polyfill',
-        //     'react-hot-loader/patch',
-        //     `webpack-hot-middleware/client?http://localhost:${config.dev.port}/`,
-        //     path.resolve(config.rootDirPath,'./src/js/manage-dev.js')
-        // ],
+        manage:[
+            'eventsource-polyfill',
+            'react-hot-loader/patch',
+            `webpack-hot-middleware/client?http://localhost:${config.dev.port}/`,
+            path.resolve(config.rootDirPath,'./src/views/manage/index.js')
+        ],
     },
     output:{
         path: outputPath,
-        publicPath: '/dist/js/',
-        filename: '[name].js',    
+        publicPath: '/dist',
+        filename: 'js/[name].js',    
     },
     module:{
         rules:[
@@ -78,19 +78,28 @@ module.exports = merge(webpackBaseConfig,{
             manifest: require(  path.resolve( config.rootDirPath,'./build/vendor-manifest.json' ) )
         } ),
         new AddAssetHtmlPlugin( {
-            filename: require.resolve( path.resolve( config.rootDirPath,'./build/vendor.dll.js') ),
+            filepath: require.resolve( path.resolve( config.rootDirPath,'./build/vendor.dll.js') ),
             includeSourcemap: false
-        } ),
+        }),
+        new HtmlWebpackPlugin({
+            title:'WUZEFENG 博客',
+            filename:'home.html',
+            template:path.resolve( sourcePath, 'index.html' ),
+            chunks:['home']
+        }),
+        new HtmlWebpackPlugin({
+            title:'管理后台',
+            filename:'manage.html',
+            template:path.resolve( sourcePath, 'index.html' ),
+            chunks:['manage']
+        }),
         new CleanWebpackPlugin(
             ['dist/js/*.js'],
-
             {
                 root:config.rootDirPath,       
-                verbose:  true,    
-                dry:      false 
-
+                verbose:true,    
+                dry:false 
             }
         )
     ]
-
 })

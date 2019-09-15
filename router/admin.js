@@ -12,7 +12,7 @@ admin.post('/admin/login',(ctx)=>{
     ctx.body = { code: 0 }
 })
 
-admin.get('/admin/manage/publish/edit',async(ctx)=>{
+admin.get('/',async(ctx)=>{
     await ctx.render('manage');
 })
 
