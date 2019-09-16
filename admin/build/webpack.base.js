@@ -54,6 +54,7 @@ module.exports = {
           'node_modules'
         ],
         alias:{
+            "css-animation/es/Event": "css-animation/dist-src/Event" ,
             '@uilts':path.join(config.rootDirPath,'uilts'),
             '@semantic':path.join(config.rootDirPath,'semantic'),
             '@views':assetsPath('views'),
@@ -66,7 +67,7 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin({ 
-            filename:'./../css/[name].css',
+            filename:'css/[name].css',
             disable: process.env.NODE_ENV === "dev"
         }),
         new webpack.ProvidePlugin({

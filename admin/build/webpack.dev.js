@@ -61,7 +61,6 @@ module.exports = merge(webpackBaseConfig,{
     resolve:{
         // 解决Antd的一个issus css-animation/es/Event es文件夹更名为dist-src依赖模块没有更新
         alias: { 
-            "css-animation/es/Event": "css-animation/dist-src/Event" ,
             "models":path.join(__dirname,'../..','./models'),
             "store":path.join(__dirname,'../..','./src/store')
         } 

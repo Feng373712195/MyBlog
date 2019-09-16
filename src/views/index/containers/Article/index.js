@@ -20,7 +20,7 @@ import './style.scss';
 class Artice extends Component{
 
 
-	pageCanage = ( pagenum,lastPage,action ) => {
+	pageCanage( pagenum,lastPage,action ){
 
 		const { dispatch } = this.props;	
 		const types = {
@@ -34,7 +34,7 @@ class Artice extends Component{
     
 	}
 
-	fetchList = (page)=>{
+	fetchList(page){
 		const { dispatch,articles } = this.props;
 
 		console.log( articles,'articles' )

@@ -6,7 +6,6 @@ import Anchors from '@views/index/components/Anchors'
 function ArticeContentWarp(){
     return <div className="article-content-warp" >
                 <ArticeContent></ArticeContent>
-                <Anchors></Anchors>
                 <LoadMask></LoadMask>
            </div>
 }

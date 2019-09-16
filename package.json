@@ -9,7 +9,7 @@
     "dev": "cross-env NODE_ENV=dev node ./admin/server/dev-server.js",
     "start:dev": "better-npm-run nodemon-dev",
     "start:pro": "better-npm-run nodemon-pro",
-    "build": "cross-env NODE_ENV=pro webpack --config ./admin/build/webpack.pro.js ",
+    "build": "cross-env NODE_ENV=pro webpack --config ./admin/build/webpack.pro.js  --progress",
     "build:dll": "webpack --config ./admin/build/webpack.dll.config.js",
     "forever:start": "better-npm-run forever-start",
     "forever:stop": "better-npm-run forever-stop"

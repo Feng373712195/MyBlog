@@ -34,7 +34,7 @@ class Labels extends Component{
 	render(){
 		const { lables,dispatch } = this.props;
 		
-        let Lables =  lables.map(lable => {
+        let Lables =  lables && lables.map(lable => {
                          return <LableOne key={lable} content={lable} dispatch={ dispatch } ></LableOne>
                       })
 

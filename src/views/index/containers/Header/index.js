@@ -1,7 +1,7 @@
 import React,{ Component,useEffect,useState } from 'react'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux';
-import { Tag,Menu } from 'antd';
+import { Tag,Menu,Dropdown,Icon  } from 'antd';
 import { UNSELECT_LABLE, } from '@store/actions/lable'
 import { getArticles,CLEAN_ARTICLES,FIRST_ARTILES_LIST_PAGE } from '@store/actions/articles'
 
@@ -14,6 +14,7 @@ const handleClick = (props,e)=>{
 
 const getActiveSelect = (route) => {
     route = route ? route : window.location.href;
+    console.log( route,'route' )
     if( route ){
         if(~route.indexOf("/article") ) return ["/article"]
         if(~route.indexOf("/lables") ) return ["/lables"]
@@ -34,9 +35,27 @@ const unSelectLable = (props) => {
     dispatch( getArticles({},1,10,true) );
 }
 
+function HeaderMenu(props){
+    return <Menu mode="horizontal" 
+            selectedKeys={ getActiveSelect(props.route) } 
+            onClick={handleClick.bind(null,props)} 
+            style={{ lineHeight: '64px' }} >
+            <Menu.Item key="/article">
+                文章
+            </Menu.Item>
+            <Menu.Item key="/lables">
+                标签
+            </Menu.Item>
+            <Menu.Item key="/about">
+                关于
+            </Menu.Item>
+        </Menu>
+}
+
 function Header(props){
 
     const { selectlable } = props;
+    const [visibleMenu,setVisibleMenu] = useState(false)
     
     return <header className="header" >
                 <div className="blog-name" >
@@ -49,20 +68,16 @@ function Header(props){
                       </Tag> }
                 </div>
                 <nav className="blog-menu" >
-                    <Menu mode="horizontal" 
-                          selectedKeys={ getActiveSelect(props.route) } 
-                          onClick={handleClick.bind(null,props)} 
-                          style={{ lineHeight: '64px' }} >
-                        <Menu.Item key="/article">
-                            文章
-                        </Menu.Item>
-                        <Menu.Item key="/lables">
-                            标签
-                        </Menu.Item>
-                        <Menu.Item key="/about">
-                            关于
-                        </Menu.Item>
-                    </Menu>
+                    {HeaderMenu(props)}
+                </nav>
+                <nav className="blog-menu-dropdown" >
+                    <Dropdown  onVisibleChange={(visible)=>{ setVisibleMenu(visible) }} 
+                               overlay={HeaderMenu(props)} 
+                               trigger={['click','hover']}>
+                        <a className={ ["ant-dropdown-link" ,visibleMenu ? 'active' : ''] } href="#">
+                            <Icon type="menu" />
+                        </a>
+                    </Dropdown>
                 </nav>
           </header>
 }

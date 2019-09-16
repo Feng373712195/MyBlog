@@ -28,11 +28,27 @@
         height: 100%;
         float: right;
         display: inline-block;
-        background: red;
+    }
+    .blog-menu-dropdown{
+        float: right;
+        display: inline-block;
+        height: 100%;
+        display: none;
+        align-items: center;
+        .ant-dropdown-link{
+            transition: transform .25s ease-in-out;
+            &.active{
+                transform: scale(1.2);
+                transform: rotate(90deg);
+            }
+        }
     }
     @media screen and (max-width:500px) {
         .blog-menu{
             display: none;
+        }
+        .blog-menu-dropdown{
+            display: flex;
         }
     }
 }
