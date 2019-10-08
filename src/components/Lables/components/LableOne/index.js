@@ -47,8 +47,8 @@ class LabelOne extends Component{
                   && (color.length == 6) ?  color : getRandomColor(color);    
                 })('');    
         }
-
-        const isMange = window.location.hash.match('/admin');
+        
+        const isMange = ~window.location.href.indexOf('manage');
 
         let removeBtn = <i onClick={ ()=>{ this.removeBtn( this.props.content ) } } 
                            className={`deleteIcon ${isMange?'':'hidden'}`} >X</i> 

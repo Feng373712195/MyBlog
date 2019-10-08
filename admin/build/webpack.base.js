@@ -56,7 +56,6 @@ module.exports = {
         alias:{
             "css-animation/es/Event": "css-animation/dist-src/Event" ,
             '@uilts':path.join(config.rootDirPath,'uilts'),
-            '@semantic':path.join(config.rootDirPath,'semantic'),
             '@views':assetsPath('views'),
             '@components':assetsPath('components'),
             '@containers':assetsPath('containers'),

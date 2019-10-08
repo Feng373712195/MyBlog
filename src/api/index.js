@@ -1,7 +1,6 @@
 
 import axios from 'axios';
 
-// http://106.52.59.218
 axios.defaults.baseURL = 'http://localhost:8080'
 
 /** 发布文章 请求方法 */
@@ -43,8 +42,6 @@ const getAtricleList = (query = {},skip = 1,limit = 1) => {
 }
 
 const saveAtricle = (query)=>{
-
-    console.log(query);
 
     return  fetch('/articles/save', {
                 method: 'POST',

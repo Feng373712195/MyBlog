@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
+import *  as r from 'react-router';
 import Lables from '../../components/Lables'
-
+console.log( r )
 class Label extends Component{
 
 	constructor(){

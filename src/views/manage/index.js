@@ -12,31 +12,6 @@ import store from '../../store'
 import './style.scss'
 import 'babel-polyfill'
 
-
-const getMockList = ()=>{
-    const mockArtice = []
-    for( let i = 0 ; i < 10; i++ ){
-        mockArtice.push({ 
-            author: `${Mock.mock('@first')} ${Mock.mock('@last')}`,
-            clicks: 0,
-            content: `**${Random.cparagraph()}**`,
-            createtime: `${Random.date()} 星期六 ${Random.time()}`,
-            files: [],
-            lables: [],
-            lasttime: `${Random.date()} 星期六 ${Random.time()}`,
-            title: Random.title(),
-            __v: 0,
-            _id: Random.id(),
-        })
-    }
-    return mockArtice;
-}
-
-Mock.mock('//m.mock.com/a',{
-    code:0,
-    data:getMockList()
-})
-
 // 热更新 高阶函数
 function AppWarp(props){
     if( module && module.hot ){
