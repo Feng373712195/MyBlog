@@ -11,8 +11,7 @@ module.exports = {
             "react-router",
             "react-router-dom",
             "react-router-redux",
-            "jquery/dist/jquery.min.js",
-            "./semantic/dist/semantic.min.js"
+            "jquery/dist/jquery.min.js"
         ]
     },
     output:  {
