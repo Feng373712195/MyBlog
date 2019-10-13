@@ -55,24 +55,24 @@ module.exports = merge(webpackBaseConfig,{
               drop_console: true  
             }
         }),
-        // new HtmlWebpackPlugin({
-        //     title:'WUZEFENG 博客',
-        //     filename:'home.html',
-        //     template:path.join(sourcePath,'../index.html'),
-        //     //让style和JavaScript注入 交给模板
-        //     inject:true,
-        //     hash:true,
-        //     chunks:['home','vendor']
-        // }),
-        // new HtmlWebpackPlugin({
-        //     title:'管理页面',
-        //     filename:'manage.html',
-        //     template:path.join(sourcePath,'../index.html'),
-        //     //让style和JavaScript注入 交给模板
-        //     inject:true,
-        //     hash:true,
-        //     chunks:['manage','vendor']
-        // }),
+        new HtmlWebpackPlugin({
+            title:'WUZEFENG 博客',
+            filename:'home.html',
+            template:path.join(sourcePath,'../index.html'),
+            //让style和JavaScript注入 交给模板
+            inject:true,
+            hash:true,
+            chunks:['home','vendor']
+        }),
+        new HtmlWebpackPlugin({
+            title:'管理页面',
+            filename:'manage.html',
+            template:path.join(sourcePath,'../index.html'),
+            //让style和JavaScript注入 交给模板
+            inject:true,
+            hash:true,
+            chunks:['manage','vendor']
+        }),
         new CleanWebpackPlugin(
             ['dist'],　 //匹配删除的文件
             {
