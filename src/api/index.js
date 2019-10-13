@@ -1,8 +1,6 @@
 
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8080'
-
 /** 发布文章 请求方法 */
 /** 依赖于fetch */
 const getAtricle = (query = {},skip = 1,limit = 1) =>{
