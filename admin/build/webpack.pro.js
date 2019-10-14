@@ -3,13 +3,12 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const config = require('../config')
 const webpackBaseConfig = require('./webpack.base.js');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const sourcePath = path.join(config.rootDirPath, 'src/views');
 const outputPath = path.join(config.rootDirPath, 'dist');
-
-console.log( path.join(sourcePath,'home/index/index.js') )
 
 module.exports = merge(webpackBaseConfig,{
     entry:{
@@ -47,14 +46,26 @@ module.exports = merge(webpackBaseConfig,{
                 filename: 'js/vendor.min.js',
             }
         ),
-        new webpack.optimize.UglifyJsPlugin({
+        new UglifyJsPlugin({
             parallel: true,
             exclude: /\/node_modules/,
-            compress: {
-              warnings: false,
-              /*remove console*/
-              drop_debugger: true,  
-              drop_console: true  
+            uglifyOptions: {
+              ecma: 8,
+              mangle: true,
+              compress: {
+                sequences: true,
+                dead_code: true,
+                conditionals: true,
+                booleans: true,
+                unused: true,
+                if_return: true,
+                join_vars: true,
+                drop_console: true
+              },
+              output: {
+                comments: false,
+                beautify: false
+              }
             }
         }),
         new HtmlWebpackPlugin({
@@ -65,7 +76,7 @@ module.exports = merge(webpackBaseConfig,{
             inject:true,
             hash:true,
             chunks:['home','vendor']
-        }),
+        }),   
         new HtmlWebpackPlugin({
             title:'管理页面',
             filename:'manage.html',
