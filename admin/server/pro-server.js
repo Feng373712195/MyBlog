@@ -5,6 +5,7 @@ const sever = require('koa-static')
 const view = require('koa-view')
 const error = require('koa-onerror')
 const bodyParser = require('koa-bodyparser');
+const compression = require("koa-compress");
 const path = require('path')
 
 // default port 
@@ -13,6 +14,10 @@ let app = new koa();
 
 error(app);
 
+//gzip
+app.use(compression({
+  threshold: 0
+}));
 //总路由
 app.use(bodyParser());
 const router = require('../../router/main');
