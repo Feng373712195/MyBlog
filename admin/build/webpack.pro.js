@@ -4,7 +4,9 @@ const merge = require('webpack-merge')
 const config = require('../config')
 const webpackBaseConfig = require('./webpack.base.js');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 const sourcePath = path.join(config.rootDirPath, 'src/views');
 const outputPath = path.join(config.rootDirPath, 'dist');
@@ -12,6 +14,7 @@ const outputPath = path.join(config.rootDirPath, 'dist');
 console.log( path.join(sourcePath,'home/index/index.js') )
 
 module.exports = merge(webpackBaseConfig,{
+    devtool: 'false',
     entry:{
         home:path.join(sourcePath,'index/index.js'),
         manage:path.join(sourcePath,'manage/index.js'),
@@ -38,7 +41,16 @@ module.exports = merge(webpackBaseConfig,{
             }
         ]
     },
-    devtool: 'false',
+    optimization: {
+        minimizer: [
+            new TerserPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap:isProd ? true : false
+            }),
+            new OptimizeCSSAssetsPlugin()
+        ]
+    },
     plugins:[
         // new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.CommonsChunkPlugin(
@@ -47,14 +59,6 @@ module.exports = merge(webpackBaseConfig,{
                 filename: 'js/vendor.min.js',
             }
         ),
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {
-        //       warnings: false,
-        //       /*remove console*/
-        //       drop_debugger: true,  
-        //       drop_console: true  
-        //     }
-        // }),
         new HtmlWebpackPlugin({
             title:'WUZEFENG 博客',
             filename:'home.html',
