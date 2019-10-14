@@ -9,8 +9,6 @@ import { Tag } from 'antd';
 
  
 import './style.scss' 
-import { T } from 'antd/lib/upload/utils';
-
 
 const getObserervArtcleItem = function(onTop,fromPage){
     const that = this;

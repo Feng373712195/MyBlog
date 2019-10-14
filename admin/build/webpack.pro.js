@@ -10,6 +10,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const sourcePath = path.join(config.rootDirPath, 'src/views');
 const outputPath = path.join(config.rootDirPath, 'dist');
 
+if(true) {
+    const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+    webpackBaseConfig.plugins.push(
+        new BundleAnalyzerPlugin()
+    );
+}
+
 module.exports = merge(webpackBaseConfig,{
     entry:{
         home:path.join(sourcePath,'index/index.js'),
@@ -40,12 +47,12 @@ module.exports = merge(webpackBaseConfig,{
     devtool: 'false',
     plugins:[
         // new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.optimize.CommonsChunkPlugin(
-            {
-                name: 'vendor',
-                filename: 'js/vendor.min.js',
-            }
-        ),
+        // new webpack.optimize.CommonsChunkPlugin(
+        //     {
+        //         name: 'vendor',
+        //         filename: 'js/vendor.min.js',
+        //     }
+        // ),
         new UglifyJsPlugin({
             parallel: true,
             exclude: /\/node_modules/,
