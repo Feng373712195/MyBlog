@@ -48,6 +48,8 @@ module.exports = merge(webpackBaseConfig,{
             }
         ),
         new webpack.optimize.UglifyJsPlugin({
+            parallel: true,
+            exclude: /\/node_modules/,
             compress: {
               warnings: false,
               /*remove console*/
