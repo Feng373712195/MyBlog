@@ -35,7 +35,7 @@ module.exports = merge(webpackBaseConfig,{
     },
     output:{
         path: outputPath,
-        publicPath:'http://localhost:8080/',
+        publicPath:'http://wuzefeng.cn/',
         //业务逻辑代码经常变动 文件名加上hash 防止webpack 缓存
         filename:'js/[name]_[chunkhash:8].min.js',    
     },
