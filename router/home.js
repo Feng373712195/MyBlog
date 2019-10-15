@@ -16,7 +16,10 @@ home.get('/index',async(ctx)=>{
 home.get('/article',async(ctx)=>{
     await ctx.render('home');
 })
-home.get('/label',async(ctx)=>{
+home.get('/article/:id',async(ctx)=>{
+    await ctx.render('home');
+})
+home.get('/labels',async(ctx)=>{
     await ctx.render('home');
 })
 home.get('/about',async(ctx)=>{

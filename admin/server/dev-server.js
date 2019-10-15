@@ -9,7 +9,7 @@ const { devMiddleware, hotMiddleware } =  require('koa-webpack-middleware')
 const path = require('path')
 const webpack = require('webpack');
 
-const { dbClient,redisClient } = require('../db')
+const { dbClient } = require('../db')
 const config = require('../config');
 
 let webpackConfig = require(`../build/webpack.dev.js`);
@@ -27,7 +27,7 @@ app.use(bodyParser());
 const router = require('../../router/main');
 app.use( sever(path.resolve(config.rootDirPath,'dist')) )
 app.use( view(path.resolve(config.rootDirPath,'dist'),{extensions:'html'}) )
-app.use( router.routes(),router.allowedMethods());
+app.use( router.routes(),router.allowedMethods() );
 
 app.use(devMiddleware(compiler,
     {

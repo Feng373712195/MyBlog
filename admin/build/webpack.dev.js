@@ -53,7 +53,8 @@ module.exports = merge(webpackBaseConfig,{
                     {
                       loader: 'babel-loader?cacheDirectory',
                       query:{  ...reactHotLoaderConfig }
-                    }
+                    },
+                    'lazyload-loader'
                 ]       
             }
         ]

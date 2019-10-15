@@ -17,6 +17,16 @@ if(true) {
     );
 }
 
+// 异步加载组件 ok
+// http缓存
+// 响应式
+// 文章图片地址修改
+// 关于页 头像加载
+// 关于页 跳转设置
+// 文章页 lable参数处理
+// 响应式字体
+// 隐藏文章列表滚动条
+
 module.exports = merge(webpackBaseConfig,{
     entry:{
         home:path.join(sourcePath,'index/index.js'),
@@ -25,8 +35,9 @@ module.exports = merge(webpackBaseConfig,{
     },
     output:{
         path: outputPath,
+        publicPath:'http://localhost:8080/',
         //业务逻辑代码经常变动 文件名加上hash 防止webpack 缓存
-        filename: 'js/[name]_[chunkhash:8].min.js',    
+        filename:'js/[name]_[chunkhash:8].min.js',    
     },
     module:{
         rules:[
@@ -34,25 +45,21 @@ module.exports = merge(webpackBaseConfig,{
                 test:/\.(js|jsx)/,
                 exclude: /node_modules/,
                 use: [
-                    {
-                      loader: 'babel-loader',
-                      options: {
-                        presets: ['env']
-                      }              
-                    }
-                  ]       
+                    'babel-loader',
+                    'lazyload-loader'
+                ]       
             }
         ]
     },
     devtool: 'false',
     plugins:[
         // new webpack.optimize.ModuleConcatenationPlugin(),
-        // new webpack.optimize.CommonsChunkPlugin(
-        //     {
-        //         name: 'vendor',
-        //         filename: 'js/vendor.min.js',
-        //     }
-        // ),
+        new webpack.optimize.CommonsChunkPlugin(
+            {
+                name: 'vendor',
+                filename: 'js/vendor.min.js',
+            }
+        ),
         new UglifyJsPlugin({
             parallel: true,
             exclude: /\/node_modules/,

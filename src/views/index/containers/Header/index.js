@@ -9,15 +9,13 @@ import './style.scss'
 
 const handleClick = (props,e)=>{
     props.history.push(e.key)
-    console.log(e.key)
 }
 
 const getActiveSelect = (route) => {
-    route = route ? route : window.location.href;
-    console.log( route,'route' )
+    route = route ? route : window.location.href
     if( route ){
         if(~route.indexOf("/article") ) return ["/article"]
-        if(~route.indexOf("/lables") ) return ["/lables"]
+        if(~route.indexOf("/labels") ) return ["/labels"]
         if(~route.indexOf("/about") ) return ["/about"]
     }
     return ["/article"];
@@ -35,15 +33,15 @@ const unSelectLable = (props) => {
     dispatch( getArticles({},1,10,true) );
 }
 
-function HeaderMenu(props){
+function HeaderMenu(selectNav,props){
     return <Menu mode="horizontal" 
-            selectedKeys={ getActiveSelect(props.route) } 
+            selectedKeys={ selectNav } 
             onClick={handleClick.bind(null,props)} 
             style={{ lineHeight: '64px' }} >
             <Menu.Item key="/article">
                 文章
             </Menu.Item>
-            <Menu.Item key="/lables">
+            <Menu.Item key="/labels">
                 标签
             </Menu.Item>
             <Menu.Item key="/about">
@@ -55,7 +53,12 @@ function HeaderMenu(props){
 function Header(props){
 
     const { selectlable } = props;
-    const [visibleMenu,setVisibleMenu] = useState(false)
+    const [ visibleMenu,setVisibleMenu ] = useState(false)
+    const [ selectNav,setSelectNav ] = useState(getActiveSelect(location.pathname))
+
+    props.history.listen(()=>{
+        setSelectNav( getActiveSelect(location.pathname) );
+    })
     
     return <header className="header" >
                 <div className="blog-name" >
@@ -68,11 +71,11 @@ function Header(props){
                       </Tag> }
                 </div>
                 <nav className="blog-menu" >
-                    {HeaderMenu(props)}
+                    {HeaderMenu(selectNav,props)}
                 </nav>
                 <nav className="blog-menu-dropdown" >
                     <Dropdown  onVisibleChange={(visible)=>{ setVisibleMenu(visible) }} 
-                               overlay={HeaderMenu(props)} 
+                               overlay={HeaderMenu(selectNav,props)} 
                                trigger={['click','hover']}>
                         <a className={ ["ant-dropdown-link" ,visibleMenu ? 'active' : ''] } href="#">
                             <Icon type="menu" />

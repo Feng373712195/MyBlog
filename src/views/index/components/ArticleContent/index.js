@@ -4,15 +4,12 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
 /*引入markdown */
-import { hiddenArticle,loadendArticle,showArticle } from '@store/actions/articles'
-import { changeNavData } from '@store/actions/titlenav'
-import TitleNav from '@components/TitleNav' 
+import { showArticle } from '@store/actions/articles'
 import marked from '@assets/js/markdown'
 import 'jquery-lazyload';
 
 import Anchors from '@views/index/components/Anchors'
-import { Tag} from 'antd';
-import { lazyload } from 'react-lazyload';
+import { Tag } from 'antd';
 
 /*引入高亮风格样式*/
 import 'highlight.js/styles/xcode.css'
