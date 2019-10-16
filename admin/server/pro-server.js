@@ -18,14 +18,19 @@ error(app);
 app.use(compression({
   threshold: 0
 }));
+// 设置缓存
+app.use(async (ctx,next)=>{
+  ctx.set("Cache-Control",`max-age=${ 60 * 60 * 24 }`);
+  await next();
+})
 //总路由
 app.use(bodyParser());
 const router = require('../../router/main');
 app.use( sever(path.resolve(config.rootDirPath,'dist' )) )
 app.use( view(path.resolve(config.rootDirPath,'dist'),{extensions:'html'}) )
 app.use(router.routes(),router.allowedMethods());
-/* 处理 404 */
 
+/* 处理 404 */
 const handler = async (ctx, next) => {
   try {
     await next();

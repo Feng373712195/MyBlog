@@ -1,6 +1,6 @@
 /node_modules
 /uploadfiles
 /uploadImg
-/cacheuploadImg
+# /cacheuploadImg
 /semantic
 /src/img/ME.png

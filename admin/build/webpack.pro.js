@@ -4,6 +4,7 @@ const merge = require('webpack-merge')
 const config = require('../config')
 const webpackBaseConfig = require('./webpack.base.js');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require("terser-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -18,14 +19,16 @@ if(true) {
 }
 
 // 异步加载组件 ok
-// http缓存
-// 响应式
-// 文章图片地址修改
-// 关于页 头像加载
+// http缓存 ok
+// 文章图片地址修改 ok
+// 关于页 头像加载默认图
 // 关于页 跳转设置
 // 文章页 lable参数处理
+// 响应式导航
 // 响应式字体
 // 隐藏文章列表滚动条
+// 文章图片预览图
+// 管理页权限进入
 
 module.exports = merge(webpackBaseConfig,{
     entry:{

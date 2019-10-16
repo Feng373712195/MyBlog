@@ -22,8 +22,13 @@ let app = new koa();
 
 error(app)
 
-// //总路由
 app.use(bodyParser());
+// 设置缓存
+app.use(async (ctx,next)=>{
+    ctx.set("Cache-Control",`max-age=${ 60 * 60 * 24 }`);
+    await next();
+})
+// 总路由
 const router = require('../../router/main');
 app.use( sever(path.resolve(config.rootDirPath,'dist')) )
 app.use( view(path.resolve(config.rootDirPath,'dist'),{extensions:'html'}) )

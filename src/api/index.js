@@ -2,7 +2,6 @@
 import axios from 'axios';
 
 /** 发布文章 请求方法 */
-/** 依赖于fetch */
 const getAtricle = (query = {},skip = 1,limit = 1) =>{
 
     return  axios.post('/articles/find',{
@@ -41,84 +40,62 @@ const getAtricleList = (query = {},skip = 1,limit = 1) => {
 
 const saveAtricle = (query)=>{
 
-    return  fetch('/articles/save', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(query)
+    return  axios.post('/articles/save',query)
+            .then(res => {
+                if(res.data.code === 0)
+                    return res.data.data
+                else
+                    return res.data.error
             })
-            .then(res => {return res.json()})
-            .then(body => { 
-                    return new Promise( (resolve,reject)=>{
-                            if(body.code === 0)
-                              resolve(body.data)
-                            else
-                              reject(body.error)
-                        }) 
+            .catch(err=>{
+                console.log(err)
             })
-
 }
 
 const updateAtricle = (query,update,multi)=>{
 
-    return  fetch('/articles/update', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({query:query,update:update,muilt:multi})
+    return  axios.post('/articles/update',{
+                query:query,
+                update:update,
+                muilt:multi
             })
-            .then(res => {return res.json()})
-            .then(body => { 
-                    return new Promise( (resolve,reject)=>{
-                            if(body.code === 0)
-                            resolve(body.data)
-                            else
-                            reject(body.error)
-                        }) 
+            .then(res => {
+                if(res.data.code === 0)
+                    return res.data.data
+                else
+                    return res.data.error
+            })
+            .catch(err=>{
+                console.log(err)
             })
 }
 
 const readAtricle = (_id)=>{
 
-    return  fetch('/articles/read',{
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({_id})
+    return  axios.post('/articles/read',{_id})
+            .then(res => {
+                if(res.data.code === 0)
+                    return res.data.data
+                else
+                    return res.data.error
             })
-            .then(res => {return res.json()})
-            .then(body => { 
-                    return new Promise( (resolve,reject)=>{
-                            if(body.code === 0)
-                            resolve(body.data)
-                            else
-                            reject(body.error)
-                        }) 
+            .catch(err=>{
+                console.log(err)
             })
 }
 
 const removeAtricle = (query = {})=>{
     
-    return fetch('/articles/remove', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({query:query})
-                })
-                .then(res => {return res.json()})
-                .then(body => {
-                    return new Promise( (resolve,reject)=>{
-                        if(body.code === 0){
-                          resolve(body.data)
-                        }
-                        else
-                          reject(body.error)
-                    }) 
-                })
+    return  axios.post('/articles/remove',{query:query})
+            .then(res => {
+                if(res.data.code === 0)
+                    return res.data.data
+                else
+                    return res.data.error
+            })
+            .catch(err=>{
+                console.log(err)
+            })
 }
 
 const  uploadFile = (src,_id,files)=>{
@@ -137,16 +114,18 @@ const  uploadFile = (src,_id,files)=>{
             .then(body => { 
                 return new Promise( (resolve,reject)=>{
                     if(body.success){
-                    resolve(body.data)
+                        resolve(body.data)
                     }
-                    else
-                    reject(body.message)
+                    else{
+                        reject(body.message)
+                    }
                 }) 
             })
     
 }
 
 const  uploadImg = (timeStamp,_id)=>{
+
     return fetch('/articles/uploadImg', {
         method: 'POST',
         headers: {
@@ -166,114 +145,80 @@ const  uploadImg = (timeStamp,_id)=>{
         })
 }
 
-
 /** 草稿箱 请求方法 */
-/** 依赖于fetch */
-
 const getDraft = (query = {}) =>{
 
-    return  fetch('/drafts/find', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({query:query})
-            })
-            .then(res => res.json())
-            .then(body => {
-                return new Promise( (resolve,reject)=>{
-                    if(body.code === 0)
-                      resolve(body.data)
-                    else
-                      reject(body.error)
-                })  
-            })
+    return  axios.post('/drafts/find',{query:query})
+    .then(res => {
+        if(res.data.code === 0)
+            return res.data.data
+        else
+            return res.data.error
+    })
+    .catch(err=>{
+        console.log(err)
+    })
 }
 
 const getDraftList = (query = {}) =>{
-
-    return  fetch('/drafts/lists', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({query:query})
+    
+    return  axios.post('/drafts/lists',{query:query})
+            .then(res => {
+                if(res.data.code === 0)
+                    return res.data.data
+                else
+                    return res.data.error
             })
-            .then(res => res.json())
-            .then(body => {
-                return new Promise( (resolve,reject)=>{
-                    if(body.code === 0)
-                      resolve(body.data)
-                    else
-                      reject(body.error)
-                })  
+            .catch(err=>{
+                console.log(err)
             })
 }
 
 const saveDraft = (query)=>{
 
-    console.log(query);
-
-    return  fetch('/drafts/save', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(query)
+    return  axios.post('/drafts/save',query)
+            .then(res => {
+                if(res.data.code === 0)
+                    return res.data.data
+                else
+                    return res.data.error
             })
-            .then(res => {return res.json()})
-            .then(body => { 
-                    return new Promise( (resolve,reject)=>{
-                            if(body.code === 0)
-                              resolve(body.data)
-                            else
-                              reject(body.error)
-                        }) 
+            .catch(err=>{
+                console.log(err)
             })
-
 }
 
 const updateDraft = (query,update,multi)=>{
 
-    return  fetch('/drafts/update', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({query:query,update:update,muilt:multi})
+    return  axios.post('/drafts/update',{
+                query:query,
+                update:update,
+                muilt:multi
             })
-            .then(res => {return res.json()})
-            .then(body => { 
-                    return new Promise( (resolve,reject)=>{
-                            if(body.code === 0)
-                            resolve(body.data)
-                            else
-                            reject(body.error)
-                        }) 
+            .then(res => {
+                if(res.data.code === 0)
+                    return res.data.data
+                else
+                    return res.data.error
+            })
+            .catch(err=>{
+                console.log(err)
             })
 }
 
 const removeDraft = (query = {})=>{
-    
-    return fetch('/drafts/remove', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({query:query})
-                })
-                .then(res => {return res.json()})
-                .then(body => {
-                    return new Promise( (resolve,reject)=>{
-                        if(body.code === 0){
-                          resolve(body.data)
-                        }
-                        else
-                          reject(body.error)
-                    }) 
-                })
-}
 
+    return  axios.post('/drafts/remove',{query:query})
+            .then(res => {
+                if(res.data.code === 0)
+                    return res.data.data
+                else
+                    return res.data.error
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+}
 
 const uploadDraftFile = (src,_id,files)=>{
     
@@ -283,7 +228,7 @@ const uploadDraftFile = (src,_id,files)=>{
         formData.append(`file${x}`,files[x])
     }
 
-    return  fetch(`${src}/${_id}`, {
+    return  fetch(`//wuzefeng/${src}/${_id}`, {
                 method: "POST",
                 body:formData
             })
@@ -297,73 +242,53 @@ const uploadDraftFile = (src,_id,files)=>{
                       reject(body.message)
                 }) 
             })
-    
 }
 
 
 /** 标签管理 请求方法 */
-/** 依赖于fetch */
 
 const loadLabel = ()=>{
 
-    return fetch('/lable/getAllLable', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                    }
+    return  axios.post('/lable/getAllLable',{query:query})
+            .then(res => {
+                if(res.data.code === 0)
+                    return res.data.data
+                else
+                    return `获取标签信息失败 ${res.data.error}`
             })
-            .then(res => {return res.json()})
-            .then(body => {
-                return new Promise( (resolve,reject)=>{
-                    if(body.code === 0){
-                      resolve(body.data)
-                    }
-                    else
-                      reject(`获取标签信息失败 ${body}`)
-                })
+            .catch(err=>{
+                console.log(err)
             })
 }
 
 const removeLabelHandle = (lable)=>{
-
-    console.log(lable)
-
-    return fetch('/lable/removeLable', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body:JSON.stringify({lable})
+    
+    return  axios.post('/lable/removeLable',{lable})
+            .then(res => {
+                if(res.data.code === 0)
+                    return res.data.data
+                else
+                    return `删除标签失败 ${res.data.error}`
             })
-            .then(res => {return res.json()})
-            .then(body => {
-                return new Promise( (resolve,reject)=>{
-                    if(body.code === 0){
-                      resolve(body.lables)
-                    }
-                    else
-                      reject(`删除标签失败 ${body}`)
-                })
+            .catch(err=>{
+                console.log(err)
             })
 
 }
 
-
 /**管理员登陆 请求方法*/
 const adminlogin = ()=>{
-    return fetch('/admin/login',{ method: 'POST' })
-           .then(function(res) {
-                return res.json();
-            })
-            .then(body => {
-                return new Promise( (resolve,reject)=>{
-                    if(body.code === 0){
-                    resolve()
-                    }
-                    else
-                    reject(`管理员登陆失败 ${body}`)
-                })
-            })
+
+        return axios.post('/admin/login',{lable})
+        .then(res => {
+            if(res.data.code === 0)
+                return res.data.data
+            else
+                return `管理员登陆失败 ${res.data.error}`
+        })
+        .catch(err=>{
+            console.log(err)
+        })
 }
 
 
