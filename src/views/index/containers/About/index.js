@@ -11,9 +11,9 @@ function About(){
                 <p className="name" >Wu ZeFeng</p>
                 <p>这个博客属于一位很无聊的的前端程序员</p>
                 <div className="links" >
-                    <a>Github</a>
-                    <a>掘金</a>
-                    <a>思否</a>
+                    <a href="https://github.com/Feng373712195" target="href" >Github</a>
+                    <a href="https://juejin.im/user/58e3586e61ff4b00617a22fa" target="href" >掘金</a>
+                    <a href="http://wuzefeng.cb" target="href" >博客</a>
                 </div>
             </div>
         </div>

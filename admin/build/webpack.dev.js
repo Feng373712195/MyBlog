@@ -85,16 +85,18 @@ module.exports = merge(webpackBaseConfig,{
             title:'WUZEFENG 博客',
             filename:'home.html',
             template:path.resolve( sourcePath, 'index.html' ),
+            hash:true,
             chunks:['home']
         }),
         new HtmlWebpackPlugin({
             title:'管理后台',
             filename:'manage.html',
             template:path.resolve( sourcePath, 'index.html' ),
+            hash:true,
             chunks:['manage']
         }),
         new CleanWebpackPlugin(
-            ['dist/js/*.js'],
+            ['dist'],
             {
                 root:config.rootDirPath,       
                 verbose:true,    

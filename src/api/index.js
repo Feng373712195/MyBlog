@@ -249,7 +249,7 @@ const uploadDraftFile = (src,_id,files)=>{
 
 const loadLabel = ()=>{
 
-    return  axios.post('/lable/getAllLable',{query:query})
+    return  axios.post('/lable/getAllLable')
             .then(res => {
                 if(res.data.code === 0)
                     return res.data.data

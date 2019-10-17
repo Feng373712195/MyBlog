@@ -7,6 +7,7 @@ import { getArticles,showArticle,cleanArticle,
         CUREENT_ARTILES_LIST_PAGE,
         CLEAN_TO_ARTILES_ITEM_ID } from '@store/actions/articles'
 // import { cleanSelectLable } from '../../../../store/redux/actions/lable'
+import { getUrlParam  } from '@uilts'
 
 import { Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
@@ -18,8 +19,13 @@ class articleList extends Component{
 
     constructor(props){
         super()
+        console.log('hahah') 
         // this.throttleLoadmoreHandle = throttle(this.loadMoreHadnle,1000)
         // this.toItemPosition = ''
+        console.log(  getUrlParam('lable') , 'lable' ) 
+        if( getUrlParam('lable') ){
+            console.log('wowo')
+        }
     }
 
     loadMoreHadnle(){
@@ -30,8 +36,9 @@ class articleList extends Component{
     }
 
     componentDidMount(){
+        
+
         let { currentArticlesPage,selectlable,dispatch,articles } = this.props;
-        console.log( articles , 'articles' )
         if( !articles.find(list=>list.from === currentArticlesPage) ){
             const query = {};
             selectlable && (query.lables = { '$in':[selectlable] }) ;
