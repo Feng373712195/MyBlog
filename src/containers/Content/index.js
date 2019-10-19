@@ -9,7 +9,7 @@ import Label from '../Label'
 class Content extends Component{
 
     render(){
-
+        
         return (
             <section className="m-content">
                 <Route path="/article" component={ Artice } />

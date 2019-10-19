@@ -11,10 +11,10 @@
     width: 75%;
     // margin: 64px auto 0 auto;
     margin: 64px 0% 0 5%;
-    overflow: scroll;
-    @include full-box();
-    @media screen and (max-width:500px) {
-        width: 85%;
+    // overflow: scroll;
+    // @include full-box();
+    @media screen and (max-width:700px) {
+        width: 90%;
     }
     .article-back{
         color:blue;
@@ -94,7 +94,12 @@
         }
     }
     .article-loading-mask{
-        width: 120%;
+        width: 100%;
+        // @media only screen and (max-width: 700px){
+        //     &{
+        //         width: 100%;
+        //     }
+        // }
     }
 }
 

@@ -14,6 +14,9 @@ import { Tag } from 'antd';
 /*引入高亮风格样式*/
 import 'highlight.js/styles/xcode.css'
 import './style.scss'
+/* 引入zoom */
+import '@assets/js/zoom'
+import '@assets/styles/css/zoom.css'
 
 class articleContent extends Component{
 
@@ -94,7 +97,7 @@ class articleContent extends Component{
             currentArticle.content = marked(currentArticle.content)
 
             currentArticle.content = currentArticle.content
-            .replace(/<img src="(.*)" .*>?/g,'<img class="lazy" data-original="$1" />');
+            .replace(/<img src="(.*)" .*>?/g,'<img class="lazy" data-original="$1" data-action="zoom" />');
 
             currentArticle.content = currentArticle.content
             .replace(/<h3 .*>(.*)<\/h3>?/g,'<h3 id=$1>$1</h3>');

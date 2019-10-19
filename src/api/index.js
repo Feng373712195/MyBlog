@@ -279,7 +279,7 @@ const removeLabelHandle = (lable)=>{
 /**管理员登陆 请求方法*/
 const adminlogin = ()=>{
 
-        return axios.post('/admin/login',{lable})
+        return axios.post('/admin/login')
         .then(res => {
             if(res.data.code === 0)
                 return res.data.data

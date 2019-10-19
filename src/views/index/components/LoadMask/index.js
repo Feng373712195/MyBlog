@@ -6,7 +6,7 @@ import './style.scss';
 
 const LoadMask = (props)=>{
     const { showMask } = props;
-    return  <div style={{ display:showMask ? 'flex':'none' }} className="article-loading-mask" >
+    return  <div style={{ display: showMask ? 'flex':'none' }} className="article-loading-mask" >
                 <Spin spinning={true} tip="Loading..." ></Spin>
             </div>
 }

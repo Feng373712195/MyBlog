@@ -51,7 +51,6 @@ function HeaderMenu(selectNav,props){
 }
 
 function Header(props){
-
     const { selectlable } = props;
     const [ visibleMenu,setVisibleMenu ] = useState(false)
     const [ selectNav,setSelectNav ] = useState(getActiveSelect(location.pathname))

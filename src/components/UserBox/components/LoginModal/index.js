@@ -1,29 +1,20 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
-import { adminlogin } from '../../../../js/mfetch'
-import { loadState,modalState,errorState,loginloadState,changeloginFlash,initloginFlash,showadminlogin,hideadminlogin } from '../../../../../redux/actions/global'
-import { getUserdata } from '../../../../../redux/actions/user'
+import { adminlogin } from '@api'
+import { loadState,modalState,errorState,loginloadState,changeloginFlash,initloginFlash,showadminlogin,hideadminlogin } from '@store/actions/global'
+import { getUserdata } from '@store/actions/user'
 
 /** 登陆弹出框组件 */
 class LoginModal extends Component{
 
-	componentDidUpdate() {
+	componentDidMount(){
+		$('.login-modal').modal('show')
+	}
 
+	componentDidUpdate() {
 		const that = this;
 		const { dispatch } = this.props
-
-		new Promise(function(resolve,reject){
-			$('.modals').one('click',()=>{
-				setTimeout(()=>resolve(),600)
-			})
-		})
-		.then(function(){
-			if( !$('.modals').hasClass('active') ){				
-				dispatch( hideadminlogin() );
-				dispatch( initloginFlash() );
-			}
-		})
 	}
 
 	async adminLogin(){
@@ -59,10 +50,11 @@ class LoginModal extends Component{
 			 .then(()=>setTimeout(()=>{
 				dispatch( loginloadState(false) )
 				dispatch( changeloginFlash({color:'green',text:'登陆成功'}) )
+				dispatch( showadminlogin() )
 			 },1000))
 			 .then(()=>setTimeout(() =>{
 				$('.ui.modal').modal('hide',()=>{
-					dispatch( hideadminlogin() )
+					// dispatch( hideadminlogin() )
 					dispatch( initloginFlash() )
 					dispatch( getUserdata({name:'吴泽锋',email:'373712195@qq.com',head:'',isAdmin:true}) )
 				})
@@ -71,30 +63,24 @@ class LoginModal extends Component{
 				dispatch( loginloadState(false) )
 				dispatch( errorState(e) )
 			 })
-
 	}
 
 	render(){
-
-		console.log('我是 LoginModal 我被Render')
 		const { dispatch,adminlogin,modaldata,loginload,loginflash } = this.props;
-
-		console.log(this.props)
-
 		return (
 			<div className="ui modal login-modal">
 				<div className="header">
 					{/**login-admin*/}
-					<div className={`${adminlogin?'':'hidden'}` }>
-						<i onClick={ ()=>{ dispatch(  hideadminlogin() ) } } className="iconfont icon-fanhui"></i>
+					<div>
+						{/* <i onClick={ ()=>{ dispatch(  hideadminlogin() ) } } className="iconfont icon-fanhui"></i> */}
 						<span>Administrator Login</span>
 					</div>
 					{/**plain-login*/}
-					<p className={`${adminlogin?'hidden':''}`} >请选择登陆方式</p>
+					{/* <p className={`${adminlogin?'hidden':''}`} >请选择登陆方式</p> */}
 				</div>
 				<div className="content" >
 					{/** login-admin */}
-					<div className={`login-admin-box ui form ${adminlogin?'':'hidden'}`}>
+					<div className={`login-admin-box ui form`}>
 						<div className="field">
 							<div className="two fields">
 								<div className="field">
@@ -111,7 +97,7 @@ class LoginModal extends Component{
 						<span className="login-flash" style={{color:loginflash.color}} >{loginflash.text}</span>
 					</div>
 					{/** login-btns */}
-					<div className={`login-btns ${adminlogin?'hidden':''}`}>
+					{/* <div className={`login-btns ${adminlogin?'hidden':''}`}>
 						<button className="ui labeled icon button large login-github"  data-tooltip="GuiHub Login" >
 							<i className="iconfont icon-github"></i>
 								GITHUB
@@ -124,7 +110,7 @@ class LoginModal extends Component{
 							<i className="iconfont icon-guanwangicon31334"></i>
 								ADMIN
 						</button>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		)

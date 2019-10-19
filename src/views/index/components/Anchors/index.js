@@ -10,8 +10,7 @@ function Anchors(props){
     return <div className="anchors-box" >
                  <div className="lable" >目录</div>
                 <Anchor 
-                    showInkInFixe={true}
-                    getContainer={() => document.querySelector('.article-content-warp') }  >
+                    showInkInFixe={true} >
                     {  anchors && anchors.map(anchor=><Link key={`#${anchor}`} href={`#${anchor}`} title={anchor} ></Link>) }
                 </Anchor>
             </div>

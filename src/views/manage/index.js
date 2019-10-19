@@ -3,8 +3,8 @@ import ReactDom from 'react-dom'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import App from '@containers/MangeApp'
-import { HashRouter as Router } from 'react-router-dom'
-// import { BrowserRouter as Router} from 'react-router-dom'
+// import { HashRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router} from 'react-router-dom'
 import Mock,{ Random } from 'mockjs';
 
 import store from '../../store'
@@ -14,10 +14,10 @@ import 'babel-polyfill'
 
 // 热更新 高阶函数
 function AppWarp(props){
-    if( module && module.hot ){
-       const { AppContainer } = require('react-hot-loader')
-       return  <AppContainer >{ props.children }</AppContainer>
-    }
+    // if( module && module.hot ){
+    //    const { AppContainer } = require('react-hot-loader')
+    //    return  <AppContainer >{ props.children }</AppContainer>
+    // }
     return props.children;
 }
 

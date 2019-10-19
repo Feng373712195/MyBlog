@@ -1,47 +1,46 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 import ArticleItem from './ArticleItem'
 // import ArticleContent from '../ArticleContent'
-import { getArticles,showArticle,cleanArticle,
-        CUREENT_ARTILES_LIST_PAGE,
-        CLEAN_TO_ARTILES_ITEM_ID } from '@store/actions/articles'
+import { getArticles } from '@store/actions/articles'
+import { SELECT_LABLE, } from '@store/actions/lable'
 // import { cleanSelectLable } from '../../../../store/redux/actions/lable'
 import { getUrlParam  } from '@uilts'
 
-import { Skeleton } from 'antd';
-import InfiniteScroll from 'react-infinite-scroller';
-import { throttle } from 'lodash'
+// import { Skeleton } from 'antd';
+// import InfiniteScroll from 'react-infinite-scroller';
+// import { throttle } from 'lodash'
 
 import './style.scss';
 
 class articleList extends Component{
 
     constructor(props){
-        super()
-        console.log('hahah') 
-        // this.throttleLoadmoreHandle = throttle(this.loadMoreHadnle,1000)
-        // this.toItemPosition = ''
-        console.log(  getUrlParam('lable') , 'lable' ) 
-        if( getUrlParam('lable') ){
-            console.log('wowo')
-        }
+        super(props)
+        const { dispatch,selectlable } = props;
     }
 
     loadMoreHadnle(){
         let { currentArticlesPage,dispatch } = this.props;
         // 要获取的下一页文章的页数
+
         const nextPage =  currentArticlesPage + 1;
         dispatch( getArticles({ },nextPage,10) );
     }
 
     componentDidMount(){
-        
-
         let { currentArticlesPage,selectlable,dispatch,articles } = this.props;
+        // 如果还没有加载过这一页 则加载
         if( !articles.find(list=>list.from === currentArticlesPage) ){
             const query = {};
-            selectlable && (query.lables = { '$in':[selectlable] }) ;
+            // 如果url参数中有label参数则 带上lable请求参数
+            const paramlable = getUrlParam(this.props,'lable');
+            if( paramlable ) dispatch({ type:SELECT_LABLE,lable:paramlable })
+            if( (selectlable = selectlable || paramlable) ){
+                (query.lables = { '$in':[selectlable] })
+            }
             dispatch( getArticles(query,currentArticlesPage,10,true) );
         }
     }
@@ -146,5 +145,5 @@ function select(state) {
     }
 }
 
-export default connect(select)(articleList)
+export default connect(select)( withRouter(articleList) )
 

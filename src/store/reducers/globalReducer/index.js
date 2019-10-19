@@ -94,7 +94,7 @@ function loginflashRedcer(state={color:'',text:''},action){
 
 function adminloginRedcer(state = false,action){
 	switch(action.type){
-		case  SHOW_ADMIN_LOGIN:
+		case SHOW_ADMIN_LOGIN:
 			state = true
 			return state
 		case HIDE_ADMIN_LOGIN:

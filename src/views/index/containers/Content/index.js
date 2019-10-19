@@ -7,12 +7,15 @@ import ArticeContent from 'lazy!../ArticeContent'
 import About from 'lazy!../About'
 import Lables from 'lazy!../Lables'
 
+import './style.scss';
+
 class Content extends Component{
 
     render(){
         
         return (
-            <Fragment>
+            
+            <div className="content" >
                 <Switch>
                     <Route path="/article" exact  component={ Artice } />
                     <Route path="/article/:id" exact component={ ArticeContent } />
@@ -20,7 +23,7 @@ class Content extends Component{
                     <Route path="/labels" component={ Lables } />
                     <Redirect exact path="/" to={{pathname: '/article'}} />
                 </Switch>
-            </Fragment>
+            </div>
          )
     }
 }

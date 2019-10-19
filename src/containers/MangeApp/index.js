@@ -1,5 +1,6 @@
-import React,{ Component } from 'react'
+import React,{ Component, Fragment } from 'react'
 import ReactDom from 'react-dom'
+import { connect } from 'react-redux'
 import { HashRouter as Router} from 'react-router-dom'
 // import { BrowserRouter as Router} from 'react-router-dom'
 
@@ -27,19 +28,33 @@ import '@assets/styles/semantic/transition.min.js'
 
 import LeftMenu from '../../components/ManageLeftMenu'
 import Content from  '../../containers/ManageContent'
+import LoginModal from '../../components/UserBox/components/LoginModal'
 
 
 class App extends Component{
+    
     render(){
+        const { adminlogin  } = this.props
         return(
-            <Router>
-                <div>
-                    <LeftMenu />
-                    <Content />
-                </div>
-            </Router>
+            <Fragment>
+                    <div style={ { display : adminlogin ? 'block' : 'block' } } >
+                        <Router>
+                            <div>
+                                <LeftMenu />
+                                <Content /> 
+                            </div>
+                        </Router>
+                    </div>
+                    {/* <LoginModal /> */}
+            </Fragment>
         )
     }
 }
 
-export default App
+function select(state){
+    return {
+        adminlogin:state.global.adminloginRedcer,
+    }
+}
+
+export default connect(select)(App)

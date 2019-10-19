@@ -65,7 +65,8 @@ class Editor extends Component{
 				oldArticleContent:article.data[0].content,
 				articleContent:article.data[0].content,
 				articleLabels:article.data[0].lables,
-				articleFiles:article.data[0].files
+				articleFiles:article.data[0].files,
+				articleCreateTime:article.data[0].createtime
 			})
 		}
     }
@@ -209,7 +210,8 @@ class Editor extends Component{
 			title:xss($('#articleTitle').val()),
 			content:xss($('#articleContent').val().replace(regexp,'/articles/uploadImg/_id/')),
 			lables:this.state.articleLabels,
-			files:this.state.articleFiles
+			files:this.state.articleFiles,
+
 		}
 		
 		let atricleid
@@ -250,10 +252,11 @@ class Editor extends Component{
 		
 			let update = {
 				title:xss($('#articleTitle').val()),
-				content:xss($('#articleContent').val()), 
+				content:xss($('#articleContent').val()),
+				createtime:xss($('#articlePostDate').val()),
 				lables:this.state.articleLabels,
 				files:this.state.articleFiles,
-				lasttime:getNowFormatDate()
+				lasttime:getNowFormatDate(),
 			}
 
 			let updateHandle,uploadFileHandle;
@@ -265,8 +268,6 @@ class Editor extends Component{
 				updateHandle = updateDraft
 				uploadFileHandle = uploadDraftFile
 			}
-			
-
 
 			await updateHandle({_id:this.state.articleId},update,false)
 					.then( data =>{
@@ -276,8 +277,10 @@ class Editor extends Component{
 					})
 					.catch( e => { alert('修改失败，请稍后再试') } )
 			
-			let oldUploadFile = await getAtricle({_id:this.state.articleId}).then( data => { return data[0].files } )
-
+			let oldUploadFile = await getAtricle({_id:this.state.articleId})
+			.then( res => { 
+				return res.data[0].files 
+			} )
 
 			if( JSON.stringify( oldUploadFile ) != JSON.stringify( this.state.articleFiles) ){
 				await uploadFileHandle('/articles/updateUpload',this.state.articleId, $('.attachment')[0].files)
@@ -424,6 +427,14 @@ class Editor extends Component{
 						<label>文章标题</label>
 						<input id="articleTitle"  type="text" placeholder="文章标题..." defaultValue={this.state.articleTitle} />
 					</div>
+					{ /* 修改文章才可以修改发布时间 */ }
+					{
+						this.props.articleId &&
+						<div className="field">
+							<label>发布时间</label>
+							<input id="articlePostDate" type="text" placeholder="文章发布时间" defaultValue={this.state.articleCreateTime} />
+						</div>
+					}
 
 					<div className="field">
 						<label>文章内容</label>

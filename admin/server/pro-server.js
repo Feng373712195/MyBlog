@@ -1,6 +1,7 @@
 const { dbClient,redisClient } = require('../db')
 const config = require('../config');
 const koa = require('koa')
+const favicon = require('koa-favicon');
 const sever = require('koa-static')
 const view = require('koa-view')
 const error = require('koa-onerror')
@@ -8,13 +9,16 @@ const bodyParser = require('koa-bodyparser');
 const compression = require("koa-compress");
 const path = require('path')
 
+
 // default port 
 let port = process.env.PORT || config.pro.port
 let app = new koa();
 
 error(app);
 
-//gzip
+// favicon
+app.use(favicon(__dirname + 'favicon.ico'));
+// gzip
 app.use(compression({
   threshold: 0
 }));
