@@ -17,7 +17,7 @@ let app = new koa();
 error(app);
 
 // favicon
-app.use(favicon(__dirname + 'favicon.ico'));
+app.use(favicon(path.join( __dirname, '../../favicon.ico')) );
 // gzip
 app.use(compression({
   threshold: 0
