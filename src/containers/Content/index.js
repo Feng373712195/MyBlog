@@ -15,7 +15,7 @@ class Content extends Component{
                 <Route path="/article" component={ Artice } />
                 <Route path="/label" component={ Label } /> 
                 <Route path="/about" component={ About } />
-                <Redirect path="/" to={{pathname: '/article'}} />
+                <Route component={ Artice } />
             </section>
          )
     }

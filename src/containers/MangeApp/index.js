@@ -37,7 +37,7 @@ class App extends Component{
         const { adminlogin  } = this.props
         return(
             <Fragment>
-                    <div style={ { display : adminlogin ? 'block' : 'block' } } >
+                    <div style={ { display : adminlogin ? 'block' : 'none' } } >
                         <Router>
                             <div>
                                 <LeftMenu />
@@ -45,7 +45,7 @@ class App extends Component{
                             </div>
                         </Router>
                     </div>
-                    {/* <LoginModal /> */}
+                    <LoginModal />
             </Fragment>
         )
     }
