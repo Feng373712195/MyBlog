@@ -1,10 +1,8 @@
 ## My-Blog
 
-# 开发中！！！！
+### 技术栈
 
-`my-blog` 主要使用了 `react`、 `react-redux` 、`koa2`、`mongose` 
-
- 目前正在做响应式，与完善功能....
+`react`、 `react-redux` 、`koa2`、`mongose` 
 
 ### npm command
 
@@ -23,10 +21,10 @@ npm run start-pro
 
 # forever 运行
 npm run forever-start
+
 # forever 停止运行
 npm run forever-stop
 
 ```
 # open mongodb
-
 /usr/local/mongodb/bin/mongod --config mongo.conf

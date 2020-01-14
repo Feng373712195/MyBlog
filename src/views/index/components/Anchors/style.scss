@@ -1,4 +1,10 @@
 .anchors-box{
+    &.hide{
+        opacity: 0;
+        user-select: none;
+        pointer-events: none;
+        visibility: hidden;
+    }
     position: fixed;
     right: 20px;
     top: 50%;
