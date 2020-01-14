@@ -105,7 +105,7 @@
     "markdown": "^0.5.0",
     "marked": "^0.3.17",
     "mongodb": "^2.2.33",
-    "mongoose": "^4.13.6",
+    "mongoose": "^5.7.5",
     "nodemon": "^1.12.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
