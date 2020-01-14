@@ -61,7 +61,7 @@ function Header(props){
     
     return <header className="header" >
                 <div className="blog-name" >
-                    <div>ZE-FENG BLOG</div>
+                    <a href="/" target="_self">WU-ZEFENG BLOG</a>
                     { selectlable && <Tag 
                          closable 
                          key="select-lable" 

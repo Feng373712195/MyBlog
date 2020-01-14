@@ -45,9 +45,8 @@ app.use(hotMiddleware(compiler,{
     reload:true 
 }))
 
-app.use((ctx,next)=>{
-    console.log(ctx.req.url);
-    next();
+app.use(async (ctx,next)=>{
+    await next();
 })
 
 // /* 处理 404 */
@@ -55,10 +54,12 @@ const handler = async (ctx, next) => {
   try {
     await next();
   } catch (err) {
-      ctx.response.status = err.statusCode || err.status || 500;
-      ctx.response.body = {
-        message: err.message
-      };
+      // 重定向到首页
+      ctx.redirect('/article');
+    //   ctx.response.status = err.statusCode || err.status || 500;
+    //   ctx.response.body = {
+    //     message: err.message
+    //   };
   }
 };
 

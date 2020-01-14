@@ -62,7 +62,7 @@ class Articles{
         return articlesModel.find(query,filter)
                .skip( (skip - 1) * limlt )
                .limit(limlt)
-               .sort({_id:1})
+               .sort({createtime:-1})
                .exec()
                .then(async data => { 
                     const total = await articlesModel.find().count().exec()
