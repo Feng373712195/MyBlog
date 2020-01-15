@@ -3,7 +3,7 @@ import axios from 'axios';
 
 /** 发布文章 请求方法 */
 const getAtricle = (query = {},skip = 1,limit = 1) =>{
-
+    //
     return  axios.post('/articles/find',{
                 query,
                 skip,
