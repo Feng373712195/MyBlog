@@ -38,8 +38,8 @@ const getAtricleList = (query = {},skip = 1,limit = 1) => {
             })
 }
 
+// 保存文章方法
 const saveAtricle = (query)=>{
-
     return  axios.post('/articles/save',query)
             .then(res => {
                 if(res.data.code === 0)
