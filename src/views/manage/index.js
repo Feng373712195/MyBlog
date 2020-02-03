@@ -3,14 +3,16 @@ import ReactDom from 'react-dom'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import App from '@containers/MangeApp'
-// import { HashRouter as Router } from 'react-router-dom'
-import { BrowserRouter as Router} from 'react-router-dom'
+import { HashRouter,BrowserRouter } from 'react-router-dom'
 import Mock,{ Random } from 'mockjs';
 
 import store from '../../store'
 
 import './style.scss'
 import 'babel-polyfill'
+
+const isProd = process.env.NODE_ENV === 'dev' ? false : true;
+const Router = isProd ? BrowserRouter : HashRouter;
 
 // 热更新 高阶函数
 function AppWarp(props){
