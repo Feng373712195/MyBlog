@@ -54,6 +54,8 @@ module.exports = {
           'node_modules'
         ],
         alias:{
+            //避免antd引入全部icon
+            '@ant-design/icons/lib/dist':path.join(assetsPath('asstes'),'antdIcons.js'),
             "css-animation/es/Event": "css-animation/dist-src/Event" ,
             '@uilts':path.join(config.rootDirPath,'uilts'),
             '@views':assetsPath('views'),
@@ -65,6 +67,7 @@ module.exports = {
         }
     },
     plugins: [
+
         new ExtractTextPlugin({ 
             filename:'css/[name].css',
             disable: process.env.NODE_ENV === "dev"

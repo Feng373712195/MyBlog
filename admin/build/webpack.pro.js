@@ -44,7 +44,6 @@ module.exports = merge(webpackBaseConfig,{
     },
     devtool: 'false',
     plugins:[
-        // new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.CommonsChunkPlugin(
             {
                 name: 'vendor',
