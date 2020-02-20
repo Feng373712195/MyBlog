@@ -4,7 +4,6 @@ const config = require('../config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const assetsPath = (src) => path.join(config.rootDirPath, 'src' , src );
 
-
 module.exports = {
     module:{
         rules:[
@@ -55,7 +54,7 @@ module.exports = {
         ],
         alias:{
             //避免antd引入全部icon
-            '@ant-design/icons/lib/dist$':path.join(assetsPath('asstes'),'antdIcons.js'),
+            '@ant-design/icons/lib/dist$':path.join(assetsPath('assets'),'js/antdIcons'),
             "css-animation/es/Event": "css-animation/dist-src/Event" ,
             '@uilts':path.join(config.rootDirPath,'uilts'),
             '@views':assetsPath('views'),
