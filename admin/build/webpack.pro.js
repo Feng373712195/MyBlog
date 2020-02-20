@@ -7,6 +7,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const TerserPlugin = require("terser-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const sourcePath = path.join(config.rootDirPath, 'src/views');
 const outputPath = path.join(config.rootDirPath, 'dist');
@@ -75,6 +76,13 @@ module.exports = merge(webpackBaseConfig,{
               }
             }
         }),
+        new OptimizeCssAssetsPlugin({
+            cssProcessor: require('cssnano'),
+            cssProcessorPluginOptions: {
+                preset: ['default', { discardComments: { removeAll: true } }],
+            },
+            canPrint: true
+        }), 
         new HtmlWebpackPlugin({
             title:'WUZEFENG 博客',
             filename:'home.html',
