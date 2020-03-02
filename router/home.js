@@ -6,7 +6,7 @@ let home = new router();
 
 
 home.get('/',async(ctx)=>{
-    await ctx.render('/dist/home');
+    await ctx.render('dist/home');
     // ctx.redirect('/article')
 })
 
