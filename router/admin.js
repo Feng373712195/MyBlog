@@ -13,7 +13,7 @@ admin.post('/admin/login',(ctx)=>{
 })
 
 admin.get('/manage',async(ctx)=>{
-    await ctx.render('manage');
+    await ctx.render('dist/manage');
 })
 
 module.exports = admin;

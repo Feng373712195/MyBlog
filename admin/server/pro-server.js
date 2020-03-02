@@ -30,8 +30,8 @@ app.use(async (ctx,next)=>{
 //总路由
 app.use(bodyParser());
 const router = require('../../router/main');
-app.use( sever(path.resolve(config.rootDirPath,'dist' )) )
-app.use( view(path.resolve(config.rootDirPath,'dist'),{extensions:'html'}) )
+app.use( sever(path.resolve(config.rootDirPath )) )
+app.use( view(path.resolve(config.rootDirPath ),{extensions:'html'}) )
 app.use(router.routes(),router.allowedMethods());
 
 /* 处理 404 */

@@ -12,12 +12,12 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const sourcePath = path.join(config.rootDirPath, 'src/views');
 const outputPath = path.join(config.rootDirPath, 'dist');
 
-if(true) {
-    const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-    webpackBaseConfig.plugins.push(
-        new BundleAnalyzerPlugin()
-    );
-}
+// if(true) {
+//     const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+//     webpackBaseConfig.plugins.push(
+//         new BundleAnalyzerPlugin()
+//     );
+// }
 
 module.exports = merge(webpackBaseConfig,{
     entry:{
@@ -28,9 +28,9 @@ module.exports = merge(webpackBaseConfig,{
     output:{
         path: outputPath,
         // 正式环境地址
-        publicPath:'http://wuzefeng.cn/',
+        // publicPath:'http://wuzefeng.cn/dist/',
         // 模拟线上测试地址
-        // publicPath:'http://localhost:8080/',
+        publicPath:'http://localhost:8080/dist/',
         //业务逻辑代码经常变动 文件名加上hash 防止webpack 缓存
         filename:'js/[name]_[chunkhash:8].min.js',    
     },
@@ -51,7 +51,7 @@ module.exports = merge(webpackBaseConfig,{
         new webpack.optimize.CommonsChunkPlugin(
             {
                 name: 'vendor',
-                filename: 'js/vendor.min.js',
+                filename: '/dist/js/vendor.min.js',
             }
         ),
         new UglifyJsPlugin({

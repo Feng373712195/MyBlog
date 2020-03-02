@@ -8,7 +8,8 @@ let routers = [
     require('./lable'),
     require('./articles'),
     require('./drafts'),
-    require('./admin')
+    require('./admin'),
+    require('./game')
 ]
 
 let main = new router();
