@@ -51,7 +51,7 @@ module.exports = merge(webpackBaseConfig,{
         new webpack.optimize.CommonsChunkPlugin(
             {
                 name: 'vendor',
-                filename: '/dist/js/vendor.min.js',
+                filename: 'js/vendor.min.js',
             }
         ),
         new UglifyJsPlugin({
