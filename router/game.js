@@ -2,9 +2,12 @@ const router = require('koa-router');
 const games = new router();
 const path = require('path');
 
-games.get('/game/200302133145',async (ctx)=>{
-    await ctx.render( 'games/200302133145/index' );
+games.get('/games/1/v1',async (ctx)=>{
+    await ctx.render( 'games/1/index' );
 })
 
+games.get('/games/2/v1',async (ctx)=>{
+    await ctx.render( 'games/2/index' );
+})
 
 module.exports = games;

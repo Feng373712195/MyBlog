@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>剃胡子</title>
+    <title>Egret</title>
     <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="full-screen" content="true" />
@@ -13,7 +13,7 @@
     <style>
         html, body {
             -ms-touch-action: none;
-            background: #ffffff;
+            background: #888888;
             padding: 0;
             border: 0;
             margin: 0;
@@ -65,7 +65,7 @@
     };
 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/games/200302133145/manifest.json?v=' + Math.random(), true);
+    xhr.open('GET', './manifest.json?v=' + Math.random(), true);
     xhr.addEventListener("load", function () {
         var manifest = JSON.parse(xhr.response);
         var list = manifest.initial.concat(manifest.game);
