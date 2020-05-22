@@ -10,4 +10,8 @@ games.get('/games/2/v1',async (ctx)=>{
     await ctx.render( 'games/2/index' );
 })
 
+games.get('/games/3/v1',async (ctx)=>{
+    await ctx.render( 'games/3/index' );
+})
+
 module.exports = games;
