@@ -24,7 +24,7 @@
 		"ExchangeItem": "resource/game_skins/ExchangeItem.exml",
 		"BuySuccessMessage": "resource/game_skins/BuySuccessMessage.exml",
 		"ExchangeSuccesMessage": "resource/game_skins/ExchangeSuccesMessage.exml",
-		"PkGameScene": "resource/eui_skins/PkGameScene.exml"
+		"PkGameScene": "resource/game_skins/PkGameScene.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -35,7 +35,6 @@
 		"resource/eui_skins/ItemRendererSkin.exml",
 		"resource/eui_skins/LevelUpMessageBox.exml",
 		"resource/eui_skins/PanelSkin.exml",
-		"resource/eui_skins/PkGameScene.exml",
 		"resource/eui_skins/ProgressBarSkin.exml",
 		"resource/eui_skins/RadioButtonSkin.exml",
 		"resource/eui_skins/ScrollerSkin.exml",
@@ -54,6 +53,7 @@
 		"resource/game_skins/Loading.exml",
 		"resource/game_skins/LoginInMessageBox.exml",
 		"resource/game_skins/NoKeyMessageBox.exml",
+		"resource/game_skins/PkGameScene.exml",
 		"resource/game_skins/PkResultScene.exml",
 		"resource/game_skins/PkScene.exml",
 		"resource/game_skins/PkWaitMessageBox.exml",
