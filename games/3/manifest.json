@@ -6,10 +6,11 @@
 		"js/assetsmanager.min_2ef412b7.js",
 		"js/tween.min_6c5a88f9.js",
 		"js/promise.min_83a6a5d.js",
+		"js/socket.io.min_17e987ef.js",
 		"js/weixinapi.min_6729a0d7.js"
 	],
 	"game": [
-		"js/default.thm_fbbdd86e.js",
-		"js/main.min_bd81291a.js"
+		"js/default.thm_7e8382a5.js",
+		"js/main.min_86b9fed1.js"
 	]
 }

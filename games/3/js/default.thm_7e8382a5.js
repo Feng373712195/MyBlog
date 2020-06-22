@@ -10,7 +10,7 @@ window.skins=window.skins||{};
                 window.generateEUI = window.generateEUI||{};
                 generateEUI.paths = generateEUI.paths||{};
                 generateEUI.styles = undefined;
-                generateEUI.skins = {"StartScene":"resource/game_skins/StartScene.exml","RankScene":"resource/game_skins/RankScene.exml","BeginScene":"resource/game_skins/BeginScene.exml","RankItem":"resource/game_skins/RankItem.exml","GameScene":"resource/game_skins/GameScene.exml","LoginInMessageBox":"resource/game_skins/LoginInMessageBox.exml","LevelUpMessageBox":"resource/game_skins/LevelUpMessageBox.exml","RankingListScene":"resource/game_skins/RankingListScene.exml","RankingItem":"resource/game_skins/RankingItem.exml","RankingResultScene":"resource/game_skins/RankingResultScene.exml","ResultMessageBox":"resource/game_skins/ResultMessageBox.exml","UseKeyMessageBox":"resource/game_skins/UseKeyMessageBox.exml","NoKeyMessageBox":"resource/game_skins/NoKeyMessageBox.exml","PkScene":"resource/game_skins/PkScene.exml","PkWaitMessageBox":"resource/game_skins/PkWaitMessageBox.exml","PkResultScene":"resource/game_skins/PkResultScene.exml","ChooseTypeScene":"resource/game_skins/ChooseTypeScene.exml","ChooseTypeDetailScenen":"resource/game_skins/ChooseTypeDetailScene.exml","Loading":"resource/game_skins/Loading.exml","ShoppingMallScene":"resource/game_skins/ShoppingMallScene.exml","ShoppingItem":"resource/game_skins/ShoppingItem.exml","ExchangeItem":"resource/game_skins/ExchangeItem.exml","BuySuccessMessage":"resource/game_skins/BuySuccessMessage.exml","ExchangeSuccesMessage":"resource/game_skins/ExchangeSuccesMessage.exml","PkGameScene":"resource/game_skins/PkGameScene.exml"};generateEUI.paths['resource/eui_skins/ButtonSkin.exml'] = window.skins.ButtonSkin = (function (_super) {
+                generateEUI.skins = {"StartScene":"resource/game_skins/StartScene.exml","RankScene":"resource/game_skins/RankScene.exml","BeginScene":"resource/game_skins/BeginScene.exml","RankItem":"resource/game_skins/RankItem.exml","GameScene":"resource/game_skins/GameScene.exml","LoginInMessageBox":"resource/game_skins/LoginInMessageBox.exml","LevelUpMessageBox":"resource/game_skins/LevelUpMessageBox.exml","RankingListScene":"resource/game_skins/RankingListScene.exml","RankingItem":"resource/game_skins/RankingItem.exml","RankingResultScene":"resource/game_skins/RankingResultScene.exml","ResultMessageBox":"resource/game_skins/ResultMessageBox.exml","UseKeyMessageBox":"resource/game_skins/UseKeyMessageBox.exml","NoKeyMessageBox":"resource/game_skins/NoKeyMessageBox.exml","PkScene":"resource/game_skins/PkScene.exml","PkWaitMessageBox":"resource/game_skins/PkWaitMessageBox.exml","PkResultScene":"resource/game_skins/PkResultScene.exml","ChooseTypeScene":"resource/game_skins/ChooseTypeScene.exml","ChooseTypeDetailScenen":"resource/game_skins/ChooseTypeDetailScene.exml","Loading":"resource/game_skins/Loading.exml","ShoppingMallScene":"resource/game_skins/ShoppingMallScene.exml","ShoppingItem":"resource/game_skins/ShoppingItem.exml","ExchangeItem":"resource/game_skins/ExchangeItem.exml","BuySuccessMessage":"resource/game_skins/BuySuccessMessage.exml","ExchangeSuccesMessage":"resource/game_skins/ExchangeSuccesMessage.exml","PkGameScene":"resource/game_skins/PkGameScene.exml","serviceScene":"resource/game_skins/serviceScene.exml","ServiceScene":"resource/game_skins/ServiceScene.exml","AboutScene":"resource/game_skins/AboutScene.exml"};generateEUI.paths['resource/eui_skins/ButtonSkin.exml'] = window.skins.ButtonSkin = (function (_super) {
 	__extends(ButtonSkin, _super);
 	function ButtonSkin() {
 		_super.call(this);
@@ -632,6 +632,98 @@ window.skins=window.skins||{};
 		return t;
 	};
 	return VSliderSkin;
+})(eui.Skin);generateEUI.paths['resource/game_skins/AboutScene.exml'] = window.AboutSceneSkin = (function (_super) {
+	__extends(AboutSceneSkin, _super);
+	function AboutSceneSkin() {
+		_super.call(this);
+		this.skinParts = [];
+		
+		this.height = 1334;
+		this.width = 750;
+		this.elementsContent = [this._Rect1_i(),this._Image1_i(),this._Group1_i(),this._Image4_i()];
+	}
+	var _proto = AboutSceneSkin.prototype;
+
+	_proto._Rect1_i = function () {
+		var t = new eui.Rect();
+		t.fillColor = 0xB2EDF7;
+		t.percentHeight = 100;
+		t.left = 1;
+		t.top = 0;
+		t.percentWidth = 100;
+		return t;
+	};
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.bottom = 0;
+		t.height = 130;
+		t.source = "yb_detail_bottom1_png";
+		t.percentWidth = 100;
+		t.x = 0;
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.bottom = 22;
+		t.height = 1122;
+		t.horizontalCenter = 0;
+		t.top = 63;
+		t.width = 662;
+		t.y = 189.9;
+		t.elementsContent = [this._Rect2_i(),this._Image2_i(),this._Label1_i(),this._Image3_i()];
+		return t;
+	};
+	_proto._Rect2_i = function () {
+		var t = new eui.Rect();
+		t.fillColor = 0xE8FCFE;
+		t.percentHeight = 100;
+		t.left = 0;
+		t.strokeColor = 0x23BFD5;
+		t.strokeWeight = 1;
+		t.top = 0;
+		t.percentWidth = 100;
+		return t;
+	};
+	_proto._Image2_i = function () {
+		var t = new eui.Image();
+		t.height = 81;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.source = "about_top_png";
+		t.width = 338;
+		t.x = 162;
+		t.y = -40.5;
+		return t;
+	};
+	_proto._Label1_i = function () {
+		var t = new eui.Label();
+		t.horizontalCenter = 0;
+		t.lineSpacing = 24;
+		t.text = "精神健康小游戏贯彻执行“ 普及健康意识” 的服务宗旨，为关注健康的广大网民提供网络健康知识服务；我们能为您提供最新的医疗资讯，通过健康问答栏目为患者提供一个关注健康、理解健康、咨询健康时时互动的网络平台；精神健康小游戏凭借着专业的健康知识，会真正成为患者的好帮手";
+		t.textColor = 0x1D292B;
+		t.top = 208;
+		t.width = 564;
+		return t;
+	};
+	_proto._Image3_i = function () {
+		var t = new eui.Image();
+		t.height = 63;
+		t.horizontalCenter = 0;
+		t.source = "about_logo_png";
+		t.top = 93;
+		t.width = 314;
+		return t;
+	};
+	_proto._Image4_i = function () {
+		var t = new eui.Image();
+		t.bottom = 0;
+		t.height = 130;
+		t.source = "yb_detail_bottom2_png";
+		t.percentWidth = 100;
+		t.x = 0;
+		return t;
+	};
+	return AboutSceneSkin;
 })(eui.Skin);generateEUI.paths['resource/game_skins/BeginScene.exml'] = window.BeginSceneSkin = (function (_super) {
 	__extends(BeginSceneSkin, _super);
 	function BeginSceneSkin() {
@@ -874,7 +966,7 @@ window.skins=window.skins||{};
 	_proto._Label4_i = function () {
 		var t = new eui.Label();
 		t.horizontalCenter = 0;
-		t.text = "学到了";
+		t.text = "购买成功";
 		t.verticalCenter = 0;
 		return t;
 	};
@@ -943,7 +1035,6 @@ window.skins=window.skins||{};
 	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Medium";
-		t.height = 76;
 		t.horizontalCenter = 0;
 		t.lineSpacing = 24;
 		t.text = "标题内容标题内容标题内容标题内容标题内容";
@@ -1588,7 +1679,7 @@ window.skins=window.skins||{};
 	_proto._Label3_i = function () {
 		var t = new eui.Label();
 		t.horizontalCenter = 0;
-		t.text = "学到了";
+		t.text = "购买成功";
 		t.verticalCenter = 0;
 		return t;
 	};
@@ -1597,11 +1688,11 @@ window.skins=window.skins||{};
 	__extends(GameSceneSkin, _super);
 	function GameSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["question_type","question_index","question_box","time_progress","timeout","usekey_btn","question_rule","radio_box1","answer_1","radio_box2","answer_2","radio_box3","answer_3","radio_box4","answer_4","question_answer","game_window","transtions"];
+		this.skinParts = ["question_type","question_title","question_index","question_box","time_progress","timeout","usekey_btn","question_rule","radio_box1","answer_1","radio_box2","answer_2","radio_box3","answer_3","radio_box4","answer_4","text","img","question_answer","game_window","transtions"];
 		
 		this.height = 1334;
 		this.width = 750;
-		this.elementsContent = [this._Rect1_i(),this._Image1_i(),this.game_window_i(),this._Image14_i(),this._Label8_i(),this.transtions_i()];
+		this.elementsContent = [this._Rect1_i(),this._Image1_i(),this.game_window_i(),this._Image14_i(),this._Group20_i(),this.transtions_i()];
 	}
 	var _proto = GameSceneSkin.prototype;
 
@@ -1632,22 +1723,22 @@ window.skins=window.skins||{};
 		t.top = 50;
 		t.width = 659;
 		t.x = 46;
-		t.elementsContent = [this._Rect2_i(),this._Group15_i()];
+		t.elementsContent = [this._Rect2_i(),this._Group19_i()];
 		return t;
 	};
 	_proto._Rect2_i = function () {
 		var t = new eui.Rect();
-		t.bottom = 0;
+		t.bottom = -4;
 		t.fillColor = 0xffffff;
 		t.percentHeight = 100;
-		t.left = 1;
+		t.left = 5;
 		t.scaleX = 1;
 		t.scaleY = 1;
-		t.top = 0;
+		t.top = 4;
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Group15_i = function () {
+	_proto._Group19_i = function () {
 		var t = new eui.Group();
 		t.percentHeight = 100;
 		t.left = 0;
@@ -1705,11 +1796,12 @@ window.skins=window.skins||{};
 		t.left = 0;
 		t.top = 0;
 		t.percentWidth = 100;
-		t.elementsContent = [this._Label1_i()];
+		t.elementsContent = [this.question_title_i()];
 		return t;
 	};
-	_proto._Label1_i = function () {
+	_proto.question_title_i = function () {
 		var t = new eui.Label();
+		this.question_title = t;
 		t.fontFamily = "PingFang-SC-Medium";
 		t.horizontalCenter = 0;
 		t.left = 23;
@@ -1766,7 +1858,7 @@ window.skins=window.skins||{};
 		t.top = 0;
 		t.width = 200;
 		t.layout = this._HorizontalLayout1_i();
-		t.elementsContent = [this._Rect3_i(),this._Image3_i(),this._Label2_i()];
+		t.elementsContent = [this._Rect3_i(),this._Image3_i(),this._Label1_i()];
 		return t;
 	};
 	_proto._HorizontalLayout1_i = function () {
@@ -1793,7 +1885,7 @@ window.skins=window.skins||{};
 		t.y = -4;
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.anchorOffsetX = 0;
 		t.fontFamily = "Arial-Black";
@@ -1950,7 +2042,7 @@ window.skins=window.skins||{};
 		t.width = 190;
 		t.x = 112;
 		t.y = 19;
-		t.elementsContent = [this._Rect8_i(),this._Label3_i()];
+		t.elementsContent = [this._Rect8_i(),this._Label2_i()];
 		return t;
 	};
 	_proto._Rect8_i = function () {
@@ -1964,7 +2056,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label3_i = function () {
+	_proto._Label2_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.horizontalCenter = 0;
@@ -1981,6 +2073,18 @@ window.skins=window.skins||{};
 		t.horizontalCenter = 0;
 		t.top = 565;
 		t.width = 580;
+		t.elementsContent = [this.text_i(),this.img_i()];
+		return t;
+	};
+	_proto.text_i = function () {
+		var t = new eui.Group();
+		this.text = t;
+		t.percentHeight = 100;
+		t.left = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.top = 0;
+		t.percentWidth = 100;
 		t.layout = this._VerticalLayout1_i();
 		t.elementsContent = [this.answer_1_i(),this.answer_2_i(),this.answer_3_i(),this.answer_4_i()];
 		return t;
@@ -1994,9 +2098,11 @@ window.skins=window.skins||{};
 		var t = new eui.Group();
 		this.answer_1 = t;
 		t.height = 98;
+		t.scaleX = 1;
+		t.scaleY = 1;
 		t.percentWidth = 100;
-		t.x = 2;
-		t.y = -12;
+		t.x = 0;
+		t.y = 212;
 		t.elementsContent = [this._Rect9_i(),this._Group8_i(),this._Image6_i(),this._Image7_i()];
 		return t;
 	};
@@ -2042,7 +2148,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		t.y = 0;
 		t.layout = this._HorizontalLayout4_i();
-		t.elementsContent = [this.radio_box1_i(),this._Label4_i()];
+		t.elementsContent = [this.radio_box1_i(),this._Label3_i()];
 		return t;
 	};
 	_proto._HorizontalLayout4_i = function () {
@@ -2107,9 +2213,10 @@ window.skins=window.skins||{};
 		t.y = 8;
 		return t;
 	};
-	_proto._Label4_i = function () {
+	_proto._Label3_i = function () {
 		var t = new eui.Label();
 		t.height = 35;
+		t.name = "answer_text";
 		t.text = "老年痴呆躯体";
 		t.textColor = 0x1d292b;
 		t.verticalAlign = "bottom";
@@ -2152,8 +2259,8 @@ window.skins=window.skins||{};
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.percentWidth = 100;
-		t.x = -37.99999999999999;
-		t.y = -577;
+		t.x = 0;
+		t.y = 212;
 		t.elementsContent = [this._Rect14_i(),this._Group10_i(),this._Image8_i(),this._Image9_i()];
 		return t;
 	};
@@ -2202,7 +2309,7 @@ window.skins=window.skins||{};
 		t.top = 0;
 		t.percentWidth = 100;
 		t.layout = this._HorizontalLayout5_i();
-		t.elementsContent = [this.radio_box2_i(),this._Label5_i()];
+		t.elementsContent = [this.radio_box2_i(),this._Label4_i()];
 		return t;
 	};
 	_proto._HorizontalLayout5_i = function () {
@@ -2267,9 +2374,10 @@ window.skins=window.skins||{};
 		t.y = 8;
 		return t;
 	};
-	_proto._Label5_i = function () {
+	_proto._Label4_i = function () {
 		var t = new eui.Label();
 		t.height = 35;
+		t.name = "answer_text";
 		t.text = "老年痴呆躯体";
 		t.textColor = 0x1D292B;
 		t.verticalAlign = "bottom";
@@ -2312,8 +2420,8 @@ window.skins=window.skins||{};
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.percentWidth = 100;
-		t.x = -28;
-		t.y = -567;
+		t.x = 0;
+		t.y = 212;
 		t.elementsContent = [this._Rect19_i(),this._Group12_i(),this._Image10_i(),this._Image11_i()];
 		return t;
 	};
@@ -2363,7 +2471,7 @@ window.skins=window.skins||{};
 		t.top = 0;
 		t.percentWidth = 100;
 		t.layout = this._HorizontalLayout6_i();
-		t.elementsContent = [this.radio_box3_i(),this._Label6_i()];
+		t.elementsContent = [this.radio_box3_i(),this._Label5_i()];
 		return t;
 	};
 	_proto._HorizontalLayout6_i = function () {
@@ -2428,9 +2536,10 @@ window.skins=window.skins||{};
 		t.y = 8;
 		return t;
 	};
-	_proto._Label6_i = function () {
+	_proto._Label5_i = function () {
 		var t = new eui.Label();
 		t.height = 35;
+		t.name = "answer_text";
 		t.text = "老年痴呆躯体";
 		t.textColor = 0x1D292B;
 		t.verticalAlign = "bottom";
@@ -2473,8 +2582,8 @@ window.skins=window.skins||{};
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.percentWidth = 100;
-		t.x = -18;
-		t.y = -557;
+		t.x = 0;
+		t.y = 212;
 		t.elementsContent = [this._Rect24_i(),this._Group14_i(),this._Image12_i(),this._Image13_i()];
 		return t;
 	};
@@ -2523,7 +2632,7 @@ window.skins=window.skins||{};
 		t.top = 0;
 		t.percentWidth = 100;
 		t.layout = this._HorizontalLayout7_i();
-		t.elementsContent = [this.radio_box4_i(),this._Label7_i()];
+		t.elementsContent = [this.radio_box4_i(),this._Label6_i()];
 		return t;
 	};
 	_proto._HorizontalLayout7_i = function () {
@@ -2588,9 +2697,10 @@ window.skins=window.skins||{};
 		t.y = 8;
 		return t;
 	};
-	_proto._Label7_i = function () {
+	_proto._Label6_i = function () {
 		var t = new eui.Label();
 		t.height = 35;
+		t.name = "answer_text";
 		t.text = "老年痴呆躯体";
 		t.textColor = 0x1D292B;
 		t.verticalAlign = "bottom";
@@ -2626,6 +2736,66 @@ window.skins=window.skins||{};
 		t.y = 110.00000000000011;
 		return t;
 	};
+	_proto.img_i = function () {
+		var t = new eui.Group();
+		this.img = t;
+		t.percentHeight = 100;
+		t.left = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.top = 0;
+		t.visible = false;
+		t.percentWidth = 100;
+		t.layout = this._TileLayout1_i();
+		t.elementsContent = [this._Group15_i(),this._Group16_i(),this._Group17_i(),this._Group18_i()];
+		return t;
+	};
+	_proto._TileLayout1_i = function () {
+		var t = new eui.TileLayout();
+		t.columnAlign = "justifyUsingGap";
+		t.horizontalGap = 0;
+		t.rowAlign = "justifyUsingHeight";
+		t.verticalGap = 0;
+		return t;
+	};
+	_proto._Group15_i = function () {
+		var t = new eui.Group();
+		t.height = 210;
+		t.width = 270;
+		t.x = 122;
+		t.y = 166;
+		return t;
+	};
+	_proto._Group16_i = function () {
+		var t = new eui.Group();
+		t.height = 210;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.width = 270;
+		t.x = 122;
+		t.y = 166;
+		return t;
+	};
+	_proto._Group17_i = function () {
+		var t = new eui.Group();
+		t.height = 210;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.width = 270;
+		t.x = 132;
+		t.y = 176;
+		return t;
+	};
+	_proto._Group18_i = function () {
+		var t = new eui.Group();
+		t.height = 210;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.width = 270;
+		t.x = 142;
+		t.y = 186;
+		return t;
+	};
 	_proto._Image14_i = function () {
 		var t = new eui.Image();
 		t.bottom = 0;
@@ -2635,13 +2805,45 @@ window.skins=window.skins||{};
 		t.width = 147;
 		return t;
 	};
-	_proto._Label8_i = function () {
+	_proto._Group20_i = function () {
+		var t = new eui.Group();
+		t.bottom = 32;
+		t.height = 32;
+		t.horizontalCenter = 0;
+		t.width = 200;
+		t.layout = this._HorizontalLayout8_i();
+		t.elementsContent = [this._Image15_i(),this._Label7_i()];
+		return t;
+	};
+	_proto._HorizontalLayout8_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.gap = 15;
+		t.horizontalAlign = "center";
+		t.paddingBottom = 0;
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Image15_i = function () {
+		var t = new eui.Image();
+		t.height = 32;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.source = "logo_ax_png";
+		t.width = 36;
+		t.x = 235.00000000000006;
+		t.y = 23;
+		return t;
+	};
+	_proto._Label7_i = function () {
 		var t = new eui.Label();
-		t.bottom = 30;
 		t.fontFamily = "PingFang-SC-Medium";
 		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.size = 20;
 		t.text = "精神卫生知识";
-		t.textColor = 0xff514e;
+		t.textColor = 0xFF514E;
+		t.verticalCenter = 0;
 		return t;
 	};
 	_proto.transtions_i = function () {
@@ -3185,11 +3387,11 @@ window.skins=window.skins||{};
 	__extends(PkGameSceneSkin, _super);
 	function PkGameSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["self","rival","gamer_top","question_type","question_index","question_box","time_progress","timeout","question_rule","radio_box0","answer_1","radio_box1","answer_2","radio_box2","answer_3","radio_box3","answer_4","question_answer","game_window","transtions"];
+		this.skinParts = ["self","rival","gamer_top","question_type","question_title","question_index","question_box","time_progress","timeout","question_rule","radio_box0","answer_1","radio_box1","answer_2","radio_box2","answer_3","radio_box3","answer_4","question_answer","game_window","transtions"];
 		
 		this.height = 1334;
 		this.width = 750;
-		this.elementsContent = [this._Rect1_i(),this.game_window_i(),this._Label8_i(),this.transtions_i()];
+		this.elementsContent = [this._Rect1_i(),this.game_window_i(),this._Group19_i(),this.transtions_i()];
 	}
 	var _proto = PkGameSceneSkin.prototype;
 
@@ -3205,10 +3407,10 @@ window.skins=window.skins||{};
 	_proto.game_window_i = function () {
 		var t = new eui.Group();
 		this.game_window = t;
-		t.height = 1314;
+		t.bottom = 0;
+		t.height = 1300;
 		t.width = 659;
 		t.x = 46;
-		t.y = 20;
 		t.elementsContent = [this._Rect2_i(),this._Group18_i()];
 		return t;
 	};
@@ -3492,11 +3694,12 @@ window.skins=window.skins||{};
 		t.left = 0;
 		t.top = 0;
 		t.percentWidth = 100;
-		t.elementsContent = [this._Label2_i()];
+		t.elementsContent = [this.question_title_i()];
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto.question_title_i = function () {
 		var t = new eui.Label();
+		this.question_title = t;
 		t.fontFamily = "PingFang-SC-Medium";
 		t.horizontalCenter = 0;
 		t.left = 23;
@@ -3553,7 +3756,7 @@ window.skins=window.skins||{};
 		t.top = 0;
 		t.width = 200;
 		t.layout = this._HorizontalLayout3_i();
-		t.elementsContent = [this._Rect10_i(),this._Image3_i(),this._Label3_i()];
+		t.elementsContent = [this._Rect10_i(),this._Image3_i(),this._Label2_i()];
 		return t;
 	};
 	_proto._HorizontalLayout3_i = function () {
@@ -3580,7 +3783,7 @@ window.skins=window.skins||{};
 		t.y = -4;
 		return t;
 	};
-	_proto._Label3_i = function () {
+	_proto._Label2_i = function () {
 		var t = new eui.Label();
 		t.anchorOffsetX = 0;
 		t.fontFamily = "Arial-Black";
@@ -3779,7 +3982,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		t.y = 0;
 		t.layout = this._HorizontalLayout5_i();
-		t.elementsContent = [this.radio_box0_i(),this._Label4_i()];
+		t.elementsContent = [this.radio_box0_i(),this._Label3_i()];
 		return t;
 	};
 	_proto._HorizontalLayout5_i = function () {
@@ -3845,9 +4048,10 @@ window.skins=window.skins||{};
 		t.y = 8;
 		return t;
 	};
-	_proto._Label4_i = function () {
+	_proto._Label3_i = function () {
 		var t = new eui.Label();
 		t.height = 35;
+		t.name = "answer_text";
 		t.text = "老年痴呆躯体";
 		t.textColor = 0x1D292B;
 		t.verticalAlign = "bottom";
@@ -3948,7 +4152,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		t.y = 0;
 		t.layout = this._HorizontalLayout6_i();
-		t.elementsContent = [this.radio_box1_i(),this._Label5_i()];
+		t.elementsContent = [this.radio_box1_i(),this._Label4_i()];
 		return t;
 	};
 	_proto._HorizontalLayout6_i = function () {
@@ -4014,9 +4218,10 @@ window.skins=window.skins||{};
 		t.y = 8;
 		return t;
 	};
-	_proto._Label5_i = function () {
+	_proto._Label4_i = function () {
 		var t = new eui.Label();
 		t.height = 35;
+		t.name = "answer_text";
 		t.text = "老年痴呆躯体";
 		t.textColor = 0x1D292B;
 		t.verticalAlign = "bottom";
@@ -4117,7 +4322,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		t.y = 0;
 		t.layout = this._HorizontalLayout7_i();
-		t.elementsContent = [this.radio_box2_i(),this._Label6_i()];
+		t.elementsContent = [this.radio_box2_i(),this._Label5_i()];
 		return t;
 	};
 	_proto._HorizontalLayout7_i = function () {
@@ -4183,9 +4388,10 @@ window.skins=window.skins||{};
 		t.y = 8;
 		return t;
 	};
-	_proto._Label6_i = function () {
+	_proto._Label5_i = function () {
 		var t = new eui.Label();
 		t.height = 35;
+		t.name = "answer_text";
 		t.text = "老年痴呆躯体";
 		t.textColor = 0x1D292B;
 		t.verticalAlign = "bottom";
@@ -4286,7 +4492,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		t.y = 0;
 		t.layout = this._HorizontalLayout8_i();
-		t.elementsContent = [this.radio_box3_i(),this._Label7_i()];
+		t.elementsContent = [this.radio_box3_i(),this._Label6_i()];
 		return t;
 	};
 	_proto._HorizontalLayout8_i = function () {
@@ -4352,9 +4558,10 @@ window.skins=window.skins||{};
 		t.y = 8;
 		return t;
 	};
-	_proto._Label7_i = function () {
+	_proto._Label6_i = function () {
 		var t = new eui.Label();
 		t.height = 35;
+		t.name = "answer_text";
 		t.text = "老年痴呆躯体";
 		t.textColor = 0x1D292B;
 		t.verticalAlign = "bottom";
@@ -4400,13 +4607,45 @@ window.skins=window.skins||{};
 		t.y = 110.00000000000011;
 		return t;
 	};
-	_proto._Label8_i = function () {
+	_proto._Group19_i = function () {
+		var t = new eui.Group();
+		t.bottom = 32;
+		t.height = 32;
+		t.horizontalCenter = 0;
+		t.width = 200;
+		t.layout = this._HorizontalLayout9_i();
+		t.elementsContent = [this._Image17_i(),this._Label7_i()];
+		return t;
+	};
+	_proto._HorizontalLayout9_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.gap = 15;
+		t.horizontalAlign = "center";
+		t.paddingBottom = 0;
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Image17_i = function () {
+		var t = new eui.Image();
+		t.height = 32;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.source = "logo_ax_png";
+		t.width = 36;
+		t.x = 235.00000000000006;
+		t.y = 23;
+		return t;
+	};
+	_proto._Label7_i = function () {
 		var t = new eui.Label();
-		t.bottom = 35;
 		t.fontFamily = "PingFang-SC-Medium";
 		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.size = 20;
 		t.text = "精神卫生知识";
 		t.textColor = 0xFF514E;
+		t.verticalCenter = 0;
 		return t;
 	};
 	_proto.transtions_i = function () {
@@ -4426,11 +4665,11 @@ window.skins=window.skins||{};
 	__extends(PkResultSceneSkin, _super);
 	function PkResultSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","left_user","right_user"];
+		this.skinParts = ["bg","user_score","left_user","other_score","right_user","credit","money","back_btn","play_btn"];
 		
 		this.height = 1334;
 		this.width = 750;
-		this.elementsContent = [this.bg_i(),this._Group1_i(),this.left_user_i(),this.right_user_i(),this._Group10_i(),this._Group13_i()];
+		this.elementsContent = [this.bg_i(),this._Group1_i(),this.left_user_i(),this.right_user_i(),this._Group10_i(),this._Group11_i()];
 	}
 	var _proto = PkResultSceneSkin.prototype;
 
@@ -4537,7 +4776,7 @@ window.skins=window.skins||{};
 		t.width = 188;
 		t.x = 108.02;
 		t.layout = this._VerticalLayout1_i();
-		t.elementsContent = [this._Group3_i(),this._Label2_i()];
+		t.elementsContent = [this._Group3_i(),this._Label1_i()];
 		return t;
 	};
 	_proto._VerticalLayout1_i = function () {
@@ -4557,7 +4796,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		t.x = 37;
 		t.y = -36;
-		t.elementsContent = [this._Image5_i(),this._Label1_i()];
+		t.elementsContent = [this._Image5_i(),this.user_score_i()];
 		return t;
 	};
 	_proto._Image5_i = function () {
@@ -4569,8 +4808,9 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label1_i = function () {
+	_proto.user_score_i = function () {
 		var t = new eui.Label();
+		this.user_score = t;
 		t.fontFamily = "PingFangSC-Regular";
 		t.height = 50;
 		t.left = 15;
@@ -4582,7 +4822,7 @@ window.skins=window.skins||{};
 		t.width = 160;
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.bottom = 0;
 		t.left = 9;
@@ -4618,7 +4858,7 @@ window.skins=window.skins||{};
 		t.width = 160;
 		t.x = 108.02;
 		t.layout = this._VerticalLayout2_i();
-		t.elementsContent = [this._Group5_i(),this._Label4_i()];
+		t.elementsContent = [this._Group5_i(),this._Label2_i()];
 		return t;
 	};
 	_proto._VerticalLayout2_i = function () {
@@ -4639,7 +4879,7 @@ window.skins=window.skins||{};
 		t.width = 160;
 		t.x = 37;
 		t.y = -36;
-		t.elementsContent = [this._Image6_i(),this._Label3_i()];
+		t.elementsContent = [this._Image6_i(),this.other_score_i()];
 		return t;
 	};
 	_proto._Image6_i = function () {
@@ -4651,8 +4891,9 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label3_i = function () {
+	_proto.other_score_i = function () {
 		var t = new eui.Label();
+		this.other_score = t;
 		t.fontFamily = "PingFangSC-Regular";
 		t.height = 50;
 		t.left = 0;
@@ -4664,7 +4905,7 @@ window.skins=window.skins||{};
 		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto._Label4_i = function () {
+	_proto._Label2_i = function () {
 		var t = new eui.Label();
 		t.bottom = 0;
 		t.left = 0;
@@ -4710,7 +4951,7 @@ window.skins=window.skins||{};
 		t.horizontalCenter = 0;
 		t.top = 495;
 		t.width = 607;
-		t.elementsContent = [this._Rect3_i(),this._Label5_i(),this._Group8_i(),this._Group9_i()];
+		t.elementsContent = [this._Rect3_i(),this._Label3_i(),this._Group8_i(),this._Group9_i()];
 		return t;
 	};
 	_proto._Rect3_i = function () {
@@ -4726,7 +4967,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label5_i = function () {
+	_proto._Label3_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Medium";
 		t.horizontalCenter = 0;
@@ -4744,7 +4985,7 @@ window.skins=window.skins||{};
 		t.width = 126;
 		t.y = 123;
 		t.layout = this._VerticalLayout3_i();
-		t.elementsContent = [this._Image8_i(),this._Label6_i()];
+		t.elementsContent = [this._Image8_i(),this.credit_i()];
 		return t;
 	};
 	_proto._VerticalLayout3_i = function () {
@@ -4763,8 +5004,9 @@ window.skins=window.skins||{};
 		t.width = 68.4;
 		return t;
 	};
-	_proto._Label6_i = function () {
+	_proto.credit_i = function () {
 		var t = new eui.Label();
+		this.credit = t;
 		t.fontFamily = "Arial-Black";
 		t.text = "+10";
 		t.textColor = 0x454F5B;
@@ -4781,7 +5023,7 @@ window.skins=window.skins||{};
 		t.width = 126;
 		t.y = 123;
 		t.layout = this._VerticalLayout4_i();
-		t.elementsContent = [this._Image9_i(),this._Label7_i()];
+		t.elementsContent = [this._Image9_i(),this.money_i()];
 		return t;
 	};
 	_proto._VerticalLayout4_i = function () {
@@ -4800,8 +5042,9 @@ window.skins=window.skins||{};
 		t.width = 68.4;
 		return t;
 	};
-	_proto._Label7_i = function () {
+	_proto.money_i = function () {
 		var t = new eui.Label();
+		this.money = t;
 		t.fontFamily = "Arial-Black";
 		t.text = "+10,000";
 		t.textColor = 0x454f5b;
@@ -4809,7 +5052,7 @@ window.skins=window.skins||{};
 		t.y = 108;
 		return t;
 	};
-	_proto._Group13_i = function () {
+	_proto._Group11_i = function () {
 		var t = new eui.Group();
 		t.anchorOffsetX = 0;
 		t.anchorOffsetY = 0;
@@ -4817,18 +5060,19 @@ window.skins=window.skins||{};
 		t.height = 70;
 		t.horizontalCenter = 0;
 		t.width = 574;
-		t.elementsContent = [this._Group11_i(),this._Group12_i()];
+		t.elementsContent = [this.back_btn_i(),this.play_btn_i()];
 		return t;
 	};
-	_proto._Group11_i = function () {
+	_proto.back_btn_i = function () {
 		var t = new eui.Group();
+		this.back_btn = t;
 		t.height = 70;
 		t.left = 0;
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.top = 0;
 		t.width = 262;
-		t.elementsContent = [this._Image10_i(),this._Label8_i()];
+		t.elementsContent = [this._Image10_i(),this._Label4_i()];
 		return t;
 	};
 	_proto._Image10_i = function () {
@@ -4840,7 +5084,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label8_i = function () {
+	_proto._Label4_i = function () {
 		var t = new eui.Label();
 		t.percentHeight = 50;
 		t.horizontalCenter = 0;
@@ -4851,15 +5095,16 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Group12_i = function () {
+	_proto.play_btn_i = function () {
 		var t = new eui.Group();
+		this.play_btn = t;
 		t.height = 70;
 		t.right = 0;
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.top = 0;
 		t.width = 262;
-		t.elementsContent = [this._Image11_i(),this._Label9_i()];
+		t.elementsContent = [this._Image11_i(),this._Label5_i()];
 		return t;
 	};
 	_proto._Image11_i = function () {
@@ -4871,7 +5116,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label9_i = function () {
+	_proto._Label5_i = function () {
 		var t = new eui.Label();
 		t.percentHeight = 50;
 		t.horizontalCenter = 0;
@@ -4887,7 +5132,7 @@ window.skins=window.skins||{};
 	__extends(PkSceneSkin, _super);
 	function PkSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","warp","pk_btn","share_btn"];
+		this.skinParts = ["bg","user_name","warp","pk_btn","share_btn"];
 		
 		this.height = 1334;
 		this.width = 750;
@@ -4932,7 +5177,7 @@ window.skins=window.skins||{};
 		t.top = 0;
 		t.width = 160;
 		t.layout = this._VerticalLayout1_i();
-		t.elementsContent = [this._Image2_i(),this._Label1_i()];
+		t.elementsContent = [this._Image2_i(),this.user_name_i()];
 		return t;
 	};
 	_proto._VerticalLayout1_i = function () {
@@ -4953,8 +5198,9 @@ window.skins=window.skins||{};
 		t.width = 160;
 		return t;
 	};
-	_proto._Label1_i = function () {
+	_proto.user_name_i = function () {
 		var t = new eui.Label();
+		this.user_name = t;
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.text = "快乐的小猪";
@@ -4971,7 +5217,7 @@ window.skins=window.skins||{};
 		t.top = 0;
 		t.width = 160;
 		t.layout = this._VerticalLayout2_i();
-		t.elementsContent = [this._Image3_i(),this._Label2_i()];
+		t.elementsContent = [this._Image3_i(),this._Label1_i()];
 		return t;
 	};
 	_proto._VerticalLayout2_i = function () {
@@ -4992,7 +5238,7 @@ window.skins=window.skins||{};
 		t.width = 160;
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.scaleX = 1;
 		t.scaleY = 1;
@@ -5029,7 +5275,7 @@ window.skins=window.skins||{};
 		t.left = 0;
 		t.top = 0;
 		t.percentWidth = 100;
-		t.elementsContent = [this._Image5_i(),this._Label3_i()];
+		t.elementsContent = [this._Image5_i(),this._Label2_i()];
 		return t;
 	};
 	_proto._Image5_i = function () {
@@ -5041,7 +5287,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label3_i = function () {
+	_proto._Label2_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.horizontalCenter = 0;
@@ -5060,7 +5306,7 @@ window.skins=window.skins||{};
 		t.scaleY = 1;
 		t.percentWidth = 100;
 		t.x = -156;
-		t.elementsContent = [this._Image6_i(),this._Label4_i()];
+		t.elementsContent = [this._Image6_i(),this._Label3_i()];
 		return t;
 	};
 	_proto._Image6_i = function () {
@@ -5072,7 +5318,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label4_i = function () {
+	_proto._Label3_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.horizontalCenter = 0;
@@ -5086,7 +5332,7 @@ window.skins=window.skins||{};
 	__extends(PkWaitMessageBoxSkin, _super);
 	function PkWaitMessageBoxSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","gamer1","rival_name","gamer2","ready_mask","wait_time_tip","wait_time_text","match_tip","join_tip","close_btn","game_btn","messagebox"];
+		this.skinParts = ["bg","user_name","gamer1","rival_name","gamer2","ready_mask","wait_time_tip","wait_time_text","match_tip","join_tip","close_btn","game_btn","messagebox"];
 		
 		this.height = 1334;
 		this.width = 750;
@@ -5138,7 +5384,7 @@ window.skins=window.skins||{};
 		t.x = 73;
 		t.y = 157;
 		t.layout = this._VerticalLayout1_i();
-		t.elementsContent = [this._Image1_i(),this._Label1_i()];
+		t.elementsContent = [this._Image1_i(),this.user_name_i()];
 		return t;
 	};
 	_proto._VerticalLayout1_i = function () {
@@ -5159,8 +5405,9 @@ window.skins=window.skins||{};
 		t.width = 160;
 		return t;
 	};
-	_proto._Label1_i = function () {
+	_proto.user_name_i = function () {
 		var t = new eui.Label();
+		this.user_name = t;
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.text = "快乐的小猪";
@@ -5229,7 +5476,7 @@ window.skins=window.skins||{};
 		t.width = 160;
 		t.x = 433;
 		t.y = 157;
-		t.elementsContent = [this._Rect2_i(),this._Label2_i()];
+		t.elementsContent = [this._Rect2_i(),this._Label1_i()];
 		return t;
 	};
 	_proto._Rect2_i = function () {
@@ -5243,7 +5490,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.horizontalCenter = 0;
@@ -5269,10 +5516,10 @@ window.skins=window.skins||{};
 		t.horizontalCenter = 0;
 		t.verticalCenter = 120;
 		t.width = 200;
-		t.elementsContent = [this._Label3_i(),this._Group1_i()];
+		t.elementsContent = [this._Label2_i(),this._Group1_i()];
 		return t;
 	};
-	_proto._Label3_i = function () {
+	_proto._Label2_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.horizontalCenter = 0;
@@ -5338,10 +5585,10 @@ window.skins=window.skins||{};
 		t.verticalCenter = 120;
 		t.visible = false;
 		t.width = 200;
-		t.elementsContent = [this._Label4_i()];
+		t.elementsContent = [this._Label3_i()];
 		return t;
 	};
-	_proto._Label4_i = function () {
+	_proto._Label3_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.horizontalCenter = 0;
@@ -5362,7 +5609,7 @@ window.skins=window.skins||{};
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.width = 382;
-		t.elementsContent = [this._Image5_i(),this._Label5_i()];
+		t.elementsContent = [this._Image5_i(),this._Label4_i()];
 		return t;
 	};
 	_proto._Image5_i = function () {
@@ -5375,7 +5622,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label5_i = function () {
+	_proto._Label4_i = function () {
 		var t = new eui.Label();
 		t.horizontalCenter = 0;
 		t.name = "text";
@@ -5392,7 +5639,7 @@ window.skins=window.skins||{};
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.width = 382;
-		t.elementsContent = [this._Image6_i(),this._Label6_i()];
+		t.elementsContent = [this._Image6_i(),this._Label5_i()];
 		return t;
 	};
 	_proto._Image6_i = function () {
@@ -5405,7 +5652,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label6_i = function () {
+	_proto._Label5_i = function () {
 		var t = new eui.Label();
 		t.horizontalCenter = 0;
 		t.name = "text";
@@ -5424,8 +5671,8 @@ window.skins=window.skins||{};
 		this.width = 650;
 		this.elementsContent = [this._Image1_i(),this._Group4_i(),this._Group7_i()];
 		
-		eui.Binding.$bindProperties(this, ["hostComponent.data.index"],[0],this._Label1,"text");
-		eui.Binding.$bindProperties(this, ['第',"hostComponent.data.index", '关'],[1],this._Label2,"text");
+		eui.Binding.$bindProperties(this, ["hostComponent.data.level"],[0],this._Label1,"text");
+		eui.Binding.$bindProperties(this, ["hostComponent.data.name"],[0],this._Label2,"text");
 	}
 	var _proto = RankingItemSkin.prototype;
 
@@ -5747,7 +5994,7 @@ window.skins=window.skins||{};
 	__extends(RankingResultSceneSkin, _super);
 	function RankingResultSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","prize_view","back_btn","play_btn"];
+		this.skinParts = ["bg","credit","money","prize_view","score1","score2","score3","score4","score5","score6","back_btn","play_btn"];
 		
 		this.height = 1334;
 		this.width = 750;
@@ -5825,7 +6072,7 @@ window.skins=window.skins||{};
 		t.top = 0;
 		t.percentWidth = 50;
 		t.layout = this._VerticalLayout1_i();
-		t.elementsContent = [this._Image2_i(),this._Label1_i()];
+		t.elementsContent = [this._Image2_i(),this.credit_i()];
 		return t;
 	};
 	_proto._VerticalLayout1_i = function () {
@@ -5844,8 +6091,9 @@ window.skins=window.skins||{};
 		t.y = 31;
 		return t;
 	};
-	_proto._Label1_i = function () {
+	_proto.credit_i = function () {
 		var t = new eui.Label();
+		this.credit = t;
 		t.bold = true;
 		t.bottom = 0;
 		t.fontFamily = "Arial-Black";
@@ -5861,7 +6109,7 @@ window.skins=window.skins||{};
 		t.top = 0;
 		t.percentWidth = 50;
 		t.layout = this._VerticalLayout2_i();
-		t.elementsContent = [this._Image3_i(),this._Label2_i()];
+		t.elementsContent = [this._Image3_i(),this.money_i()];
 		return t;
 	};
 	_proto._VerticalLayout2_i = function () {
@@ -5880,14 +6128,15 @@ window.skins=window.skins||{};
 		t.y = 74;
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto.money_i = function () {
 		var t = new eui.Label();
+		this.money = t;
 		t.bottom = 0;
 		t.fontFamily = "Arial-Black";
 		t.left = 0;
 		t.scaleX = 1;
 		t.scaleY = 1;
-		t.text = "+10,000";
+		t.text = "+100";
 		t.textColor = 0x454f5b;
 		t.x = -165;
 		t.y = 170;
@@ -5902,10 +6151,10 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		t.x = 0;
 		t.y = 310.73;
-		t.elementsContent = [this._Label3_i(),this._Group11_i()];
+		t.elementsContent = [this._Label1_i(),this._Group11_i()];
 		return t;
 	};
-	_proto._Label3_i = function () {
+	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Medium";
 		t.horizontalCenter = 0;
@@ -5957,7 +6206,7 @@ window.skins=window.skins||{};
 		t.x = -12.999999999999993;
 		t.y = 24.84999999999991;
 		t.layout = this._VerticalLayout3_i();
-		t.elementsContent = [this._Label4_i(),this._Label5_i()];
+		t.elementsContent = [this.score1_i(),this._Label2_i()];
 		return t;
 	};
 	_proto._VerticalLayout3_i = function () {
@@ -5967,8 +6216,9 @@ window.skins=window.skins||{};
 		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto._Label4_i = function () {
+	_proto.score1_i = function () {
 		var t = new eui.Label();
+		this.score1 = t;
 		t.fontFamily = "PingFangSC-Semibold";
 		t.size = 36;
 		t.text = "+5";
@@ -5977,7 +6227,7 @@ window.skins=window.skins||{};
 		t.y = 14;
 		return t;
 	};
-	_proto._Label5_i = function () {
+	_proto._Label2_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.size = 26;
@@ -5996,7 +6246,7 @@ window.skins=window.skins||{};
 		t.x = 98;
 		t.y = 24.84999999999991;
 		t.layout = this._VerticalLayout4_i();
-		t.elementsContent = [this._Label6_i(),this._Label7_i()];
+		t.elementsContent = [this.score2_i(),this._Label3_i()];
 		return t;
 	};
 	_proto._VerticalLayout4_i = function () {
@@ -6006,8 +6256,9 @@ window.skins=window.skins||{};
 		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto._Label6_i = function () {
+	_proto.score2_i = function () {
 		var t = new eui.Label();
+		this.score2 = t;
 		t.fontFamily = "PingFangSC-Semibold";
 		t.size = 36;
 		t.text = "+5";
@@ -6016,7 +6267,7 @@ window.skins=window.skins||{};
 		t.y = 14;
 		return t;
 	};
-	_proto._Label7_i = function () {
+	_proto._Label3_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.size = 26;
@@ -6035,7 +6286,7 @@ window.skins=window.skins||{};
 		t.x = 210;
 		t.y = 24.84999999999991;
 		t.layout = this._VerticalLayout5_i();
-		t.elementsContent = [this._Label8_i(),this._Label9_i()];
+		t.elementsContent = [this.score3_i(),this._Label4_i()];
 		return t;
 	};
 	_proto._VerticalLayout5_i = function () {
@@ -6045,8 +6296,9 @@ window.skins=window.skins||{};
 		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto._Label8_i = function () {
+	_proto.score3_i = function () {
 		var t = new eui.Label();
+		this.score3 = t;
 		t.fontFamily = "PingFangSC-Semibold";
 		t.size = 36;
 		t.text = "+5";
@@ -6055,7 +6307,7 @@ window.skins=window.skins||{};
 		t.y = 14;
 		return t;
 	};
-	_proto._Label9_i = function () {
+	_proto._Label4_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.size = 26;
@@ -6089,7 +6341,7 @@ window.skins=window.skins||{};
 		t.x = -12.999999999999993;
 		t.y = 24.84999999999991;
 		t.layout = this._VerticalLayout6_i();
-		t.elementsContent = [this._Label10_i(),this._Label11_i()];
+		t.elementsContent = [this.score4_i(),this._Label5_i()];
 		return t;
 	};
 	_proto._VerticalLayout6_i = function () {
@@ -6099,8 +6351,9 @@ window.skins=window.skins||{};
 		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto._Label10_i = function () {
+	_proto.score4_i = function () {
 		var t = new eui.Label();
+		this.score4 = t;
 		t.fontFamily = "PingFangSC-Semibold";
 		t.size = 36;
 		t.text = "+5";
@@ -6109,7 +6362,7 @@ window.skins=window.skins||{};
 		t.y = 14;
 		return t;
 	};
-	_proto._Label11_i = function () {
+	_proto._Label5_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.size = 26;
@@ -6126,7 +6379,7 @@ window.skins=window.skins||{};
 		t.x = 98;
 		t.y = 24.84999999999991;
 		t.layout = this._VerticalLayout7_i();
-		t.elementsContent = [this._Label12_i(),this._Label13_i()];
+		t.elementsContent = [this.score5_i(),this._Label6_i()];
 		return t;
 	};
 	_proto._VerticalLayout7_i = function () {
@@ -6136,8 +6389,9 @@ window.skins=window.skins||{};
 		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto._Label12_i = function () {
+	_proto.score5_i = function () {
 		var t = new eui.Label();
+		this.score5 = t;
 		t.fontFamily = "PingFangSC-Semibold";
 		t.size = 36;
 		t.text = "+5";
@@ -6146,7 +6400,7 @@ window.skins=window.skins||{};
 		t.y = 14;
 		return t;
 	};
-	_proto._Label13_i = function () {
+	_proto._Label6_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.size = 26;
@@ -6163,7 +6417,7 @@ window.skins=window.skins||{};
 		t.x = 210;
 		t.y = 24.84999999999991;
 		t.layout = this._VerticalLayout8_i();
-		t.elementsContent = [this._Label14_i(),this._Label15_i()];
+		t.elementsContent = [this.score6_i(),this._Label7_i()];
 		return t;
 	};
 	_proto._VerticalLayout8_i = function () {
@@ -6173,8 +6427,9 @@ window.skins=window.skins||{};
 		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto._Label14_i = function () {
+	_proto.score6_i = function () {
 		var t = new eui.Label();
+		this.score6 = t;
 		t.fontFamily = "PingFangSC-Semibold";
 		t.size = 36;
 		t.text = "+5";
@@ -6183,7 +6438,7 @@ window.skins=window.skins||{};
 		t.y = 14;
 		return t;
 	};
-	_proto._Label15_i = function () {
+	_proto._Label7_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.size = 26;
@@ -6209,7 +6464,7 @@ window.skins=window.skins||{};
 		t.percentHeight = 100;
 		t.left = 0;
 		t.width = 262;
-		t.elementsContent = [this._Image4_i(),this._Label16_i()];
+		t.elementsContent = [this._Image4_i(),this._Label8_i()];
 		return t;
 	};
 	_proto._Image4_i = function () {
@@ -6221,7 +6476,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label16_i = function () {
+	_proto._Label8_i = function () {
 		var t = new eui.Label();
 		t.horizontalCenter = 0;
 		t.text = "返回大厅";
@@ -6237,7 +6492,7 @@ window.skins=window.skins||{};
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.width = 262;
-		t.elementsContent = [this._Image5_i(),this._Label17_i()];
+		t.elementsContent = [this._Image5_i(),this._Label9_i()];
 		return t;
 	};
 	_proto._Image5_i = function () {
@@ -6251,7 +6506,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label17_i = function () {
+	_proto._Label9_i = function () {
 		var t = new eui.Label();
 		t.horizontalCenter = 0;
 		t.scaleX = 1;
@@ -6267,31 +6522,24 @@ window.skins=window.skins||{};
 	__extends(RankItemSkin, _super);
 	function RankItemSkin() {
 		_super.call(this);
-		this.skinParts = ["item_group","rank_num","avatar","user_name"];
+		this.skinParts = ["rank_num","avatar","user_name","item_group"];
 		
 		this.height = 100;
 		this.width = 500;
-		this.elementsContent = [this._Rect1_i(),this.item_group_i(),this._Group1_i(),this._Group2_i()];
+		this.elementsContent = [this.item_group_i()];
 	}
 	var _proto = RankItemSkin.prototype;
 
-	_proto._Rect1_i = function () {
-		var t = new eui.Rect();
-		t.bottom = 0;
-		t.fillColor = 0xcfcfcf;
-		t.height = 1;
-		t.left = 0;
-		t.percentWidth = 100;
-		return t;
-	};
 	_proto.item_group_i = function () {
 		var t = new eui.Group();
 		this.item_group = t;
 		t.percentHeight = 100;
 		t.horizontalCenter = 0;
+		t.left = 30;
+		t.right = 30;
 		t.verticalCenter = 0;
-		t.percentWidth = 100;
 		t.layout = this._BasicLayout1_i();
+		t.elementsContent = [this._Group1_i(),this._Group2_i(),this._Rect3_i()];
 		return t;
 	};
 	_proto._BasicLayout1_i = function () {
@@ -6301,9 +6549,12 @@ window.skins=window.skins||{};
 	_proto._Group1_i = function () {
 		var t = new eui.Group();
 		t.percentHeight = 100;
-		t.left = 30;
+		t.left = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
 		t.top = 0;
 		t.percentWidth = 50;
+		t.y = 0;
 		t.layout = this._HorizontalLayout1_i();
 		t.elementsContent = [this.rank_num_i(),this.avatar_i(),this.user_name_i()];
 		return t;
@@ -6339,10 +6590,10 @@ window.skins=window.skins||{};
 		t.width = 66;
 		t.x = 34;
 		t.y = 32;
-		t.elementsContent = [this._Rect2_i(),this._Rect3_i()];
+		t.elementsContent = [this._Rect1_i(),this._Rect2_i()];
 		return t;
 	};
-	_proto._Rect2_i = function () {
+	_proto._Rect1_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 66;
 		t.ellipseWidth = 66;
@@ -6353,7 +6604,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Rect3_i = function () {
+	_proto._Rect2_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 66;
 		t.ellipseWidth = 66;
@@ -6380,9 +6631,12 @@ window.skins=window.skins||{};
 	_proto._Group2_i = function () {
 		var t = new eui.Group();
 		t.percentHeight = 100;
-		t.right = 30;
+		t.right = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
 		t.top = 0;
 		t.percentWidth = 50;
+		t.y = 0;
 		t.layout = this._HorizontalLayout2_i();
 		t.elementsContent = [this._Label1_i(),this._Label2_i()];
 		return t;
@@ -6420,6 +6674,19 @@ window.skins=window.skins||{};
 		t.verticalCenter = 0;
 		t.x = 103;
 		t.y = 35;
+		return t;
+	};
+	_proto._Rect3_i = function () {
+		var t = new eui.Rect();
+		t.bottom = 0;
+		t.fillColor = 0xcfcfcf;
+		t.height = 1;
+		t.left = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.percentWidth = 100;
+		t.x = 0;
+		t.y = 99;
 		return t;
 	};
 	return RankItemSkin;
@@ -6727,7 +6994,7 @@ window.skins=window.skins||{};
 	__extends(ResultMessageBoxSkin, _super);
 	function ResultMessageBoxSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","axnum","top_tip","tip_text1","tip_text2","close_btn","messagebox"];
+		this.skinParts = ["bg","axnum","top_tip","tip_text1","tip_text2","right_answer","analysis","close_btn","messagebox"];
 		
 		this.height = 1334;
 		this.width = 750;
@@ -6875,11 +7142,12 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		t.x = 30;
 		t.y = 265;
-		t.elementsContent = [this._Label1_i(),this._Rect3_i()];
+		t.elementsContent = [this.right_answer_i(),this._Rect3_i()];
 		return t;
 	};
-	_proto._Label1_i = function () {
+	_proto.right_answer_i = function () {
 		var t = new eui.Label();
+		this.right_answer = t;
 		t.fontFamily = "PingFangSC-Medium";
 		t.left = 0;
 		t.text = "答案：A";
@@ -6911,11 +7179,12 @@ window.skins=window.skins||{};
 	};
 	_proto._Group2_i = function () {
 		var t = new eui.Group();
-		t.elementsContent = [this._Label2_i()];
+		t.elementsContent = [this.analysis_i()];
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto.analysis_i = function () {
 		var t = new eui.Label();
+		this.analysis = t;
 		t.fontFamily = "                                 PingFangSC-Regular                                                              PingFangSC-Regular                            ";
 		t.percentHeight = 100;
 		t.lineSpacing = 20;
@@ -6938,7 +7207,7 @@ window.skins=window.skins||{};
 		t.scaleY = 1;
 		t.width = 482;
 		t.y = 626;
-		t.elementsContent = [this._Image2_i(),this._Label3_i()];
+		t.elementsContent = [this._Image2_i(),this._Label1_i()];
 		return t;
 	};
 	_proto._Image2_i = function () {
@@ -6950,7 +7219,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label3_i = function () {
+	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.horizontalCenter = 0;
 		t.text = "下一题";
@@ -6958,6 +7227,173 @@ window.skins=window.skins||{};
 		return t;
 	};
 	return ResultMessageBoxSkin;
+})(eui.Skin);generateEUI.paths['resource/game_skins/ServiceScene.exml'] = window.ServiceSceneSkin = (function (_super) {
+	__extends(ServiceSceneSkin, _super);
+	function ServiceSceneSkin() {
+		_super.call(this);
+		this.skinParts = [];
+		
+		this.height = 1334;
+		this.width = 750;
+		this.elementsContent = [this._Rect1_i(),this._Image1_i(),this._Group2_i(),this._Image4_i()];
+	}
+	var _proto = ServiceSceneSkin.prototype;
+
+	_proto._Rect1_i = function () {
+		var t = new eui.Rect();
+		t.fillColor = 0xB2EDF7;
+		t.percentHeight = 100;
+		t.left = 1;
+		t.top = 0;
+		t.percentWidth = 100;
+		return t;
+	};
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.bottom = 0;
+		t.height = 130;
+		t.source = "yb_detail_bottom1_png";
+		t.percentWidth = 100;
+		t.x = 0;
+		return t;
+	};
+	_proto._Group2_i = function () {
+		var t = new eui.Group();
+		t.bottom = 22;
+		t.height = 1122;
+		t.horizontalCenter = 0;
+		t.top = 63;
+		t.width = 662;
+		t.y = 189.9;
+		t.elementsContent = [this._Rect2_i(),this._Image2_i(),this._Group1_i(),this._Label6_i(),this._Image3_i()];
+		return t;
+	};
+	_proto._Rect2_i = function () {
+		var t = new eui.Rect();
+		t.fillColor = 0xE8FCFE;
+		t.percentHeight = 100;
+		t.left = 0;
+		t.strokeColor = 0x23BFD5;
+		t.strokeWeight = 1;
+		t.top = 0;
+		t.percentWidth = 100;
+		return t;
+	};
+	_proto._Image2_i = function () {
+		var t = new eui.Image();
+		t.height = 81;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.source = "service_top_png";
+		t.width = 338;
+		t.x = 162;
+		t.y = -40.5;
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.height = 317;
+		t.horizontalCenter = 0;
+		t.width = 557;
+		t.y = 84;
+		t.layout = this._VerticalLayout1_i();
+		t.elementsContent = [this._Label1_i(),this._Label2_i(),this._Label3_i(),this._Label4_i(),this._Label5_i()];
+		return t;
+	};
+	_proto._VerticalLayout1_i = function () {
+		var t = new eui.VerticalLayout();
+		t.gap = 6;
+		t.horizontalAlign = "left";
+		t.verticalAlign = "justify";
+		return t;
+	};
+	_proto._Label1_i = function () {
+		var t = new eui.Label();
+		t.fontFamily = "PingFangSC-Regular";
+		t.text = "（1）游戏结束了，为什么我没有获得积分";
+		t.textColor = 0x1d292b;
+		t.verticalAlign = "middle";
+		t.x = 221;
+		t.y = 155;
+		return t;
+	};
+	_proto._Label2_i = function () {
+		var t = new eui.Label();
+		t.fontFamily = "PingFangSC-Regular";
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.text = "（1）进入排行榜，有什么奖励";
+		t.textColor = 0x1d292b;
+		t.verticalAlign = "middle";
+		t.x = 188;
+		t.y = 91;
+		return t;
+	};
+	_proto._Label3_i = function () {
+		var t = new eui.Label();
+		t.fontFamily = "PingFangSC-Regular";
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.text = "（1）如何邀请好友来玩";
+		t.textColor = 0x1d292b;
+		t.verticalAlign = "middle";
+		t.x = 178;
+		t.y = 81;
+		return t;
+	};
+	_proto._Label4_i = function () {
+		var t = new eui.Label();
+		t.fontFamily = "PingFangSC-Regular";
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.text = "（1）如何注销我的账号";
+		t.textColor = 0x1d292b;
+		t.verticalAlign = "middle";
+		t.x = 168;
+		t.y = 71;
+		return t;
+	};
+	_proto._Label5_i = function () {
+		var t = new eui.Label();
+		t.fontFamily = "PingFangSC-Regular";
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.text = "（1）我通过手机号可以玩吗";
+		t.textColor = 0x1d292b;
+		t.verticalAlign = "middle";
+		t.x = 115;
+		t.y = -13;
+		return t;
+	};
+	_proto._Label6_i = function () {
+		var t = new eui.Label();
+		t.horizontalCenter = 0;
+		t.lineSpacing = 24;
+		t.text = "如有更多问题无法自助解答，请加扫码添加微信客服（微信号jiankangxiaoyouxikefu）咨询~";
+		t.textColor = 0x1d292b;
+		t.width = 564;
+		t.y = 521;
+		return t;
+	};
+	_proto._Image3_i = function () {
+		var t = new eui.Image();
+		t.bottom = 71;
+		t.height = 336;
+		t.horizontalCenter = 0;
+		t.source = "service_qr_png";
+		t.width = 336;
+		return t;
+	};
+	_proto._Image4_i = function () {
+		var t = new eui.Image();
+		t.bottom = 0;
+		t.height = 130;
+		t.source = "yb_detail_bottom2_png";
+		t.percentWidth = 100;
+		t.x = 0;
+		return t;
+	};
+	return ServiceSceneSkin;
 })(eui.Skin);generateEUI.paths['resource/game_skins/ShoppingItem.exml'] = window.ShoppingItemSkin = (function (_super) {
 	__extends(ShoppingItemSkin, _super);
 	function ShoppingItemSkin() {
@@ -7477,7 +7913,7 @@ window.skins=window.skins||{};
 	__extends(StartSceneSkin, _super);
 	function StartSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["user_keys","right_group","user_level","user_name","progress_bg","progree_color","left_group","user_info","user_box","menu_item_1","menu_item_2","menu_item_3","menu_item_4","menu","meue_block","menu_warp","bottom_nav_1","bottom_nav_2","bottom_nav_3","bottom_nav_4","bottom_nav"];
+		this.skinParts = ["user_key","push_key_btn","user_keys","user_avatar","right_group","user_name","user_level","progress_bg","progree_color","left_group","user_info","credit","money","user_box","menu_item_1","menu_item_2","menu_item_3","menu_item_4","menu","meue_block","menu_warp","bottom_nav_1","bottom_nav_2","bottom_nav_3","bottom_nav_4","bottom_nav"];
 		
 		this.height = 1334;
 		this.width = 750;
@@ -7535,7 +7971,7 @@ window.skins=window.skins||{};
 		t.width = 306;
 		t.x = 222;
 		t.y = 142;
-		t.elementsContent = [this._Rect2_i(),this._Image2_i(),this._Label1_i(),this._Label2_i(),this._Image3_i()];
+		t.elementsContent = [this._Rect2_i(),this._Image2_i(),this.user_key_i(),this._Label1_i(),this.push_key_btn_i()];
 		return t;
 	};
 	_proto._Rect2_i = function () {
@@ -7560,8 +7996,9 @@ window.skins=window.skins||{};
 		t.x = 23;
 		return t;
 	};
-	_proto._Label1_i = function () {
+	_proto.user_key_i = function () {
 		var t = new eui.Label();
+		this.user_key = t;
 		t.bold = true;
 		t.horizontalCenter = 0.5;
 		t.size = 36;
@@ -7569,7 +8006,7 @@ window.skins=window.skins||{};
 		t.verticalCenter = 2;
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.bold = true;
 		t.right = 20;
@@ -7579,8 +8016,9 @@ window.skins=window.skins||{};
 		t.visible = false;
 		return t;
 	};
-	_proto._Image3_i = function () {
+	_proto.push_key_btn_i = function () {
 		var t = new eui.Image();
+		this.push_key_btn = t;
 		t.height = 37;
 		t.source = "push_png";
 		t.verticalCenter = 0;
@@ -7623,11 +8061,12 @@ window.skins=window.skins||{};
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.top = 0;
-		t.elementsContent = [this._Image4_i(),this._Rect3_i()];
+		t.elementsContent = [this.user_avatar_i(),this._Rect3_i()];
 		return t;
 	};
-	_proto._Image4_i = function () {
+	_proto.user_avatar_i = function () {
 		var t = new eui.Image();
+		this.user_avatar = t;
 		t.height = 73;
 		t.left = 0;
 		t.scaleX = 1;
@@ -7652,11 +8091,11 @@ window.skins=window.skins||{};
 		var t = new eui.Group();
 		this.left_group = t;
 		t.percentHeight = 60;
-		t.right = 0;
 		t.scaleX = 1;
 		t.scaleY = 1;
-		t.verticalCenter = 0;
 		t.width = 200;
+		t.x = 80;
+		t.y = 20;
 		t.elementsContent = [this._Group1_i(),this._Group2_i()];
 		return t;
 	};
@@ -7667,12 +8106,22 @@ window.skins=window.skins||{};
 		t.horizontalCenter = 0;
 		t.top = 0;
 		t.width = 200;
-		t.elementsContent = [this.user_level_i(),this.user_name_i()];
+		t.layout = this._HorizontalLayout1_i();
+		t.elementsContent = [this.user_name_i(),this.user_level_i()];
 		return t;
 	};
-	_proto.user_level_i = function () {
+	_proto._HorizontalLayout1_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.gap = 12;
+		t.paddingLeft = 2;
+		t.paddingRight = 0;
+		t.paddingTop = 0;
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto.user_name_i = function () {
 		var t = new eui.Label();
-		this.user_level = t;
+		this.user_name = t;
 		t.bold = true;
 		t.left = 0;
 		t.text = "谢小U";
@@ -7680,9 +8129,9 @@ window.skins=window.skins||{};
 		t.verticalCenter = 0;
 		return t;
 	};
-	_proto.user_name_i = function () {
+	_proto.user_level_i = function () {
 		var t = new eui.Label();
-		this.user_name = t;
+		this.user_level = t;
 		t.bottom = 0;
 		t.right = 0;
 		t.size = 24;
@@ -7727,11 +8176,11 @@ window.skins=window.skins||{};
 		t.left = 280;
 		t.width = 190;
 		t.y = 0;
-		t.layout = this._HorizontalLayout1_i();
-		t.elementsContent = [this._Image5_i(),this._Label3_i()];
+		t.layout = this._HorizontalLayout2_i();
+		t.elementsContent = [this._Image3_i(),this.credit_i()];
 		return t;
 	};
-	_proto._HorizontalLayout1_i = function () {
+	_proto._HorizontalLayout2_i = function () {
 		var t = new eui.HorizontalLayout();
 		t.gap = 12;
 		t.horizontalAlign = "left";
@@ -7740,7 +8189,7 @@ window.skins=window.skins||{};
 		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto._Image5_i = function () {
+	_proto._Image3_i = function () {
 		var t = new eui.Image();
 		t.height = 70;
 		t.scaleX = 1;
@@ -7751,8 +8200,9 @@ window.skins=window.skins||{};
 		t.y = 40;
 		return t;
 	};
-	_proto._Label3_i = function () {
+	_proto.credit_i = function () {
 		var t = new eui.Label();
+		this.credit = t;
 		t.bold = true;
 		t.right = 0;
 		t.text = "0";
@@ -7766,11 +8216,11 @@ window.skins=window.skins||{};
 		t.right = 0;
 		t.top = 0;
 		t.width = 190;
-		t.layout = this._HorizontalLayout2_i();
-		t.elementsContent = [this._Image6_i(),this._Label4_i()];
+		t.layout = this._HorizontalLayout3_i();
+		t.elementsContent = [this._Image4_i(),this.money_i()];
 		return t;
 	};
-	_proto._HorizontalLayout2_i = function () {
+	_proto._HorizontalLayout3_i = function () {
 		var t = new eui.HorizontalLayout();
 		t.gap = 12;
 		t.horizontalAlign = "right";
@@ -7778,7 +8228,7 @@ window.skins=window.skins||{};
 		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto._Image6_i = function () {
+	_proto._Image4_i = function () {
 		var t = new eui.Image();
 		t.height = 70;
 		t.source = "jb_png";
@@ -7787,8 +8237,9 @@ window.skins=window.skins||{};
 		t.y = 43;
 		return t;
 	};
-	_proto._Label4_i = function () {
+	_proto.money_i = function () {
 		var t = new eui.Label();
+		this.money = t;
 		t.bold = true;
 		t.right = 0;
 		t.scaleX = 1;
@@ -7829,10 +8280,10 @@ window.skins=window.skins||{};
 		t.width = 640;
 		t.x = 36;
 		t.y = 38;
-		t.elementsContent = [this._Image7_i()];
+		t.elementsContent = [this._Image5_i()];
 		return t;
 	};
-	_proto._Image7_i = function () {
+	_proto._Image5_i = function () {
 		var t = new eui.Image();
 		t.percentHeight = 100;
 		t.left = 0;
@@ -7850,10 +8301,10 @@ window.skins=window.skins||{};
 		t.width = 640;
 		t.x = -4;
 		t.y = -466;
-		t.elementsContent = [this._Image8_i()];
+		t.elementsContent = [this._Image6_i()];
 		return t;
 	};
-	_proto._Image8_i = function () {
+	_proto._Image6_i = function () {
 		var t = new eui.Image();
 		t.percentHeight = 100;
 		t.left = 0;
@@ -7875,10 +8326,10 @@ window.skins=window.skins||{};
 		t.width = 640;
 		t.x = 6;
 		t.y = -456;
-		t.elementsContent = [this._Image9_i()];
+		t.elementsContent = [this._Image7_i()];
 		return t;
 	};
-	_proto._Image9_i = function () {
+	_proto._Image7_i = function () {
 		var t = new eui.Image();
 		t.percentHeight = 100;
 		t.left = 0;
@@ -7900,10 +8351,10 @@ window.skins=window.skins||{};
 		t.width = 640;
 		t.x = -80;
 		t.y = 2170;
-		t.elementsContent = [this._Image10_i()];
+		t.elementsContent = [this._Image8_i()];
 		return t;
 	};
-	_proto._Image10_i = function () {
+	_proto._Image8_i = function () {
 		var t = new eui.Image();
 		t.percentHeight = 100;
 		t.left = 0;
@@ -7973,10 +8424,10 @@ window.skins=window.skins||{};
 		t.scaleY = 1;
 		t.width = 80;
 		t.x = 48;
-		t.elementsContent = [this._Label5_i(),this._Image11_i()];
+		t.elementsContent = [this._Label2_i(),this._Image9_i()];
 		return t;
 	};
-	_proto._Label5_i = function () {
+	_proto._Label2_i = function () {
 		var t = new eui.Label();
 		t.bottom = 15;
 		t.horizontalCenter = 0;
@@ -7986,7 +8437,7 @@ window.skins=window.skins||{};
 		t.text = "排行榜";
 		return t;
 	};
-	_proto._Image11_i = function () {
+	_proto._Image9_i = function () {
 		var t = new eui.Image();
 		t.height = 70;
 		t.horizontalCenter = 0;
@@ -8007,10 +8458,10 @@ window.skins=window.skins||{};
 		t.scaleY = 1;
 		t.width = 80;
 		t.x = 247;
-		t.elementsContent = [this._Label6_i(),this._Image12_i()];
+		t.elementsContent = [this._Label3_i(),this._Image10_i()];
 		return t;
 	};
-	_proto._Label6_i = function () {
+	_proto._Label3_i = function () {
 		var t = new eui.Label();
 		t.bottom = 15;
 		t.horizontalCenter = 0;
@@ -8022,7 +8473,7 @@ window.skins=window.skins||{};
 		t.text = "礼物";
 		return t;
 	};
-	_proto._Image12_i = function () {
+	_proto._Image10_i = function () {
 		var t = new eui.Image();
 		t.height = 70;
 		t.horizontalCenter = 0;
@@ -8043,10 +8494,10 @@ window.skins=window.skins||{};
 		t.scaleY = 1;
 		t.width = 80;
 		t.x = 429;
-		t.elementsContent = [this._Label7_i(),this._Image13_i()];
+		t.elementsContent = [this._Label4_i(),this._Image11_i()];
 		return t;
 	};
-	_proto._Label7_i = function () {
+	_proto._Label4_i = function () {
 		var t = new eui.Label();
 		t.bottom = 15;
 		t.horizontalCenter = 0;
@@ -8058,7 +8509,7 @@ window.skins=window.skins||{};
 		t.text = "客服";
 		return t;
 	};
-	_proto._Image13_i = function () {
+	_proto._Image11_i = function () {
 		var t = new eui.Image();
 		t.height = 70;
 		t.horizontalCenter = 0;
@@ -8079,10 +8530,10 @@ window.skins=window.skins||{};
 		t.scaleY = 1;
 		t.width = 80;
 		t.x = 631;
-		t.elementsContent = [this._Label8_i(),this._Image14_i()];
+		t.elementsContent = [this._Label5_i(),this._Image12_i()];
 		return t;
 	};
-	_proto._Label8_i = function () {
+	_proto._Label5_i = function () {
 		var t = new eui.Label();
 		t.bottom = 15;
 		t.horizontalCenter = 0;
@@ -8094,7 +8545,7 @@ window.skins=window.skins||{};
 		t.text = "关于";
 		return t;
 	};
-	_proto._Image14_i = function () {
+	_proto._Image12_i = function () {
 		var t = new eui.Image();
 		t.height = 70;
 		t.horizontalCenter = 0;

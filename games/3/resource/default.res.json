@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,btn_bg1_png,btn_bg2_png,vs_png,who_png,match_top_png,jb_png,ax_png,logo_png,loading_fill_png,loading_bg_png,yb_select1_png,yb_select10_png,yb_select9_png,yb_select8_png,yb_select7_png,yb_select6_png,yb_select5_png,yb_select4_png,yb_select3_png,yb_select2_png,yb_select13_png,yb_select12_png,yb_select11_png,yb_detail_top_png,yb_detail_bottom1_png,yb_detail_bottom2_png,levelup_png,login_png,start_top_png,rank_btn_png,spc_btn_png,push_png,key_png,pk_btn_png,bottom_nav3_png,bottom_nav1_png,bottom_nav2_png,bottom_nav4_png,yb_btn_png,shopping_top_png,tab_btn_png,tab_btn_active_png,shopping_key_png,back_png,buy_png,buy_bg_png,buy_top_png,message_bg_png,rank1_png,rank3_png,rank2_png,rank_top_png,jp_png,nopass_png,pass_png,6b_mask_png,6b_png,ranking_top_png,ranking_item_bg_png,game_bg1_png,game_bg2_png,question_box_png,game_time_png,reward_png,arrow_png,btn_bg3_png,btn_bg4_png,btn_bg5_png,right_tip_png,error_tip_png,nokey_top_png,answer_right_png,answer_error_png,ranking_s_png,btn_bg6_png",
+			"keys": "description_json,loading_fill_png,loading_bg_png,login_png,btn_bg62_png,btn_bg5_png,btn_bg6_png",
 			"name": "preload"
 		}
 	],
@@ -347,54 +347,169 @@
 			"name": "arrow_png"
 		},
 		{
-			"name": "btn_bg3_png",
+			"url": "assets/images/btn_bg3.png",
 			"type": "image",
-			"url": "assets/images/btn_bg3.png"
+			"name": "btn_bg3_png"
 		},
 		{
-			"name": "btn_bg4_png",
+			"url": "assets/images/btn_bg4.png",
 			"type": "image",
-			"url": "assets/images/btn_bg4.png"
+			"name": "btn_bg4_png"
 		},
 		{
-			"name": "btn_bg5_png",
+			"url": "assets/images/btn_bg5.png",
 			"type": "image",
-			"url": "assets/images/btn_bg5.png"
+			"name": "btn_bg5_png"
 		},
 		{
-			"name": "right_tip_png",
+			"url": "assets/images/start/right_tip.png",
 			"type": "image",
-			"url": "assets/images/start/right_tip.png"
+			"name": "right_tip_png"
 		},
 		{
-			"name": "error_tip_png",
+			"url": "assets/images/start/error_tip.png",
 			"type": "image",
-			"url": "assets/images/start/error_tip.png"
+			"name": "error_tip_png"
 		},
 		{
-			"name": "nokey_top_png",
+			"url": "assets/images/start/nokey_top.png",
 			"type": "image",
-			"url": "assets/images/start/nokey_top.png"
+			"name": "nokey_top_png"
 		},
 		{
-			"name": "answer_right_png",
+			"url": "assets/images/game/answer_right.png",
 			"type": "image",
-			"url": "assets/images/game/answer_right.png"
+			"name": "answer_right_png"
 		},
 		{
-			"name": "answer_error_png",
+			"url": "assets/images/game/answer_error.png",
 			"type": "image",
-			"url": "assets/images/game/answer_error.png"
+			"name": "answer_error_png"
 		},
 		{
-			"name": "ranking_s_png",
+			"url": "assets/images/game/ranking_s.png",
 			"type": "image",
-			"url": "assets/images/game/ranking_s.png"
+			"name": "ranking_s_png"
 		},
 		{
-			"name": "btn_bg6_png",
+			"url": "assets/images/pk/btn_bg6.png",
 			"type": "image",
-			"url": "assets/images/pk/btn_bg6.png"
+			"name": "btn_bg6_png"
+		},
+		{
+			"url": "assets/images/game/logo_ax.png",
+			"type": "image",
+			"name": "logo_ax_png"
+		},
+		{
+			"url": "assets/images/service/service_top.png",
+			"type": "image",
+			"name": "service_top_png"
+		},
+		{
+			"url": "assets/images/service/service_qr.png",
+			"type": "image",
+			"name": "service_qr_png"
+		},
+		{
+			"url": "assets/images/about/about_logo.png",
+			"type": "image",
+			"name": "about_logo_png"
+		},
+		{
+			"url": "assets/images/about/about_top.png",
+			"type": "image",
+			"name": "about_top_png"
+		},
+		{
+			"url": "assets/images/btn_bg6.png",
+			"type": "image",
+			"name": "btn_bg62_png"
+		},
+		{
+			"url": "assets/images/pk_user_bg1_left.png",
+			"type": "image",
+			"name": "pk_user_bg1_left_png"
+		},
+		{
+			"url": "assets/images/pk_status1_left.png",
+			"type": "image",
+			"name": "pk_status1_left_png"
+		},
+		{
+			"url": "assets/images/pk_status2_left.png",
+			"type": "image",
+			"name": "pk_status1_right_png"
+		},
+		{
+			"url": "assets/images/pk_status2_left.png",
+			"type": "image",
+			"name": "pk_status1_left_png"
+		},
+		{
+			"url": "assets/images/pk_status2_left.png",
+			"type": "image",
+			"name": "pk_status2_right_png"
+		},
+		{
+			"url": "assets/images/pk_status3_left.png",
+			"type": "image",
+			"name": "pk_status3_left_png"
+		},
+		{
+			"url": "assets/images/pk_status3_left.png",
+			"type": "image",
+			"name": "pk_status3_right_png"
+		},
+		{
+			"url": "assets/images/pk_top.png",
+			"type": "image",
+			"name": "pk_top_png"
+		},
+		{
+			"url": "assets/images/pk_user_bg1_right.png",
+			"type": "image",
+			"name": "pk_user_bg1_left_png"
+		},
+		{
+			"url": "assets/images/pk_user_bg1_right.png",
+			"type": "image",
+			"name": "pk_user_bg1_right_png"
+		},
+		{
+			"url": "assets/images/pk_user_bg2_left.png",
+			"type": "image",
+			"name": "pk_user_bg2_left_png"
+		},
+		{
+			"url": "assets/images/pk_user_bg2_right.png",
+			"type": "image",
+			"name": "pk_user_bg2_right_png"
+		},
+		{
+			"url": "assets/images/pk_user_bg3_left.png",
+			"type": "image",
+			"name": "pk_user_bg2_left_png"
+		},
+		{
+			"url": "assets/images/pk_user_bg3_right.png",
+			"type": "image",
+			"name": "pk_user_bg2_right_png"
+		},
+		{
+			"url": "assets/images/pk_result1.png",
+			"type": "image",
+			"name": "pk_result1_png"
+		},
+		{
+			"url": "assets/images/pk_result2.png",
+			"type": "image",
+			"name": "pk_result2_png"
+		},
+		{
+			"url": "assets/images/pk_result3.png",
+			"type": "image",
+			"name": "pk_result3_png"
 		}
 	]
 }

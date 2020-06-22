@@ -24,7 +24,10 @@
 		"ExchangeItem": "resource/game_skins/ExchangeItem.exml",
 		"BuySuccessMessage": "resource/game_skins/BuySuccessMessage.exml",
 		"ExchangeSuccesMessage": "resource/game_skins/ExchangeSuccesMessage.exml",
-		"PkGameScene": "resource/game_skins/PkGameScene.exml"
+		"PkGameScene": "resource/game_skins/PkGameScene.exml",
+		"serviceScene": "resource/game_skins/serviceScene.exml",
+		"ServiceScene": "resource/game_skins/ServiceScene.exml",
+		"AboutScene": "resource/game_skins/AboutScene.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -42,6 +45,7 @@
 		"resource/eui_skins/ToggleSwitchSkin.exml",
 		"resource/eui_skins/VScrollBarSkin.exml",
 		"resource/eui_skins/VSliderSkin.exml",
+		"resource/game_skins/AboutScene.exml",
 		"resource/game_skins/BeginScene.exml",
 		"resource/game_skins/BuySuccessMessage.exml",
 		"resource/game_skins/ChooseTypeDetailScene.exml",
@@ -63,6 +67,7 @@
 		"resource/game_skins/RankItem.exml",
 		"resource/game_skins/RankScene.exml",
 		"resource/game_skins/ResultMessageBox.exml",
+		"resource/game_skins/ServiceScene.exml",
 		"resource/game_skins/ShoppingItem.exml",
 		"resource/game_skins/ShoppingMallScene.exml",
 		"resource/game_skins/StartScene.exml",
