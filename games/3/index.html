@@ -19,6 +19,22 @@
             margin: 0;
             height: 100%;
         }
+        .loading{
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: calc(50% - 50px);
+            left:50%;
+            transform: translate(-50%);
+            background-color: rgba(0,0,0,.5);
+            z-index: 999;
+            color: #fff;
+            border-radius:5px; 
+        }
         .loading .icon{
             width: 20px;
             height: 20px;
