@@ -3387,7 +3387,7 @@ window.skins=window.skins||{};
 	__extends(PkGameSceneSkin, _super);
 	function PkGameSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["self","rival","gamer_top","question_type","question_title","question_index","question_box","time_progress","timeout","question_rule","radio_box0","answer_1","radio_box1","answer_2","radio_box2","answer_3","radio_box3","answer_4","question_answer","game_window","transtions"];
+		this.skinParts = ["user_avatar","self","rival_avatar","rival","gamer_top","question_type","question_title","question_index","question_box","time_progress","timeout","question_rule","radio_box0","answer_1","radio_box1","answer_2","radio_box2","answer_3","radio_box3","answer_4","question_answer","game_window","transtions"];
 		
 		this.height = 1334;
 		this.width = 750;
@@ -3484,7 +3484,7 @@ window.skins=window.skins||{};
 		t.width = 100;
 		t.x = 12;
 		t.y = 26;
-		t.elementsContent = [this._Rect3_i(),this._Image1_i()];
+		t.elementsContent = [this._Rect3_i(),this.user_avatar_i()];
 		return t;
 	};
 	_proto._Rect3_i = function () {
@@ -3501,8 +3501,9 @@ window.skins=window.skins||{};
 		t.width = 100;
 		return t;
 	};
-	_proto._Image1_i = function () {
+	_proto.user_avatar_i = function () {
 		var t = new eui.Image();
+		this.user_avatar = t;
 		t.height = 95;
 		t.horizontalCenter = 0;
 		t.name = "avater_img";
@@ -3613,7 +3614,7 @@ window.skins=window.skins||{};
 		t.width = 100;
 		t.x = -251;
 		t.y = 26;
-		t.elementsContent = [this._Rect8_i(),this._Image2_i()];
+		t.elementsContent = [this._Rect8_i(),this.rival_avatar_i()];
 		return t;
 	};
 	_proto._Rect8_i = function () {
@@ -3630,8 +3631,9 @@ window.skins=window.skins||{};
 		t.width = 100;
 		return t;
 	};
-	_proto._Image2_i = function () {
+	_proto.rival_avatar_i = function () {
 		var t = new eui.Image();
+		this.rival_avatar = t;
 		t.height = 95;
 		t.horizontalCenter = 0;
 		t.name = "avater_img";
@@ -3756,7 +3758,7 @@ window.skins=window.skins||{};
 		t.top = 0;
 		t.width = 200;
 		t.layout = this._HorizontalLayout3_i();
-		t.elementsContent = [this._Rect10_i(),this._Image3_i(),this._Label2_i()];
+		t.elementsContent = [this._Rect10_i(),this._Image1_i(),this._Label2_i()];
 		return t;
 	};
 	_proto._HorizontalLayout3_i = function () {
@@ -3774,7 +3776,7 @@ window.skins=window.skins||{};
 		t.x = 29;
 		return t;
 	};
-	_proto._Image3_i = function () {
+	_proto._Image1_i = function () {
 		var t = new eui.Image();
 		t.percentHeight = 100;
 		t.source = "ax_png";
@@ -3819,14 +3821,14 @@ window.skins=window.skins||{};
 		t.verticalCenter = 0;
 		t.percentWidth = 96.5;
 		t.layout = this._BasicLayout1_i();
-		t.elementsContent = [this._Image4_i(),this.time_progress_i(),this.timeout_i()];
+		t.elementsContent = [this._Image2_i(),this.time_progress_i(),this.timeout_i()];
 		return t;
 	};
 	_proto._BasicLayout1_i = function () {
 		var t = new eui.BasicLayout();
 		return t;
 	};
-	_proto._Image4_i = function () {
+	_proto._Image2_i = function () {
 		var t = new eui.Image();
 		t.height = 78;
 		t.left = 0;
@@ -3936,7 +3938,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		t.x = 2;
 		t.y = -12;
-		t.elementsContent = [this._Rect15_i(),this._Group11_i(),this._Image5_i(),this._Image6_i(),this._Image7_i()];
+		t.elementsContent = [this._Rect15_i(),this._Group11_i(),this._Image3_i(),this._Image4_i(),this._Image5_i()];
 		return t;
 	};
 	_proto._Rect15_i = function () {
@@ -4059,7 +4061,7 @@ window.skins=window.skins||{};
 		t.y = 37;
 		return t;
 	};
-	_proto._Image5_i = function () {
+	_proto._Image3_i = function () {
 		var t = new eui.Image();
 		t.height = 48;
 		t.name = "rival_icon";
@@ -4070,7 +4072,7 @@ window.skins=window.skins||{};
 		t.width = 48;
 		return t;
 	};
-	_proto._Image6_i = function () {
+	_proto._Image4_i = function () {
 		var t = new eui.Image();
 		t.height = 39.9;
 		t.left = 23;
@@ -4083,7 +4085,7 @@ window.skins=window.skins||{};
 		t.width = 43.2;
 		return t;
 	};
-	_proto._Image7_i = function () {
+	_proto._Image5_i = function () {
 		var t = new eui.Image();
 		t.height = 44;
 		t.left = 23;
@@ -4106,7 +4108,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		t.x = -38;
 		t.y = -577;
-		t.elementsContent = [this._Rect20_i(),this._Group13_i(),this._Image8_i(),this._Image9_i(),this._Image10_i()];
+		t.elementsContent = [this._Rect20_i(),this._Group13_i(),this._Image6_i(),this._Image7_i(),this._Image8_i()];
 		return t;
 	};
 	_proto._Rect20_i = function () {
@@ -4229,7 +4231,7 @@ window.skins=window.skins||{};
 		t.y = 37;
 		return t;
 	};
-	_proto._Image8_i = function () {
+	_proto._Image6_i = function () {
 		var t = new eui.Image();
 		t.height = 48;
 		t.name = "rival_icon";
@@ -4240,7 +4242,7 @@ window.skins=window.skins||{};
 		t.width = 48;
 		return t;
 	};
-	_proto._Image9_i = function () {
+	_proto._Image7_i = function () {
 		var t = new eui.Image();
 		t.height = 39.9;
 		t.left = 23;
@@ -4253,7 +4255,7 @@ window.skins=window.skins||{};
 		t.width = 43.2;
 		return t;
 	};
-	_proto._Image10_i = function () {
+	_proto._Image8_i = function () {
 		var t = new eui.Image();
 		t.height = 44;
 		t.left = 23;
@@ -4276,7 +4278,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		t.x = -28;
 		t.y = -567;
-		t.elementsContent = [this._Rect25_i(),this._Group15_i(),this._Image11_i(),this._Image12_i(),this._Image13_i()];
+		t.elementsContent = [this._Rect25_i(),this._Group15_i(),this._Image9_i(),this._Image10_i(),this._Image11_i()];
 		return t;
 	};
 	_proto._Rect25_i = function () {
@@ -4399,7 +4401,7 @@ window.skins=window.skins||{};
 		t.y = 37;
 		return t;
 	};
-	_proto._Image11_i = function () {
+	_proto._Image9_i = function () {
 		var t = new eui.Image();
 		t.height = 48;
 		t.name = "rival_icon";
@@ -4410,7 +4412,7 @@ window.skins=window.skins||{};
 		t.width = 48;
 		return t;
 	};
-	_proto._Image12_i = function () {
+	_proto._Image10_i = function () {
 		var t = new eui.Image();
 		t.height = 39.9;
 		t.left = 23;
@@ -4423,7 +4425,7 @@ window.skins=window.skins||{};
 		t.width = 43.2;
 		return t;
 	};
-	_proto._Image13_i = function () {
+	_proto._Image11_i = function () {
 		var t = new eui.Image();
 		t.height = 44;
 		t.left = 23;
@@ -4446,7 +4448,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		t.x = -18;
 		t.y = -557;
-		t.elementsContent = [this._Rect30_i(),this._Group17_i(),this._Image14_i(),this._Image15_i(),this._Image16_i()];
+		t.elementsContent = [this._Rect30_i(),this._Group17_i(),this._Image12_i(),this._Image13_i(),this._Image14_i()];
 		return t;
 	};
 	_proto._Rect30_i = function () {
@@ -4569,7 +4571,7 @@ window.skins=window.skins||{};
 		t.y = 37;
 		return t;
 	};
-	_proto._Image14_i = function () {
+	_proto._Image12_i = function () {
 		var t = new eui.Image();
 		t.height = 48;
 		t.name = "rival_icon";
@@ -4580,7 +4582,7 @@ window.skins=window.skins||{};
 		t.width = 48;
 		return t;
 	};
-	_proto._Image15_i = function () {
+	_proto._Image13_i = function () {
 		var t = new eui.Image();
 		t.height = 39.9;
 		t.left = 23;
@@ -4593,7 +4595,7 @@ window.skins=window.skins||{};
 		t.width = 43.2;
 		return t;
 	};
-	_proto._Image16_i = function () {
+	_proto._Image14_i = function () {
 		var t = new eui.Image();
 		t.height = 44;
 		t.left = 23;
@@ -4614,7 +4616,7 @@ window.skins=window.skins||{};
 		t.horizontalCenter = 0;
 		t.width = 200;
 		t.layout = this._HorizontalLayout9_i();
-		t.elementsContent = [this._Image17_i(),this._Label7_i()];
+		t.elementsContent = [this._Image15_i(),this._Label7_i()];
 		return t;
 	};
 	_proto._HorizontalLayout9_i = function () {
@@ -4625,7 +4627,7 @@ window.skins=window.skins||{};
 		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto._Image17_i = function () {
+	_proto._Image15_i = function () {
 		var t = new eui.Image();
 		t.height = 32;
 		t.scaleX = 1;
@@ -5159,7 +5161,7 @@ window.skins=window.skins||{};
 	__extends(PkSceneSkin, _super);
 	function PkSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","user_name","warp","pk_btn","share_btn"];
+		this.skinParts = ["bg","user_avatar","user_name","rival_avatar","rival_name","warp","pk_btn","share_btn"];
 		
 		this.height = 1334;
 		this.width = 750;
@@ -5192,7 +5194,7 @@ window.skins=window.skins||{};
 		t.horizontalCenter = 0;
 		t.top = 361;
 		t.width = 614;
-		t.elementsContent = [this._Group1_i(),this._Group2_i(),this._Image4_i()];
+		t.elementsContent = [this._Group1_i(),this._Group2_i(),this._Image2_i()];
 		return t;
 	};
 	_proto._Group1_i = function () {
@@ -5204,7 +5206,7 @@ window.skins=window.skins||{};
 		t.top = 0;
 		t.width = 160;
 		t.layout = this._VerticalLayout1_i();
-		t.elementsContent = [this._Image2_i(),this.user_name_i()];
+		t.elementsContent = [this.user_avatar_i(),this.user_name_i()];
 		return t;
 	};
 	_proto._VerticalLayout1_i = function () {
@@ -5214,8 +5216,9 @@ window.skins=window.skins||{};
 		t.verticalAlign = "top";
 		return t;
 	};
-	_proto._Image2_i = function () {
+	_proto.user_avatar_i = function () {
 		var t = new eui.Image();
+		this.user_avatar = t;
 		t.height = 160;
 		t.left = 0;
 		t.scaleX = 1;
@@ -5244,7 +5247,7 @@ window.skins=window.skins||{};
 		t.top = 0;
 		t.width = 160;
 		t.layout = this._VerticalLayout2_i();
-		t.elementsContent = [this._Image3_i(),this._Label1_i()];
+		t.elementsContent = [this.rival_avatar_i(),this.rival_name_i()];
 		return t;
 	};
 	_proto._VerticalLayout2_i = function () {
@@ -5254,8 +5257,9 @@ window.skins=window.skins||{};
 		t.verticalAlign = "top";
 		return t;
 	};
-	_proto._Image3_i = function () {
+	_proto.rival_avatar_i = function () {
 		var t = new eui.Image();
+		this.rival_avatar = t;
 		t.height = 160;
 		t.left = 0;
 		t.scaleX = 1;
@@ -5265,8 +5269,9 @@ window.skins=window.skins||{};
 		t.width = 160;
 		return t;
 	};
-	_proto._Label1_i = function () {
+	_proto.rival_name_i = function () {
 		var t = new eui.Label();
+		this.rival_name = t;
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.text = "WHO";
@@ -5274,7 +5279,7 @@ window.skins=window.skins||{};
 		t.y = -124;
 		return t;
 	};
-	_proto._Image4_i = function () {
+	_proto._Image2_i = function () {
 		var t = new eui.Image();
 		t.height = 125;
 		t.horizontalCenter = 0;
@@ -5302,10 +5307,10 @@ window.skins=window.skins||{};
 		t.left = 0;
 		t.top = 0;
 		t.percentWidth = 100;
-		t.elementsContent = [this._Image5_i(),this._Label2_i()];
+		t.elementsContent = [this._Image3_i(),this._Label1_i()];
 		return t;
 	};
-	_proto._Image5_i = function () {
+	_proto._Image3_i = function () {
 		var t = new eui.Image();
 		t.percentHeight = 100;
 		t.left = 0;
@@ -5314,7 +5319,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.horizontalCenter = 0;
@@ -5333,10 +5338,10 @@ window.skins=window.skins||{};
 		t.scaleY = 1;
 		t.percentWidth = 100;
 		t.x = -156;
-		t.elementsContent = [this._Image6_i(),this._Label3_i()];
+		t.elementsContent = [this._Image4_i(),this._Label2_i()];
 		return t;
 	};
-	_proto._Image6_i = function () {
+	_proto._Image4_i = function () {
 		var t = new eui.Image();
 		t.percentHeight = 100;
 		t.left = 0;
@@ -5345,7 +5350,7 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label3_i = function () {
+	_proto._Label2_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFangSC-Regular";
 		t.horizontalCenter = 0;
@@ -5359,7 +5364,7 @@ window.skins=window.skins||{};
 	__extends(PkWaitMessageBoxSkin, _super);
 	function PkWaitMessageBoxSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","user_name","gamer1","rival_name","gamer2","ready_mask","wait_time_tip","wait_time_text","match_tip","join_tip","close_btn","game_btn","messagebox"];
+		this.skinParts = ["bg","user_avatar","user_name","gamer1","rival_avatar","rival_name","gamer2","ready_mask","wait_time_tip","wait_time_text","match_tip","join_tip","close_btn","game_btn","messagebox"];
 		
 		this.height = 1334;
 		this.width = 750;
@@ -5388,7 +5393,7 @@ window.skins=window.skins||{};
 		t.width = 666;
 		t.x = 42;
 		t.y = 331;
-		t.elementsContent = [this.bg_i(),this.gamer1_i(),this._Image2_i(),this.gamer2_i(),this.ready_mask_i(),this._Image4_i(),this.match_tip_i(),this.join_tip_i(),this.close_btn_i(),this.game_btn_i()];
+		t.elementsContent = [this.bg_i(),this.gamer1_i(),this._Image1_i(),this.gamer2_i(),this.ready_mask_i(),this._Image2_i(),this.match_tip_i(),this.join_tip_i(),this.close_btn_i(),this.game_btn_i()];
 		return t;
 	};
 	_proto.bg_i = function () {
@@ -5411,7 +5416,7 @@ window.skins=window.skins||{};
 		t.x = 73;
 		t.y = 157;
 		t.layout = this._VerticalLayout1_i();
-		t.elementsContent = [this._Image1_i(),this.user_name_i()];
+		t.elementsContent = [this.user_avatar_i(),this.user_name_i()];
 		return t;
 	};
 	_proto._VerticalLayout1_i = function () {
@@ -5421,14 +5426,15 @@ window.skins=window.skins||{};
 		t.verticalAlign = "top";
 		return t;
 	};
-	_proto._Image1_i = function () {
+	_proto.user_avatar_i = function () {
 		var t = new eui.Image();
+		this.user_avatar = t;
 		t.height = 160;
-		t.left = 0;
+		t.left = -5;
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.source = "who_png";
-		t.top = 0;
+		t.top = 60;
 		t.width = 160;
 		return t;
 	};
@@ -5443,7 +5449,7 @@ window.skins=window.skins||{};
 		t.y = -124;
 		return t;
 	};
-	_proto._Image2_i = function () {
+	_proto._Image1_i = function () {
 		var t = new eui.Image();
 		t.anchorOffsetX = 0;
 		t.anchorOffsetY = 0;
@@ -5462,7 +5468,7 @@ window.skins=window.skins||{};
 		t.x = 433;
 		t.y = 157;
 		t.layout = this._VerticalLayout2_i();
-		t.elementsContent = [this._Image3_i(),this.rival_name_i()];
+		t.elementsContent = [this.rival_avatar_i(),this.rival_name_i()];
 		return t;
 	};
 	_proto._VerticalLayout2_i = function () {
@@ -5472,8 +5478,9 @@ window.skins=window.skins||{};
 		t.verticalAlign = "top";
 		return t;
 	};
-	_proto._Image3_i = function () {
+	_proto.rival_avatar_i = function () {
 		var t = new eui.Image();
+		this.rival_avatar = t;
 		t.height = 160;
 		t.left = 0;
 		t.scaleX = 1;
@@ -5526,7 +5533,7 @@ window.skins=window.skins||{};
 		t.verticalCenter = 0;
 		return t;
 	};
-	_proto._Image4_i = function () {
+	_proto._Image2_i = function () {
 		var t = new eui.Image();
 		t.height = 81;
 		t.horizontalCenter = 0;
@@ -5636,10 +5643,10 @@ window.skins=window.skins||{};
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.width = 382;
-		t.elementsContent = [this._Image5_i(),this._Label4_i()];
+		t.elementsContent = [this._Image3_i(),this._Label4_i()];
 		return t;
 	};
-	_proto._Image5_i = function () {
+	_proto._Image3_i = function () {
 		var t = new eui.Image();
 		t.percentHeight = 100;
 		t.left = 0;
@@ -5666,10 +5673,10 @@ window.skins=window.skins||{};
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.width = 382;
-		t.elementsContent = [this._Image6_i(),this._Label5_i()];
+		t.elementsContent = [this._Image4_i(),this._Label5_i()];
 		return t;
 	};
-	_proto._Image6_i = function () {
+	_proto._Image4_i = function () {
 		var t = new eui.Image();
 		t.percentHeight = 100;
 		t.left = 0;
@@ -6702,7 +6709,7 @@ window.skins=window.skins||{};
 		this.user_avatar = t;
 		t.percentHeight = 90;
 		t.horizontalCenter = 0;
-		t.source = "user_avatar";
+		t.source = "";
 		t.verticalCenter = 0;
 		t.percentWidth = 90;
 		return t;
@@ -6785,11 +6792,11 @@ window.skins=window.skins||{};
 	__extends(RankSceneSkin, _super);
 	function RankSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","list_bg","rank1_view","rank2_view","tab1_btn","tab2_btn","loading","self_rank"];
+		this.skinParts = ["bg","list_bg","rank1_view","rank2_view","tab1_btn","tab2_btn","loading","self_rank1","self_rank1_group","self_rank2","self_rank2_group"];
 		
 		this.height = 1334;
 		this.width = 750;
-		this.elementsContent = [this.bg_i(),this._Image1_i(),this._Image2_i(),this._Group5_i(),this._Group6_i()];
+		this.elementsContent = [this.bg_i(),this._Image1_i(),this._Image2_i(),this._Group5_i(),this.self_rank1_group_i(),this.self_rank2_group_i()];
 	}
 	var _proto = RankSceneSkin.prototype;
 
@@ -7042,13 +7049,14 @@ window.skins=window.skins||{};
 		t.y = 535;
 		return t;
 	};
-	_proto._Group6_i = function () {
+	_proto.self_rank1_group_i = function () {
 		var t = new eui.Group();
+		this.self_rank1_group = t;
 		t.bottom = 22;
 		t.height = 100;
 		t.horizontalCenter = 0;
 		t.width = 690;
-		t.elementsContent = [this._Rect4_i(),this.self_rank_i()];
+		t.elementsContent = [this._Rect4_i(),this.self_rank1_i()];
 		return t;
 	};
 	_proto._Rect4_i = function () {
@@ -7064,9 +7072,9 @@ window.skins=window.skins||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto.self_rank_i = function () {
+	_proto.self_rank1_i = function () {
 		var t = new eui.Group();
-		this.self_rank = t;
+		this.self_rank1 = t;
 		t.percentHeight = 100;
 		t.left = 0;
 		t.top = 0;
@@ -7075,6 +7083,45 @@ window.skins=window.skins||{};
 		return t;
 	};
 	_proto._HorizontalLayout2_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.gap = 0;
+		t.horizontalAlign = "contentJustify";
+		return t;
+	};
+	_proto.self_rank2_group_i = function () {
+		var t = new eui.Group();
+		this.self_rank2_group = t;
+		t.bottom = 22;
+		t.height = 100;
+		t.horizontalCenter = 0;
+		t.width = 690;
+		t.elementsContent = [this._Rect5_i(),this.self_rank2_i()];
+		return t;
+	};
+	_proto._Rect5_i = function () {
+		var t = new eui.Rect();
+		t.ellipseHeight = 30;
+		t.ellipseWidth = 30;
+		t.fillColor = 0xF0FDFF;
+		t.percentHeight = 100;
+		t.left = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.top = 0;
+		t.percentWidth = 100;
+		return t;
+	};
+	_proto.self_rank2_i = function () {
+		var t = new eui.Group();
+		this.self_rank2 = t;
+		t.percentHeight = 100;
+		t.left = 0;
+		t.top = 0;
+		t.percentWidth = 100;
+		t.layout = this._HorizontalLayout3_i();
+		return t;
+	};
+	_proto._HorizontalLayout3_i = function () {
 		var t = new eui.HorizontalLayout();
 		t.gap = 0;
 		t.horizontalAlign = "contentJustify";
