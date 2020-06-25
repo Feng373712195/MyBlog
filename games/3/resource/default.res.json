@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,loading_fill_png,loading_bg_png,login_png,btn_bg62_png,btn_bg5_png,btn_bg6_png",
+			"keys": "description_json,loading_fill_png,loading_bg_png,login_png,btn_bg62_png,btn_bg5_png,btn_bg6_png,rank_bg_png,about_level_top_png,ranking_item_bg2_png",
 			"name": "preload"
 		}
 	],
@@ -510,6 +510,21 @@
 			"url": "assets/images/pk_result3.png",
 			"type": "image",
 			"name": "pk_result3_png"
+		},
+		{
+			"name": "rank_bg_png",
+			"type": "image",
+			"url": "assets/images/rank/rank_bg.png"
+		},
+		{
+			"name": "about_level_top_png",
+			"type": "image",
+			"url": "assets/images/about/about_level_top.png"
+		},
+		{
+			"name": "ranking_item_bg2_png",
+			"type": "image",
+			"url": "assets/images/ranking/ranking_item_bg2.png"
 		}
 	]
 }

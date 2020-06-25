@@ -27,7 +27,9 @@
 		"PkGameScene": "resource/game_skins/PkGameScene.exml",
 		"serviceScene": "resource/game_skins/serviceScene.exml",
 		"ServiceScene": "resource/game_skins/ServiceScene.exml",
-		"AboutScene": "resource/game_skins/AboutScene.exml"
+		"AboutScene": "resource/game_skins/AboutScene.exml",
+		"AboutLevelScene": "resource/game_skins/AboutLevelScene.exml",
+		"GiftMessage": "resource/game_skins/GiftMessage.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -45,6 +47,7 @@
 		"resource/eui_skins/ToggleSwitchSkin.exml",
 		"resource/eui_skins/VScrollBarSkin.exml",
 		"resource/eui_skins/VSliderSkin.exml",
+		"resource/game_skins/AboutLevelScene.exml",
 		"resource/game_skins/AboutScene.exml",
 		"resource/game_skins/BeginScene.exml",
 		"resource/game_skins/BuySuccessMessage.exml",
@@ -53,6 +56,7 @@
 		"resource/game_skins/ExchangeItem.exml",
 		"resource/game_skins/ExchangeSuccesMessage.exml",
 		"resource/game_skins/GameScene.exml",
+		"resource/game_skins/GiftMessage.exml",
 		"resource/game_skins/LevelUpMessageBox.exml",
 		"resource/game_skins/Loading.exml",
 		"resource/game_skins/LoginInMessageBox.exml",
