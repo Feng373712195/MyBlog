@@ -3654,6 +3654,7 @@ window.GiftMessage=window.GiftMessage||{};
 		this.game_window = t;
 		t.bottom = 0;
 		t.height = 1300;
+		t.top = 34;
 		t.width = 659;
 		t.x = 46;
 		t.elementsContent = [this._Rect2_i(),this._Group18_i()];
