@@ -246,18 +246,6 @@ window.GiftMessage=window.GiftMessage||{};
 		return t;
 	};
 	return ItemRendererSkin;
-})(eui.Skin);generateEUI.paths['resource/eui_skins/LevelUpMessageBox.exml'] = window.LevelUpMessageBoxSkin = (function (_super) {
-	__extends(LevelUpMessageBoxSkin, _super);
-	function LevelUpMessageBoxSkin() {
-		_super.call(this);
-		this.skinParts = [];
-		
-		this.height = 300;
-		this.width = 400;
-	}
-	var _proto = LevelUpMessageBoxSkin.prototype;
-
-	return LevelUpMessageBoxSkin;
 })(eui.Skin);generateEUI.paths['resource/eui_skins/PanelSkin.exml'] = window.skins.PanelSkin = (function (_super) {
 	__extends(PanelSkin, _super);
 	function PanelSkin() {
@@ -1002,9 +990,8 @@ window.GiftMessage=window.GiftMessage||{};
 	};
 	_proto._Label1_i = function () {
 		var t = new eui.Label();
-		t.bold = true;
 		t.border = false;
-		t.fontFamily = "ZhenyanGB-Regular";
+		t.fontFamily = "ZhenyanGB";
 		t.size = 44;
 		t.stroke = 1;
 		t.strokeColor = 0x454f5b;
@@ -1016,6 +1003,7 @@ window.GiftMessage=window.GiftMessage||{};
 	};
 	_proto._Label2_i = function () {
 		var t = new eui.Label();
+		t.bold = true;
 		t.fontFamily = "Arial-Black";
 		t.horizontalCenter = 0;
 		t.size = 44;
@@ -1070,7 +1058,7 @@ window.GiftMessage=window.GiftMessage||{};
 	_proto._Label4_i = function () {
 		var t = new eui.Label();
 		t.horizontalCenter = 0;
-		t.text = "购买成功";
+		t.text = "好的";
 		t.verticalCenter = 0;
 		return t;
 	};
@@ -1738,7 +1726,6 @@ window.GiftMessage=window.GiftMessage||{};
 	};
 	_proto._Label2_i = function () {
 		var t = new eui.Label();
-		t.bold = true;
 		t.border = false;
 		t.fontFamily = "ZhenyanGB-Regular";
 		t.size = 44;
@@ -1796,7 +1783,7 @@ window.GiftMessage=window.GiftMessage||{};
 	_proto._Label3_i = function () {
 		var t = new eui.Label();
 		t.horizontalCenter = 0;
-		t.text = "购买成功";
+		t.text = "好的";
 		t.verticalCenter = 0;
 		return t;
 	};
@@ -1922,6 +1909,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.fontFamily = "PingFang-SC-Medium";
 		t.horizontalCenter = 0;
 		t.left = 23;
+		t.lineSpacing = 17;
 		t.right = 23;
 		t.size = 34;
 		t.text = "孤独症酒精病高发人群为________";
@@ -1957,6 +1945,7 @@ window.GiftMessage=window.GiftMessage||{};
 	_proto.question_index_i = function () {
 		var t = new eui.Label();
 		this.question_index = t;
+		t.bold = true;
 		t.fontFamily = "Arial-Black";
 		t.percentHeight = 100;
 		t.left = 0;
@@ -2005,6 +1994,7 @@ window.GiftMessage=window.GiftMessage||{};
 	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.anchorOffsetX = 0;
+		t.bold = true;
 		t.fontFamily = "Arial-Black";
 		t.percentHeight = 100;
 		t.right = 0;
@@ -2047,7 +2037,7 @@ window.GiftMessage=window.GiftMessage||{};
 		this.time_progress = t;
 		t.anchorOffsetX = 0;
 		t.height = 26;
-		t.left = 65;
+		t.left = 61;
 		t.verticalCenter = 0;
 		t.width = 0;
 		t.layout = this._HorizontalLayout2_i();
@@ -2113,12 +2103,13 @@ window.GiftMessage=window.GiftMessage||{};
 		t.left = 0;
 		t.source = "game_time_png";
 		t.top = 0;
-		t.width = 70;
+		t.width = 66;
 		return t;
 	};
 	_proto.timeout_i = function () {
 		var t = new eui.Label();
 		this.timeout = t;
+		t.bold = true;
 		t.fontFamily = "Arial-Black";
 		t.left = 230;
 		t.size = 26;
@@ -3458,7 +3449,16 @@ window.GiftMessage=window.GiftMessage||{};
 		t.scaleY = 1;
 		t.width = 382;
 		t.y = 402;
-		t.elementsContent = [this._Rect2_i(),this._Label2_i()];
+		t.elementsContent = [this._Image3_i(),this._Rect2_i(),this._Label2_i()];
+		return t;
+	};
+	_proto._Image3_i = function () {
+		var t = new eui.Image();
+		t.percentHeight = 100;
+		t.left = 0;
+		t.source = "btn_bg5_png";
+		t.top = 0;
+		t.percentWidth = 100;
 		return t;
 	};
 	_proto._Rect2_i = function () {
@@ -3468,6 +3468,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.fillColor = 0x23bfd5;
 		t.percentHeight = 100;
 		t.strokeColor = 0x23bfd5;
+		t.visible = false;
 		t.percentWidth = 100;
 		t.x = 0;
 		t.y = 0;
@@ -3530,7 +3531,7 @@ window.GiftMessage=window.GiftMessage||{};
 	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.bold = true;
-		t.fontFamily = "ZhenyanGB-Regular";
+		t.fontFamily = "ZhenyanGB";
 		t.size = 44;
 		t.text = "钥匙0把";
 		t.textColor = 0x454f5b;
@@ -3947,9 +3948,10 @@ window.GiftMessage=window.GiftMessage||{};
 		var t = new eui.Label();
 		this.question_title = t;
 		t.fontFamily = "PingFang-SC-Medium";
-		t.horizontalCenter = 0;
-		t.left = 23;
-		t.right = 23;
+		t.horizontalCenter = -2;
+		t.left = 21;
+		t.lineSpacing = 17;
+		t.right = 25;
 		t.size = 34;
 		t.text = "孤独症酒精病高发人群为________";
 		t.textColor = 0x1D292B;
@@ -3984,6 +3986,7 @@ window.GiftMessage=window.GiftMessage||{};
 	_proto.question_index_i = function () {
 		var t = new eui.Label();
 		this.question_index = t;
+		t.bold = true;
 		t.fontFamily = "Arial-Black";
 		t.percentHeight = 100;
 		t.left = 0;
@@ -4032,6 +4035,7 @@ window.GiftMessage=window.GiftMessage||{};
 	_proto._Label2_i = function () {
 		var t = new eui.Label();
 		t.anchorOffsetX = 0;
+		t.bold = true;
 		t.fontFamily = "Arial-Black";
 		t.percentHeight = 100;
 		t.right = 0;
@@ -4151,6 +4155,7 @@ window.GiftMessage=window.GiftMessage||{};
 	_proto.timeout_i = function () {
 		var t = new eui.Label();
 		this.timeout = t;
+		t.bold = true;
 		t.fontFamily = "Arial-Black";
 		t.right = 0;
 		t.size = 26;
@@ -4920,11 +4925,14 @@ window.GiftMessage=window.GiftMessage||{};
 	__extends(PkResultSceneSkin, _super);
 	function PkResultSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","result_top","user_avatar","user_result_status","user_result_bg","user_score","user_name","left_user","rival_result_bg","other_score","rival_name","rival_avatar","rival_result_status","right_user","credit","money","back_btn","play_btn"];
+		this.skinParts = ["bg","result_top","user_avatar_board","user_avatar","user_avatar_mask","user_result_status","user_result_bg","user_score","user_name","left_user","rival_result_bg","other_score","rival_name","rival_avatar_board","rival_avatar","rival_avatar_mask","rival_result_status","right_user","credit","money","back_btn","play_btn"];
 		
 		this.height = 1334;
 		this.width = 750;
 		this.elementsContent = [this.bg_i(),this._Group1_i(),this.left_user_i(),this.right_user_i(),this._Group10_i(),this._Group11_i()];
+		
+		eui.Binding.$bindProperties(this, ["user_avatar_mask"],[0],this.user_avatar,"mask");
+		eui.Binding.$bindProperties(this, ["rival_avatar_mask"],[0],this.rival_avatar,"mask");
 	}
 	var _proto = PkResultSceneSkin.prototype;
 
@@ -5001,11 +5009,12 @@ window.GiftMessage=window.GiftMessage||{};
 		t.left = 0;
 		t.top = 0;
 		t.width = 108;
-		t.elementsContent = [this._Rect1_i(),this.user_avatar_i(),this.user_result_status_i()];
+		t.elementsContent = [this.user_avatar_board_i(),this.user_avatar_i(),this.user_avatar_mask_i(),this.user_result_status_i()];
 		return t;
 	};
-	_proto._Rect1_i = function () {
+	_proto.user_avatar_board_i = function () {
 		var t = new eui.Rect();
+		this.user_avatar_board = t;
 		t.ellipseHeight = 20;
 		t.ellipseWidth = 20;
 		t.fillColor = 0xffffff;
@@ -5025,12 +5034,23 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 100;
 		return t;
 	};
+	_proto.user_avatar_mask_i = function () {
+		var t = new eui.Rect();
+		this.user_avatar_mask = t;
+		t.ellipseHeight = 20;
+		t.ellipseWidth = 20;
+		t.height = 100;
+		t.horizontalCenter = 0;
+		t.verticalCenter = 0;
+		t.width = 100;
+		return t;
+	};
 	_proto.user_result_status_i = function () {
 		var t = new eui.Image();
 		this.user_result_status = t;
-		t.bottom = 0;
+		t.bottom = 4;
 		t.height = 36;
-		t.left = 0;
+		t.left = 4;
 		t.width = 36;
 		return t;
 	};
@@ -5038,9 +5058,10 @@ window.GiftMessage=window.GiftMessage||{};
 		var t = new eui.Group();
 		t.anchorOffsetX = 0;
 		t.height = 108;
+		t.scrollEnabled = true;
 		t.top = 0;
 		t.width = 188;
-		t.x = 108.02;
+		t.x = 105.33;
 		t.layout = this._VerticalLayout1_i();
 		t.elementsContent = [this._Group3_i(),this.user_name_i()];
 		return t;
@@ -5058,9 +5079,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.height = 50;
 		t.scaleX = 1;
 		t.scaleY = 1;
-		t.top = 0;
+		t.scrollEnabled = true;
+		t.top = 22;
 		t.percentWidth = 100;
-		t.x = 37;
+		t.x = -0.33;
 		t.y = -36;
 		t.elementsContent = [this.user_result_bg_i(),this.user_score_i()];
 		return t;
@@ -5069,7 +5091,7 @@ window.GiftMessage=window.GiftMessage||{};
 		var t = new eui.Image();
 		this.user_result_bg = t;
 		t.height = 50;
-		t.left = 0;
+		t.left = -3;
 		t.source = "pk_user_bg1_left_png";
 		t.top = 0;
 		t.percentWidth = 100;
@@ -5107,8 +5129,8 @@ window.GiftMessage=window.GiftMessage||{};
 		t.anchorOffsetX = 0;
 		t.height = 108;
 		t.right = 95;
-		t.top = 325;
 		t.width = 261;
+		t.y = 355;
 		t.layout = this._HorizontalLayout2_i();
 		t.elementsContent = [this._Group6_i(),this._Group7_i()];
 		return t;
@@ -5154,7 +5176,7 @@ window.GiftMessage=window.GiftMessage||{};
 		var t = new eui.Image();
 		this.rival_result_bg = t;
 		t.height = 50;
-		t.left = 0;
+		t.left = 1;
 		t.source = "pk_user_bg1_right_png";
 		t.top = 0;
 		t.percentWidth = 100;
@@ -5192,11 +5214,12 @@ window.GiftMessage=window.GiftMessage||{};
 		t.left = 0;
 		t.top = 0;
 		t.width = 108;
-		t.elementsContent = [this._Rect2_i(),this.rival_avatar_i(),this.rival_result_status_i()];
+		t.elementsContent = [this.rival_avatar_board_i(),this.rival_avatar_i(),this.rival_avatar_mask_i(),this.rival_result_status_i()];
 		return t;
 	};
-	_proto._Rect2_i = function () {
+	_proto.rival_avatar_board_i = function () {
 		var t = new eui.Rect();
+		this.rival_avatar_board = t;
 		t.ellipseHeight = 20;
 		t.ellipseWidth = 20;
 		t.fillColor = 0xFFFFFF;
@@ -5216,12 +5239,27 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 100;
 		return t;
 	};
+	_proto.rival_avatar_mask_i = function () {
+		var t = new eui.Rect();
+		this.rival_avatar_mask = t;
+		t.ellipseHeight = 20;
+		t.ellipseWidth = 20;
+		t.height = 100;
+		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.verticalCenter = 0;
+		t.width = 100;
+		t.x = 108;
+		t.y = 0;
+		return t;
+	};
 	_proto.rival_result_status_i = function () {
 		var t = new eui.Image();
 		this.rival_result_status = t;
-		t.bottom = 0;
+		t.bottom = 4;
 		t.height = 36;
-		t.right = 0;
+		t.right = 4;
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.width = 36;
@@ -5233,10 +5271,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.horizontalCenter = 0;
 		t.top = 495;
 		t.width = 607;
-		t.elementsContent = [this._Rect3_i(),this._Label1_i(),this._Group8_i(),this._Group9_i()];
+		t.elementsContent = [this._Rect1_i(),this._Label1_i(),this._Group8_i(),this._Group9_i()];
 		return t;
 	};
-	_proto._Rect3_i = function () {
+	_proto._Rect1_i = function () {
 		var t = new eui.Rect();
 		t.bottom = 0;
 		t.ellipseHeight = 20;
@@ -5414,20 +5452,22 @@ window.GiftMessage=window.GiftMessage||{};
 	__extends(PkSceneSkin, _super);
 	function PkSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","user_avatar","user_name","rival_avatar","rival_name","warp","pk_btn","share_btn"];
+		this.skinParts = ["bg","user_avatar_board","user_avatar_mask","user_avatar","user_name","rival_avatar","rival_name","warp","pk_btn","share_btn"];
 		
 		this.height = 1334;
 		this.width = 750;
-		this.elementsContent = [this.bg_i(),this._Image1_i(),this.warp_i(),this._Group3_i()];
+		this.elementsContent = [this.bg_i(),this._Image1_i(),this.warp_i(),this._Group4_i()];
+		
+		eui.Binding.$bindProperties(this, ["user_avatar_mask"],[0],this.user_avatar,"mask");
 	}
 	var _proto = PkSceneSkin.prototype;
 
 	_proto.bg_i = function () {
 		var t = new eui.Rect();
 		this.bg = t;
-		t.bottom = 0;
-		t.left = 0;
-		t.top = 0;
+		t.bottom = -1;
+		t.left = -1;
+		t.top = 1;
 		t.percentWidth = 100;
 		return t;
 	};
@@ -5447,10 +5487,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.horizontalCenter = 0;
 		t.top = 361;
 		t.width = 614;
-		t.elementsContent = [this._Group1_i(),this._Group2_i(),this._Image2_i()];
+		t.elementsContent = [this._Group2_i(),this._Group3_i(),this._Image2_i()];
 		return t;
 	};
-	_proto._Group1_i = function () {
+	_proto._Group2_i = function () {
 		var t = new eui.Group();
 		t.height = 210;
 		t.left = 0;
@@ -5459,25 +5499,66 @@ window.GiftMessage=window.GiftMessage||{};
 		t.top = 0;
 		t.width = 160;
 		t.layout = this._VerticalLayout1_i();
-		t.elementsContent = [this.user_avatar_i(),this.user_name_i()];
+		t.elementsContent = [this._Group1_i(),this.user_name_i()];
 		return t;
 	};
 	_proto._VerticalLayout1_i = function () {
 		var t = new eui.VerticalLayout();
 		t.gap = 15;
 		t.horizontalAlign = "center";
-		t.verticalAlign = "top";
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.height = 166;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.width = 166;
+		t.x = -1;
+		t.y = 740;
+		t.elementsContent = [this.user_avatar_board_i(),this.user_avatar_mask_i(),this.user_avatar_i()];
+		return t;
+	};
+	_proto.user_avatar_board_i = function () {
+		var t = new eui.Rect();
+		this.user_avatar_board = t;
+		t.ellipseHeight = 20;
+		t.ellipseWidth = 20;
+		t.fillColor = 0xff0000;
+		t.height = 168;
+		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.verticalCenter = 0;
+		t.width = 168;
+		return t;
+	};
+	_proto.user_avatar_mask_i = function () {
+		var t = new eui.Rect();
+		this.user_avatar_mask = t;
+		t.ellipseHeight = 20;
+		t.ellipseWidth = 20;
+		t.fillColor = 0xFF0000;
+		t.height = 160;
+		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.verticalCenter = 0;
+		t.width = 160;
+		t.x = 0;
+		t.y = 181;
 		return t;
 	};
 	_proto.user_avatar_i = function () {
 		var t = new eui.Image();
 		this.user_avatar = t;
 		t.height = 160;
-		t.left = 0;
+		t.horizontalCenter = 0;
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.source = "who_png";
-		t.top = 0;
+		t.verticalCenter = 0;
 		t.width = 160;
 		return t;
 	};
@@ -5487,11 +5568,12 @@ window.GiftMessage=window.GiftMessage||{};
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.text = "快乐的小猪";
+		t.textColor = 0x000000;
 		t.x = -158;
 		t.y = -124;
 		return t;
 	};
-	_proto._Group2_i = function () {
+	_proto._Group3_i = function () {
 		var t = new eui.Group();
 		t.height = 210;
 		t.right = 0;
@@ -5513,13 +5595,13 @@ window.GiftMessage=window.GiftMessage||{};
 	_proto.rival_avatar_i = function () {
 		var t = new eui.Image();
 		this.rival_avatar = t;
-		t.height = 160;
+		t.height = 168;
 		t.left = 0;
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.source = "who_png";
 		t.top = 0;
-		t.width = 160;
+		t.width = 168;
 		return t;
 	};
 	_proto.rival_name_i = function () {
@@ -5528,6 +5610,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.text = "WHO";
+		t.textColor = 0x000000;
 		t.x = -158;
 		t.y = -124;
 		return t;
@@ -5543,7 +5626,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 243;
 		return t;
 	};
-	_proto._Group3_i = function () {
+	_proto._Group4_i = function () {
 		var t = new eui.Group();
 		t.anchorOffsetY = 0;
 		t.height = 230.66;
@@ -5617,11 +5700,14 @@ window.GiftMessage=window.GiftMessage||{};
 	__extends(PkWaitMessageBoxSkin, _super);
 	function PkWaitMessageBoxSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","user_avatar","user_name","gamer1","rival_avatar","rival_name","gamer2","ready_mask","wait_time_tip","wait_time_text","match_tip","join_tip","close_btn","game_btn","messagebox"];
+		this.skinParts = ["bg","user_avatar_board","user_avatar_mask","user_avatar","user_name","gamer1","rival_avatar_board","rival_avatar_mask","rival_avatar","rival_name","gamer2","ready_mask","wait_time_tip","wait_time_text","match_tip","join_tip","close_btn","game_btn","messagebox"];
 		
 		this.height = 1334;
 		this.width = 750;
 		this.elementsContent = [this._Rect1_i(),this.messagebox_i()];
+		
+		eui.Binding.$bindProperties(this, ["user_avatar_mask"],[0],this.user_avatar,"mask");
+		eui.Binding.$bindProperties(this, ["rival_avatar_mask"],[0],this.rival_avatar,"mask");
 	}
 	var _proto = PkWaitMessageBoxSkin.prototype;
 
@@ -5669,7 +5755,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.x = 73;
 		t.y = 157;
 		t.layout = this._VerticalLayout1_i();
-		t.elementsContent = [this.user_avatar_i(),this.user_name_i()];
+		t.elementsContent = [this._Group1_i(),this.user_name_i()];
 		return t;
 	};
 	_proto._VerticalLayout1_i = function () {
@@ -5679,15 +5765,56 @@ window.GiftMessage=window.GiftMessage||{};
 		t.verticalAlign = "top";
 		return t;
 	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.height = 166;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.width = 166;
+		t.x = -74;
+		t.y = 583;
+		t.elementsContent = [this.user_avatar_board_i(),this.user_avatar_mask_i(),this.user_avatar_i()];
+		return t;
+	};
+	_proto.user_avatar_board_i = function () {
+		var t = new eui.Rect();
+		this.user_avatar_board = t;
+		t.ellipseHeight = 20;
+		t.ellipseWidth = 20;
+		t.fillColor = 0xFF0000;
+		t.height = 168;
+		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.verticalCenter = 0;
+		t.width = 168;
+		return t;
+	};
+	_proto.user_avatar_mask_i = function () {
+		var t = new eui.Rect();
+		this.user_avatar_mask = t;
+		t.ellipseHeight = 20;
+		t.ellipseWidth = 20;
+		t.fillColor = 0xFF0000;
+		t.height = 160;
+		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.verticalCenter = 0;
+		t.width = 160;
+		t.x = 0;
+		t.y = 181;
+		return t;
+	};
 	_proto.user_avatar_i = function () {
 		var t = new eui.Image();
 		this.user_avatar = t;
 		t.height = 160;
-		t.left = -5;
+		t.horizontalCenter = 0;
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.source = "who_png";
-		t.top = 60;
+		t.verticalCenter = 0;
 		t.width = 160;
 		return t;
 	};
@@ -5721,7 +5848,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.x = 433;
 		t.y = 157;
 		t.layout = this._VerticalLayout2_i();
-		t.elementsContent = [this.rival_avatar_i(),this.rival_name_i()];
+		t.elementsContent = [this._Group2_i(),this.rival_name_i()];
 		return t;
 	};
 	_proto._VerticalLayout2_i = function () {
@@ -5731,15 +5858,56 @@ window.GiftMessage=window.GiftMessage||{};
 		t.verticalAlign = "top";
 		return t;
 	};
+	_proto._Group2_i = function () {
+		var t = new eui.Group();
+		t.height = 166;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.width = 166;
+		t.x = -507;
+		t.y = 426;
+		t.elementsContent = [this.rival_avatar_board_i(),this.rival_avatar_mask_i(),this.rival_avatar_i()];
+		return t;
+	};
+	_proto.rival_avatar_board_i = function () {
+		var t = new eui.Rect();
+		this.rival_avatar_board = t;
+		t.ellipseHeight = 20;
+		t.ellipseWidth = 20;
+		t.fillColor = 0xFF0000;
+		t.height = 168;
+		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.verticalCenter = 0;
+		t.width = 168;
+		return t;
+	};
+	_proto.rival_avatar_mask_i = function () {
+		var t = new eui.Rect();
+		this.rival_avatar_mask = t;
+		t.ellipseHeight = 20;
+		t.ellipseWidth = 20;
+		t.fillColor = 0xFF0000;
+		t.height = 160;
+		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.verticalCenter = 0;
+		t.width = 160;
+		t.x = 0;
+		t.y = 181;
+		return t;
+	};
 	_proto.rival_avatar_i = function () {
 		var t = new eui.Image();
 		this.rival_avatar = t;
 		t.height = 160;
-		t.left = 0;
+		t.horizontalCenter = 0;
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.source = "who_png";
-		t.top = 0;
+		t.verticalCenter = 0;
 		t.width = 160;
 		return t;
 	};
@@ -5757,10 +5925,10 @@ window.GiftMessage=window.GiftMessage||{};
 	_proto.ready_mask_i = function () {
 		var t = new eui.Group();
 		this.ready_mask = t;
-		t.height = 160;
+		t.height = 168;
 		t.scaleX = 1;
 		t.scaleY = 1;
-		t.width = 160;
+		t.width = 168;
 		t.x = 433;
 		t.y = 157;
 		t.elementsContent = [this._Rect2_i(),this._Label1_i()];
@@ -5803,7 +5971,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.horizontalCenter = 0;
 		t.verticalCenter = 120;
 		t.width = 200;
-		t.elementsContent = [this._Label2_i(),this._Group1_i()];
+		t.elementsContent = [this._Label2_i(),this._Group3_i()];
 		return t;
 	};
 	_proto._Label2_i = function () {
@@ -5818,7 +5986,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.top = 0;
 		return t;
 	};
-	_proto._Group1_i = function () {
+	_proto._Group3_i = function () {
 		var t = new eui.Group();
 		t.height = 30;
 		t.left = 0;
@@ -6045,7 +6213,7 @@ window.GiftMessage=window.GiftMessage||{};
 		var t = new eui.Label();
 		this._Label2 = t;
 		t.bold = true;
-		t.fontFamily = "ZhenyanGB-Regular";
+		t.fontFamily = "ZhenyanGB";
 		t.left = 0;
 		t.size = 44;
 		t.textColor = 0x1d292b;
@@ -6758,7 +6926,7 @@ window.GiftMessage=window.GiftMessage||{};
 		var t = new eui.Image();
 		t.percentHeight = 100;
 		t.left = 0;
-		t.source = "btn_bg5_png";
+		t.source = "btn_bg3_png";
 		t.top = 0;
 		t.percentWidth = 100;
 		return t;
@@ -6788,7 +6956,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.right = 0;
 		t.scaleX = 1;
 		t.scaleY = 1;
-		t.source = "btn_bg5_png";
+		t.source = "btn_bg3_png";
 		t.top = 0;
 		t.percentWidth = 100;
 		return t;
@@ -6938,7 +7106,7 @@ window.GiftMessage=window.GiftMessage||{};
 		var t = new eui.Rect();
 		t.ellipseHeight = 66;
 		t.ellipseWidth = 66;
-		t.fillColor = 0xcbf0f5;
+		t.fillColor = 0x23bfd5;
 		t.percentHeight = 100;
 		t.left = -1;
 		t.top = 0;
@@ -9018,6 +9186,7 @@ window.GiftMessage=window.GiftMessage||{};
 	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.bold = true;
+		t.fontFamily = "ZhenyanGB";
 		t.horizontalCenter = 0;
 		t.size = 44;
 		t.text = "正确答案";
@@ -9132,7 +9301,7 @@ window.GiftMessage=window.GiftMessage||{};
 	_proto.close_btn_i = function () {
 		var t = new eui.Group();
 		this.close_btn = t;
-		t.height = 70;
+		t.height = 80;
 		t.horizontalCenter = 0;
 		t.scaleX = 1;
 		t.scaleY = 1;

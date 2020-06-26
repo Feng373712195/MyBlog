@@ -22,6 +22,26 @@
 			"name": "btn_bg2_png"
 		},
 		{
+			"url": "assets/images/btn_bg3.png",
+			"type": "image",
+			"name": "btn_bg3_png"
+		},
+		{
+			"url": "assets/images/btn_bg4.png",
+			"type": "image",
+			"name": "btn_bg4_png"
+		},
+				{
+			"url": "assets/images/btn_bg5.png",
+			"type": "image",
+			"name": "btn_bg5_png"
+		},
+		{
+			"url": "assets/images/btn_bg6.png",
+			"type": "image",
+			"name": "btn_bg6_png"
+		},
+		{
 			"url": "assets/images/vs.png",
 			"type": "image",
 			"name": "vs_png"
