@@ -11,7 +11,7 @@ window.GiftMessage=window.GiftMessage||{};
                 window.generateEUI = window.generateEUI||{};
                 generateEUI.paths = generateEUI.paths||{};
                 generateEUI.styles = undefined;
-                generateEUI.skins = {"StartScene":"resource/game_skins/StartScene.exml","RankScene":"resource/game_skins/RankScene.exml","BeginScene":"resource/game_skins/BeginScene.exml","RankItem":"resource/game_skins/RankItem.exml","GameScene":"resource/game_skins/GameScene.exml","LoginInMessageBox":"resource/game_skins/LoginInMessageBox.exml","LevelUpMessageBox":"resource/game_skins/LevelUpMessageBox.exml","RankingListScene":"resource/game_skins/RankingListScene.exml","RankingItem":"resource/game_skins/RankingItem.exml","RankingResultScene":"resource/game_skins/RankingResultScene.exml","ResultMessageBox":"resource/game_skins/ResultMessageBox.exml","UseKeyMessageBox":"resource/game_skins/UseKeyMessageBox.exml","NoKeyMessageBox":"resource/game_skins/NoKeyMessageBox.exml","PkScene":"resource/game_skins/PkScene.exml","PkWaitMessageBox":"resource/game_skins/PkWaitMessageBox.exml","PkResultScene":"resource/game_skins/PkResultScene.exml","ChooseTypeScene":"resource/game_skins/ChooseTypeScene.exml","ChooseTypeDetailScenen":"resource/game_skins/ChooseTypeDetailScene.exml","Loading":"resource/game_skins/Loading.exml","ShoppingMallScene":"resource/game_skins/ShoppingMallScene.exml","ShoppingItem":"resource/game_skins/ShoppingItem.exml","ExchangeItem":"resource/game_skins/ExchangeItem.exml","BuySuccessMessage":"resource/game_skins/BuySuccessMessage.exml","ExchangeSuccesMessage":"resource/game_skins/ExchangeSuccesMessage.exml","PkGameScene":"resource/game_skins/PkGameScene.exml","serviceScene":"resource/game_skins/serviceScene.exml","ServiceScene":"resource/game_skins/ServiceScene.exml","AboutScene":"resource/game_skins/AboutScene.exml","AboutLevelScene":"resource/game_skins/AboutLevelScene.exml","GiftMessage":"resource/game_skins/GiftMessage.exml"};generateEUI.paths['resource/eui_skins/ButtonSkin.exml'] = window.skins.ButtonSkin = (function (_super) {
+                generateEUI.skins = {"StartScene":"resource/game_skins/StartScene.exml","RankScene":"resource/game_skins/RankScene.exml","BeginScene":"resource/game_skins/BeginScene.exml","RankItem":"resource/game_skins/RankItem.exml","GameScene":"resource/game_skins/GameScene.exml","LoginInMessageBox":"resource/game_skins/LoginInMessageBox.exml","LevelUpMessageBox":"resource/game_skins/LevelUpMessageBox.exml","RankingListScene":"resource/game_skins/RankingListScene.exml","RankingItem":"resource/game_skins/RankingItem.exml","RankingResultScene":"resource/game_skins/RankingResultScene.exml","ResultMessageBox":"resource/game_skins/ResultMessageBox.exml","UseKeyMessageBox":"resource/game_skins/UseKeyMessageBox.exml","NoKeyMessageBox":"resource/game_skins/NoKeyMessageBox.exml","PkScene":"resource/game_skins/PkScene.exml","PkWaitMessageBox":"resource/game_skins/PkWaitMessageBox.exml","PkResultScene":"resource/game_skins/PkResultScene.exml","ChooseTypeScene":"resource/game_skins/ChooseTypeScene.exml","ChooseTypeDetailScenen":"resource/game_skins/ChooseTypeDetailScene.exml","Loading":"resource/game_skins/Loading.exml","ShoppingMallScene":"resource/game_skins/ShoppingMallScene.exml","ShoppingItem":"resource/game_skins/ShoppingItem.exml","ExchangeItem":"resource/game_skins/ExchangeItem.exml","BuySuccessMessage":"resource/game_skins/BuySuccessMessage.exml","ExchangeSuccesMessage":"resource/game_skins/ExchangeSuccesMessage.exml","PkGameScene":"resource/game_skins/PkGameScene.exml","serviceScene":"resource/game_skins/serviceScene.exml","ServiceScene":"resource/game_skins/ServiceScene.exml","AboutScene":"resource/game_skins/AboutScene.exml","AboutLevelScene":"resource/game_skins/AboutLevelScene.exml","GiftMessage":"resource/game_skins/GiftMessage.exml","ChooseTypeItem":"resource/game_skins/ChooseTypeItem.exml","MyGiftItem":"resource/game_skins/MyGiftItem.exml","AboutLevelItem":"resource/game_skins/AboutLevelItem.exml"};generateEUI.paths['resource/eui_skins/ButtonSkin.exml'] = window.skins.ButtonSkin = (function (_super) {
 	__extends(ButtonSkin, _super);
 	function ButtonSkin() {
 		_super.call(this);
@@ -621,15 +621,54 @@ window.GiftMessage=window.GiftMessage||{};
 		return t;
 	};
 	return VSliderSkin;
+})(eui.Skin);generateEUI.paths['resource/game_skins/AboutLevelItem.exml'] = window.AboutLevelItemSkin = (function (_super) {
+	__extends(AboutLevelItemSkin, _super);
+	function AboutLevelItemSkin() {
+		_super.call(this);
+		this.skinParts = ["text"];
+		
+		this.height = 100;
+		this.width = 564;
+		this.elementsContent = [this._Rect1_i(),this.text_i()];
+	}
+	var _proto = AboutLevelItemSkin.prototype;
+
+	_proto._Rect1_i = function () {
+		var t = new eui.Rect();
+		t.ellipseHeight = 20;
+		t.ellipseWidth = 20;
+		t.fillColor = 0xf7d724;
+		t.height = 17;
+		t.left = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.strokeAlpha = 1;
+		t.strokeColor = 0x23bfd5;
+		t.strokeWeight = 3;
+		t.verticalCenter = 0;
+		t.width = 17;
+		return t;
+	};
+	_proto.text_i = function () {
+		var t = new eui.Label();
+		this.text = t;
+		t.fontFamily = "PingFangSC";
+		t.text = "";
+		t.textColor = 0x1d292b;
+		t.verticalCenter = 0;
+		t.x = 40;
+		return t;
+	};
+	return AboutLevelItemSkin;
 })(eui.Skin);generateEUI.paths['resource/game_skins/AboutLevelScene.exml'] = window.AboutLevelSceneSkin = (function (_super) {
 	__extends(AboutLevelSceneSkin, _super);
 	function AboutLevelSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["level_list"];
+		this.skinParts = ["tip","level_list"];
 		
 		this.height = 1334;
 		this.width = 750;
-		this.elementsContent = [this._Rect1_i(),this._Image1_i(),this._Group1_i(),this._Image3_i()];
+		this.elementsContent = [this._Rect1_i(),this._Image1_i(),this._Group2_i(),this._Image3_i()];
 	}
 	var _proto = AboutLevelSceneSkin.prototype;
 
@@ -651,7 +690,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.x = 0;
 		return t;
 	};
-	_proto._Group1_i = function () {
+	_proto._Group2_i = function () {
 		var t = new eui.Group();
 		t.bottom = 22;
 		t.height = 1122;
@@ -659,7 +698,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.top = 63;
 		t.width = 662;
 		t.y = 189.9;
-		t.elementsContent = [this._Rect2_i(),this._Image2_i(),this._Label1_i(),this._Scroller1_i()];
+		t.elementsContent = [this._Rect2_i(),this._Image2_i(),this.tip_i(),this.level_list_i()];
 		return t;
 	};
 	_proto._Rect2_i = function () {
@@ -685,18 +724,20 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = -40.5;
 		return t;
 	};
-	_proto._Label1_i = function () {
+	_proto.tip_i = function () {
 		var t = new eui.Label();
+		this.tip = t;
 		t.horizontalCenter = 0;
 		t.lineSpacing = 24;
-		t.text = "获得的积分用于提升段位，后台配置段位阙值，低于当前段位阙值时变为降级";
+		t.text = "";
 		t.textColor = 0x1D292B;
 		t.width = 564;
 		t.y = 94;
 		return t;
 	};
-	_proto._Scroller1_i = function () {
+	_proto.level_list_i = function () {
 		var t = new eui.Scroller();
+		this.level_list = t;
 		t.bottom = 60;
 		t.height = 568;
 		t.horizontalCenter = 0;
@@ -705,12 +746,11 @@ window.GiftMessage=window.GiftMessage||{};
 		t.top = 260;
 		t.width = 564;
 		t.y = 257;
-		t.viewport = this.level_list_i();
+		t.viewport = this._Group1_i();
 		return t;
 	};
-	_proto.level_list_i = function () {
+	_proto._Group1_i = function () {
 		var t = new eui.Group();
-		this.level_list = t;
 		return t;
 	};
 	_proto._Image3_i = function () {
@@ -935,7 +975,7 @@ window.GiftMessage=window.GiftMessage||{};
 	__extends(BuySuccessMessageSkin, _super);
 	function BuySuccessMessageSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","close_btn","bottom_btns","messagebox"];
+		this.skinParts = ["bg","icon","amount","remark","close_btn","bottom_btns","messagebox"];
 		
 		this.height = 1334;
 		this.width = 750;
@@ -966,7 +1006,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 586;
 		t.x = 82;
 		t.y = 399;
-		t.elementsContent = [this.bg_i(),this._Image1_i(),this._Label1_i(),this._Label2_i(),this._Label3_i(),this.bottom_btns_i()];
+		t.elementsContent = [this.bg_i(),this.icon_i(),this._Label1_i(),this.amount_i(),this.remark_i(),this.bottom_btns_i()];
 		return t;
 	};
 	_proto.bg_i = function () {
@@ -979,11 +1019,12 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 0;
 		return t;
 	};
-	_proto._Image1_i = function () {
+	_proto.icon_i = function () {
 		var t = new eui.Image();
+		this.icon = t;
 		t.height = 157;
 		t.horizontalCenter = 0;
-		t.source = "buy_top_png";
+		t.source = "";
 		t.top = -78.5;
 		t.width = 243;
 		return t;
@@ -1001,23 +1042,25 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 135;
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto.amount_i = function () {
 		var t = new eui.Label();
+		this.amount = t;
 		t.bold = true;
 		t.fontFamily = "Arial-Black";
 		t.horizontalCenter = 0;
 		t.size = 44;
-		t.text = "+5";
+		t.text = "";
 		t.textColor = 0x454f5b;
 		t.top = 229;
 		return t;
 	};
-	_proto._Label3_i = function () {
+	_proto.remark_i = function () {
 		var t = new eui.Label();
+		this.remark = t;
 		t.bottom = 192;
 		t.fontFamily = "PingFangSC-Medium";
 		t.horizontalCenter = 0;
-		t.text = "成功购买5把解锁钥匙";
+		t.text = "";
 		t.textColor = 0x1D292B;
 		return t;
 	};
@@ -1040,7 +1083,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.percentWidth = 100;
-		t.elementsContent = [this._Rect2_i(),this._Label4_i()];
+		t.elementsContent = [this._Rect2_i(),this._Label2_i()];
 		return t;
 	};
 	_proto._Rect2_i = function () {
@@ -1055,7 +1098,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 0;
 		return t;
 	};
-	_proto._Label4_i = function () {
+	_proto._Label2_i = function () {
 		var t = new eui.Label();
 		t.horizontalCenter = 0;
 		t.text = "好的";
@@ -1182,15 +1225,84 @@ window.GiftMessage=window.GiftMessage||{};
 		return t;
 	};
 	return ChooseTypeDetailScenenSkin;
+})(eui.Skin);generateEUI.paths['resource/game_skins/ChooseTypeItem.exml'] = window.ChooseTypeItemSkin = (function (_super) {
+	__extends(ChooseTypeItemSkin, _super);
+	function ChooseTypeItemSkin() {
+		_super.call(this);
+		this.skinParts = ["bg","icon_mask","icon","text"];
+		
+		this.height = 148;
+		this.width = 328;
+		this.elementsContent = [this.bg_i(),this._Group1_i(),this.text_i()];
+		
+		eui.Binding.$bindProperties(this, ["icon_mask"],[0],this.icon,"mask");
+	}
+	var _proto = ChooseTypeItemSkin.prototype;
+
+	_proto.bg_i = function () {
+		var t = new eui.Rect();
+		this.bg = t;
+		t.fillColor = 0xffffff;
+		t.height = 148;
+		t.left = 0;
+		t.top = 0;
+		t.width = 328;
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.height = 110;
+		t.left = 15;
+		t.verticalCenter = 0;
+		t.width = 110;
+		t.elementsContent = [this.icon_mask_i(),this.icon_i()];
+		return t;
+	};
+	_proto.icon_mask_i = function () {
+		var t = new eui.Rect();
+		this.icon_mask = t;
+		t.ellipseHeight = 110;
+		t.ellipseWidth = 110;
+		t.percentHeight = 100;
+		t.left = 0;
+		t.top = 0;
+		t.percentWidth = 100;
+		return t;
+	};
+	_proto.icon_i = function () {
+		var t = new eui.Image();
+		this.icon = t;
+		t.height = 110;
+		t.left = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.source = "";
+		t.top = 0;
+		t.width = 110;
+		return t;
+	};
+	_proto.text_i = function () {
+		var t = new eui.Label();
+		this.text = t;
+		t.fontFamily = "Tahoma";
+		t.left = 150;
+		t.size = 36;
+		t.stroke = 3;
+		t.strokeColor = 0x139fb3;
+		t.text = "";
+		t.verticalCenter = 0;
+		return t;
+	};
+	return ChooseTypeItemSkin;
 })(eui.Skin);generateEUI.paths['resource/game_skins/ChooseTypeScene.exml'] = window.ChooseTypeSceneSkin = (function (_super) {
 	__extends(ChooseTypeSceneSkin, _super);
 	function ChooseTypeSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","slider_item0","slider_item1","slider_item2","slider_item3","slider_item4","slider_item5","slider","slider_btn1","slider_btn2","slider_btn3","slider_btn4","slider_btn","slider_wap","type_btn1","type_btn2","type_btn3","type_btn4","type_btn5","type_btn6","type_btn7","type_btn8","type_btn9","type_btn10","type_btn11","type_btn12","type_btn13"];
+		this.skinParts = ["bg","slider_item0","slider_item1","slider_item2","slider_item3","slider_item4","slider_item5","slider","slider_btn1","slider_btn2","slider_btn3","slider_btn4","slider_btn","slider_wap","list"];
 		
 		this.height = 1334;
 		this.width = 750;
-		this.elementsContent = [this.bg_i(),this.slider_wap_i(),this._Image1_i(),this._Scroller1_i()];
+		this.elementsContent = [this.bg_i(),this.slider_wap_i(),this._Image1_i(),this.list_i()];
 	}
 	var _proto = ChooseTypeSceneSkin.prototype;
 
@@ -1381,8 +1493,9 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 670;
 		return t;
 	};
-	_proto._Scroller1_i = function () {
+	_proto.list_i = function () {
 		var t = new eui.Scroller();
+		this.list = t;
 		t.anchorOffsetX = 0;
 		t.anchorOffsetY = 0;
 		t.bottom = 31;
@@ -1398,165 +1511,13 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentHeight = 100;
 		t.percentWidth = 100;
 		t.layout = this._TileLayout1_i();
-		t.elementsContent = [this.type_btn1_i(),this.type_btn2_i(),this.type_btn3_i(),this.type_btn4_i(),this.type_btn5_i(),this.type_btn6_i(),this.type_btn7_i(),this.type_btn8_i(),this.type_btn9_i(),this.type_btn10_i(),this.type_btn11_i(),this.type_btn12_i(),this.type_btn13_i()];
 		return t;
 	};
 	_proto._TileLayout1_i = function () {
 		var t = new eui.TileLayout();
-		return t;
-	};
-	_proto.type_btn1_i = function () {
-		var t = new eui.Image();
-		this.type_btn1 = t;
-		t.height = 148;
-		t.source = "yb_select1_png";
-		t.width = 338;
-		t.x = 56;
-		t.y = 52;
-		return t;
-	};
-	_proto.type_btn2_i = function () {
-		var t = new eui.Image();
-		this.type_btn2 = t;
-		t.height = 148;
-		t.scaleX = 1;
-		t.scaleY = 1;
-		t.source = "yb_select2_png";
-		t.width = 338;
-		t.x = 24;
-		t.y = -502.05999999999995;
-		return t;
-	};
-	_proto.type_btn3_i = function () {
-		var t = new eui.Image();
-		this.type_btn3 = t;
-		t.height = 148;
-		t.scaleX = 1;
-		t.scaleY = 1;
-		t.source = "yb_select3_png";
-		t.width = 338;
-		t.x = 24;
-		t.y = -502.05999999999995;
-		return t;
-	};
-	_proto.type_btn4_i = function () {
-		var t = new eui.Image();
-		this.type_btn4 = t;
-		t.height = 148;
-		t.scaleX = 1;
-		t.scaleY = 1;
-		t.source = "yb_select4_png";
-		t.width = 338;
-		t.x = -8;
-		t.y = -1056.12;
-		return t;
-	};
-	_proto.type_btn5_i = function () {
-		var t = new eui.Image();
-		this.type_btn5 = t;
-		t.height = 148;
-		t.scaleX = 1;
-		t.scaleY = 1;
-		t.source = "yb_select5_png";
-		t.width = 338;
-		t.x = 2;
-		t.y = -1046.12;
-		return t;
-	};
-	_proto.type_btn6_i = function () {
-		var t = new eui.Image();
-		this.type_btn6 = t;
-		t.height = 148;
-		t.scaleX = 1;
-		t.scaleY = 1;
-		t.source = "yb_select6_png";
-		t.width = 338;
-		t.x = 12.000000000000007;
-		t.y = -1036.12;
-		return t;
-	};
-	_proto.type_btn7_i = function () {
-		var t = new eui.Image();
-		this.type_btn7 = t;
-		t.height = 148;
-		t.scaleX = 1;
-		t.scaleY = 1;
-		t.source = "yb_select7_png";
-		t.width = 338;
-		t.x = 22;
-		t.y = -1026.12;
-		return t;
-	};
-	_proto.type_btn8_i = function () {
-		var t = new eui.Image();
-		this.type_btn8 = t;
-		t.height = 148;
-		t.scaleX = 1;
-		t.scaleY = 1;
-		t.source = "yb_select8_png";
-		t.width = 338;
-		t.x = -11.999999999999996;
-		t.y = -1580.1799999999998;
-		return t;
-	};
-	_proto.type_btn9_i = function () {
-		var t = new eui.Image();
-		this.type_btn9 = t;
-		t.height = 148;
-		t.scaleX = 1;
-		t.scaleY = 1;
-		t.source = "yb_select9_png";
-		t.width = 338;
-		t.x = 22;
-		t.y = -502.05999999999995;
-		return t;
-	};
-	_proto.type_btn10_i = function () {
-		var t = new eui.Image();
-		this.type_btn10 = t;
-		t.height = 148;
-		t.scaleX = 1;
-		t.scaleY = 1;
-		t.source = "yb_select10_png";
-		t.width = 338;
-		t.x = 32;
-		t.y = -492.05999999999995;
-		return t;
-	};
-	_proto.type_btn11_i = function () {
-		var t = new eui.Image();
-		this.type_btn11 = t;
-		t.height = 148;
-		t.scaleX = 1;
-		t.scaleY = 1;
-		t.source = "yb_select11_png";
-		t.width = 338;
-		t.x = 42;
-		t.y = -482.05999999999995;
-		return t;
-	};
-	_proto.type_btn12_i = function () {
-		var t = new eui.Image();
-		this.type_btn12 = t;
-		t.height = 148;
-		t.scaleX = 1;
-		t.scaleY = 1;
-		t.source = "yb_select12_png";
-		t.width = 338;
-		t.x = 52;
-		t.y = -472.05999999999995;
-		return t;
-	};
-	_proto.type_btn13_i = function () {
-		var t = new eui.Image();
-		this.type_btn13 = t;
-		t.height = 148;
-		t.scaleX = 1;
-		t.scaleY = 1;
-		t.source = "yb_select13_png";
-		t.width = 338;
-		t.x = 18;
-		t.y = -1026.12;
+		t.columnAlign = "justifyUsingWidth";
+		t.orientation = "rows";
+		t.rowAlign = "top";
 		return t;
 	};
 	return ChooseTypeSceneSkin;
@@ -2862,7 +2823,7 @@ window.GiftMessage=window.GiftMessage||{};
 		var t = new eui.TileLayout();
 		t.columnAlign = "justifyUsingGap";
 		t.horizontalGap = 0;
-		t.rowAlign = "justifyUsingHeight";
+		t.rowAlign = "justifyUsingGap";
 		t.verticalGap = 0;
 		return t;
 	};
@@ -3482,6 +3443,95 @@ window.GiftMessage=window.GiftMessage||{};
 		return t;
 	};
 	return LoginInMessageBoxSkin;
+})(eui.Skin);generateEUI.paths['resource/game_skins/MyGiftItem.exml'] = window.MyGiftItemSkin = (function (_super) {
+	__extends(MyGiftItemSkin, _super);
+	function MyGiftItemSkin() {
+		_super.call(this);
+		this.skinParts = ["bottom_board","gift_img","gift_name","gift_time","gift_info"];
+		
+		this.height = 114;
+		this.width = 670;
+		this.elementsContent = [this.bottom_board_i(),this._Group1_i()];
+	}
+	var _proto = MyGiftItemSkin.prototype;
+
+	_proto.bottom_board_i = function () {
+		var t = new eui.Rect();
+		this.bottom_board = t;
+		t.bottom = 0;
+		t.fillColor = 0xCFCFCF;
+		t.height = 1;
+		t.left = 52;
+		t.right = 52;
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.percentHeight = 100;
+		t.left = 37;
+		t.top = 0;
+		t.width = 200;
+		t.elementsContent = [this.gift_img_i(),this.gift_info_i()];
+		return t;
+	};
+	_proto.gift_img_i = function () {
+		var t = new eui.Image();
+		this.gift_img = t;
+		t.height = 64;
+		t.left = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.source = "shopping_key_png";
+		t.verticalCenter = 0;
+		t.width = 64;
+		return t;
+	};
+	_proto.gift_info_i = function () {
+		var t = new eui.Group();
+		this.gift_info = t;
+		t.anchorOffsetY = 0;
+		t.height = 60;
+		t.verticalCenter = 0;
+		t.width = 200;
+		t.x = 101;
+		t.layout = this._VerticalLayout1_i();
+		t.elementsContent = [this.gift_name_i(),this.gift_time_i()];
+		return t;
+	};
+	_proto._VerticalLayout1_i = function () {
+		var t = new eui.VerticalLayout();
+		t.horizontalAlign = "left";
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto.gift_name_i = function () {
+		var t = new eui.Label();
+		this.gift_name = t;
+		t.fontFamily = "PingFangSC-Semibold";
+		t.left = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.text = "";
+		t.textColor = 0x1D292B;
+		t.verticalCenter = 0;
+		return t;
+	};
+	_proto.gift_time_i = function () {
+		var t = new eui.Label();
+		this.gift_time = t;
+		t.fontFamily = "PingFangSC-Semibold";
+		t.left = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.size = 24;
+		t.text = "";
+		t.textColor = 0x1D292B;
+		t.verticalCenter = 0;
+		t.x = -101;
+		t.y = 10;
+		return t;
+	};
+	return MyGiftItemSkin;
 })(eui.Skin);generateEUI.paths['resource/game_skins/NoKeyMessageBox.exml'] = window.NoKeyMessageBoxSkin = (function (_super) {
 	__extends(NoKeyMessageBoxSkin, _super);
 	function NoKeyMessageBoxSkin() {
@@ -5453,13 +5503,14 @@ window.GiftMessage=window.GiftMessage||{};
 	__extends(PkSceneSkin, _super);
 	function PkSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","user_avatar_board","user_avatar_mask","user_avatar","user_name","rival_avatar","rival_name","warp","pk_btn","share_btn"];
+		this.skinParts = ["bg","user_avatar_board","user_avatar_mask","user_avatar","user_name","rival_avatar_board","rival_avatar_mask","rival_avatar","rival_name","warp","pk_btn","share_btn"];
 		
 		this.height = 1334;
 		this.width = 750;
-		this.elementsContent = [this.bg_i(),this._Image1_i(),this.warp_i(),this._Group4_i()];
+		this.elementsContent = [this.bg_i(),this._Image1_i(),this.warp_i(),this._Group5_i()];
 		
 		eui.Binding.$bindProperties(this, ["user_avatar_mask"],[0],this.user_avatar,"mask");
+		eui.Binding.$bindProperties(this, ["rival_avatar_mask"],[0],this.rival_avatar,"mask");
 	}
 	var _proto = PkSceneSkin.prototype;
 
@@ -5488,7 +5539,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.horizontalCenter = 0;
 		t.top = 361;
 		t.width = 614;
-		t.elementsContent = [this._Group2_i(),this._Group3_i(),this._Image2_i()];
+		t.elementsContent = [this._Group2_i(),this._Group4_i(),this._Image2_i()];
 		return t;
 	};
 	_proto._Group2_i = function () {
@@ -5574,7 +5625,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = -124;
 		return t;
 	};
-	_proto._Group3_i = function () {
+	_proto._Group4_i = function () {
 		var t = new eui.Group();
 		t.height = 210;
 		t.right = 0;
@@ -5583,7 +5634,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.top = 0;
 		t.width = 160;
 		t.layout = this._VerticalLayout2_i();
-		t.elementsContent = [this.rival_avatar_i(),this.rival_name_i()];
+		t.elementsContent = [this._Group3_i(),this.rival_name_i()];
 		return t;
 	};
 	_proto._VerticalLayout2_i = function () {
@@ -5593,16 +5644,57 @@ window.GiftMessage=window.GiftMessage||{};
 		t.verticalAlign = "top";
 		return t;
 	};
+	_proto._Group3_i = function () {
+		var t = new eui.Group();
+		t.height = 166;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.width = 166;
+		t.x = -455;
+		t.y = 740;
+		t.elementsContent = [this.rival_avatar_board_i(),this.rival_avatar_mask_i(),this.rival_avatar_i()];
+		return t;
+	};
+	_proto.rival_avatar_board_i = function () {
+		var t = new eui.Rect();
+		this.rival_avatar_board = t;
+		t.ellipseHeight = 20;
+		t.ellipseWidth = 20;
+		t.fillColor = 0xFF0000;
+		t.height = 166;
+		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.verticalCenter = 0;
+		t.width = 166;
+		return t;
+	};
+	_proto.rival_avatar_mask_i = function () {
+		var t = new eui.Rect();
+		this.rival_avatar_mask = t;
+		t.ellipseHeight = 20;
+		t.ellipseWidth = 20;
+		t.fillColor = 0xFF0000;
+		t.height = 160;
+		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.verticalCenter = 0;
+		t.width = 160;
+		t.x = 0;
+		t.y = 181;
+		return t;
+	};
 	_proto.rival_avatar_i = function () {
 		var t = new eui.Image();
 		this.rival_avatar = t;
-		t.height = 168;
-		t.left = 0;
+		t.height = 160;
+		t.horizontalCenter = 0;
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.source = "who_png";
-		t.top = 0;
-		t.width = 168;
+		t.verticalCenter = 0;
+		t.width = 160;
 		return t;
 	};
 	_proto.rival_name_i = function () {
@@ -5627,7 +5719,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 243;
 		return t;
 	};
-	_proto._Group4_i = function () {
+	_proto._Group5_i = function () {
 		var t = new eui.Group();
 		t.anchorOffsetY = 0;
 		t.height = 230.66;
@@ -6170,7 +6262,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.left = 0;
 		t.scaleX = 1;
 		t.scaleY = 1;
-		t.verticalCenter = 0;
+		t.verticalCenter = -10;
 		t.percentWidth = 100;
 		t.x = 0;
 		t.y = 0;
@@ -7968,7 +8060,7 @@ window.GiftMessage=window.GiftMessage||{};
 	__extends(ShoppingItemSkin, _super);
 	function ShoppingItemSkin() {
 		_super.call(this);
-		this.skinParts = ["bottom_board","gift_img","buy_btn"];
+		this.skinParts = ["bottom_board","gift_img","amount","price","buy_btn"];
 		
 		this.height = 114;
 		this.width = 670;
@@ -7992,7 +8084,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.left = 37;
 		t.top = 0;
 		t.width = 200;
-		t.elementsContent = [this.gift_img_i(),this._Label1_i()];
+		t.elementsContent = [this.gift_img_i(),this.amount_i()];
 		return t;
 	};
 	_proto.gift_img_i = function () {
@@ -8007,8 +8099,9 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 64;
 		return t;
 	};
-	_proto._Label1_i = function () {
+	_proto.amount_i = function () {
 		var t = new eui.Label();
+		this.amount = t;
 		t.fontFamily = "PingFangSC-Semibold";
 		t.left = 98;
 		t.scaleX = 1;
@@ -8024,7 +8117,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.horizontalCenter = 0;
 		t.top = 0;
 		t.width = 200;
-		t.elementsContent = [this._Image1_i(),this._Label2_i()];
+		t.elementsContent = [this._Image1_i(),this.price_i()];
 		return t;
 	};
 	_proto._Image1_i = function () {
@@ -8036,8 +8129,9 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 55;
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto.price_i = function () {
 		var t = new eui.Label();
+		this.price = t;
 		t.fontFamily = "PingFangSC-Medium";
 		t.left = 80;
 		t.text = "1,000";
@@ -8060,7 +8154,7 @@ window.GiftMessage=window.GiftMessage||{};
 	__extends(ShoppingMallSceneSkin, _super);
 	function ShoppingMallSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","list_bg","shopping1_view","shopping2_view","tab1_btn","tab2_btn","loading","avater_board","avater","avater_mask","user_avater_box","user_name","user","jb_icon","user_momey"];
+		this.skinParts = ["bg","list_bg","shopping1_view","shopping2_view","shopping3_view","tab1_btn","tab2_btn","tab3_btn","no_data","loading","avater_board","avater","avater_mask","user_avater_box","user_name","user","jb_icon","user_momey"];
 		
 		this.height = 1334;
 		this.width = 750;
@@ -8097,7 +8191,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.top = 117;
 		t.width = 200;
 		t.y = 667;
-		t.elementsContent = [this.list_bg_i(),this.shopping1_view_i(),this.shopping2_view_i(),this._Group4_i(),this.loading_i()];
+		t.elementsContent = [this.list_bg_i(),this.shopping1_view_i(),this.shopping2_view_i(),this.shopping3_view_i(),this._Group4_i(),this.no_data_i(),this.loading_i()];
 		return t;
 	};
 	_proto.list_bg_i = function () {
@@ -8155,6 +8249,28 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		return t;
 	};
+	_proto.shopping3_view_i = function () {
+		var t = new eui.Scroller();
+		this.shopping3_view = t;
+		t.bottom = 0;
+		t.percentHeight = 100;
+		t.left = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.top = 68;
+		t.visible = false;
+		t.percentWidth = 100;
+		t.x = -30;
+		t.y = -49;
+		t.viewport = this._Group3_i();
+		return t;
+	};
+	_proto._Group3_i = function () {
+		var t = new eui.Group();
+		t.percentHeight = 100;
+		t.percentWidth = 100;
+		return t;
+	};
 	_proto._Group4_i = function () {
 		var t = new eui.Group();
 		t.height = 68;
@@ -8163,7 +8279,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.top = 0;
 		t.percentWidth = 100;
 		t.layout = this._HorizontalLayout1_i();
-		t.elementsContent = [this.tab1_btn_i(),this.tab2_btn_i(),this._Group3_i()];
+		t.elementsContent = [this.tab1_btn_i(),this.tab2_btn_i(),this.tab3_btn_i()];
 		return t;
 	};
 	_proto._HorizontalLayout1_i = function () {
@@ -8254,8 +8370,9 @@ window.GiftMessage=window.GiftMessage||{};
 		t.x = 190.00000000000006;
 		return t;
 	};
-	_proto._Group3_i = function () {
+	_proto.tab3_btn_i = function () {
 		var t = new eui.Group();
+		this.tab3_btn = t;
 		t.percentHeight = 100;
 		t.scaleX = 1;
 		t.scaleY = 1;
@@ -8295,6 +8412,19 @@ window.GiftMessage=window.GiftMessage||{};
 		t.verticalAlign = "middle";
 		t.percentWidth = 100;
 		t.x = 189.99999999999983;
+		return t;
+	};
+	_proto.no_data_i = function () {
+		var t = new eui.Label();
+		this.no_data = t;
+		t.fontFamily = "PingFangSC-Semibold";
+		t.horizontalCenter = 0;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.text = "暂无礼品";
+		t.textColor = 0x1D292B;
+		t.verticalCenter = 0;
+		t.visible = false;
 		return t;
 	};
 	_proto.loading_i = function () {
