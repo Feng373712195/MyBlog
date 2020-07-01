@@ -1,11 +1,23 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,loading_fill_png,loading_bg_png,login_png,btn_bg62_png,btn_bg5_png,btn_bg6_png,rank_bg_png,about_level_top_png,ranking_item_bg2_png",
+			"keys": "description_json,loading_fill_png,loading_bg_png,login_png",
 			"name": "preload"
 		}
 	],
 	"resources": [
+		{
+			"name":"start",
+			"url":"assets/sheet/start/start.json",
+			"subkeys":"arrow_png,bottom_nav1_png,bottom_nav2_png,bottom_nav3_png,bottom_nav4_png,nokey_top_png,reward_png,ax_png,back_png,jb_png,key_png",
+			"type":"sheet"
+		},
+		{
+			"name":"game",
+			"url":"assets/sheet/game/game.json",
+			"subkeys":"about_level_top_png,about_logo_png,about_top_png,answer_error_png,answer_right_png,game_bg2_png,game_time_png,logo_ax_png,question_box_png,ranking_s_png",
+			"type":"sheet"
+		},
 		{
 			"url": "config/description.json",
 			"type": "json",
