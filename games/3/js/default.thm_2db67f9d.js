@@ -1527,7 +1527,7 @@ window.GiftMessage=window.GiftMessage||{};
 	__extends(ExchangeItemSkin, _super);
 	function ExchangeItemSkin() {
 		_super.call(this);
-		this.skinParts = ["bottom_board","gift_img","exchange_btn"];
+		this.skinParts = ["bottom_board","gift_img","price","exchange_btn"];
 		
 		this.height = 114;
 		this.width = 670;
@@ -1574,7 +1574,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 200;
 		t.x = 10;
 		t.y = 10;
-		t.elementsContent = [this._Image1_i(),this._Label1_i()];
+		t.elementsContent = [this._Image1_i(),this.price_i()];
 		return t;
 	};
 	_proto._Image1_i = function () {
@@ -1586,11 +1586,12 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 55;
 		return t;
 	};
-	_proto._Label1_i = function () {
+	_proto.price_i = function () {
 		var t = new eui.Label();
+		this.price = t;
 		t.fontFamily = "PingFangSC-Medium";
 		t.left = 80;
-		t.text = "1,000";
+		t.text = "1000";
 		t.textColor = 0xF64414;
 		t.y = 40;
 		return t;
@@ -1633,7 +1634,7 @@ window.GiftMessage=window.GiftMessage||{};
 	__extends(ExchangeSuccesMessageSkin, _super);
 	function ExchangeSuccesMessageSkin() {
 		_super.call(this);
-		this.skinParts = ["bg","close_btn","bottom_btns","messagebox"];
+		this.skinParts = ["bg","message","close_btn","bottom_btns","messagebox"];
 		
 		this.height = 1334;
 		this.width = 750;
@@ -1665,7 +1666,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 586;
 		t.x = 82;
 		t.y = 404;
-		t.elementsContent = [this.bg_i(),this._Label1_i(),this._Label2_i(),this._Image1_i(),this.bottom_btns_i()];
+		t.elementsContent = [this.bg_i(),this.message_i(),this._Label1_i(),this._Image1_i(),this.bottom_btns_i()];
 		return t;
 	};
 	_proto.bg_i = function () {
@@ -1678,16 +1679,17 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 0;
 		return t;
 	};
-	_proto._Label1_i = function () {
+	_proto.message_i = function () {
 		var t = new eui.Label();
+		this.message = t;
 		t.bottom = 192;
 		t.fontFamily = "PingFangSC-Medium";
 		t.horizontalCenter = 0;
-		t.text = "成功兑换...";
+		t.text = "";
 		t.textColor = 0x1D292B;
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto._Label1_i = function () {
 		var t = new eui.Label();
 		t.border = false;
 		t.fontFamily = "ZhenyanGB-Regular";
@@ -1728,7 +1730,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.scaleX = 1;
 		t.scaleY = 1;
 		t.percentWidth = 100;
-		t.elementsContent = [this._Rect2_i(),this._Label3_i()];
+		t.elementsContent = [this._Rect2_i(),this._Label2_i()];
 		return t;
 	};
 	_proto._Rect2_i = function () {
@@ -1743,7 +1745,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 0;
 		return t;
 	};
-	_proto._Label3_i = function () {
+	_proto._Label2_i = function () {
 		var t = new eui.Label();
 		t.horizontalCenter = 0;
 		t.text = "好的";
