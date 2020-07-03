@@ -1757,7 +1757,7 @@ window.GiftMessage=window.GiftMessage||{};
 	__extends(GameSceneSkin, _super);
 	function GameSceneSkin() {
 		_super.call(this);
-		this.skinParts = ["question_type","question_title","question_index","question_box","time_progress","timeout","usekey_btn","question_rule","radio_box1","answer_1","radio_box2","answer_2","radio_box3","answer_3","radio_box4","answer_4","text","img","question_answer","game_window","transtions"];
+		this.skinParts = ["question_type","question_title","question_index","question_box","time_progress","timeout","use_key_bg","use_key_text","usekey_btn","question_rule","radio_box1","answer_1","radio_box2","answer_2","radio_box3","answer_3","radio_box4","answer_4","text","img","question_answer","game_window","transtions"];
 		
 		this.height = 1334;
 		this.width = 750;
@@ -2115,11 +2115,12 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 190;
 		t.x = 112;
 		t.y = 19;
-		t.elementsContent = [this._Rect8_i(),this._Label2_i()];
+		t.elementsContent = [this.use_key_bg_i(),this.use_key_text_i()];
 		return t;
 	};
-	_proto._Rect8_i = function () {
+	_proto.use_key_bg_i = function () {
 		var t = new eui.Rect();
+		this.use_key_bg = t;
 		t.ellipseHeight = 48;
 		t.ellipseWidth = 48;
 		t.fillColor = 0x23bfd5;
@@ -2129,8 +2130,9 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Label2_i = function () {
+	_proto.use_key_text_i = function () {
 		var t = new eui.Label();
+		this.use_key_text = t;
 		t.fontFamily = "PingFangSC-Regular";
 		t.horizontalCenter = 0;
 		t.size = 26;
@@ -2176,10 +2178,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		t.x = 0;
 		t.y = 212;
-		t.elementsContent = [this._Rect9_i(),this._Group8_i(),this._Image6_i(),this._Image7_i()];
+		t.elementsContent = [this._Rect8_i(),this._Group8_i(),this._Image6_i(),this._Image7_i()];
 		return t;
 	};
-	_proto._Rect9_i = function () {
+	_proto._Rect8_i = function () {
 		var t = new eui.Rect();
 		t.bottom = 0;
 		t.fillColor = 0xeddeff;
@@ -2196,10 +2198,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.scaleY = 1;
 		t.top = 0;
 		t.percentWidth = 100;
-		t.elementsContent = [this._Rect10_i(),this._Group7_i()];
+		t.elementsContent = [this._Rect9_i(),this._Group7_i()];
 		return t;
 	};
-	_proto._Rect10_i = function () {
+	_proto._Rect9_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 10;
 		t.ellipseWidth = 10;
@@ -2221,7 +2223,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		t.y = 0;
 		t.layout = this._HorizontalLayout4_i();
-		t.elementsContent = [this.radio_box1_i(),this._Label3_i()];
+		t.elementsContent = [this.radio_box1_i(),this._Label2_i()];
 		return t;
 	};
 	_proto._HorizontalLayout4_i = function () {
@@ -2242,10 +2244,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 34;
 		t.x = 361;
 		t.y = 0;
-		t.elementsContent = [this._Rect11_i(),this._Rect12_i(),this._Rect13_i()];
+		t.elementsContent = [this._Rect10_i(),this._Rect11_i(),this._Rect12_i()];
 		return t;
 	};
-	_proto._Rect11_i = function () {
+	_proto._Rect10_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 50;
 		t.ellipseWidth = 50;
@@ -2259,7 +2261,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Rect12_i = function () {
+	_proto._Rect11_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 36;
 		t.ellipseWidth = 36;
@@ -2270,7 +2272,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 4.5;
 		return t;
 	};
-	_proto._Rect13_i = function () {
+	_proto._Rect12_i = function () {
 		var t = new eui.Rect();
 		t.alpha = 0;
 		t.ellipseHeight = 36;
@@ -2286,7 +2288,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 8;
 		return t;
 	};
-	_proto._Label3_i = function () {
+	_proto._Label2_i = function () {
 		var t = new eui.Label();
 		t.height = 35;
 		t.name = "answer_text";
@@ -2334,10 +2336,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		t.x = 0;
 		t.y = 212;
-		t.elementsContent = [this._Rect14_i(),this._Group10_i(),this._Image8_i(),this._Image9_i()];
+		t.elementsContent = [this._Rect13_i(),this._Group10_i(),this._Image8_i(),this._Image9_i()];
 		return t;
 	};
-	_proto._Rect14_i = function () {
+	_proto._Rect13_i = function () {
 		var t = new eui.Rect();
 		t.bottom = 0;
 		t.fillColor = 0xEDDEFF;
@@ -2360,10 +2362,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		t.x = 0;
 		t.y = 120.00000000000011;
-		t.elementsContent = [this._Rect15_i(),this._Group9_i()];
+		t.elementsContent = [this._Rect14_i(),this._Group9_i()];
 		return t;
 	};
-	_proto._Rect15_i = function () {
+	_proto._Rect14_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 10;
 		t.ellipseWidth = 10;
@@ -2382,7 +2384,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.top = 0;
 		t.percentWidth = 100;
 		t.layout = this._HorizontalLayout5_i();
-		t.elementsContent = [this.radio_box2_i(),this._Label4_i()];
+		t.elementsContent = [this.radio_box2_i(),this._Label3_i()];
 		return t;
 	};
 	_proto._HorizontalLayout5_i = function () {
@@ -2403,10 +2405,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 34;
 		t.x = 291;
 		t.y = 32;
-		t.elementsContent = [this._Rect16_i(),this._Rect17_i(),this._Rect18_i()];
+		t.elementsContent = [this._Rect15_i(),this._Rect16_i(),this._Rect17_i()];
 		return t;
 	};
-	_proto._Rect16_i = function () {
+	_proto._Rect15_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 50;
 		t.ellipseWidth = 50;
@@ -2420,7 +2422,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Rect17_i = function () {
+	_proto._Rect16_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 36;
 		t.ellipseWidth = 36;
@@ -2431,7 +2433,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 4.5;
 		return t;
 	};
-	_proto._Rect18_i = function () {
+	_proto._Rect17_i = function () {
 		var t = new eui.Rect();
 		t.alpha = 0;
 		t.ellipseHeight = 36;
@@ -2447,7 +2449,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 8;
 		return t;
 	};
-	_proto._Label4_i = function () {
+	_proto._Label3_i = function () {
 		var t = new eui.Label();
 		t.height = 35;
 		t.name = "answer_text";
@@ -2495,10 +2497,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		t.x = 0;
 		t.y = 212;
-		t.elementsContent = [this._Rect19_i(),this._Group12_i(),this._Image10_i(),this._Image11_i()];
+		t.elementsContent = [this._Rect18_i(),this._Group12_i(),this._Image10_i(),this._Image11_i()];
 		return t;
 	};
-	_proto._Rect19_i = function () {
+	_proto._Rect18_i = function () {
 		var t = new eui.Rect();
 		t.bottom = 0;
 		t.fillColor = 0xEDDEFF;
@@ -2521,10 +2523,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		t.x = 0;
 		t.y = 120.00000000000011;
-		t.elementsContent = [this._Rect20_i(),this._Group11_i()];
+		t.elementsContent = [this._Rect19_i(),this._Group11_i()];
 		return t;
 	};
-	_proto._Rect20_i = function () {
+	_proto._Rect19_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 10;
 		t.ellipseWidth = 10;
@@ -2544,7 +2546,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.top = 0;
 		t.percentWidth = 100;
 		t.layout = this._HorizontalLayout6_i();
-		t.elementsContent = [this.radio_box3_i(),this._Label5_i()];
+		t.elementsContent = [this.radio_box3_i(),this._Label4_i()];
 		return t;
 	};
 	_proto._HorizontalLayout6_i = function () {
@@ -2565,10 +2567,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 34;
 		t.x = 291;
 		t.y = 32;
-		t.elementsContent = [this._Rect21_i(),this._Rect22_i(),this._Rect23_i()];
+		t.elementsContent = [this._Rect20_i(),this._Rect21_i(),this._Rect22_i()];
 		return t;
 	};
-	_proto._Rect21_i = function () {
+	_proto._Rect20_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 50;
 		t.ellipseWidth = 50;
@@ -2582,7 +2584,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Rect22_i = function () {
+	_proto._Rect21_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 36;
 		t.ellipseWidth = 36;
@@ -2593,7 +2595,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 4.5;
 		return t;
 	};
-	_proto._Rect23_i = function () {
+	_proto._Rect22_i = function () {
 		var t = new eui.Rect();
 		t.alpha = 0;
 		t.ellipseHeight = 36;
@@ -2609,7 +2611,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 8;
 		return t;
 	};
-	_proto._Label5_i = function () {
+	_proto._Label4_i = function () {
 		var t = new eui.Label();
 		t.height = 35;
 		t.name = "answer_text";
@@ -2657,10 +2659,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		t.x = 0;
 		t.y = 212;
-		t.elementsContent = [this._Rect24_i(),this._Group14_i(),this._Image12_i(),this._Image13_i()];
+		t.elementsContent = [this._Rect23_i(),this._Group14_i(),this._Image12_i(),this._Image13_i()];
 		return t;
 	};
-	_proto._Rect24_i = function () {
+	_proto._Rect23_i = function () {
 		var t = new eui.Rect();
 		t.bottom = 0;
 		t.fillColor = 0xEDDEFF;
@@ -2683,10 +2685,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		t.x = 0;
 		t.y = 119.99999999999977;
-		t.elementsContent = [this._Rect25_i(),this._Group13_i()];
+		t.elementsContent = [this._Rect24_i(),this._Group13_i()];
 		return t;
 	};
-	_proto._Rect25_i = function () {
+	_proto._Rect24_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 10;
 		t.ellipseWidth = 10;
@@ -2705,7 +2707,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.top = 0;
 		t.percentWidth = 100;
 		t.layout = this._HorizontalLayout7_i();
-		t.elementsContent = [this.radio_box4_i(),this._Label6_i()];
+		t.elementsContent = [this.radio_box4_i(),this._Label5_i()];
 		return t;
 	};
 	_proto._HorizontalLayout7_i = function () {
@@ -2726,10 +2728,10 @@ window.GiftMessage=window.GiftMessage||{};
 		t.width = 34;
 		t.x = 291;
 		t.y = 32;
-		t.elementsContent = [this._Rect26_i(),this._Rect27_i(),this._Rect28_i()];
+		t.elementsContent = [this._Rect25_i(),this._Rect26_i(),this._Rect27_i()];
 		return t;
 	};
-	_proto._Rect26_i = function () {
+	_proto._Rect25_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 50;
 		t.ellipseWidth = 50;
@@ -2743,7 +2745,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.percentWidth = 100;
 		return t;
 	};
-	_proto._Rect27_i = function () {
+	_proto._Rect26_i = function () {
 		var t = new eui.Rect();
 		t.ellipseHeight = 36;
 		t.ellipseWidth = 36;
@@ -2754,7 +2756,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 4.5;
 		return t;
 	};
-	_proto._Rect28_i = function () {
+	_proto._Rect27_i = function () {
 		var t = new eui.Rect();
 		t.alpha = 0;
 		t.ellipseHeight = 36;
@@ -2770,7 +2772,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 8;
 		return t;
 	};
-	_proto._Label6_i = function () {
+	_proto._Label5_i = function () {
 		var t = new eui.Label();
 		t.height = 35;
 		t.name = "answer_text";
@@ -2885,7 +2887,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.horizontalCenter = 0;
 		t.width = 200;
 		t.layout = this._HorizontalLayout8_i();
-		t.elementsContent = [this._Image15_i(),this._Label7_i()];
+		t.elementsContent = [this._Image15_i(),this._Label6_i()];
 		return t;
 	};
 	_proto._HorizontalLayout8_i = function () {
@@ -2907,7 +2909,7 @@ window.GiftMessage=window.GiftMessage||{};
 		t.y = 23;
 		return t;
 	};
-	_proto._Label7_i = function () {
+	_proto._Label6_i = function () {
 		var t = new eui.Label();
 		t.fontFamily = "PingFang-SC-Medium";
 		t.horizontalCenter = 0;
