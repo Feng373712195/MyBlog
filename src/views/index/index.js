@@ -9,6 +9,8 @@ import './style.scss'
 import '@assets/styles/scss/mixin.scss'
 import 'babel-polyfill'
 
+console.log('我回来了～')
+
 const isProd = process.env.NODE_ENV === 'dev' ? false : true;
 const Router = isProd ? BrowserRouter : HashRouter;
 
@@ -23,7 +25,7 @@ function AppWarp(props){
 }
 
 ReactDom.render((
-    <AppWarp> 
+    <AppWarp>
         <Provider store={ store } >
             <Router>
                 <App></App>
@@ -34,5 +36,5 @@ ReactDom.render((
 
 /*热加载 触发冒泡*/
 if (module && module.hot) {
-    module['hot'].accept()  
+    module['hot'].accept()
 }
