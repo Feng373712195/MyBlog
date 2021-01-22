@@ -8,7 +8,7 @@ module.exports = {
     module:{
         rules:[
             {
-                test: /\.css$/,                
+                test: /\.css$/,
                 use:ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: ['css-loader','postcss-loader']
@@ -67,7 +67,7 @@ module.exports = {
     },
     plugins: [
 
-        new ExtractTextPlugin({ 
+        new ExtractTextPlugin({
             filename:'css/[name].css',
             disable: process.env.NODE_ENV === "dev"
         }),

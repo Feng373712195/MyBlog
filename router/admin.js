@@ -11,9 +11,8 @@ admin.post('/admin/login',(ctx)=>{
     const adminPassword = 0;
     ctx.body = { code: 0 }
 })
-
-admin.get('/manage',async(ctx)=>{
-    await ctx.render('dist/manage');
-})
+// admin.get('/manage',async(ctx)=>{
+//     await ctx.render('dist/manage');
+// })
 
 module.exports = admin;

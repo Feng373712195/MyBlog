@@ -12,7 +12,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const sourcePath = path.join(config.rootDirPath, 'src');
 const outputPath = path.join(config.rootDirPath, 'dist');
 
-
 const reactHotLoaderConfig = {
     "plugins": [
         "react-hot-loader/babel",
@@ -42,7 +41,7 @@ module.exports = merge(webpackBaseConfig,{
     output:{
         path: outputPath,
         publicPath: '/dist/',
-        filename: 'js/[id]_[hash:8].js',    
+        filename: 'js/[id]_[hash:8].js',
     },
     module:{
         rules:[
@@ -55,20 +54,29 @@ module.exports = merge(webpackBaseConfig,{
                       query:{  ...reactHotLoaderConfig }
                     },
                     'lazyload-loader'
-                ]       
+                ]
             }
         ]
     },
     resolve:{
         // 解决Antd的一个issus css-animation/es/Event es文件夹更名为dist-src依赖模块没有更新
-        alias: { 
+        alias: {
             "models":path.join(__dirname,'../..','./models'),
             "store":path.join(__dirname,'../..','./src/store')
-        } 
+        }
     },
     devServer:{
-		contentBase:`http://127.0.0.1:${config.dev.port}/dist/`,
-		hot:true
+		// contentBase:`http://127.0.0.1:${config.dev.port}`,
+        hot:true,
+        port:config.dev.port,
+        historyApiFallback: {
+            rewrites: [
+                { from: /^\/$/, to: '/dist/home.html' },
+                { from: /^\/home/, to: '/dist/home.html' },
+                { from: /^\/manage/, to: '/dist/manage.html' },
+                { from: /./, to: '/dist/home.html' }
+            ]
+        }
     },
     devtool:'inline-source-map',
     plugins:[
@@ -96,9 +104,9 @@ module.exports = merge(webpackBaseConfig,{
         new CleanWebpackPlugin(
             ['dist'],
             {
-                root:config.rootDirPath,       
-                verbose:true,    
-                dry:false 
+                root:config.rootDirPath,
+                verbose:true,
+                dry:false
             }
         )
     ]

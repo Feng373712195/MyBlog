@@ -1,5 +1,5 @@
 {
-  "name": "bolg",
+  "name": "wuzefeng-blog",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "pro": "cross-env NODE_ENV=pro node ./admin/server/pro-server.js",
     "dev": "cross-env NODE_ENV=dev node ./admin/server/dev-server.js",
-    "start:dev": "better-npm-run nodemon-dev",
+    "start:dev-server": "better-npm-run nodemon-dev",
+    "start:dev-client": "webpack-dev-server --config ./admin/build/webpack.dev.js  --progress",
     "start:pro": "better-npm-run nodemon-pro",
     "build": "cross-env NODE_ENV=pro webpack --config ./admin/build/webpack.pro.js  --progress",
     "build:dll": "webpack --config ./admin/build/webpack.dll.config.js",
@@ -40,7 +41,7 @@
       }
     }
   },
-  "author": "",
+  "author": "wuzefeng",
   "license": "ISC",
   "devDependencies": {
     "@hot-loader/react-dom": "^16.10.2+4.12.15",
@@ -123,6 +124,7 @@
     "redux-thunk": "^2.2.0",
     "semantic-ui": "^2.2.13",
     "webpack": "^3.8.1",
+    "webpack-cli": "^4.4.0",
     "webpack-merge": "^4.1.1",
     "whatwg-fetch": "^2.0.3",
     "xss": "^0.3.7"

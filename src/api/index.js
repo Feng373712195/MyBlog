@@ -1,10 +1,14 @@
 
 import axios from 'axios';
 
+const request = axios.create({
+    baseURL: 'http://127.0.0.1:8082/'
+});
+
 /** 发布文章 请求方法 */
 const getAtricle = (query = {},skip = 1,limit = 1) =>{
-    //
-    return  axios.post('/articles/find',{
+
+    return  request.post('/api/articles/find',{
                 query,
                 skip,
                 limit
@@ -22,7 +26,7 @@ const getAtricle = (query = {},skip = 1,limit = 1) =>{
 
 const getAtricleList = (query = {},skip = 1,limit = 1) => {
 
-    return  axios.post('/articles/lists',{
+    return  request.post('/api/articles/lists',{
                 query,
                 skip,
                 limit
@@ -40,7 +44,7 @@ const getAtricleList = (query = {},skip = 1,limit = 1) => {
 
 // 保存文章方法
 const saveAtricle = (query)=>{
-    return  axios.post('/articles/save',query)
+    return  request.post('/articles/save',query)
             .then(res => {
                 if(res.data.code === 0)
                     return res.data.data
@@ -54,7 +58,7 @@ const saveAtricle = (query)=>{
 
 const updateAtricle = (query,update,multi)=>{
 
-    return  axios.post('/articles/update',{
+    return  request.post('/articles/update',{
                 query:query,
                 update:update,
                 muilt:multi
@@ -72,7 +76,7 @@ const updateAtricle = (query,update,multi)=>{
 
 const readAtricle = (_id)=>{
 
-    return  axios.post('/articles/read',{_id})
+    return  request.post('/articles/read',{_id})
             .then(res => {
                 if(res.data.code === 0)
                     return res.data.data
@@ -85,8 +89,8 @@ const readAtricle = (_id)=>{
 }
 
 const removeAtricle = (query = {})=>{
-    
-    return  axios.post('/articles/remove',{query:query})
+
+    return  request.post('/articles/remove',{query:query})
             .then(res => {
                 if(res.data.code === 0)
                     return res.data.data
@@ -99,9 +103,9 @@ const removeAtricle = (query = {})=>{
 }
 
 const  uploadFile = (src,_id,files)=>{
-    
+
     let formData = new FormData()
-    
+
     for(let x in [...files]){
         formData.append(`file${x}`,files[x])
     }
@@ -111,7 +115,7 @@ const  uploadFile = (src,_id,files)=>{
                 body:formData
             })
             .then(res => {return res.json()})
-            .then(body => { 
+            .then(body => {
                 return new Promise( (resolve,reject)=>{
                     if(body.success){
                         resolve(body.data)
@@ -119,9 +123,9 @@ const  uploadFile = (src,_id,files)=>{
                     else{
                         reject(body.message)
                     }
-                }) 
+                })
             })
-    
+
 }
 
 const  uploadImg = (timeStamp,_id)=>{
@@ -141,14 +145,14 @@ const  uploadImg = (timeStamp,_id)=>{
                 }
                 else
                   reject(body.error)
-            }) 
+            })
         })
 }
 
 /** 草稿箱 请求方法 */
 const getDraft = (query = {}) =>{
 
-    return  axios.post('/drafts/find',{query:query})
+    return  request.post('/drafts/find',{query:query})
     .then(res => {
         if(res.data.code === 0)
             return res.data.data
@@ -161,8 +165,8 @@ const getDraft = (query = {}) =>{
 }
 
 const getDraftList = (query = {}) =>{
-    
-    return  axios.post('/drafts/lists',{query:query})
+
+    return  request.post('/drafts/lists',{query:query})
             .then(res => {
                 if(res.data.code === 0)
                     return res.data.data
@@ -176,7 +180,7 @@ const getDraftList = (query = {}) =>{
 
 const saveDraft = (query)=>{
 
-    return  axios.post('/drafts/save',query)
+    return  request.post('/drafts/save',query)
             .then(res => {
                 if(res.data.code === 0)
                     return res.data.data
@@ -190,7 +194,7 @@ const saveDraft = (query)=>{
 
 const updateDraft = (query,update,multi)=>{
 
-    return  axios.post('/drafts/update',{
+    return  request.post('/drafts/update',{
                 query:query,
                 update:update,
                 muilt:multi
@@ -208,7 +212,7 @@ const updateDraft = (query,update,multi)=>{
 
 const removeDraft = (query = {})=>{
 
-    return  axios.post('/drafts/remove',{query:query})
+    return  request.post('/drafts/remove',{query:query})
             .then(res => {
                 if(res.data.code === 0)
                     return res.data.data
@@ -221,9 +225,9 @@ const removeDraft = (query = {})=>{
 }
 
 const uploadDraftFile = (src,_id,files)=>{
-    
+
     let formData = new FormData()
-    
+
     for(let x in [...files]){
         formData.append(`file${x}`,files[x])
     }
@@ -233,14 +237,14 @@ const uploadDraftFile = (src,_id,files)=>{
                 body:formData
             })
             .then(res => {return res.json()})
-            .then(body => { 
+            .then(body => {
                 return new Promise( (resolve,reject)=>{
                     if(body.success){
                       resolve(body.data)
                     }
                     else
                       reject(body.message)
-                }) 
+                })
             })
 }
 
@@ -249,7 +253,7 @@ const uploadDraftFile = (src,_id,files)=>{
 
 const loadLabel = ()=>{
 
-    return  axios.post('/lable/getAllLable')
+    return  request.post('/lable/getAllLable')
             .then(res => {
                 if(res.data.code === 0)
                     return res.data.data
@@ -262,8 +266,8 @@ const loadLabel = ()=>{
 }
 
 const removeLabelHandle = (lable)=>{
-    
-    return  axios.post('/lable/removeLable',{lable})
+
+    return  request.post('/lable/removeLable',{lable})
             .then(res => {
                 if(res.data.code === 0)
                     return res.data.data
@@ -279,7 +283,7 @@ const removeLabelHandle = (lable)=>{
 /**管理员登陆 请求方法*/
 const adminlogin = ()=>{
 
-        return axios.post('/admin/login')
+        return request.post('/admin/login')
         .then(res => {
             if(res.data.code === 0)
                 return res.data.data
@@ -292,7 +296,7 @@ const adminlogin = ()=>{
 }
 
 
-module.exports = { 
+module.exports = {
     getAtricle,
     getAtricleList,
     saveAtricle,
