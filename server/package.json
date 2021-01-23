@@ -1,0 +1,67 @@
+{
+  "name": "wuzefeng-blog-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pro": "cross-env NODE_ENV=pro node ./server/pro-server.js",
+    "dev": "cross-env NODE_ENV=dev node ./server/dev-server.js",
+    "start:dev-server": "better-npm-run nodemon-dev",
+    "start:pro-server": "better-npm-run nodemon-pro",
+    "forever:start": "better-npm-run forever-start",
+    "forever:stop": "better-npm-run forever-stop"
+  },
+  "betterScripts": {
+    "nodemon-dev": {
+      "command": "nodemon ./server/dev-server.js",
+      "env": {
+        "NODE_ENV": "dev"
+      }
+    },
+    "nodemon-pro": {
+      "command": "nodemon ./server/pro-server.js",
+      "env": {
+        "NODE_ENV": "pro"
+      }
+    },
+    "forever-start": {
+      "command": "forever start ./server/pro-server.js",
+      "env": {
+        "NODE_ENV": "pro"
+      }
+    },
+    "forever-stop": {
+      "command": "forever stop ./server/pro-server.js",
+      "env": {
+        "NODE_ENV": "pro"
+      }
+    }
+  },
+  "author": "wuzefeng",
+  "license": "ISC",
+  "dependencies": {
+    "better-npm-run": "^0.1.0",
+    "cross-env": "^5.1.1",
+    "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-compress": "^3.0.0",
+    "koa-convert": "^1.2.0",
+    "koa-favicon": "^2.0.1",
+    "koa-onerror": "^4.0.0",
+    "koa-redis": "^3.1.1",
+    "koa-router": "^7.3.0",
+    "koa-send": "^4.1.2",
+    "koa-static": "^4.0.2",
+    "koa-view": "^2.1.1",
+    "lodash": "^4.17.15",
+    "markdown": "^0.5.0",
+    "marked": "^0.3.17",
+    "mongodb": "^2.2.33",
+    "mongoose": "^5.7.5",
+    "nodemon": "^1.12.1",
+    "redis": "^2.8.0",
+    "xss": "^0.3.7",
+    "busboy": "^0.2.14"
+  }
+}

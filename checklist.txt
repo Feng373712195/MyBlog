@@ -3,3 +3,6 @@
 - Rudex 替换 Mobx
 - TypeScript 重构
 - React Hooks 重构
+
+- 线上nginx 配置 /articles /manage /games 路由
+- 接口前都加上 /api
