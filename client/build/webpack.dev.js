@@ -15,12 +15,7 @@ const outputPath = path.join(config.rootDirPath, 'dist');
 const reactHotLoaderConfig = {
     "plugins": [
         "react-hot-loader/babel",
-    ],
-    "env": {
-        "production":{
-          "preset":["react-optimize"]
-        }
-    }
+    ]
 };
 
 module.exports = merge(webpackBaseConfig,{
@@ -28,13 +23,11 @@ module.exports = merge(webpackBaseConfig,{
         home:[
             'eventsource-polyfill',
             'react-hot-loader/patch',
-            `webpack-hot-middleware/client?http://localhost:${config.dev.port}/`,
             path.resolve(config.rootDirPath,'./src/views/index/index.js')
         ],
         manage:[
             'eventsource-polyfill',
             'react-hot-loader/patch',
-            `webpack-hot-middleware/client?http://localhost:${config.dev.port}/`,
             path.resolve(config.rootDirPath,'./src/views/manage/index.js')
         ],
     },

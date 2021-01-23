@@ -1,26 +1,10 @@
 {
   "presets": [
-    "es2015",
-    "stage-0",
-    "env",
-    "react"
+    "@babel/env",
+    "@babel/react"
   ],
   "plugins": [
-    "transform-class-properties",
-    [
-        "transform-runtime", {
-          "helpers": false,
-          "polyfill": false,
-          "regenerator": true,
-          "moduleName": "babel-runtime"
-        }
-    ],
-    [
-      "import", {
-        "libraryName": "antd",
-        "libraryDirectory": "es",
-        "style": true // `style: true` 会加载 less 文件
-      }
-    ]
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties"
   ]
 }

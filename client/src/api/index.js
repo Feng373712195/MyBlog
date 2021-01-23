@@ -296,7 +296,7 @@ const adminlogin = ()=>{
 }
 
 
-module.exports = {
+export default {
     getAtricle,
     getAtricleList,
     saveAtricle,

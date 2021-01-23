@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { hiddenArticle } from '@store/actions/articles';
 import { Tag } from 'antd';
 
- 
-import './style.scss' 
+
+import './style.scss'
 
 const getObserervArtcleItem = function(onTop,fromPage){
     const that = this;
@@ -15,7 +15,7 @@ const getObserervArtcleItem = function(onTop,fromPage){
         root: null,
         threshold:onTop ? [0,1] : [1,0]
     };
-    
+
     var intersection = new IntersectionObserver(function (entries) {
         if( entries[0].isIntersecting ){
             console.log('observer')
@@ -29,7 +29,7 @@ const getObserervArtcleItem = function(onTop,fromPage){
             getObserervArtcleItem.bind(that)( isOnTop,fromPage );
         }
     },options);
-    
+
     intersection.observe(that.acticleItem);
 }
 
@@ -42,8 +42,8 @@ class articleItem extends Component{
         // 监听是否可视范围
         this.intersection = null;
         // 是否已经露出过了
-        this.isVisable = false; 
-        // 是否被监听的item 
+        this.isVisable = false;
+        // 是否被监听的item
         this.state = {
             isObserveitem:false
         }
@@ -52,7 +52,7 @@ class articleItem extends Component{
     componentDidMount(props){
         const { isPageLastItem,fromPage } = this.props;
 
-        // 监听每页文章列表的最后一项   
+        // 监听每页文章列表的最后一项
         // if( !isPageLastItem ) return;
         // this.setState({
         //     isObserveitem:true
@@ -88,10 +88,10 @@ class articleItem extends Component{
         let { dispatch } = this.props;
 
         return(
-            // style={{ background:this.state.isObserveitem ? 'red' : '' }} 
-            <nav onClick={ this.toArticle.bind(this,this.props.article._id) } style={{ background:this.state.isObserveitem ? 'red' : '' }} 
-                 ref={(item)=>{ this.acticleItem = item } } 
-                 id={ this.getItemId.bind(this)() } 
+            // style={{ background:this.state.isObserveitem ? 'red' : '' }}
+            <nav onClick={ this.toArticle.bind(this,this.props.article._id) } style={{ background:this.state.isObserveitem ? 'red' : '' }}
+                 ref={(item)=>{ this.acticleItem = item } }
+                 id={ this.getItemId.bind(this)() }
                  className="article-list" >
                 <h2 className="article-title">
                     {this.props.article.title}
@@ -103,8 +103,8 @@ class articleItem extends Component{
                         <div className="artice-author l">作者：{this.props.article.author}</div>
                         <div className={ `artice-lables l ${ this.props.article.lables.length > 0 ? '' : 'hidden' }` } >
                             <div>标签：</div>
-                            <div> 
-                                {this.props.article.lables.map(lable=> <Tag key={lable} color="#108ee9">{lable}</Tag> ) } 
+                            <div>
+                                {this.props.article.lables.map(lable=> <Tag key={lable} color="#108ee9">{lable}</Tag> ) }
                             </div>
                         </div>
                         <div className="artice-createtime r">发布于：{this.props.article.createtime}</div>
