@@ -1,7 +1,13 @@
 import React, { Component, useState, useEffect } from 'react';
 
 import { connect } from 'react-redux'
-import * as Icon from '@ant-design/icons'
+
+import {
+DoubleRightOutlined,
+DoubleLeftOutlined,
+VerticalLeftOutlined,
+VerticalRightOutlined } from '@ant-design/icons'
+
 
 import './style.scss';
 
@@ -56,10 +62,10 @@ function Paginator(props){
 
     return <div className="paginator-container" >
         <div onClick={PageBtnCtr.bind(null,currentPage,lastPage,'first',changePage)} className="rotate-90deg nav" >
-            {/* <Icon type="double-right" /> */}
+            <DoubleRightOutlined />
         </div>
         <div onClick={PageBtnCtr.bind(null,currentPage,lastPage,'per',changePage)} className="rotate-90deg nav" >
-            {/* <Icon type="vertical-left" /> */}
+            <VerticalLeftOutlined />
         </div>
         <div className="pagenum-box">
             <div className="scroll-box" style={ { transform:`translateY(${ getPageBoxTransLateY(lastPage,currentPage) }px)` } } >
@@ -70,10 +76,10 @@ function Paginator(props){
             </div>
         </div>
         <div onClick={PageBtnCtr.bind(null,currentPage,lastPage,'next',changePage)} className="rotate-90deg nav" >
-            {/* <Icon type="vertical-right" /> */}
+            <VerticalRightOutlined />
         </div>
         <div onClick={PageBtnCtr.bind(null,currentPage,lastPage,'last',changePage) } className="rotate-90deg nav">
-            {/* <Icon type="double-left" /> */}
+            <DoubleLeftOutlined />
         </div>
     </div>
 }

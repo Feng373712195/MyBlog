@@ -1,7 +1,7 @@
 import React,{ useEffect,useState } from 'react'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux';
-import * as Icon from '@ant-design/icons'
+import { MenuOutlined } from '@ant-design/icons'
 import { Tag,Menu,Dropdown  } from 'antd';
 import { UNSELECT_LABLE, } from '@store/actions/lable'
 import { getArticles,CLEAN_ARTICLES,FIRST_ARTILES_LIST_PAGE } from '@store/actions/articles'
@@ -78,7 +78,7 @@ function Header(props){
                                overlay={HeaderMenu(selectNav,props)}
                                trigger={['click','hover']}>
                         <a className={ ["ant-dropdown-link" ,visibleMenu ? 'active' : ''] } href="#">
-                            {/* <Icon type="menu" /> */}
+                            <MenuOutlined />
                         </a>
                     </Dropdown>
                 </nav>
