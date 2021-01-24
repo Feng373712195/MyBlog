@@ -11,7 +11,7 @@ const store = createStore(
     applyMiddleware(thunk)
 )
 const browserHistory = createBrowserHistory();
-browserHistory.listen((data)=>{ 
+browserHistory.listen((data)=>{
     store.dispatch( { type:CHANGE_HISTORY, route:data.hash.slice(1) } )
 })
 

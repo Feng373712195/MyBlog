@@ -6,7 +6,7 @@ import ArticleList from '../../components/ArticleList'
 import Paginator from '../../components/Paginator'
 import LoadMask from '../../components/LoadMask'
 
-import { 
+import {
     getArticles,
     NEXT_ARTILES_LIST_PAGE,
 	PRE_ARTILES_LIST_PAGE,
@@ -22,7 +22,7 @@ class Artice extends Component{
 
 	pageCanage( pagenum,lastPage,action ){
 
-		const { dispatch } = this.props;	
+		const { dispatch } = this.props;
 		const types = {
 			'first':FIRST_ARTILES_LIST_PAGE,
 			'per':PRE_ARTILES_LIST_PAGE,
@@ -31,7 +31,7 @@ class Artice extends Component{
 		}
 		const type = types[action] ? types[action] : CUREENT_ARTILES_LIST_PAGE
 		dispatch({ type,page: action != 'last'? pagenum : lastPage })
-    
+
 	}
 
 	fetchList(page){
@@ -41,7 +41,7 @@ class Artice extends Component{
 		if( !articles.find(list=>list.from === page) ){
 			dispatch(getArticles({},page,10,true))
 		}
-		
+
 	}
 
 	render(){
@@ -49,8 +49,8 @@ class Artice extends Component{
 
 		return (
 			<section id="Artice" className="container">
-				<Paginator 
-					total={total} 
+				<Paginator
+					total={total}
 					pageSize={10}
 					fetchData={ this.fetchList.bind(this) }
 					currentPage={currentPage}
@@ -59,7 +59,7 @@ class Artice extends Component{
 				<ArticleList></ArticleList>
 				<LoadMask></LoadMask>
 			</section>
-		)	
+		)
 	}
 }
 

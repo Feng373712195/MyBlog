@@ -31,8 +31,8 @@ function Lablels(props){
     return <div className="lables" >
                 {lables && lables.map(lable=>
                     <div className="lable"
-                         key={lable} 
-                         color="#108ee9" 
+                         key={lable}
+                         color="#108ee9"
                          onClick={ selectLable.bind(null,props,lable) } >{lable}</div>
                 )}
            </div>

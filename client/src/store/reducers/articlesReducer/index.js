@@ -1,9 +1,9 @@
 
 import { combineReducers } from 'redux'
-import { 
+import {
 	GET_SUCCESS_ARTICLES,
 	SHOW_ARTICLES,
-	HIDE_ARTICLES, 
+	HIDE_ARTICLES,
 	CLEAN_ARTICLES,
 	// 文章页面控制器type
 	OPEN_ARTICLES_LOADING,
@@ -24,7 +24,7 @@ import {
 } from './../../actions/articles'
 
 function articlesReducer(state = [] ,action){
-	
+
 	switch(action.type){
 		case GET_SUCCESS_ARTICLES:
 			const { list,page } = action.data;
@@ -35,7 +35,7 @@ function articlesReducer(state = [] ,action){
 			// 否则更新state
 			return [
 				...state,
-				{ 
+				{
 					list,
 					from:page,
 				}

@@ -65,8 +65,8 @@ module.exports = merge(webpackBaseConfig,{
         historyApiFallback: {
             rewrites: [
                 { from: /^\/$/, to: '/dist/home.html' },
-                { from: /^\/home/, to: '/dist/home.html' },
-                { from: /^\/manage/, to: '/dist/manage.html' },
+                { from: /^\/article$/, to: '/dist/home.html' },
+                { from: /^\/manage$/, to: '/dist/manage.html' },
                 { from: /./, to: '/dist/home.html' }
             ]
         }

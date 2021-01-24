@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
 
 import { connect } from 'react-redux'
-import { Icon } from 'antd'
+import * as Icon from '@ant-design/icons'
 
 import './style.scss';
 
@@ -13,8 +13,8 @@ function PageBtns(props){
     for( let i = 0;i< lastPage ;i++ ){
         const pageNum = i + 1;
         PageBtns.push(
-            <div key={pageNum} 
-                //  onClick={PageBtnCtr.bind(null,lastPage,props,{ type:CUREENT_ARTILES_LIST_PAGE,page:pageNum })} 
+            <div key={pageNum}
+                //  onClick={PageBtnCtr.bind(null,lastPage,props,{ type:CUREENT_ARTILES_LIST_PAGE,page:pageNum })}
                  onClick={ PageBtnCtr.bind(null,pageNum,lastPage,undefined,changePage) }
                  className={currentPage == pageNum ? 'active pagenum':'pagenum'} >
                  {pageNum}
@@ -56,25 +56,25 @@ function Paginator(props){
 
     return <div className="paginator-container" >
         <div onClick={PageBtnCtr.bind(null,currentPage,lastPage,'first',changePage)} className="rotate-90deg nav" >
-            <Icon type="double-right" />
+            {/* <Icon type="double-right" /> */}
         </div>
         <div onClick={PageBtnCtr.bind(null,currentPage,lastPage,'per',changePage)} className="rotate-90deg nav" >
-            <Icon type="vertical-left" />
-        </div> 
+            {/* <Icon type="vertical-left" /> */}
+        </div>
         <div className="pagenum-box">
             <div className="scroll-box" style={ { transform:`translateY(${ getPageBoxTransLateY(lastPage,currentPage) }px)` } } >
-                <PageBtns total={total} 
+                <PageBtns total={total}
                           currentPage={currentPage}
                           lastPage={lastPage}
                           changePage={changePage} />
             </div>
         </div>
         <div onClick={PageBtnCtr.bind(null,currentPage,lastPage,'next',changePage)} className="rotate-90deg nav" >
-            <Icon type="vertical-right" />
-        </div> 
+            {/* <Icon type="vertical-right" /> */}
+        </div>
         <div onClick={PageBtnCtr.bind(null,currentPage,lastPage,'last',changePage) } className="rotate-90deg nav">
-            <Icon type="double-left" />
-        </div> 
+            {/* <Icon type="double-left" /> */}
+        </div>
     </div>
 }
 

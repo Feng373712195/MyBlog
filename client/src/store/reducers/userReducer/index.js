@@ -1,6 +1,6 @@
 import { GET_USERDATA,CLEAN_USERDATA } from '../../actions/user'
 
-function userReducer(state = {},action){
+export default function userReducer(state = {},action){
 	switch(action.type){
         case  GET_USERDATA:
             state = action.data;
@@ -12,5 +12,3 @@ function userReducer(state = {},action){
 			return state
 	}
 }
-
-module.exports = userReducer;

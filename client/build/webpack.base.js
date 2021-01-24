@@ -2,11 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const config = require('../../config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const assetsPath = (src) => {
-   const _path = path.join(config.rootDirPath, '/client/src' , src );
-   console.log( _path , '_path' )
-   return _path;
-}
+const assetsPath = (src) => path.join(config.rootDirPath, '/src' , src )
 
 module.exports = {
     module:{

@@ -1,7 +1,8 @@
-import React,{ Component,useEffect,useState } from 'react'
+import React,{ useEffect,useState } from 'react'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux';
-import { Tag,Menu,Dropdown,Icon  } from 'antd';
+import * as Icon from '@ant-design/icons'
+import { Tag,Menu,Dropdown  } from 'antd';
 import { UNSELECT_LABLE, } from '@store/actions/lable'
 import { getArticles,CLEAN_ARTICLES,FIRST_ARTILES_LIST_PAGE } from '@store/actions/articles'
 
@@ -34,9 +35,9 @@ const unSelectLable = (props) => {
 }
 
 function HeaderMenu(selectNav,props){
-    return <Menu mode="horizontal" 
-            selectedKeys={ selectNav } 
-            onClick={handleClick.bind(null,props)} 
+    return <Menu mode="horizontal"
+            selectedKeys={ selectNav }
+            onClick={handleClick.bind(null,props)}
             style={{ lineHeight: '64px' }} >
             <Menu.Item key="/article">
                 文章
@@ -58,13 +59,13 @@ function Header(props){
     props.history.listen(()=>{
         setSelectNav( getActiveSelect(location.pathname) );
     })
-    
+
     return <header className="header" >
                 <div className="blog-name" >
                     <a href="/" target="_self">WU-ZEFENG BLOG</a>
-                    { selectlable && <Tag 
-                         closable 
-                         key="select-lable" 
+                    { selectlable && <Tag
+                         closable
+                         key="select-lable"
                          color="#108ee9"
                          onClose={unSelectLable.bind(null,props)} >{selectlable}
                       </Tag> }
@@ -73,11 +74,11 @@ function Header(props){
                     {HeaderMenu(selectNav,props)}
                 </nav>
                 <nav className="blog-menu-dropdown" >
-                    <Dropdown  onVisibleChange={(visible)=>{ setVisibleMenu(visible) }} 
-                               overlay={HeaderMenu(selectNav,props)} 
+                    <Dropdown onVisibleChange={(visible)=>{ setVisibleMenu(visible) }}
+                               overlay={HeaderMenu(selectNav,props)}
                                trigger={['click','hover']}>
                         <a className={ ["ant-dropdown-link" ,visibleMenu ? 'active' : ''] } href="#">
-                            <Icon type="menu" />
+                            {/* <Icon type="menu" /> */}
                         </a>
                     </Dropdown>
                 </nav>
@@ -90,4 +91,7 @@ function select(state){
         route:state.history
     }
 }
-export default connect(select)(withRouter(Header));
+
+
+export default connect(select)(withRouter(Header))
+

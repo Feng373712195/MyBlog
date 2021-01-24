@@ -57,7 +57,7 @@ class articleList extends Component{
         //     const articleWarp = document.getElementById('Artice')
         //     var scrollTimer = null
         //     scrollTimer = setTimeout(() => {
-        //         const scrollToItem = document.getElementById(`${newProp.toItemId}`) 
+        //         const scrollToItem = document.getElementById(`${newProp.toItemId}`)
         //         console.log( articleWarp.scrollTop ,'articleWarp.offsetTop ' )
         //         this.scrollToItem( articleWarp,scrollToItem.offsetTop,articleWarp.scrollTop  )
         //         // articleWarp.scrollTo( 0,scrollToItem.offsetTop )
@@ -95,23 +95,23 @@ class articleList extends Component{
 
         // articles.forEach(({ list,from },index)=>{
         //     ArticleList = ArticleList.concat(
-        //         list.map((article,itemIndex) => 
-        //             <ArticleItem key={ article._id +  index + itemIndex } 
+        //         list.map((article,itemIndex) =>
+        //             <ArticleItem key={ article._id +  index + itemIndex }
         //                 index={ itemIndex }
         //                 isPageLastItem={ list.length-1 == itemIndex }
         //                 isPageFirstItem={ itemIndex == 0 }
-        //                 fromPage={ from } 
-        //                 article={ {...article,index} } 
+        //                 fromPage={ from }
+        //                 article={ {...article,index} }
         //                 dispatch={ dispatch } /> )
         //     )
         // })
-        
+
         const currentPageArticleList = articles.find(list=> list.from === currentArticlesPage)
         if( currentPageArticleList ){
-            ArticleList = currentPageArticleList.list.map((article,itemIndex) => 
-                    <ArticleItem key={ article._id  } 
+            ArticleList = currentPageArticleList.list.map((article,itemIndex) =>
+                    <ArticleItem key={ article._id  }
                         index={ itemIndex }
-                        article={ {...article,itemIndex} } 
+                        article={ {...article,itemIndex} }
                         dispatch={ dispatch } /> )
         }
 

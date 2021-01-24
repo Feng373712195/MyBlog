@@ -106,7 +106,7 @@ function adminloginRedcer(state = false,action){
 }
 
 
-module.exports = combineReducers({
+export default combineReducers({
     loadReducer,
 	errorReducer,
 	routerRedcer,

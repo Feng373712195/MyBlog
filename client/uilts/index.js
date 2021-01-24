@@ -1,6 +1,6 @@
 
-//获取当前日期时间 
-exports.getNowFormatDate = ()=>{
+//获取当前日期时间
+export const getNowFormatDate = ()=>{
     const date = new Date()
     const fromDate = {
         year:date.getFullYear(),
@@ -25,14 +25,14 @@ exports.getNowFormatDate = ()=>{
             let sec =  date.getSeconds()
             return (sec.toString().length === 1?`0${sec}`:sec)
         }
-    } 
+    }
 
     var {  year,month,strDate,week,hours,minutes,seconds } = fromDate;
     return `${year}-${month()}-${strDate()} ${week()} ${hours}:${minutes()}:${seconds()}`;
 };
 
 //获取URL参数
-exports.getUrlParam = (window,name)=>{
+ export const getUrlParam = (window,name)=>{
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
     console.log(  window,'window' )
     var r = window.location.search.substr(1).match(reg);  //匹配目标参数

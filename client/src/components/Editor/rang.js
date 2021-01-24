@@ -3,16 +3,16 @@
 
 "use strict";
 
-const funGetSelected = function(element){
+export const funGetSelected = function(element){
     if(!window.getSelection){
         //IE浏览器
-        return document.selection.createRange().text; 
+        return document.selection.createRange().text;
     }else{
         return element.value.substr(element.selectionStart,element.selectionEnd - element.selectionStart)
     }
 };
 
-const funTextAsTopic = function(textObj,textFeildValue){
+export const funTextAsTopic = function(textObj,textFeildValue){
     textObj.focus();
     if (textObj.createTextRange) {
         var caretPos = document.selection.createRange().duplicate();
@@ -27,5 +27,3 @@ const funTextAsTopic = function(textObj,textFeildValue){
         textObj.blur();
     }
 }
-
-module.exports = { funGetSelected,funTextAsTopic }

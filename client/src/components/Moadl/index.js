@@ -8,15 +8,15 @@ class Modal extends Component{
 
     shouldComponentUpdate(nextProp,nextState){
         // console.log(`Modal nextProp${JSON.stringify(nextProp)} prop${JSON.stringify(this.props)} nextState${JSON.stringify(nextState)}  state${JSON.stringify(this.state)} `)
-        //判断nextProp.moalData.modalContent 是否调用了此组件,没有不render 
+        //判断nextProp.moalData.modalContent 是否调用了此组件,没有不render
         if( !$.isEmptyObject(nextProp) || nextState){
             return true;
         }
         return false;
     }
-    
+
     render(){
-       
+
         let { modaldata }  = this.props;
         modaldata = $.isEmptyObject(modaldata)?{modalHead:'',modalContent:'',modalBtns:[]}:modaldata;
 
@@ -46,4 +46,4 @@ function select(state){
     }
 }
 
-module.exports = connect(select)(Modal)
+export default connect(select)(Modal)

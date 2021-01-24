@@ -6,7 +6,7 @@ const request = axios.create({
 });
 
 /** 发布文章 请求方法 */
-const getAtricle = (query = {},skip = 1,limit = 1) =>{
+export const getAtricle = (query = {},skip = 1,limit = 1) =>{
 
     return  request.post('/api/articles/find',{
                 query,
@@ -24,7 +24,7 @@ const getAtricle = (query = {},skip = 1,limit = 1) =>{
             })
 }
 
-const getAtricleList = (query = {},skip = 1,limit = 1) => {
+export const getAtricleList = (query = {},skip = 1,limit = 1) => {
 
     return  request.post('/api/articles/lists',{
                 query,
@@ -43,7 +43,7 @@ const getAtricleList = (query = {},skip = 1,limit = 1) => {
 }
 
 // 保存文章方法
-const saveAtricle = (query)=>{
+export const saveAtricle = (query)=>{
     return  request.post('/articles/save',query)
             .then(res => {
                 if(res.data.code === 0)
@@ -56,7 +56,7 @@ const saveAtricle = (query)=>{
             })
 }
 
-const updateAtricle = (query,update,multi)=>{
+export const updateAtricle = (query,update,multi)=>{
 
     return  request.post('/articles/update',{
                 query:query,
@@ -74,7 +74,7 @@ const updateAtricle = (query,update,multi)=>{
             })
 }
 
-const readAtricle = (_id)=>{
+export const readAtricle = (_id)=>{
 
     return  request.post('/articles/read',{_id})
             .then(res => {
@@ -88,7 +88,7 @@ const readAtricle = (_id)=>{
             })
 }
 
-const removeAtricle = (query = {})=>{
+export const removeAtricle = (query = {})=>{
 
     return  request.post('/articles/remove',{query:query})
             .then(res => {
@@ -102,7 +102,7 @@ const removeAtricle = (query = {})=>{
             })
 }
 
-const  uploadFile = (src,_id,files)=>{
+export const  uploadFile = (src,_id,files)=>{
 
     let formData = new FormData()
 
@@ -128,7 +128,7 @@ const  uploadFile = (src,_id,files)=>{
 
 }
 
-const  uploadImg = (timeStamp,_id)=>{
+export const  uploadImg = (timeStamp,_id)=>{
 
     return fetch('/articles/uploadImg', {
         method: 'POST',
@@ -150,7 +150,7 @@ const  uploadImg = (timeStamp,_id)=>{
 }
 
 /** 草稿箱 请求方法 */
-const getDraft = (query = {}) =>{
+export const getDraft = (query = {}) =>{
 
     return  request.post('/drafts/find',{query:query})
     .then(res => {
@@ -164,7 +164,7 @@ const getDraft = (query = {}) =>{
     })
 }
 
-const getDraftList = (query = {}) =>{
+export const getDraftList = (query = {}) =>{
 
     return  request.post('/drafts/lists',{query:query})
             .then(res => {
@@ -178,7 +178,7 @@ const getDraftList = (query = {}) =>{
             })
 }
 
-const saveDraft = (query)=>{
+export const saveDraft = (query)=>{
 
     return  request.post('/drafts/save',query)
             .then(res => {
@@ -192,7 +192,7 @@ const saveDraft = (query)=>{
             })
 }
 
-const updateDraft = (query,update,multi)=>{
+export const updateDraft = (query,update,multi)=>{
 
     return  request.post('/drafts/update',{
                 query:query,
@@ -210,7 +210,7 @@ const updateDraft = (query,update,multi)=>{
             })
 }
 
-const removeDraft = (query = {})=>{
+export const removeDraft = (query = {})=>{
 
     return  request.post('/drafts/remove',{query:query})
             .then(res => {
@@ -224,7 +224,7 @@ const removeDraft = (query = {})=>{
             })
 }
 
-const uploadDraftFile = (src,_id,files)=>{
+export const uploadDraftFile = (src,_id,files)=>{
 
     let formData = new FormData()
 
@@ -251,7 +251,7 @@ const uploadDraftFile = (src,_id,files)=>{
 
 /** 标签管理 请求方法 */
 
-const loadLabel = ()=>{
+export const loadLabel = ()=>{
 
     return  request.post('/lable/getAllLable')
             .then(res => {
@@ -265,7 +265,7 @@ const loadLabel = ()=>{
             })
 }
 
-const removeLabelHandle = (lable)=>{
+export const removeLabelHandle = (lable)=>{
 
     return  request.post('/lable/removeLable',{lable})
             .then(res => {
@@ -281,7 +281,7 @@ const removeLabelHandle = (lable)=>{
 }
 
 /**管理员登陆 请求方法*/
-const adminlogin = ()=>{
+export const adminlogin = ()=>{
 
         return request.post('/admin/login')
         .then(res => {
@@ -295,23 +295,3 @@ const adminlogin = ()=>{
         })
 }
 
-
-export default {
-    getAtricle,
-    getAtricleList,
-    saveAtricle,
-    updateAtricle,
-    readAtricle,
-    removeAtricle,
-    uploadFile,
-    uploadImg,
-    getDraft,
-    getDraftList,
-    saveDraft,
-    updateDraft,
-    removeDraft,
-    uploadDraftFile,
-    loadLabel,
-    removeLabelHandle,
-    adminlogin
- }

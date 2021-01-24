@@ -5,9 +5,11 @@ import Content from '../Content';
 import Footer from '../Footer';
 
 export default function App(){
-    return <React.Fragment>
+    return <>
         <Header />
         <Content />
         <Footer />
-    </React.Fragment>
+    </>
+
 }
+

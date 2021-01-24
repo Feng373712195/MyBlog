@@ -29,11 +29,11 @@ class articleContent extends Component{
         this.state = {
             navTitle:null
         }
-        
+
     }
 
     componentDidUpdate(){
-        const { dispatch } = this.props 
+        const { dispatch } = this.props
         // 图片懒加载
         $('.article-warp .lazy').lazyload({
             container: $(".article-content-warp"),
@@ -43,7 +43,7 @@ class articleContent extends Component{
         if( (!this.state.navTitle) && $('h3').length > 0 ){
             this.setState({ navTitle:[...$('h3')].map(dom=>dom.id) })
         }
-        /** 记录： 返回文章列表 文章state发生改变会再触发一次componentDidUpdate  
+        /** 记录： 返回文章列表 文章state发生改变会再触发一次componentDidUpdate
             changeNavData会传过去一个空数组 免去了清除标题导航状态的操作 */
 
         /** 如果文章中有标签则 改变标签导航内容 */
@@ -57,7 +57,7 @@ class articleContent extends Component{
 
     getNavObj(dom){
 
-        let titleNav = []; 
+        let titleNav = [];
         console.log( $('h1,h2,h3',dom).length )
         $('h1,h2,h3',dom).map((idx,ele)=>{
             // console.log(ele.innerText);
@@ -75,7 +75,7 @@ class articleContent extends Component{
     }
 
     render(){
-        
+
         let { currentArticle,dispatch } = this.props;
         // 文章还未加载好
         if( !currentArticle ) return (<div></div>)
@@ -93,7 +93,7 @@ class articleContent extends Component{
 
         let regexp = new RegExp(`/articles/uploadImg/_id/(.*)`,'g')
         if( currentArticle ){
-            currentArticle.content = currentArticle.content.replace(regexp,`/articles/uploadImg/${currentArticle._id}/$1`)            
+            currentArticle.content = currentArticle.content.replace(regexp,`/articles/uploadImg/${currentArticle._id}/$1`)
             currentArticle.content = marked(currentArticle.content)
 
             currentArticle.content = currentArticle.content
@@ -102,11 +102,11 @@ class articleContent extends Component{
             currentArticle.content = currentArticle.content
             .replace(/<h3 .*>(.*)<\/h3>?/g,'<h3 id=$1>$1</h3>');
         }
-        
+
         return(
            // 如果有选中文章则显示
            <article className={`article-warp ${currentArticle ? '':'hidden' }`}>
-                <Anchors anchors={this.state.navTitle} ></Anchors> 
+                <Anchors anchors={this.state.navTitle} ></Anchors>
                 <div className="article-box">
                     <div className="article-title">{ currentArticle.title}</div>
                     <div className="article-body" dangerouslySetInnerHTML={ {__html:currentArticle.content }} ></div>

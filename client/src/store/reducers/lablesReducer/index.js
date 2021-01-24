@@ -1,6 +1,6 @@
 
 import { combineReducers } from 'redux'
-import { 
+import {
 	GET_SUCCESS_LABEL,
 	CLEAN_LABEL,
 	REMOVE_LABLE,
@@ -18,7 +18,7 @@ function lablesReducer(state = null ,action){
 			state = null;
 			return state
 		case REMOVE_LABLE:
-			return [ 
+			return [
 					 ...state.slice(0,state.indexOf(action.lable.lable)),
 					 ...state.slice(state.indexOf(action.lable.lable)+1)
 				   ]
