@@ -2,13 +2,13 @@
 import axios from 'axios';
 
 const request = axios.create({
-    baseURL: 'http://127.0.0.1:8082/'
+    baseURL: 'http://127.0.0.1:8082/api'
 });
 
 /** 发布文章 请求方法 */
 export const getAtricle = (query = {},skip = 1,limit = 1) =>{
 
-    return  request.post('/api/articles/find',{
+    return  request.post('/articles/find',{
                 query,
                 skip,
                 limit
@@ -26,7 +26,7 @@ export const getAtricle = (query = {},skip = 1,limit = 1) =>{
 
 export const getAtricleList = (query = {},skip = 1,limit = 1) => {
 
-    return  request.post('/api/articles/lists',{
+    return  request.post('/articles/lists',{
                 query,
                 skip,
                 limit
